@@ -1,12 +1,13 @@
 ---
 files.to.publish: 
   - index.md 
+dirs.to.publish:
+  - 2012-lectures
 ---
 
 STAT 545A Exploratory Data Analysis, 1.5 credits, Sec 101  
 03 September 2013 - 20 October 2013  
 Mon Wed 9:30 - 11am in ESB 1042, a computing lab on the main ground floor of ESB  
-[Course webpage](STAT545)
 
 Below is an outline of STAT 545A, prepared summer 2013, based on previous runs of course.
 
@@ -122,3 +123,4 @@ over time for Rwanda. Data reshaping.
 cm 12 | Smoothing (kernel smoothing and local polynomial regression,
 e.g. loess).
 
+[Find 2012 lecture slides here.](2012-lectures/)
