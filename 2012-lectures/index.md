@@ -1,3 +1,5 @@
+Go back to [STAT545A home](../index.html)
+
 Overview of the STAT545A lecture slides
 ============================================
 
