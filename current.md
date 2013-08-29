@@ -1,3 +1,5 @@
+Go back to [STAT545A home](index.html)
+
 # STAT 545A Exploratory Data Analysis
 
 1.5 credits  
