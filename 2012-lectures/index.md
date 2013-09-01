@@ -3,7 +3,7 @@ Go back to [STAT545A home](../index.html)
 Overview of the STAT545A lecture slides
 ============================================
 
-Here are the lecture slides from STAT545A Exploratory Data Analysis, as delivered Sept - Dec 2012.
+Lecture slides from STAT545A Exploratory Data Analysis, as delivered Sept - Dec 2012.
 
 Examples referred to in the lectures, neatly packaged with code, data, and figures, can be found here:
 

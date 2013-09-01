@@ -1,12 +1,3 @@
----
-css.file: _fileherd/markdown7.css
-files.to.publish:
-  - index.md
-  - current.md
-dirs.to.publish:
-  - 2012-lectures
----
-
 Go back to [teaching](../index.html)
 
 ## STAT 545A Exploratory Data Analysis
