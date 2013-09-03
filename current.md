@@ -12,6 +12,8 @@ Monday Sept 02 is a statutory holiday. No class.
 
 cm 01 | Wednesday Sept 04
 
+  * [Get R, Rstudio, and some add-on packages set up](block_00.setup.html)
+
 cm 02 | Monday Sept 09
 
 cm 03 | Wednesday Sept 11
