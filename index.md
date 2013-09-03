@@ -1,10 +1,16 @@
+---
+css.file: _fileherd/markdown7.css
+dirs.to.publish:
+  - .
+---
+
 Go back to [teaching](../index.html)
 
 ## STAT 545A Exploratory Data Analysis
 
   * [Webpage for current run of course](current.html), 04 September 2013 - 16 October 2013
   * General course information -- see below
-  
+
 ### Course description
 
 This course has three intertwined goals;
