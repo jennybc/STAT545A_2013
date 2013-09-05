@@ -3,3 +3,4 @@
 .RData
 publish/*
 _fileherd/*
+*.Rproj
