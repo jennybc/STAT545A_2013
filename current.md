@@ -34,6 +34,9 @@ Monday Sept 02 is a statutory holiday. No class.
   * Sign up for an educational account at [github.com/edu](https://github.com/edu). **Take advantage of their special deal for students, where you can get something like 5 private repositories for two years for free.** We will experiment with students modifying [the course repository](https://github.com/jennybc/STAT545A) via a [browser-based workflow](https://github.com/blog/1557-github-flow-in-the-browser) for those who do not wish to take the git plunge yet. I will not require you to create or share your own repositories -- you just need a github account in order to edit mine, e.g. the course repository. Usage cases I have in mind:
     - Submitting coursework by adding a link to work you've published on [Rpubs.com](http://rpubs.com)
     - Suggesting a dataset to work on later in the class or commenting on suggestions made by others
+    
+  * Work through
+    - [Basic care and feeding of data in R](block02_importInspectAccess.html)
 
 cm 03 | Wednesday Sept 11
 
