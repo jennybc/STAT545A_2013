@@ -20,7 +20,7 @@ Before long, save your script with an informative name, ending in .R, presumably
 
 We will work with some of the data from the [Gapminder project](http://www.gapminder.org). Here is an excerpt prepared for your use. Please save this file locally, for example, in the directory associated with your RStudio Project:
 
-  * http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt
+  * <http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt>
 
 ### Creating a data.frame via import
 
