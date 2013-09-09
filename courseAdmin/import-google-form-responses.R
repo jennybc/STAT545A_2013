@@ -12,6 +12,11 @@ sDat$timestamp <- strptime(sDat$timestamp, format = "%m/%d/%Y %H:%M:%S")
 
 write(paste(sDat$email, collapse = ","), file = "email.txt")
 
+
+
+
+
+
 ## note to think about later:
 
 ## I encountered some bizarre behavior from str(sDat) immediately after import
@@ -23,9 +28,10 @@ write(paste(sDat$email, collapse = ","), file = "email.txt")
 # In str.default(sDat, give.length = FALSE) :
 #   number of items to replace is not a multiple of replacement length
 
-## this makes those errors go away: str(sDat, vec.len = 1) but upon further inspection the results still don't make sense
+## this made those errors go away: str(sDat, vec.len = 1) but upon further
+## inspection the results still don't make sense
 
-## since I set the vec.len option for str() in .Rprofile, I checked if the error
-## goes away if I remove .Rprofile and it does, so this demonstrates that
-## blindly setting vec.len to 4 can create problems
+## since I set the vec.len option for str() in .Rprofile, I checked if the
+## problems go away if I remove my .Rprofile and they do. evidence that simply
+## setting vec.len to 4 in such a crude way is not a good idea
 
