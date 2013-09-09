@@ -37,6 +37,9 @@ Monday Sept 02 is a statutory holiday. No class.
     
   * Work through
     - [Basic care and feeding of data in R](block02_importInspectAccess.html)
+    
+  * Feel free to start thinking about some datasets we could work with later in the class
+    - [Early draft of a "dataset ideas" page](dataset-ideas.html)
 
 cm 03 | Wednesday Sept 11
 
