@@ -1,3 +1,5 @@
+Go back to [STAT545A page](current.html)
+
 Ideas for datasets
 ========================================================
 
@@ -23,3 +25,5 @@ __US Childhood Morbidity and Mortality__. People, especially the older generatio
 [Protect Children Not Guns](http://www.childrensdefense.org/child-research-data-publications/data/protect-children-not-guns-2013.html) 2013 report from the Children's Defense Fund. Might lead to interesting datasets. Report itself is certainly heavy on figures and tables. Would allow comparisons of gun violence across different countries.
 
 Mother Jones article [Science Confirms: Politics Wrecks Your Ability to Do Math](http://www.motherjones.com/politics/2013/09/new-study-politics-makes-you-innumerate). Probably too small and narrow. But maybe not. Would be nice to give those figures a makeover.
+
+JB should really list previous student projects, at the vey least for inspiration and maybe for actual links to datasets.
