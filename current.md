@@ -8,7 +8,7 @@ Mon Wed 9:30 - 11am in ESB 1042, a computing lab on the main ground floor of the
 Instructor: Jennifer (Jenny) Bryan <jenny@stat.ubc.ca>  
 TA: Song Cai <scai@stat.ubc.ca>  
 Google Group for Q & A: [STAT545A_2013](https://groups.google.com/forum/#!forum/stat545a_2013)  
-github repository for course materials: https://github.com/jennybc/STAT545A
+github repository for course materials: <https://github.com/jennybc/STAT545A>
 
 
 cm = class meeting
@@ -42,6 +42,8 @@ Monday Sept 02 is a statutory holiday. No class.
     - [Early draft of a "dataset ideas" page](dataset-ideas.html)
 
 cm 03 | Wednesday Sept 11
+
+  * *Only for the keeners right now!* [Submit homework](hm01_hw-submission-dryrun.html)
 
 cm 04 | Monday Sept 16
 
