@@ -22,4 +22,5 @@ Please add your link in this bulleted list:
 
   * Jenny Bryan: [toyline](http://rpubs.com/jennybc/toyline)
   * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
+  * Song Cai: [drmdel_test](http://rpubs.com/scai/drmdel_test)
   
