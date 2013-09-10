@@ -32,3 +32,7 @@ cm07 | Pep rally for the final project. No lecture slides.
 [cm11.pdf](cm11.pdf) | Using a bootstrap approach to two group testing using the yeast growth data. Demo of robust regression using life expectancy over time for Rwanda. Data reshaping.
 
 [cm12.pdf](cm12.pdf) | Smoothing (kernel smoothing and local polynomial regression, e.g. loess). Using cross-validation to select a tuning parameter that controls how much smoothing to do. Degenerate shingle trick to put same data into each panel or packet, with the goal of overlaying different fits.
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

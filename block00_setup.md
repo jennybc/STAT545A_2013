@@ -41,3 +41,7 @@ The above will get your basic setup ready but here are some links if you are int
     - <http://cran.r-project.org/doc/FAQ/R-FAQ.html>
 * More about add-on packages in the R Installation and Administration Manual
      - <http://cran.r-project.org/doc/manuals/R-admin.html#Add_002don-packages>
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

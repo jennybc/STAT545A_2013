@@ -349,3 +349,6 @@ Links that may be relevant -- but may not be!
 unlink(c("avgX.txt", "toylinePlot.pdf"))
 ```
 
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

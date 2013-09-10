@@ -27,3 +27,7 @@ __US Childhood Morbidity and Mortality__. People, especially the older generatio
 Mother Jones article [Science Confirms: Politics Wrecks Your Ability to Do Math](http://www.motherjones.com/politics/2013/09/new-study-politics-makes-you-innumerate). Probably too small and narrow. But maybe not. Would be nice to give those figures a makeover.
 
 JB should really list previous student projects, at the vey least for inspiration and maybe for actual links to datasets.
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

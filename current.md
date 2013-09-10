@@ -63,3 +63,6 @@ Monday Oct 14 is a statutory holiday. No class.
 
 cm 11 | Wednesday Oct 16
 
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

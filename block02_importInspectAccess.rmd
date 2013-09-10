@@ -218,3 +218,6 @@ Example: How would you compute the correlation of life expectancy and GDP per ca
 with(subset(gDat, subset = country == "Colombia"),
      cor(lifeExp, gdpPercap))
 ```
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
