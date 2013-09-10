@@ -80,7 +80,5 @@ Resources for developing the homework submission process:
 
   * Inspired by this [browser-based workflow](https://github.com/blog/1557-github-flow-in-the-browser)
   * Existing notes and thoughts about student "tidy up": Post submission, a student will have a fork of the course repo, with 2 branches (master and patch-1). Should we help them tidy up? Deleting the patch-1 branch seems very desirable. Is this blog post about [tidying up after pull requests](https://github.com/blog/1335-tidying-up-after-pull-requests) relevant? I wonder if leaving the student's fork and master branch is good for future edits, but I don't know how to make it actually track the course repo, so these steps might need to be repeated every time. Here are more links that look relevant: [Fork A Repo](https://help.github.com/articles/fork-a-repo) and [Syncing a fork](https://help.github.com/articles/syncing-a-fork). I note that the instructions about syncing a fork only show command line git, whereas I want all this happening in a broswer.
-
-
-
+  * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
   
