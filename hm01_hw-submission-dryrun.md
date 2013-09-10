@@ -22,4 +22,5 @@ Please add your link in this bulleted list:
 
   * Jenny Bryan: [toyline](http://rpubs.com/jennybc/toyline)
   * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
+  * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
   
