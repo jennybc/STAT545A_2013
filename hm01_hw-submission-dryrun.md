@@ -21,6 +21,6 @@ How to add a link to your published homework:
 Please add your link in this bulleted list:
 
   * Jenny Bryan: [toyline](http://rpubs.com/jennybc/toyline)
-  * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
+  * Matthew Gingerich: [script](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
   
