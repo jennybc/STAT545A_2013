@@ -23,4 +23,5 @@ Please add your link in this bulleted list:
   * Jenny Bryan: [toyline](http://rpubs.com/jennybc/toyline)
   * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
+  * Yan Liu: [toyline](http://rpubs.com/swallow0001/8296)
   
