@@ -41,13 +41,23 @@ Monday Sept 02 is a statutory holiday. No class.
   * Feel free to start thinking about some datasets we could work with later in the class
     - [Early draft of a "dataset ideas" page](dataset-ideas.html)
 
-cm 03 | Wednesday Sept 11
+### cm 03 | Wednesday Sept 11 | R objects (beyond data.frames) and R Markdown
 
-  * *Only for the keeners right now!* [Submit homework](hm01_hw-submission-dryrun.html)
+  * *Only for the keeners right now!* [Submit homework 1](hm01_hw-submission-dryrun.html) ASAP.
+  
+  * *Under development* [Submit homework 2](hm01_hw-submission-dryrun.html) before class starts @ 9:30am Monday Sept. 16.
+  
+  * Work through
+    - [R objects (beyond data.frames) and indexing](block03_basicObjects.html). Note: you should be able to do the homework without completing this tutorial.
 
-cm 04 | Monday Sept 16
+### cm 04 | Monday Sept 16 | *Tentative: Univariate statistics and visual summaries. Data aggregation.*
 
 Wednesday Sept 18 UBC's observance of [National Reconciliation Week](http://irsi.aboriginal.ubc.ca). No class.
+
+* Work through
+    - a tutorial on univariate statistics and visual summaries and/or data aggregation
+
+  * Post a serious proposal for a dataset and/or make a thoughtful contribution to the discussion of an existing proposal. We need to start fleshing these out. The time needed for data assembly and cleaning is going to break your heart.
 
 cm 05 | Monday Sept 23
 
