@@ -23,4 +23,6 @@ Please add your link in this bulleted list:
   * Jenny Bryan: toyline [script](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
   * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
+  * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline) 
+
   
