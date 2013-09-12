@@ -34,6 +34,7 @@ The surest way to get a check minus is to NOT follow this convention. You can do
 Please add links to your Homework #1 in this bulleted list:
 
   * JUST AN EXAMPLE Jenny Bryan: toyline [script](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
+  * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
 
@@ -65,7 +66,7 @@ The 3 steps that involve the outside world:
     - Capture the URL. Example: JB published her `toyline.R` script as a Gist and got a permalink URL of <https://gist.github.com/jennybc/6520226#file-toyline-r>.
   * Add or edit a line in the Markdown file generating this page to include links to your published items
     - If you want to do this properly with git and github and you know how, carry on. But for everyone else ...
-    - You will need to sign in to [github](https://github.com).
+    - Sign in to [github](https://github.com).
     - Visit this Markdown file in the course repository: <https://github.com/jennybc/STAT545A/blob/master/hm01_hw-submission-dryrun.md>
     - Click "Edit".
     - Make your edit. DO NOT GET CREATIVE OR SLOPPY. Look around at what everyone else is doing and make your entry follow the pattern, with only the minimal changes needed to customize for *your* homework.
@@ -78,7 +79,12 @@ The 3 steps that involve the outside world:
     
 Resources for developing the homework submission process:
 
+  * Notes for JB, but anyone's welcome to read.
   * Inspired by this [browser-based workflow](https://github.com/blog/1557-github-flow-in-the-browser)
-  * Existing notes and thoughts about student "tidy up": Post submission, a student will have a fork of the course repo, with 2 branches (master and patch-1). Should we help them tidy up? Deleting the patch-1 branch seems very desirable. Is this blog post about [tidying up after pull requests](https://github.com/blog/1335-tidying-up-after-pull-requests) relevant? I wonder if leaving the student's fork and master branch is good for future edits, but I don't know how to make it actually track the course repo, so these steps might need to be repeated every time. Here are more links that look relevant: [Fork A Repo](https://help.github.com/articles/fork-a-repo) and [Syncing a fork](https://help.github.com/articles/syncing-a-fork). I note that the instructions about syncing a fork only show command line git, whereas I want all this happening in a broswer.
-  * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
-  
+  * Existing notes and thoughts about student "tidy up": Post submission, a student will have a fork of the course repo, with 2 branches (master and patch-1). Should we help them tidy up? Deleting the patch-1 branch seems very desirable. Is this blog post about [tidying up after pull requests](https://github.com/blog/1335-tidying-up-after-pull-requests) relevant? I wonder if leaving the student's fork and master branch is good for future edits, but I don't know how to make it actually track the course repo, so these steps might need to be repeated every time. Here are more links that look relevant: [Fork A Repo](https://help.github.com/articles/fork-a-repo) and [Syncing a fork](https://help.github.com/articles/syncing-a-fork). I note that the instructions about syncing a fork only show command line git, whereas I want all this happening in a browser.
+  * The pain inflicted by all those merge requests:
+    - They conflict, of course, so cannot be automatically merged. I have to work at the command line. github does provide some instructions for this. Sort of.
+    - I was working with Jess's pull request and will use as an example.
+    - First, I add the student's fork as a remote of my repo. The github help described above provides the HTTP bit for this. SourceTree makes it easy to add a remote. I called it `jess`.
+    - Do a fetch from all remotes. I can now see `jess/patch-1`. Control click and I can ...
+    - Checkout `jess/patch-1`, giving it a local branch name `jess-patch-1`. I keep "Local branch should track remote branch" checked. FAIL. Local changes would be overwritten by checkout. Please commit or stash before swtiching branches. Aborting.
