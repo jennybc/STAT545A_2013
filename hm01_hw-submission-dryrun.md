@@ -34,7 +34,8 @@ The surest way to get a check minus is to NOT follow this convention. You can do
 Please add links to your Homework #1 in this bulleted list:
 
   * JUST AN EXAMPLE Jenny Bryan: toyline [script](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
-  
+  * Wooyong Lee: [script](https://gist.github.com/folias/6537277) | [report](http://rpubs.com/folias/STAT545A-2013-hw01_leeWoo)  
+
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
 
   * Write an R Markdown file that does what's described below and includes some narrative text, walking the reader through basic features of the dataset. Find ways to explore what's possible with Markdown, e.g. make links, use headings or bullet points or blockquotes, use inline R code, include an equation, etc. Follow the naming convention.
