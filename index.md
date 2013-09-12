@@ -4,7 +4,7 @@ dirs.to.publish:
   - .
 ---
 
-Go back to [teaching](../index.html)
+Go back to [teaching](../teach.html)
 
 ## STAT 545A Exploratory Data Analysis
 
