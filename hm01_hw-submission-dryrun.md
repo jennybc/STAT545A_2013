@@ -33,8 +33,11 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   
 Please add links to your Homework #1 in this bulleted list:
 
-  * JUST AN EXAMPLE Jenny Bryan: toyline [script](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
+  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION Jenny Bryan: toyline [source](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
   * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
+  * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
+  * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
+  * Jonathan Baik: [toyline] (http://rpubs.com/jonnybaik/toyline)
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
 
@@ -50,7 +53,7 @@ Please add links to your Homework #1 in this bulleted list:
   
 Please add links to your Homework #2 in this bulleted list:
 
-  * JUST AN EXAMPLE Jenny Bryan: toyline [script](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
+  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION Jenny Bryan: toyline [source](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
   
 ### How to submit homework
 
