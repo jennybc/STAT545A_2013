@@ -33,13 +33,15 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   
 Please add links to your Homework #1 in this bulleted list:
 
-  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION Jenny Bryan: toyline [source](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
-  * __Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. But I'm leaving the lines in so affected students can edit their line, instead of adding a new one.__
+  *  __FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION__ Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
+  * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. But I'm leaving the lines in so affected students can edit their line, instead of adding a new one._
   * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
-  * Matthew Gingerich: [TestFile](http://rpubs.com/majugi/TestFile)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
   * Yan Liu: [toyline](http://rpubs.com/swallow0001/8296)
+  * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
+  * Sean Jewell: [toyLineTest](http://rpubs.com/jewellsean/8225)
+  * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
 
