@@ -59,7 +59,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * brueckman-chr EDIT HERE
   * chu-jus EDIT HERE
   * daly-zac EDIT HERE
-  * dinsdale-dan EDIT HERE
+  * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6544174#file-stat545a-2013-hw01_dinsdale-dan-r) | [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw01_dinsdale-dan)
   * gao-wen EDIT HERE
   * gingerich-mat: [source](https://gist.github.com/MattGingerich/6543524#file-stat545a-2013-hw01_gingerich-mat-r) | [report](http://rpubs.com/majugi/stat545a-2013-hw01_gingerich-mat)
   * hu-yum EDIT HERE
