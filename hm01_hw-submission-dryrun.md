@@ -98,7 +98,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Check that the HTML report is no longer than a couple of printed pages. If longer, go back and make your script shorter. Content is not that important.
   * Publish the HTML report on the web somewhere, such as on RPubs. Make the slug follow the naming convention.
   * Publish the R Markdown file as a Gist. Instructions below. Follow the naming convention.
-  * Add a line to the Markdown file that generates this page with links to your two published items. Instructions below.
+  * Add or edit a line in the Markdown file that generates this page with links to your two published items. Instructions below.
   * DUE: Before class begins 9:30am Monday September 15.
   
 Please add links to your Homework #2 in this bulleted list. __Find the placeholder created for you and edit that line only, if at all possible.__
@@ -158,7 +158,7 @@ The 3 steps that involve the outside world:
     - Sign in to [github](https://github.com).
     - Visit this Markdown file in the course repository: <https://github.com/jennybc/STAT545A/blob/master/hm01_hw-submission-dryrun.md>
     - Click "Edit".
-    - Make your edit. DO NOT GET CREATIVE OR SLOPPY. Look around at what everyone else is doing and make your entry follow the pattern, with only the minimal changes needed to customize for *your* homework.
+    - Make your edit, using the placeholder built for you if at all possible. DO NOT GET CREATIVE OR SLOPPY. Look around at what everyone else is doing and make your entry follow the pattern, with only the minimal changes needed to customize for *your* homework.
     - At the bottom of the page, fill in the description, e.g. "Homework #1 submission by Jenny Bryan" and click on "Propose file change" button. (Under the hood, this will fork the course repository and create a branch for your change, by default called "patch-1").
     - A page will open that informs you whether there are any merge issues with the change. I'm not sure what you will see here -- all of these changes at once do cause merge issues for me, but that is my problem.
     - Assuming you are allowed to, click on "Send pull request".
