@@ -59,7 +59,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Neil Spencer: [source](https://gist.github.com/neilspencer/6542018#file-stat545a-2013-hw01_spencer-nei-r) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw01_spencer-nei)
   * wang-ton: [source](https://gist.github.com/yzhxh/6542473#file-stat545a-2013-hw01_wang-ton-r) | [report](http://rpubs.com/yzhxh/stat545a-2013-hw01_wang-ton)
   * weber-lea EDIT HERE
-  * woollard-geo EDIT HERE
+  * woollard-geo [source](https://gist.github.com/geoffwoollard/6545119#file-stat545a-2013-hw01_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw01_woollard-geo)
   * xue-xin EDIT HERE
   * yuen-ama EDIT HERE
   * zhang-yim [source](https://gist.github.com/zym268/6543854#file-stat545a-2013-hw01_zhang-yim-r) | [report](http://rpubs.com/zym268/stat545a-2013-hw01_zhang-yim)
