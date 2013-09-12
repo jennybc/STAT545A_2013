@@ -50,7 +50,8 @@ Please add links to your Homework #1 in this bulleted list:
 Please add links to your Homework #2 in this bulleted list:
 
   * JUST AN EXAMPLE Jenny Bryan: toyline [script](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
-  
+  * Wooyong Lee: [script](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)  
+
 ### How to submit homework
 
 The 3 steps that involve the outside world:
