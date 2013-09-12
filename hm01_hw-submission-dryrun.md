@@ -113,7 +113,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * daly-zac EDIT HERE
   * dinsdale-dan EDIT HERE
   * gao-wen EDIT HERE
-  * gingerich-mat EDIT HERE
+  * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * hu-yum EDIT HERE
   * jewell-sea EDIT HERE
   * johnston-reb EDIT HERE
