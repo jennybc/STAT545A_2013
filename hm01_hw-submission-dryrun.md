@@ -64,9 +64,45 @@ Please add links to your Homework #1 in this bulleted list:
   * Add a line to the Markdown file that generates this page with links to your two published items. Instructions below.
   * DUE: Before class begins 9:30am Monday September 15.
   
-Please add links to your Homework #2 in this bulleted list:
+Please add links to your Homework #2 in this bulleted list. __Find the placeholder created for you and edit that line only, if at all possible.__
 
-  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION Jenny Bryan: toyline [source](https://gist.github.com/jennybc/6520226) | [report](http://rpubs.com/jennybc/toyline)
+  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION AND HW02 Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
+  * attali-dea EDIT HERE
+  * baik-jon EDIT HERE
+  * bolandnazar-moh EDIT HERE
+  * brueckman-chr EDIT HERE
+  * chu-jus EDIT HERE
+  * daly-zac EDIT HERE
+  * dinsdale-dan EDIT HERE
+  * gao-wen EDIT HERE
+  * gingerich-mat EDIT HERE
+  * hu-yum EDIT HERE
+  * jewell-sea EDIT HERE
+  * johnston-reb EDIT HERE
+  * khosravi-mah EDIT HERE
+  * lee-woo EDIT HERE
+  * liao-wei EDIT HERE
+  * ma-hui EDIT HERE
+  * meng-viv EDIT HERE
+  * mohd abul basher-abd EDIT HERE
+  * ni-jac EDIT HERE
+  * okkels-chr EDIT HERE
+  * park-min EDIT HERE
+  * spencer-nei EDIT HERE
+  * wang-ton EDIT HERE
+  * weber-lea EDIT HERE
+  * woollard-geo EDIT HERE
+  * xue-xin EDIT HERE
+  * yuen-ama EDIT HERE
+  * zhang-yim EDIT HERE
+  * zhang-jon EDIT HERE
+  * zhang-yif EDIT HERE
+  * zhang-jin EDIT HERE
+  * inskip-jes EDIT HERE
+  * liu-yan EDIT HERE
+  * haraty-mon EDIT HERE
+  * yuen-mac EDIT HERE
+
   
 ### How to submit homework
 

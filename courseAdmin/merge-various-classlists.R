@@ -6,7 +6,7 @@ gDat <-
 str(gDat)
 gDat <- subset(gDat, select = -c(timestamp, snowflake))
 
-uDat <- read.delim("courseAdmin/2013-09-09-classlist.txt", as.is = 9:11,
+uDat <- read.delim("courseAdmin/2013-09-12-classlist.txt", as.is = 9:11,
                    strip.white = TRUE)
 str(uDat)
 uDat <- subset(uDat, select = c(StudentNumber, Surname, GivenName,
@@ -26,3 +26,10 @@ sDat <- with(sDat, sDat[order(ubcSubj), ])
 
 write.table(sDat, "courseAdmin/2013-09-09-megalist.txt", quote = FALSE, sep = "\t",
             row.names = FALSE)
+
+pHold <- paste0(tolower(uDat$lName), "-", substr(tolower(uDat$givenName), 1, 3))
+pHold <- c(pHold,
+           "inskip-jes", "liu-yan", "haraty-mon", "yuen-mac")
+
+writeLines(paste0("  * ", pHold, " EDIT HERE"),
+           "courseAdmin/placeholderBullets.txt")
