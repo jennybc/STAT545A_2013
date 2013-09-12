@@ -3,21 +3,22 @@ Go back to [STAT545A home](current.html)
 Homework
 ========================================================
 
-Filename convention:  
+> NOTE: new filename convention! Once I saw the first successful student attempt to follow it, I saw that Gist and RPubs mess with capitalization. Let's go all lowercase. Sorry to inconvenience the people who tried already.
+
 ```
-STAT545A-2013-hw<XX>_<lastnameFir>.<suffix>
+stat545a-2013-hw<XX>_<lastname-fir>.<suffix>
 ```
 
 The `XX` above is `01` for homework #1 and `02` for homework #2.  
-`lastnameFir` means your lastname, in lowercase, concatenated with the first 3 letters of your first name, first letter capitalized. Example: `bryanJen`.  
+`lastname-fir` means your lastname concatenated with a dash `-` and the first 3 letters of your first name, all lowercase. Example: `bryan-jen`.  
 The suffix will be one of .R, .Rmd, .rmd, .html.
 
 The four files Jenny Bryan would produce are:
 
-  * STAT545A-2013-hw01_bryanJen.R
-  * STAT545A-2013-hw01_bryanJen.html
-  * STAT545A-2013-hw02_bryanJen.Rmd
-  * STAT545A-2013-hw02_bryanJen.html
+  * stat545a-2013-hw01_bryan-jen.R
+  * stat545a-2013-hw01_bryan-jen.html
+  * stat545a-2013-hw02_bryan-jen.Rmd
+  * stat545a-2013-hw02_bryan-jen.html
 
 The surest way to get a check minus is to NOT follow this convention. You can do this!
 
@@ -33,7 +34,8 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   
 Please add links to your Homework #1 in this bulleted list:
 
-  * _These first few are very close but the files and links aren't quite following the filenaming convetion._
+  * _These first few are very close but the files and links aren't quite following the filenaming conventions._
+  * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
   * Wooyong Lee: [script](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
@@ -48,7 +50,6 @@ Please add links to your Homework #1 in this bulleted list:
   * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
   * Vivian Meng: [script](http://rpubs.com/vmeng321/cm01-toyline)
   * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
-  * Mohammadreza Bolandnazar: STAT545A-2013-hw01_bolandnazarMoh [script](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
 
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
