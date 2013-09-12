@@ -33,8 +33,11 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   
 Please add links to your Homework #1 in this bulleted list:
 
-  *  __FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION__ Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
-  * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. But I'm leaving the lines in so affected students can edit their line, instead of adding a new one._
+  * _These first few are very close but the files and links aren't quite following the filenaming convetion._
+  * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
+  * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
+  * Wooyong Lee: [script](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
+  * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. But I'm leaving the lines in so affected students can edit their line, instead of adding a new one. I'm leaving some mistakes so people can learn from them :)._
   * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
@@ -42,6 +45,11 @@ Please add links to your Homework #1 in this bulleted list:
   * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
   * Sean Jewell: [toyLineTest](http://rpubs.com/jewellsean/8225)
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
+  * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
+  * Vivian Meng: [script](http://rpubs.com/vmeng321/cm01-toyline)
+  * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
+  * Mohammadreza Bolandnazar: STAT545A-2013-hw01_bolandnazarMoh [script](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
+
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
 
