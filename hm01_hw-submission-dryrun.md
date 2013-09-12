@@ -16,7 +16,7 @@ The suffix will be one of .R, .Rmd, .rmd, .html.
 The four files Jenny Bryan would produce are:
 
   * stat545a-2013-hw01_bryan-jen.R
-  * stat545a-2013-hw01_bryan-jen.html
+  * stat545a-2013-hw01_bryan-jen.rmd
   * stat545a-2013-hw02_bryan-jen.Rmd
   * stat545a-2013-hw02_bryan-jen.html
 
@@ -35,7 +35,6 @@ The surest way to get a check minus is to NOT follow this convention. You can do
 Please add links to your Homework #1 in this bulleted list.  __Find the placeholder created for you and edit that line only, if at all possible.__:
   
   * _These first few are very close but the files and links aren't completely following the filenaming convention, which has been a moving target._
-  * Dean Attali: [source](https://gist.github.com/daattali/6541111#file-stat545a-2013-hw01_attalidea-r) | [report](http://rpubs.com/daattali/STAT545A-2013-hw01_attaliDea)
   * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
@@ -51,7 +50,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
   * Vivian Meng: [script](http://rpubs.com/vmeng321/cm01-toyline)
   * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
-  * attali-dea EDIT HERE
+  * attali-dea [source](https://gist.github.com/daattali/6541810#file-stat545a-2013-hw01_attali-dea-r) | [report](http://rpubs.com/daattali/stat545a-2013-hw01_attali-dea)
   * baik-jon EDIT HERE
   * bolandnazar-moh EDIT HERE
   * brueckman-chr EDIT HERE
@@ -103,7 +102,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   
 Please add links to your Homework #2 in this bulleted list. __Find the placeholder created for you and edit that line only, if at all possible.__
 
-  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION AND HW02 Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
+  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION AND HW02
   * attali-dea EDIT HERE
   * baik-jon EDIT HERE
   * bolandnazar-moh EDIT HERE
