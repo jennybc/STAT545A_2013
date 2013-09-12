@@ -133,7 +133,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * woollard-geo EDIT HERE
   * xue-xin EDIT HERE
   * yuen-ama EDIT HERE
-  * zhang-yim EDIT HERE
+  * zhang-yim [source](https://gist.github.com/zym268/6543854#file-stat545a-2013-hw01_zhang-yim-r) | [report](http://rpubs.com/zym268/stat545a-2013-hw01_zhang-yim)
   * zhang-jon EDIT HERE
   * zhang-yif EDIT HERE
   * zhang-jin EDIT HERE
