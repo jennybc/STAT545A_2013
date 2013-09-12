@@ -39,7 +39,6 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Dean Attali: [source](https://gist.github.com/daattali/6541111#file-stat545a-2013-hw01_attalidea-r) | [report](http://rpubs.com/daattali/STAT545A-2013-hw01_attaliDea)
   * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
-  * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile) (updated submission below)
   * Wooyong Lee: [source](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
   * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. I'm leaving them for now and leaving some mistakes so people can learn from them :)._
   * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
@@ -61,7 +60,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * daly-zac EDIT HERE
   * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6544174#file-stat545a-2013-hw01_dinsdale-dan-r) | [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw01_dinsdale-dan)
   * gao-wen EDIT HERE
-  * gingerich-mat: [source](https://gist.github.com/MattGingerich/6543524#file-stat545a-2013-hw01_gingerich-mat-r) | [report](http://rpubs.com/majugi/stat545a-2013-hw01_gingerich-mat)
+  * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6543524#file-stat545a-2013-hw01_gingerich-mat-r) | [report](http://rpubs.com/majugi/stat545a-2013-hw01_gingerich-mat)
   * hu-yum EDIT HERE
   * jewell-sea EDIT HERE
   * johnston-reb EDIT HERE
