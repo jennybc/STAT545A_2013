@@ -34,6 +34,7 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   
 Please add links to your Homework #1 in this bulleted list:
 
+  * Dean Attali: [source](https://gist.github.com/daattali/6541111#file-stat545a-2013-hw01_attalidea-r) | [report](http://rpubs.com/daattali/STAT545A-2013-hw01_attaliDea)
   * _These first few are very close but the files and links aren't quite following the filenaming conventions._
   * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
