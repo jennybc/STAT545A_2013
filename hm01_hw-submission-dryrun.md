@@ -71,7 +71,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * mohd abul basher-abd EDIT HERE
   * ni-jac EDIT HERE
   * okkels-chr EDIT HERE
-  * park-min EDIT HERE
+  * Mina Park: [script] (https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report] (http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
   * spencer-nei EDIT HERE
   * wang-ton EDIT HERE
   * weber-lea EDIT HERE
