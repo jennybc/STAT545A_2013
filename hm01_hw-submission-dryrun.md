@@ -3,7 +3,7 @@ Go back to [STAT545A home](current.html)
 Homework
 ========================================================
 
-> NOTE: new filename convention! Once I saw the first successful student attempt to follow it, I saw that Gist and RPubs mess with capitalization. Let's go all lowercase. Sorry to inconvenience the people who tried already.
+> NOTE: new filename convention! Since Gist and RPubs mess with capitalization, let's go lowercase. Sorry to inconvenience the people who tried already.
 
 ```
 stat545a-2013-hw<XX>_<lastname-fir>.<suffix>
@@ -11,13 +11,13 @@ stat545a-2013-hw<XX>_<lastname-fir>.<suffix>
 
 The `XX` above is `01` for homework #1 and `02` for homework #2.  
 `lastname-fir` means your lastname concatenated with a dash `-` and the first 3 letters of your first name, all lowercase. Example: `bryan-jen`.  
-The suffix will be one of .R, .Rmd, .rmd, .html.
+The suffix will be one of .r, .R, .rmd, .Rmd, .html.
 
-The four files Jenny Bryan would produce are:
+The four files Jenny Bryan would produce might be:
 
-  * stat545a-2013-hw01_bryan-jen.R
+  * stat545a-2013-hw01_bryan-jen.r
   * stat545a-2013-hw01_bryan-jen.html
-  * stat545a-2013-hw02_bryan-jen.Rmd
+  * stat545a-2013-hw02_bryan-jen.rmd
   * stat545a-2013-hw02_bryan-jen.html
 
 The surest way to get a check minus is to NOT follow this convention. You can do this! You can have do overs, so don't stress out.
@@ -32,15 +32,16 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   * Add or edit a line in the Markdown file that generates this page with links to your two published items. Instructions below.
   * DUE: As soon as possible.
   
-Please add links to your Homework #1 in this bulleted list.  __Find the placeholder created for you and edit that line only, if at all possible.__:
+Please add links to your Homework #1 in this bulleted list.  __Find the placeholder created for you and edit that line only, if at all possible.__
   
+  * BEST EXAMPLE, COPIED FROM BELOW Mina Park: [source](https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report](http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
   * _These first few are very close but the files and links aren't completely following the filenaming convention, which has been a moving target._
   * Dean Attali: [source](https://gist.github.com/daattali/6541111#file-stat545a-2013-hw01_attalidea-r) | [report](http://rpubs.com/daattali/STAT545A-2013-hw01_attaliDea)
   * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6527184) | [report](http://rpubs.com/majugi/TestFile)
-  * Wooyong Lee: [script](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
-  * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. But I'm leaving the lines in so affected students can edit their line, instead of adding a new one. I'm leaving some mistakes so people can learn from them :)._
+  * Wooyong Lee: [source](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
+  * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. I'm leaving them for now and leaving some mistakes so people can learn from them :)._
   * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
@@ -49,8 +50,9 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Sean Jewell: [toyLineTest](http://rpubs.com/jewellsean/8225)
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
   * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
-  * Vivian Meng: [script](http://rpubs.com/vmeng321/cm01-toyline)
+  * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
   * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
+  * __PLACEHOLDERS START HERE__
   * attali-dea EDIT HERE
   * baik-jon EDIT HERE
   * bolandnazar-moh EDIT HERE
@@ -71,8 +73,8 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * mohd abul basher-abd EDIT HERE
   * ni-jac EDIT HERE
   * okkels-chr EDIT HERE
-  * Mina Park: [script] (https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report] (http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
-  * spencer-nei: [source](https://gist.github.com/neilspencer/6542018#file-stat545a-2013-hw01_spencer-nei-r) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw01_spencer-nei)
+  * Mina Park: [source](https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report](http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
+  * Neil Spencer: [source](https://gist.github.com/neilspencer/6542018#file-stat545a-2013-hw01_spencer-nei-r) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw01_spencer-nei)
   * wang-ton EDIT HERE
   * weber-lea EDIT HERE
   * woollard-geo EDIT HERE
@@ -103,7 +105,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   
 Please add links to your Homework #2 in this bulleted list. __Find the placeholder created for you and edit that line only, if at all possible.__
 
-  * FOLLOW THIS EXAMPLE BUT WITH FILENAMING CONVENTION AND HW02 Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
+  * FOLLOW THIS EXAMPLE BUT ADAPT TO HW02 Mina Park: [source](https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report](http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
   * attali-dea EDIT HERE
   * baik-jon EDIT HERE
   * bolandnazar-moh EDIT HERE
@@ -177,3 +179,4 @@ Resources for developing the homework submission process:
     - First, I add the student's fork as a remote of my repo. The github help described above provides the HTTP bit for this. SourceTree makes it easy to add a remote. I called it `jess`.
     - Do a fetch from all remotes. I can now see `jess/patch-1`. Control click and I can ...
     - Checkout `jess/patch-1`, giving it a local branch name `jess-patch-1`. I keep "Local branch should track remote branch" checked. FAIL. Local changes would be overwritten by checkout. Please commit or stash before swtiching branches. Aborting.
+    - Let's try using placeholders ..... yikes.
