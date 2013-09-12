@@ -20,7 +20,7 @@ The four files Jenny Bryan would produce are:
   * stat545a-2013-hw02_bryan-jen.Rmd
   * stat545a-2013-hw02_bryan-jen.html
 
-The surest way to get a check minus is to NOT follow this convention. You can do this!
+The surest way to get a check minus is to NOT follow this convention. You can do this! You can have do overs, so don't stress out.
 
 ### Homework #1: Write an R script, compile an HTML notebook, publish, and share the link
 
@@ -29,10 +29,10 @@ The surest way to get a check minus is to NOT follow this convention. You can do
   * Check that the HTML report would fit on 1 printed page. If longer, go back and make your script shorter. Content is not that important.
   * Publish the HTML report on the web somewhere, such as on RPubs. Make the slug follow the naming convention.
   * Publish the R script as a Gist. Instructions below. Follow the naming convention.
-  * Add a line to the Markdown file that generates this page with links to your two published items. Instructions below.
+  * Add or edit a line in the Markdown file that generates this page with links to your two published items. Instructions below.
   * DUE: As soon as possible.
   
-Please add links to your Homework #1 in this bulleted list:
+Please add links to your Homework #1 in this bulleted list.  __Find the placeholder created for you and edit that line only, if at all possible.__:
 
   * Dean Attali: [source](https://gist.github.com/daattali/6541111#file-stat545a-2013-hw01_attalidea-r) | [report](http://rpubs.com/daattali/STAT545A-2013-hw01_attaliDea)
   * _These first few are very close but the files and links aren't quite following the filenaming conventions._
@@ -51,6 +51,42 @@ Please add links to your Homework #1 in this bulleted list:
   * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
   * Vivian Meng: [script](http://rpubs.com/vmeng321/cm01-toyline)
   * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
+  * attali-dea EDIT HERE
+  * baik-jon EDIT HERE
+  * bolandnazar-moh EDIT HERE
+  * brueckman-chr EDIT HERE
+  * chu-jus EDIT HERE
+  * daly-zac EDIT HERE
+  * dinsdale-dan EDIT HERE
+  * gao-wen EDIT HERE
+  * gingerich-mat EDIT HERE
+  * hu-yum EDIT HERE
+  * jewell-sea EDIT HERE
+  * johnston-reb EDIT HERE
+  * khosravi-mah EDIT HERE
+  * lee-woo EDIT HERE
+  * liao-wei EDIT HERE
+  * ma-hui EDIT HERE
+  * meng-viv EDIT HERE
+  * mohd abul basher-abd EDIT HERE
+  * ni-jac EDIT HERE
+  * okkels-chr EDIT HERE
+  * park-min EDIT HERE
+  * spencer-nei EDIT HERE
+  * wang-ton EDIT HERE
+  * weber-lea EDIT HERE
+  * woollard-geo EDIT HERE
+  * xue-xin EDIT HERE
+  * yuen-ama EDIT HERE
+  * zhang-yim EDIT HERE
+  * zhang-jon EDIT HERE
+  * zhang-yif EDIT HERE
+  * zhang-jin EDIT HERE
+  * inskip-jes EDIT HERE
+  * liu-yan EDIT HERE
+  * haraty-mon EDIT HERE
+  * yuen-mac EDIT HERE
+
 
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
@@ -109,14 +145,14 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
 
 The 3 steps that involve the outside world:
 
-  * Publish the HTML report. Use RPubs or, if you wish and know how, publish elsewhere. One advantage of RPubs is the commenting feature, so I think that's preferred. Capture the URL. Example: JB published a report based on `toyline.R`  and got this URL <http://rpubs.com/jennybc/toyline>.
+  * Publish the HTML report. Use RPubs or, if you wish and know how, publish elsewhere. One advantage of RPubs is the commenting feature, so I think that's preferred. Capture the URL. Hypothetical example: JB's report would be at `http://rpubs.com/jennybc/stat545a-2013-hw01_bryan-jen`.
   * Publish the R script or the R Markdown file -- the "source" -- as a [Gist](https://gist.github.com).
     - You will need to sign in to [github](https://github.com) (?I assume?).
     - Go to <https://gist.github.com>.
     - In the "name this file..." box, enter the __exact name__ of the R script or the R Markdown file, which, in turn, should __conform to the convention given above__.
     - Copy the entire file to the clipboard, paste into the Gist box, and click the "Create Public Gist" button.
     - Click on the "Permalink" button, in the upper right corner of the box containing your Gist (it looks like two links of a chain). 
-    - Capture the URL. Example: JB published her `toyline.R` script as a Gist and got a permalink URL of <https://gist.github.com/jennybc/6520226#file-toyline-r>.
+    - Capture the URL. Example: a student published her homework #1 script as a Gist and got a permalink URL of <https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r> (FYI, the filename convention has changed slightly since then).
   * Add or edit a line in the Markdown file generating this page to include links to your published items
     - If you want to do this properly with git and github and you know how, carry on. But for everyone else ...
     - Sign in to [github](https://github.com).
