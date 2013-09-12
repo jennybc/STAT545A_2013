@@ -43,9 +43,9 @@ Monday Sept 02 is a statutory holiday. No class.
 
 ### cm 03 | Wednesday Sept 11 | R objects (beyond data.frames) and R Markdown ([slides as PDF](2013-lectures/cm03_workModes-flavorsCollections-RMarkdown.pdf))
 
-  * *Only for the keeners right now!* [Submit homework 1](hm01_hw-submission-dryrun.html) ASAP.
+  * [Submit homework 1](hm01_hw-submission-dryrun.html) ASAP.
   
-  * *Under development* [Submit homework 2](hm01_hw-submission-dryrun.html) before class starts @ 9:30am Monday Sept. 16.
+  * [Submit homework 2](hm01_hw-submission-dryrun.html) before class starts @ 9:30am Monday Sept. 16.
   
   * Work through
     - [R objects (beyond data.frames) and indexing](block03_basicObjects.html). Note: you should be able to do the homework before completing this tutorial.
