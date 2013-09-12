@@ -42,6 +42,7 @@ Please add links to your Homework #1 in this bulleted list:
   * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
   * Sean Jewell: [toyLineTest](http://rpubs.com/jewellsean/8225)
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
+  * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   
 ### Homework #2: Perform intake of the Gapminder data in an R Markdown document, compile to HTML, publish, and link
 
