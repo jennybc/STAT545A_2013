@@ -147,14 +147,14 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
 
 The 3 steps that involve the outside world:
 
-  * Publish the HTML report. Use RPubs or, if you wish and know how, publish elsewhere. One advantage of RPubs is the commenting feature, so I think that's preferred. Capture the URL. Hypothetical example: JB's report would be at `http://rpubs.com/jennybc/stat545a-2013-hw01_bryan-jen`.
+  * Publish the HTML report. Use RPubs or, if you wish and know how, publish elsewhere. One advantage of RPubs is the commenting feature, so I think that's preferred. Capture the URL. Example: a student published her homework #1 report at <http://rpubs.com/parkm87/stat545a-2013-hw01_park-min>
   * Publish the R script or the R Markdown file -- the "source" -- as a [Gist](https://gist.github.com).
     - You will need to sign in to [github](https://github.com) (?I assume?).
     - Go to <https://gist.github.com>.
     - In the "name this file..." box, enter the __exact name__ of the R script or the R Markdown file, which, in turn, should __conform to the convention given above__.
     - Copy the entire file to the clipboard, paste into the Gist box, and click the "Create Public Gist" button.
     - Click on the "Permalink" button, in the upper right corner of the box containing your Gist (it looks like two links of a chain). 
-    - Capture the URL. Example: a student published her homework #1 script as a Gist and got a permalink URL of <https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r> (FYI, the filename convention has changed slightly since then).
+    - Capture the URL. Example: a student published her homework #1 script as a Gist and got a permalink URL of <https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r>.
   * Add or edit a line in the Markdown file generating this page to include links to your published items
     - If you want to do this properly with git and github and you know how, carry on. But for everyone else ...
     - Sign in to [github](https://github.com).
