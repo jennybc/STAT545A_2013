@@ -20,7 +20,7 @@ Perform intake of the Gapminder data in an R Markdown document, compile to HTML,
 Please add links to your Homework #2 in this bulleted list. __Find the placeholder created for you and edit that line only, if at all possible.__
 
   * GOOD EXAMPLE COPIED FROM BELOW Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
-  * attali-dea EDIT HERE
+  * attali-dea [source](https://gist.github.com/daattali/6547430#file-stat545a-2013-hw02_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw02_attali-dea) 
   * baik-jon EDIT HERE
   * bolandnazar-moh EDIT HERE
   * brueckman-chr EDIT HERE
