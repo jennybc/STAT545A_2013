@@ -33,7 +33,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
   * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
-  * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
+  * Jinyuan Zhang: [sourse](https://gist.github.com/0527zhangjinyuan/6546688#file-stat545a-2013-hw01_zhang-jin-r) | [report](http://rpubs.com/zhangjinyuan/8397)
   * __PLACEHOLDERS START HERE__
   * attali-dea EDIT HERE
   * baik-jon EDIT HERE
