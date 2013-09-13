@@ -31,7 +31,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
   * Sean Jewell: [source](https://gist.github.com/jewellsean/bbba6ca8791abb1d214b#file-stat545a-2013-hw01_jewell-sea-r) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw01_jewell-sea)
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
-  * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
+  * Yumian Hu: [source](https://gist.github.com/smilecat/6547772#file-stat545a-2013-hw01_hu-yum-r) | [report](http://rpubs.com/smilecat/stat545a-2013-hw01_hu-yum)
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
   * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
   * __PLACEHOLDERS START HERE__
