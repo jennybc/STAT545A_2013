@@ -1,0 +1,120 @@
+The R graphics landscape
+========================================================
+
+In practical terms, there are three different ways of making graphics in R these days.
+
+  * Base or traditional R graphics
+  * `lattice` add-on package
+  * `ggplot2` add-on package
+
+The [CRAN Task View: Graphic Displays & Dynamic Graphics & Graphic Devices & Visualization][CRAN_graphics] provides a survey of the whole R graphics landscape.
+
+### Base or traditional R graphics
+
+The most basic approach is to use the long-established, built-in facilities, referred to as base or traditional graphics. The advantages include
+
+  * Documentation and examples. Because base graphics have been around as long as R itself, there is a huge accumulation of information for these functions. For example, the examples included at the end of a typical R help file will most likely exploit base graphics. Classic books, such as Venables and Ripley, use base graphics (add proper citation). Long-time R users, like, um, your professors, may have course materials and workflows that date back to when base graphics were the only option. 
+
+  * Ease of customization, especially through the sequential layering of graphical elements. A typical thought process -- reflected faithfully in the associated R code -- for a fancy plot is to set up a coordinate system and then gradually add elements like axes, data points, fitted curves, legends, etc. This is how most of us like to break down a complicated task, so the workflow feels natural.
+
+The disadvantages include
+
+  * Awkward workflow for juxtaposition of many related plots. In base graphics, the user must deal with laying out the individual plots, working to keep axes consistent, etc. and this swiftly becomes extremely annoying.
+
+  * No built-in support for encoding additional information, especially categorical, via color or line type etc. Again, the user bears sole responsibility for explicitly constructing and rendering graphical elements where symbol, color, size, etc. encode an additional variable. And you'll be adding the legend by hand too.
+  
+  * Good thing it's easy to customize because you'll be doing it _all the time_ in base graphics. Seriously. Tedious stuff that truly is better handled by a computer is constantly left for you to grind out on your own.
+
+Because I feel so strongly that the add-on packages provide the best graphical "bang for your buck", especially for those new to R who don't need to relearn/unlearn anything, we will not provide explicit coverage of base graphics here. Some knowledge of base graphics will, however, eventually be useful for everyone. Therefore, here are a few resources to consult when more knowledge is needed. 
+
+  * A computing seminar from a past run of STAT540 emphasized base graphics -- "Seminar 3: Introduction to R - Part 3 (Graphics)". That can be found [here](block92_oldSeminarBaseGraphics.html).
+
+  * A lecture from a past run of STAT545A presents the step-by-step development of a fancy scatterplot (inspired by Gapminder) using only base graphics. That can be found [here](2012-lectures/cm06.pdf).
+  
+  * As mentioned above, there is a huge amount of documentation for base graphics available online and in books. Google away!
+
+### `lattice` add-on package
+
+The `lattice` package, authored by Deepayan Sarkar, was the first alternative to base graphics and it comes with any binary distribution of R, i.e. you should all already have it. A simple `library(lattice)` call will make it available in an R session and one can [make that apply to all your R sessions via `.Rprofile`](http://stackoverflow.com/questions/10300769/how-to-load-packages-in-r-automatically). The advantages include:
+
+  * Multi-panel conditioning. `lattice` positively _lives_ to put, e.g. many scatterplots on one page, snuggled up next to each other with common (or sensibly linked) axis scales and limits.
+
+  * Conveying additional information, especially via color or line type etc. The `groups` argument, especially coupled with `auto.key = TRUE` will handle most of your needs to, say, visually distinguish males and females and to create the associated key with minimal fuss.
+  
+  * Adding some obviously useful data summaries, such as a linear fit or a smoother, with minimal fuss. The `type =` argument is very powerful.
+
+The disadvantages include:
+
+  * Monolithic calling style. The mentality of `lattice` is that "one call says it all". Therefore, to create a fancy plot, the workflow generally consists of writing and submitting calls that make increasingly sophisticated use of the dizzying array of function arguments. Eventually one might also need to do "prep work" before the call, like re-define a list of graphical parameters or write a custom panel function. This workflow is quite uncomfortable for most of us, at least at first.
+
+  * Difficulty of extreme customization. I say "extreme" here because most of the garden variety customization one does in base graphics is easy to achieve automagically through standard arguments in most `lattice` functions. But making truly custom plots, built up from scratch, is harder to do with `lattice`.
+
+Here are some good references for further reading:
+
+  * The material from STAT545A makes heavy use of `lattice` graphics. In 2012 and before, in fact, the course only used `lattice` graphics. Lecture slides can be found [here](2012-lectures/index.html). In 2013 -- the course run that is happening right now -- we will use both `lattice` and `ggplot2`. The current run of STAT 545A in 2013 can be seen [here](current.html), but we haven't gotten to graphics yet.
+
+  * Lattice: Multivariate Data Visualization with R [available via SpringerLink][lattice_book_springerlink] by Deepayan Sarkar, Springer (2008) | [all code from the book][lattice_book_code] | [GoogleBooks search][lattice_book_GoogleBooks_search]
+
+  * R Graphics [available via StatsNetbase][rGraphics_book_statsnetbase] by Paul Murrell, CRC Press  (not limited to `lattice`, obviously) | [author's webpage for the book][rGraphics_book_murrellPage] | [GoogleBooks search][rGraphics_book_GoogleBooks_search]
+
+  * R Graphics, 2nd edition [available via StatsNetbase][rGraphics2e_book_statsnetbase] by Paul Murrell, Chapman & Hall/CRC Press (2011) (not limited to `lattice`, obviously) | [author's webpage for the book][rGraphics2e_book_murrellPage] | [GoogleBooks search][rGraphics2e_book_GoogleBooks_search] | [companion R package, RGraphics, on CRAN][rGraphics2e_book_CRANpkg]
+
+### `ggplot2` add-on package
+
+The `ggplot2` package, authored by Hadley Wickham, appeared after `lattice` and is based on a Grammar of Graphics. Informally, it seems to be the graphics system of choice these days; for example, you will find more stackoverflow threads, blog posts, etc. that pertain to `ggplot2` than to either base graphics or `lattice`. If you want to use it, you will need to install it:
+
+```{r, eval = FALSE}
+install.packages("ggplot2", dependencies = TRUE)
+```
+
+A simple `library(ggplot2)` call will make it available in an R session and one can [make that apply to all your R sessions via `.Rprofile`](http://stackoverflow.com/questions/10300769/how-to-load-packages-in-r-automatically). The advantages include:
+
+  * Multi-panel conditioning or, in `ggplot2`-speak, _facetting_. As in `lattice`, it is easy to break data into subsets and display them as an array of related plots.
+
+  * Mapping variables into _aesthetics_. The encoding of a factor, such as Male vs. female, via shape or color, is just the tip of the iceberg here.
+  
+  * Combination of different _layers_, such as raw data depicted via a scatterplot overlaid with a fitted smooth regression surrounded by a shaded prediction region.
+  
+  * The over-arching grammar is a valuable system within which to make the graphics of your dreams.
+  
+The disadvantages include:
+
+  * Need to understand the Big Idea -- the Grammar of Graphics -- before individual functions and examples start to make much sense.
+
+  * Monolithic/unexpected calling style. MORE HERE. It is particularly surprising to newbies to encounter the `this + that` style of specifying a `ggplot2` plot.
+
+  * Difficulty of extreme customization. _I think situation is similar to `lattice` but maybe the need to truly customize is reduced even futher, due to greater power of the built-in functions and grammar?_
+
+Resources:
+
+  * ggplot2: Elegant Graphics for Data Analysis [available via SpringerLink](http://link.springer.com/book/10.1007/978-0-387-98141-3/) by Hadley Wickham, Springer (2009) | [author's website for the book](http://ggplot2.org/book/), including all the code
+  
+  * Slides from a Spring 2013 R seminar in Integrative Biology at UC Berkeley, [Data Visualization with R & ggplot2](https://github.com/karthikram/ggplot-lecture/blob/master/ggplot.pdf?raw=true), by Karthik Ram. Here is the [associated repository](https://github.com/karthikram/ggplot-lecture) on github.
+  
+  * The material from STAT545A will eventually include coverage of `ggplot2` graphics, but we're not there yet :(. The current run of STAT 545A in 2013 can be seen [here](current.html), if you want to watch our progress.
+
+  * A [short tutorial][ggplot2_tutorial] by Ramon Saccilotto from the
+  Basel Institute for Clinical Epidemiology and Biostatistics
+  
+  * R Graphics [available via StatsNetbase][rGraphics_book_statsnetbase] by Paul Murrell, CRC Press  (not limited to `lattice`, obviously) | [author's webpage for the book][rGraphics_book_murrellPage] | [GoogleBooks search][rGraphics_book_GoogleBooks_search]
+
+  * R Graphics, 2nd edition [available via StatsNetbase][rGraphics2e_book_statsnetbase] by Paul Murrell, Chapman & Hall/CRC Press (2011) (not limited to `lattice`, obviously) | [author's webpage for the book][rGraphics2e_book_murrellPage] | [GoogleBooks search][rGraphics2e_book_GoogleBooks_search] | [companion R package, RGraphics, on CRAN][rGraphics2e_book_CRANpkg]
+  
+### Cage match: which is better `lattice` or `ggplot2`?
+
+As always in statistics, I guess, it depends. People more experienced with both than I am today have done some head-to-head comparisons, so read what they have to say:
+
+  * This person systematically re-created all the plots in Sarkar's `lattice` book using the `ggplot2` package. Then he [blogged about it](http://learnr.wordpress.com/2009/08/26/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-final-part/). 
+
+[CRAN_graphics]: http://cran.r-project.org/web/views/Graphics.html
+[ggplot2_tutorial]: http://www.ceb-institute.org/bbs/wp-content/uploads/2011/09/handout_ggplot2.pdf
+[lattice_book_springerlink]: http://www.springerlink.com/content/kr8v78/?p=d90dc0252f1049d9babada61eccdcf24%CF%80=16
+[lattice_book_code]: http://lmdvr.r-forge.r-project.org/
+[lattice_book_GoogleBooks_search]: http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false
+[rGraphics_book_statsnetbase]: http://www.statsnetbase.com/ejournals/books/book_summary/summary.asp?id=2884
+[rGraphics_book_murrellPage]: http://www.stat.auckland.ac.nz/%7Epaul/RGraphics/rgraphics.html
+[rGraphics_book_GoogleBooks_search]: http://books.google.com/books?id=78P4zntHHVQC&lpg=PP1&dq=inauthor%253APaul%2520inauthor%253AMurrell&lr=&as_drrb_is=q&as_minm_is=0&as_miny_is=&as_maxm_is=0&as_maxy_is=&as_brr=0&pg=PP1#v=onepage&q=&f=false
+[rGraphics2e_book_statsnetbase]: http://www.crcnetbase.com/doi/book/10.1201/b10966
+[rGraphics2e_book_murrellPage]: http://www.stat.auckland.ac.nz/~paul/RG2e/
+[rGraphics2e_book_GoogleBooks_search]: http://books.google.ca/books?id=uacCQgAACAAJ&source=gbs_book_other_versions
+[rGraphics2e_book_CRANpkg]: http://cran.r-project.org/web/packages/RGraphics/index.html
