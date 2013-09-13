@@ -29,7 +29,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
   * Yan Liu: [toyline](http://rpubs.com/swallow0001/8296)
   * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
-  * Sean Jewell: [toyLineTest](http://rpubs.com/jewellsean/8225)
+  * Sean Jewell: [source](https://gist.github.com/jewellsean/bbba6ca8791abb1d214b#file-stat545a-2013-hw01_jewell-sea-r) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw01_jewell-sea)
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
   * Yumian Hu: [toylineTest] (http://rpubs.com/smilecat/toyline)
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
