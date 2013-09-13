@@ -19,7 +19,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   
   * GOOD EXAMPLE, COPIED FROM BELOW Mina Park: [source](https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report](http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
   * _These first few are very close but the files and links aren't completely following the filenaming convention, which has been a moving target._
-  * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
+  * Leah Weber: [source](https://gist.github.com/lweber21/6553434#file-stat545a-2013-hw01_weber-lea-r) | [report](http://rpubs.com/lweber21/stat545a-2013-hw01_weber-lea)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
   * Wooyong Lee: [source](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
   * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. I'm leaving them for now and leaving some mistakes so people can learn from them :)._
