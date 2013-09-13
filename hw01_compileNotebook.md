@@ -69,4 +69,4 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * inskip-jes EDIT HERE
   * liu-yan EDIT HERE
   * haraty-mon EDIT HERE
-  * yuen-mac EDIT HERE
+  * yuen-mac [source](https://gist.github.com/myuen/6546602#file-stat545a-2013-hw01_yuen-mac-r) | [report](http://rpubs.com/myuen/stat545a-2013-hw01_yuen-mac)
