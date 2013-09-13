@@ -30,7 +30,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * gao-wen EDIT HERE
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * hu-yum EDIT HERE
-  * jewell-sea EDIT HERE
+  * jewell-sea [source](https://gist.github.com/jewellsean/d5d9ae6cf9ff9da193db#file-stat545a-2013-hw02_jewell-sea-rmd) [report](http://rpubs.com/jewellsean/stat545a-2013-hw02_jewell-sea)
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
   * lee-woo EDIT HERE
