@@ -44,7 +44,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * spencer-nei EDIT HERE
   * wang-ton EDIT HERE
   * weber-lea EDIT HERE
-  * woollard-geo EDIT HERE
+  * woollard-geo [source](https://gist.github.com/geoffwoollard/6545701#file-stat545a-2013-hw02_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw02_woollard-geo)
   * xue-xin EDIT HERE
   * yuen-ama EDIT HERE
   * zhang-yim EDIT HERE
