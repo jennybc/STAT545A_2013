@@ -50,7 +50,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * zhang-yim EDIT HERE
   * zhang-jon EDIT HERE
   * zhang-yif EDIT HERE
-  * zhang-jin EDIT HERE
+  * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546926#file-stat545a-2013-hw02_zhang-jin-rmd) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw02_zhang-jin)
   * inskip-jes EDIT HERE
   * liu-yan EDIT HERE
   * haraty-mon EDIT HERE

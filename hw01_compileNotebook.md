@@ -19,21 +19,17 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   
   * GOOD EXAMPLE, COPIED FROM BELOW Mina Park: [source](https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r) | [report](http://rpubs.com/parkm87/stat545a-2013-hw01_park-min)
   * _These first few are very close but the files and links aren't completely following the filenaming convention, which has been a moving target._
-  * Dean Attali: [source](https://gist.github.com/daattali/6541111#file-stat545a-2013-hw01_attalidea-r) | [report](http://rpubs.com/daattali/STAT545A-2013-hw01_attaliDea)
   * Leah Weber: [source](https://gist.github.com/lweber21/6540819#file-stat545a-2013-hw01_weberlea-r) | [report](http://rpubs.com/lweber21/8425)
   * Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6534103) | [report](http://rpubs.com/aref/8410)
   * Wooyong Lee: [source](https://gist.github.com/folias/6537968) | [report](http://rpubs.com/folias/STAT545A-2013-hw02_leeWoo)
   * _Bullet points below here were added before the full instructions were out. They aren't sharing code, nor are they following the filename convention. I'm leaving them for now and leaving some mistakes so people can learn from them :)._
-  * Jess Inskip: [toyline09092013](http://rpubs.com/jinskip/toyline09092013)
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
   * Yan Liu: [toyline](http://rpubs.com/swallow0001/8296)
   * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
-  * Sean Jewell: [source](https://gist.github.com/jewellsean/bbba6ca8791abb1d214b#file-stat545a-2013-hw01_jewell-sea-r) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw01_jewell-sea)
   * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
   * Yumian Hu: [source](https://gist.github.com/smilecat/6547772#file-stat545a-2013-hw01_hu-yum-r) | [report](http://rpubs.com/smilecat/stat545a-2013-hw01_hu-yum)
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
-  * Jinyuan Zhang: [test](http://rpubs.com/zhangjinyuan/8397)
   * __PLACEHOLDERS START HERE__
   * attali-dea [source](https://gist.github.com/daattali/6541810#file-stat545a-2013-hw01_attali-dea-r) | [report](http://rpubs.com/daattali/stat545a-2013-hw01_attali-dea)
   * baik-jon EDIT HERE
@@ -45,7 +41,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * gao-wen EDIT HERE
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6543524#file-stat545a-2013-hw01_gingerich-mat-r) | [report](http://rpubs.com/majugi/stat545a-2013-hw01_gingerich-mat)
   * hu-yum EDIT HERE
-  * jewell-sea EDIT HERE
+  * Sean Jewell: [source](https://gist.github.com/jewellsean/bbba6ca8791abb1d214b#file-stat545a-2013-hw01_jewell-sea-r) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw01_jewell-sea)
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
   * lee-woo EDIT HERE
