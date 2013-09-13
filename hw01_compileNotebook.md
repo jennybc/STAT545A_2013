@@ -49,7 +49,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
   * lee-woo EDIT HERE
-  * liao-wei EDIT HERE
+  * liao-wei: [source](https://gist.github.com/feiba/6545785#file-stat545a-2013-hw01_weicong-liao-r) | [report](http://rpubs.com/winson/stat545a-2013-hw01_weicong-liao)
   * ma-hui EDIT HERE
   * meng-viv EDIT HERE
   * mohd abul basher-abd EDIT HERE
