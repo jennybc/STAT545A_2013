@@ -66,7 +66,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * zhang-jon EDIT HERE
   * zhang-yif EDIT HERE
   * zhang-jin EDIT HERE
-  * inskip-jes EDIT HERE
+  * inskip-jes [source](https://gist.github.com/jinskip/6546533#file-stat545a-2013-hw01_inskip-jes-r) | [report](http://rpubs.com/jinskip/stat545a-2013-hw01_inskip-jes)
   * liu-yan EDIT HERE
   * haraty-mon EDIT HERE
   * yuen-mac EDIT HERE
