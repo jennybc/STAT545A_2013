@@ -26,7 +26,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * brueckman-chr EDIT HERE
   * chu-jus EDIT HERE
   * daly-zac EDIT HERE
-  * dinsdale-dan EDIT HERE
+  * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6554514#file-stat545a-2013-hw02_dinsdale-dan-rmd) [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw02_dinsdale-dan)
   * gao-wen EDIT HERE
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * hu-yum EDIT HERE
