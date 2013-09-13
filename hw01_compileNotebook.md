@@ -61,7 +61,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * weber-lea EDIT HERE
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545119#file-stat545a-2013-hw01_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw01_woollard-geo)
   * xue-xin EDIT HERE
-  * yuen-ama EDIT HERE
+  * yuen-ama [source] (https://gist.github.com/amandammor/6545795#file-stat545a-2013-hw01_yuen-ama-r) | [report] (http://rpubs.com/amandammor/stat545a-2013-hw01_yuen-ama)
   * zhang-yim [source](https://gist.github.com/zym268/6543854#file-stat545a-2013-hw01_zhang-yim-r) | [report](http://rpubs.com/zym268/stat545a-2013-hw01_zhang-yim)
   * zhang-jon EDIT HERE
   * zhang-yif EDIT HERE
