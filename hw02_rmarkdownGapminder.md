@@ -38,7 +38,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * ma-hui EDIT HERE
   * meng-viv EDIT HERE
   * mohd abul basher-abd EDIT HERE
-  * ni-jac EDIT HERE
+  * ni-jac [source](https://gist.github.com/jacknii/6546326#file-stat545a-2013-hw02_ni-jac-rmd) | [report](http://rpubs.com/jackni/stat545a-2013-hw02_ni-jac)
   * okkels-chr EDIT HERE
   * park-min EDIT HERE
   * spencer-nei EDIT HERE
