@@ -34,7 +34,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
   * Wooyong Lee: [source](https://gist.github.com/folias/6558563#file-stat545a-2013-hw02_lee-woo) | [report](http://rpubs.com/folias/stat545a-2013-hw02_lee-woo)
-  * liao-wei EDIT HERE
+  * liao-wei: [source](https://gist.github.com/feiba/6546717#file-stat545a-2013-hw02_liao_wei-rmd) | [report](http://rpubs.com/winson/stat545a-2013-hw02_liao_wei)
   * ma-hui EDIT HERE
   * meng-viv EDIT HERE
   * mohd abul basher-abd EDIT HERE
