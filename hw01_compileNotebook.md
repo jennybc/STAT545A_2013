@@ -31,7 +31,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
   * __PLACEHOLDERS START HERE__
   * attali-dea [source](https://gist.github.com/daattali/6541810#file-stat545a-2013-hw01_attali-dea-r) | [report](http://rpubs.com/daattali/stat545a-2013-hw01_attali-dea)
-  * baik-jon EDIT HERE
+  * baik-jon [source](https://gist.github.com/jonnybaik/6558941#file-stat545a-2013-hw01_baik-jon-r) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw01_baik-jon)
   * bolandnazar-moh EDIT HERE
   * brueckman-chr EDIT HERE
   * chu-jus EDIT HERE
