@@ -46,7 +46,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * weber-lea EDIT HERE
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545701#file-stat545a-2013-hw02_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw02_woollard-geo)
   * xue-xin EDIT HERE
-  * yuen-ama EDIT HERE
+  * yuen-ama [source](https://gist.github.com/amandammor/6557207#file-stat545a-2013-hw02_yuen-ama-rmd) | [report](http://rpubs.com/amandammor/stat545a-2013-hw02_yuen-ama)
   * zhang-yim EDIT HERE
   * zhang-jon EDIT HERE
   * zhang-yif EDIT HERE
