@@ -54,4 +54,4 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * inskip-jes EDIT HERE
   * liu-yan EDIT HERE
   * haraty-mon EDIT HERE
-  * yuen-mac EDIT HERE
+  * yuen-mac [source](https://gist.github.com/myuen/6558828#file-stat545a-2013-hw02_yuen-mac-rmd) | [report](http://rpubs.com/myuen/stat545a-2013-hw02_yuen-mac)
