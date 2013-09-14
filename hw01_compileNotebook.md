@@ -44,7 +44,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Sean Jewell: [source](https://gist.github.com/jewellsean/bbba6ca8791abb1d214b#file-stat545a-2013-hw01_jewell-sea-r) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw01_jewell-sea)
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
-  * lee-woo EDIT HERE
+  * Wooyong Lee [source](https://gist.github.com/folias/6558507#file-stat545a-2013-hw01_lee-woo) | [report](http://rpubs.com/folias/stat545a-2013-hw01_lee-woo)
   * liao-wei: [source](https://gist.github.com/feiba/6545785#file-stat545a-2013-hw01_liao_wei-r) | [report](http://rpubs.com/winson/stat545a-2013-hw01_liao_wei)
   * ma-hui EDIT HERE
   * meng-viv EDIT HERE
