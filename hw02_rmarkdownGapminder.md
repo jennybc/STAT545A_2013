@@ -41,7 +41,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * ni-jac [source](https://gist.github.com/jacknii/6546326#file-stat545a-2013-hw02_ni-jac-rmd) | [report](http://rpubs.com/jackni/stat545a-2013-hw02_ni-jac)
   * okkels-chr EDIT HERE
   * park-min EDIT HERE
-  * spencer-nei EDIT HERE
+  * spencer-nei [source](https://gist.github.com/neilspencer/6558151#file-stat545a-2013-hw02_spencer-neil-rmd) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw02_spencer-nei)
   * wang-ton EDIT HERE
   * weber-lea EDIT HERE
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545701#file-stat545a-2013-hw02_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw02_woollard-geo)
