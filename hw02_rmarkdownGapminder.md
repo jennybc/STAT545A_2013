@@ -34,11 +34,11 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
   * lee-woo EDIT HERE
-  * liao-wei EDIT HERE
+  * liao-wei [source](https://gist.github.com/feiba/6546717#file-stat545a-2013-hw02_liao_wei-rmd) | [report](http://rpubs.com/winson/stat545a-2013-hw02_liao_wei)
   * ma-hui EDIT HERE
   * meng-viv EDIT HERE
   * mohd abul basher-abd EDIT HERE
-  * ni-jac [source](https://gist.github.com/jacknii/6546326#file-stat545a-2013-hw02_ni-jac-rmd) | [report](http://rpubs.com/jackni/stat545a-2013-hw02_ni-jac)
+  * ni-jac EDIT HERE
   * okkels-chr EDIT HERE
   * park-min EDIT HERE
   * spencer-nei [source](https://gist.github.com/neilspencer/6558151#file-stat545a-2013-hw02_spencer-neil-rmd) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw02_spencer-nei)
