@@ -33,7 +33,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * jewell-sea [source](https://gist.github.com/jewellsean/d5d9ae6cf9ff9da193db#file-stat545a-2013-hw02_jewell-sea-rmd) [report](http://rpubs.com/jewellsean/stat545a-2013-hw02_jewell-sea)
   * johnston-reb EDIT HERE
   * khosravi-mah EDIT HERE
-  * lee-woo EDIT HERE
+  * Wooyong Lee: [source](https://gist.github.com/folias/6558563#file-stat545a-2013-hw02_lee-woo) | [report](http://rpubs.com/folias/stat545a-2013-hw02_lee-woo)
   * liao-wei EDIT HERE
   * ma-hui EDIT HERE
   * meng-viv EDIT HERE
