@@ -47,7 +47,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545701#file-stat545a-2013-hw02_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw02_woollard-geo)
   * xue-xinxin [source] (https://gist.github.com/xxue/6573439) | [report] (http://rpubs.com/xxue/stat545a-2013-hw02_xue-xinxin-rmd)
   * yuen-ama [source](https://gist.github.com/amandammor/6557207#file-stat545a-2013-hw02_yuen-ama-rmd) | [report](http://rpubs.com/amandammor/stat545a-2013-hw02_yuen-ama)
-  * zhang-yim EDIT HERE
+  * zhang-yim [source](https://gist.github.com/zym268/6574496#file-stat545a-2013-hw02_zhang-yim-rmd) | [report](http://rpubs.com/zym268/stat545a-2013-hw02_zhang-yim)
   * zhang-jon [source](https://gist.github.com/jzhang722/6574075#file-stat545a-2013-hw02_jzhang-jon-rmd) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw02_zhang-jon)
   * zhang-yif [source](https://gist.github.com/dora7870/6566076#file-stat545a-2013-hw02_zhang-yif-rmd) | [report](http://rpubs.com/dora7870/stat545a-2013-hw02_zhang-yif)
   * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546926#file-stat545a-2013-hw02_zhang-jin-rmd) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw02_zhang-jin)
