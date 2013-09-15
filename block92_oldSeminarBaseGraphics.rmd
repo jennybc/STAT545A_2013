@@ -1,0 +1,321 @@
+% Seminar 3: Introduction to R - Part 3 (Graphics)
+% Author
+% Date
+
+## Preparation
+
+Complete the exercises from the first two weeks. You should be comfortable with starting R, basic syntax and data types, subsetting matrices, and reading and writing data files, as well as basic string manipulation.
+
+Download the sample data file [AIDS data][aids_data]. Ensure you can read it in using `read.csv`. It is used in the examples below.
+
+The second example data set, which will be used in class, is [section3.example.madata.zip][micro_array_data], a moderately-sized microarray data set. Make sure you can load it with 'read.table' or 'read.delim' (unzip it first!). It has one row of headings (with sample names) and the row names are in the first column. It has 10,000 rows and 59 columns, so it's reasonably realistic. There is also a small [metadata file][micro_array_metadata].
+
+Install the following packages from CRAN: `RColorBrewer`, `gplots`, `sciplot`.
+
+## Labels and titles
+
+### Get some data ready
+
+Create the average density from last week's exercise, also taking logs of the DNase concentration and optical density:
+
+```{r, results="hide"}
+DNase.log  <-  DNase
+DNase.log$conc  <-  log(DNase$conc)
+DNase.log$density  <-  log(DNase$density)
+dens.avg.frame  <-  aggregate(DNase.log$density, list(DNase.log$conc) , mean)
+names(dens.avg.frame)  <-  c('dnase.conc', 'dens.avg')
+```
+
+Now try:
+
+```{r, fig.cap=""}
+plot(dens.avg.frame)
+```
+
+### Axis labels
+
+Let's be clear about what's on this graph:
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, xlab='log(DNase concentration)', ylab='log(Average density)')
+```
+
+### Title
+
+And give it an appropriate title:
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, xlab='log(DNase concentration)', ylab='log(Average density)', main='Average optical density of DNA solution treated with DNase at varying concentrations')
+```
+
+## Types of graphs
+
+### Scatterplot
+
+`plot()` creates scatterplots by default, but is a "generic" command that can do a variety of things. Controlling plotting is done (in large part) by using settings documented in the "par" command.
+
+You can make different types of plots, e.g. points, lines or both:
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='p')
+```
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='l')
+```
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='b')
+```
+
+You can control the character for points using `pch`. You can use text characters, or the built-in plot characters (from 1-20). Try these:
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='b', pch=3)
+```
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='b', pch='R')
+```
+
+You can also control the line type using `lty` (from 1-6):
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='b', lty=3)
+```
+
+
+> Exercise 1: Using the AIDs data you loaded from the CSV file, plot a line and point plot of AIDS cases in New York ('New York, NY') by 'Year'. Use diagonal crosses (like an 'x'), and a broken line. Give your plot appropriate axis labels and a title. Refer to the `par` documentation as necessary.
+
+### Barplot
+
+Let's take just the DNase readings for DNase concentration=6.25, and plot them:
+
+```{r, fig.cap=""}
+DNase.625  <-  DNase[which(DNase$conc==6.25), ]
+barplot(DNase.625$density, names.arg=DNase.625$Run)
+```
+
+How about combining the duplicates, and adding error bars using sciplot:
+
+```{r, fig.cap=""}
+library(sciplot)
+bargraph.CI(DNase.625$Run, DNase.625$density, err.width=0.05)
+```
+
+> Exercise 2:
+>
+> * Take the AIDs statistics for 1994. Plot a barplot of all locations, without X axis labels, in decreasing order by incidence.
+> * Then find the 5 locations with the highest incidence for that year, and plot a bar chart of those, with axis labels.
+> * Label your X and Y axes, and add a title to each graph.
+
+### Histograms, densities and boxplots
+
+Very commonly you will want to look at the distribution of some data. Dr. Bryan showed several examples in her first lecture.
+
+Histograms are a basic way of looking at the distribution of values:
+
+```{r, fig.cap=""}
+hist(DNase.625$density)
+```
+
+Use the `density` command to make a "smoothed" curve. This is useful when you want to view several simultaneously since they don't "overlap" as badly as histograms.
+
+```{r, fig.cap=""}
+plot(density(DNase.625$density))
+```
+
+> Exercise 3: What does `density` do by itself, without the call to plot?
+
+Another valuable tool is `boxplot`, which we leave as an exercise.
+
+> Exercise 4: Investigate the `boxplot` command. Make a boxplot that displays the distributions of the "conc" and "density" data from DNase.log. How do you read a box plot?
+
+## More control over graphing - multiple plots
+
+### Layouts
+
+[Quick-R layout tips][layout]
+
+You can use `par()` with the arguments `mfrow` or `mfcol` to set up a panel of plots:
+
+```{r, fig.cap=""}
+par(mfrow=c(2, 1))
+bargraph.CI(DNase.625$Run, DNase.625$density, err.width=0.05)
+hist(DNase.625$density)
+```
+
+Also see `layout()` for more advanced placement of multiple graphs.
+
+### Overplotting
+
+It is common to want to display more than one set of data on the same set of axes.
+
+R offers a command, `par(new=T)`, which stops the display from clearing between successive calls to plotting commands. But you should NOT use this. To see why try:
+
+```{r, fig.cap=""}
+# NOTE: Does not do what we want!
+plot(dens.avg.frame, type='b', pch=3)
+par(new=T)
+plot(DNase.log[which(DNase.log$Run==4), c('conc', 'density')], pch=7)
+```
+
+Instead, call plot only once and add data to the graph:
+
+`points` and `lines` allow you to add points to an existing plot:
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='b', pch=3)
+points(DNase.log[which(DNase.log$Run==4), c('conc', 'density')], pch=7)
+```
+
+```{r, fig.cap=""}
+plot(dens.avg.frame, type='b', pch=3)
+lines(DNase.log[which(DNase.log$Run==4), c('conc', 'density')], pch=7)
+```
+
+Sometimes a good strategy is to make an empty set of axes (use `type='n'`), and then add data to it. Here we also demonstrate control of axis limits.
+
+```{r, fig.cap=""}
+plot(0, xlab="DNase concentration", ylab="Average density", type='n', xlim=c(-3, 3), ylim=c(-3, 1))
+points(dens.avg.frame, type='b', pch=3)
+lines(DNase.log[which(DNase.log$Run==4), c('conc', 'density')], pch=7, type='p')
+```
+
+> Exercise 5: Experiment with changing some of the settings in this last example, such as axis limits, colours, and line thickness. You'll probably need to look at the documentation for `par`.
+
+More advanced: If you are building many plots together, you can use `apply`. Using the "empty axis" method is pretty much essential. Here we plot densities of both of our data columns at once.
+
+```{r, fig.cap="", results="hide"}
+plot(0, type='n', xlim=c(-5, 5), ylim=c(0, 0.5))
+apply(DNase.log[, 2:3], 2, function(x) lines(density(x)))
+```
+
+## Heatmaps
+
+R offers the "heatmap" command to make "false colour" images of data. You may want to use `heatmap2` from the `gplots` library (see Additional graphing libraries below).
+
+We'll learn more about heatmaps in class. For now, just look at the documentation for heatmap and try some of the examples they provide there.
+
+## Saving images to a file
+
+In general, specify a device, plot, then `dev.off()`.
+
+**Do not forget `dev.off()`! R will not finish saving the file until you call it!**
+
+### Bitmap graphics -- PNG
+
+We recommend using PNG output for convenient viewing and sharing of "draft" figures. Generally when you need high-quality output you will use a vector-based format (see below).
+
+```{r, eval=FALSE, results="hide"}
+png('avg_density.png', width=800, height=800)
+plot(dens.avg.frame, type='b', lty=3)
+dev.off()
+```
+
+Default width/height is 480 x 480. Blocky, but OK for quick viewing and putting on web pages.
+
+`bmp()`, `tiff()` and `jpeg()` work similarly. However, PNG is best - compressed but not lossy. Note that many (most?) journals will not accept PNG for figures. TIFF is common but generates big files.
+
+### Vector graphics
+
+These are resolution-independent formats. This means that no matter how much you "blow up" the image, it will always look crisp. Since most graphs are really vector graphics (as opposed to being like photographs), you should take advantage of this to make your images look good in print.
+
+```{r, eval=FALSE, results="hide"}
+pdf('avg_density.png')
+plot(dens.avg.frame, type='b', lty=3)
+dev.off()
+```
+
+Use `postscript` to do PS/EPS.
+
+### Making publication-quality graphs
+
+In most cases use postscript or PDF (vector means higher quality). Postscript is the format most journals like to get for any kind of line art. PDF is basically a variation on postscript, but journals don't like it for final products.
+
+For very complex plots, a `high-resolution` PNG may be a good choice. A plot with a million points will be end up being a very big postscript file that takes a long time to display. On the other hand, plotting a million points probably isn't what you want to do anyway: consider a data reduction step.
+
+`svg()` may also be good if you want to edit your graph further (for instance in [Inkscape][inkscape])
+
+Trying to make your graph figure-quality perfect in R can be tricky; it can be easier to do some touch-up in a program like Inkscape or Adobe Ilustrator. If you are working with postscript on Windows or MacOS, Adobe Illustrator is an excellent (but non-free) choice.
+
+> Exercise 6: Make sure you can view PNG and PDF files you create from R. For PNGs, you can use your web browser or any graphics program.
+
+## Additional graphing libraries
+
+These add-ons to R can be very powerful, but have their own learning curves.
+
+### Lattice (a.k.a. trellis)
+
+Creates grids of plots from a single data set, where the data is subsetted based on variables you specify.
+
+[package here][lattice]
+
+[Read the book][lattice_book]
+
+
+### Gplots
+
+Newer, allows finer control, emphasises information visualization best practices.
+
+Most commands are similar to standard R methods, but with a lot of extras.
+
+For making heatmaps, offers heatmap2, which is better than the built-in R heatmap() because it makes a scale bar. Unfortunately it also does other stuff by default, which need to be switched off (trace="none", dendrogram="none")
+
+[Package here][gplot]
+
+
+### Even more
+
+Other useful graphing libraries include
+
+[hexbin][hexbin], to make scatter plots useful when there are many points.
+
+[ggplot2][ggplot2], which has many sophisticated ways of making graphs.
+
+For interactive graphics, you can try [rggobi][rggobi], which is a R interface to GGobi. Installing it on Windows can be finicky.
+
+Paul may show some examples in lecture.
+
+## Seminar 3 Extra Graphics Exercises
+
+[Seminar 3 Extra Exercises][extra_exercises]
+
+## Exercises from Lecture 04 Probability foundation for statistical inference, part II
+
+[Probability Exercises][probability_exercises]
+
+## Further reading:
+
+[R Graphics, Paul Murrell][r_graphics_book] - available online if within UBC network
+
+[R Graph Gallery][r_gallery] - huge gallery of pretty plots, with source code\!
+
+[Controlling Layouts][controlling_layouts] - Good explanation how to lay out figures.
+
+
+## Solutions
+
+[Solutions to Seminar 3 exercises][solutions]
+
+[Solutions to Seminar 3 Extra Exercises][extra_solutions]
+
+[aids_data]: ../../data/aids_us_1982_to_2000_0.csv
+[micro_array_data]: ../../data/section3.example.madata_0.zip
+[micro_array_metadata]: ../../data/section3.example.metadata_0.txt
+[layout]: http://www.statmethods.net/advgraphs/layout.html
+[inkscape]: http://inkscape.org/
+[lattice]: http://cran.r-project.org/web/packages/lattice/index.html
+[lattice_book]: http://www.springerlink.com/content/978-0-387-75968-5#section=159855
+[gplot]: http://cran.r-project.org/web/packages/gplots/index.html
+[hexbin]: http://cran.r-project.org/web/packages/hexbin/
+[ggplot2]: http://had.co.nz/ggplot2/
+[rggobi]: http://www.ggobi.org/rggobi/
+[r_graphics_book]: http://www.crcnetbase.com/isbn/9781584884866
+[r_gallery]: http://gallery.r-enthusiasts.com/
+[controlling_layouts]: http://research.stowers-institute.org/efg/R/Graphics/Basics/mar-oma/index.htm
+
+[extra_exercises]: ../exercises/extra_seminar_3.html
+[probability_exercises]: ../exercises/probability.html
+[solutions]: ../solutions/seminar_3.html
+[extra_solutions]: ../solutions/extra_seminar_3.html
