@@ -61,3 +61,9 @@ Resources for developing the homework submission process:
     - Do a fetch from all remotes. I can now see `jess/patch-1`. Control click and I can ...
     - Checkout `jess/patch-1`, giving it a local branch name `jess-patch-1`. I keep "Local branch should track remote branch" checked. FAIL. Local changes would be overwritten by checkout. Please commit or stash before swtiching branches. Aborting.
     - Let's try using placeholders ..... yikes.
+  * http://stackoverflow.com/questions/5340724/get-changes-in-master-into-branch-in-git
+  * http://gun.io/blog/how-to-github-fork-branch-and-pull-request/ This one's especially helpful because it gives exact commands for dealing with a pull request that you want, i.e. it doesn't clobber anything, but that (inexplicably!) cannot be automatically merged from the browser.
+  * http://bradlyfeeley.com/2008/09/03/update-a-github-fork-from-the-original-repo/
+  * https://www.openshift.com/wiki/github-workflow-for-submitting-pull-requests
+  * http://stackoverflow.com/questions/2014914/how-do-you-merge-changes-on-non-master-branches-from-a-forked-github-repository
+  * http://www.eqqon.com/index.php/Collaborative_Github_Workflow  
