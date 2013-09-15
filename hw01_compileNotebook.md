@@ -45,7 +45,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Wooyong Lee: [source](https://gist.github.com/folias/6558507#file-stat545a-2013-hw01_lee-woo) | [report](http://rpubs.com/folias/STAT545a-2013-hw01_lee-woo)
   * liao-wei: [source](https://gist.github.com/feiba/6545785#file-stat545a-2013-hw01_liao_wei-r) | [report](http://rpubs.com/winson/stat545a-2013-hw01_liao_wei)
   * ma-hui EDIT HERE
-  * meng-viv EDIT HERE
+  * meng-viv [source](https://gist.github.com/vmeng321/6575194#file-stat545a-2013-hw01_meng-viv-r) | [report](http://rpubs.com/vmeng321/stat545a-2013-hw01_meng-viv)
   * mohd abul basher-abd [source] (https://gist.github.com/atante/6568482#file-stat545a-2013-hw01_mohd-abul-basher-abd-r)| [report] (http://rpubs.com/meitantei/stat545a-2013-hw01_mohdabulbasher-abd)
   * ni-jac [source](https://gist.github.com/jacknii/6545831#file-stat545a-2013-hw01_ni-jac-r) | [report](http://rpubs.com/jackni/stat545a-2013-hw01_ni-jac)
   * okkels-chr EDIT HERE
