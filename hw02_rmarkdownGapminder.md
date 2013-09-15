@@ -51,7 +51,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * zhang-jon EDIT HERE
   * zhang-yif [source](https://gist.github.com/dora7870/6566076#file-stat545a-2013-hw02_zhang-yif-rmd) | [report](http://rpubs.com/dora7870/stat545a-2013-hw02_zhang-yif)
   * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546926#file-stat545a-2013-hw02_zhang-jin-rmd) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw02_zhang-jin)
-  * inskip-jes EDIT HERE
+  * inskip-jes [source](https://gist.github.com/jinskip/6567244#file-stat545a-2013-hw02_inskip-jes-rmd) | [report](http://rpubs.com/jinskip/stat545a-2013-hw02_inskip-jes)
   * liu-yan EDIT HERE
   * haraty-mon EDIT HERE
   * yuen-mac [source](https://gist.github.com/myuen/6558828#file-stat545a-2013-hw02_yuen-mac-rmd) | [report](http://rpubs.com/myuen/stat545a-2013-hw02_yuen-mac)
