@@ -57,9 +57,16 @@ Monday Sept 02 is a statutory holiday. No class.
 Wednesday Sept 18 UBC's observance of [National Reconciliation Week](http://irsi.aboriginal.ubc.ca). No class.
 
 * Work through
-    - a tutorial on univariate statistics and visual summaries and/or data aggregation
+    - a tutorial on univariate statistics and visual summaries and/or data aggregation?
 
   * Post a serious proposal for a dataset and/or make a thoughtful contribution to the discussion of an existing proposal. We need to start fleshing these out. The time needed for data assembly and cleaning is going to break your heart.
+  
+  * Spend an hour (or more if you are new to the command line and scripting) reading these resources about how to ask for help. Don't be paranoid, this is not about you and that question you asked the other day! This material has been in the course for a couple of years. This is another aspect of the culture that one has to actually learn.
+  
+    - The 9th circle of R hell in [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/) by Patrick Burns.
+    - [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) by Eric Raymond.
+    - The [posting guide](http://www.r-project.org/posting-guide.html) for [the R-help mailing list](https://stat.ethz.ch/mailman/listinfo/r-help), which I recommend you NOT post to any time soon. (But by all means, search for answers to your questions there!) Turn to Jenny, Song, and the Google Group first for now.
+    
 
 cm 05 | Monday Sept 23
 
