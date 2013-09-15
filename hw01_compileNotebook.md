@@ -34,7 +34,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * baik-jon [source](https://gist.github.com/jonnybaik/6558941#file-stat545a-2013-hw01_baik-jon-r) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw01_baik-jon)
   * bolandnazar-moh EDIT HERE
   * brueckman-chr EDIT HERE
-  * chu-jus EDIT HERE
+  * chu-jus [source](https://gist.github.com/JustinChu/6574022#file-stat545a-2013-hw01_chu-jus-r) | [report](http://rpubs.com/cjustin/stat545a-2013-hw01_chu-jus)
   * Zachary Daly [source](https://gist.github.com/ZDaly/6556397#file-stat545a-2013-hw01_daly-zac-r) | [report](http://rpubs.com/Zdaly/stat545a-2013-hw01_daly-zac)
   * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6544174#file-stat545a-2013-hw01_dinsdale-dan-r) | [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw01_dinsdale-dan)
   * gao-wen [source](https://gist.github.com/sibyl229/6566463#file-stat545a-2013-hw01_gao-wen-r) | [report](http://rpubs.com/less/stat545a-2013-hw01_gao-wen)
