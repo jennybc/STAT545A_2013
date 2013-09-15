@@ -26,7 +26,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
   * Yan Liu: [toyline](http://rpubs.com/swallow0001/8296)
   * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
-  * Christian Okkels: [toyline](http://rpubs.com/cbokkels/toyline)
+  * Christian Okkels: [source](https://gist.github.com/cbokkels/6566851#file-stat545a-2013-hw01_okkels-chr-r)[report](http://rpubs.com/cbokkels/stat545a-2013-hw01_okkels-chr)
   * Yumian Hu: [source](https://gist.github.com/smilecat/6547772#file-stat545a-2013-hw01_hu-yum-r) | [report](http://rpubs.com/smilecat/stat545a-2013-hw01_hu-yum)
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
   * __PLACEHOLDERS START HERE__
