@@ -27,7 +27,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * chu-jus EDIT HERE
   * Zachary Daly: [source](https://gist.github.com/ZDaly/6558864#file-tat545a-2013-hw02_daly-zac-rmd) | [report](http://rpubs.com/Zdaly/stat545a-2013-hw02_daly-zac)
   * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6554514#file-stat545a-2013-hw02_dinsdale-dan-rmd) | [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw02_dinsdale-dan)
-  * gao-wen EDIT HERE
+  * gao-wen [source](https://gist.github.com/sibyl229/6575176#file-stat545a-2013-hw02_gao-wen-rmd) | [report](http://rpubs.com/less/stat545a-2013-hw02_gao-wen)
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * hu-yum [source](https://gist.github.com/smilecat/6556150#file-stat545a-2013-hw02_hu-yum-rmd) | [report](http://rpubs.com/smilecat/stat545a-2013-hw02_hu-yum)
   * jewell-sea [source](https://gist.github.com/jewellsean/d5d9ae6cf9ff9da193db#file-stat545a-2013-hw02_jewell-sea-rmd) [report](http://rpubs.com/jewellsean/stat545a-2013-hw02_jewell-sea)
