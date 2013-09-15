@@ -25,7 +25,6 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Justin Chu: [toylineTest](http://rpubs.com/cjustin/8316)
   * Jonathan Baik: [toyline](http://rpubs.com/jonnybaik/toyline)
   * Yan Liu: [toyline](http://rpubs.com/swallow0001/8296)
-  * Jonathan Zhang: [test](http://rpubs.com/jzhang722/8350)
   * Christian Okkels: [source](https://gist.github.com/cbokkels/6566851#file-stat545a-2013-hw01_okkels-chr-r)[report](http://rpubs.com/cbokkels/stat545a-2013-hw01_okkels-chr)
   * Yumian Hu: [source](https://gist.github.com/smilecat/6547772#file-stat545a-2013-hw01_hu-yum-r) | [report](http://rpubs.com/smilecat/stat545a-2013-hw01_hu-yum)
   * Vivian Meng: [source](http://rpubs.com/vmeng321/cm01-toyline)
@@ -58,7 +57,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * xue-xinxin [source] (https://gist.github.com/xxue/6567825#file-stat545a-2013-hw01_xue-xinxin.r) | [report] (http://rpubs.com/xxue/8559#file-stat545a-2013-hw01_xue-xinxin.r)
   * yuen-ama [source](https://gist.github.com/amandammor/6545795#file-stat545a-2013-hw01_yuen-ama-r) | [report](http://rpubs.com/amandammor/stat545a-2013-hw01_yuen-ama)
   * zhang-yim [source](https://gist.github.com/zym268/6543854#file-stat545a-2013-hw01_zhang-yim-r) | [report](http://rpubs.com/zym268/stat545a-2013-hw01_zhang-yim)
-  * zhang-jon EDIT HERE
+  * zhang-jon [source] (https://gist.github.com/jzhang722/6574149#file-stat545a-2013-hw01_zhang-jon-r) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw01_zhang-jon)
   * zhang-yif [source](https://gist.github.com/anonymous/6564688#file-stat545a-2013-hw01_zhang-yif-r) | [report](http://rpubs.com/dora7870/stat545a-2013-hw01_zhang-yif)
   * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546688#file-stat545a-2013-hw01_zhang-jin-r) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw01_zhang-jin)
   * inskip-jes [source](https://gist.github.com/jinskip/6546533#file-stat545a-2013-hw01_inskip-jes-r) | [report](http://rpubs.com/jinskip/stat545a-2013-hw01_inskip-jes)
