@@ -21,7 +21,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
 
   * GOOD EXAMPLE COPIED FROM BELOW Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * attali-dea [source](https://gist.github.com/daattali/6547430#file-stat545a-2013-hw02_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw02_attali-dea) 
-  * baik-jon EDIT HERE
+  * baik-jon [source](https://gist.github.com/jonnybaik/6568554#file-stat545a-2013-hw02_baik-jon-rmd) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw02_baik-jon)
   * bolandnazar-moh EDIT HERE
   * brueckman-chr EDIT HERE
   * chu-jus EDIT HERE
