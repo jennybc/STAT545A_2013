@@ -45,7 +45,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * wang-ton EDIT HERE
   * Leah Weber: [source] (https://gist.github.com/lweber21/6564433#file-stat545a-2013-hw02_weber-lea-rmd) | [report] (http://rpubs.com/lweber21/stat545a-2013-hw02_weber-lea)
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545701#file-stat545a-2013-hw02_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw02_woollard-geo)
-  * xue-xin EDIT HERE
+  * xue-xinxin [source] (https://gist.github.com/xxue/6573439) | [report]
   * yuen-ama [source](https://gist.github.com/amandammor/6557207#file-stat545a-2013-hw02_yuen-ama-rmd) | [report](http://rpubs.com/amandammor/stat545a-2013-hw02_yuen-ama)
   * zhang-yim EDIT HERE
   * zhang-jon EDIT HERE
