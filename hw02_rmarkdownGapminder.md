@@ -48,7 +48,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * xue-xinxin [source] (https://gist.github.com/xxue/6573439) | [report] (http://rpubs.com/xxue/stat545a-2013-hw02_xue-xinxin-rmd)
   * yuen-ama [source](https://gist.github.com/amandammor/6557207#file-stat545a-2013-hw02_yuen-ama-rmd) | [report](http://rpubs.com/amandammor/stat545a-2013-hw02_yuen-ama)
   * zhang-yim EDIT HERE
-  * zhang-jon EDIT HERE
+  * zhang-jon [source](https://gist.github.com/jzhang722/6574075#file-stat545a-2013-hw02_jzhang-jon-rmd) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw02_zhang-jon)
   * zhang-yif [source](https://gist.github.com/dora7870/6566076#file-stat545a-2013-hw02_zhang-yif-rmd) | [report](http://rpubs.com/dora7870/stat545a-2013-hw02_zhang-yif)
   * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546926#file-stat545a-2013-hw02_zhang-jin-rmd) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw02_zhang-jin)
   * inskip-jes [source](https://gist.github.com/jinskip/6567244#file-stat545a-2013-hw02_inskip-jes-rmd) | [report](http://rpubs.com/jinskip/stat545a-2013-hw02_inskip-jes)
