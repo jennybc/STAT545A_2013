@@ -1,0 +1,254 @@
+(Older material on) Data aggregation
+========================================================
+
+The remnants of a previous tutorial that prioritized built-in `apply` type functiond for data aggregation, versus using `plyr`. No promises that this document will read very smoothly or be complete!
+
+### Load the Gapminder data
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+
+### Data aggregation
+
+If you feel the urge to store a little snippet of a data.frame:
+```{r}
+(snippet <- subset(gDat, country == "Canada"))
+```
+Stop and ask yourself ...
+>Do I want to create sub-data.frames for each level of some factor (or unique combination of several factors) ... in order to compute or graph something?  
+
+If NO, then maybe you really do need to store a copy of a subset of the data.frame. But seriously consider whether you can achieve your goals by simple using the `subset =` argument to limit the rows a function will act on. If this still does not suit your needs, then maybe you should use `subset()` as shown above and carry on.
+
+If YES, use data aggregation techniques or conditioning in `lattice` or facetting in `ggplot2` plots -- _don’t subset the data.frame_. Or, to be totally clear, only subset the data.frame as a temporary measure as you develop your elegant code for computing on or visualizing these sub-data.frames.
+
+For those situations when you need to so something for various chunks of your dataset, the best method depends on the nature of these chunks
+
++------------------------------------------------------------+-------------------------------------------+
+| chunks are ...                                             | relevant functions                        |
++============================================================+===========================================+
+| rows, columns, etc. of matrix/array                        | apply                                     |
++------------------------------------------------------------+-------------------------------------------+
+| components of a list (includes variables in a data.frame!) | sapply, lapply                            |
++------------------------------------------------------------+-------------------------------------------+
+| induced by levels of one or more factor(s)                 | tapply, by, split (+ [sl]apply, aggregate |
++------------------------------------------------------------+-------------------------------------------+
+
+Example of computing summaries for rows and columns of a matrix
+
+```{r}
+(jCountries <- sort(c('Canada', 'United States', 'Mexico')))
+tinyDat <- subset(gDat, country %in% jCountries)
+str(tinyDat)                   # 'data.frame': 36 obs. of 6 variables:
+(nY <- length(unique(tinyDat$year)))    # 12 years
+jLifeExp <- matrix(tinyDat$lifeExp, nrow = nY)
+colnames(jLifeExp) <- jCountries
+rownames(jLifeExp) <- tinyDat$year[1:nY]
+jLifeExp
+apply(jLifeExp, 1, mean)
+rowMeans(jLifeExp)#see also rowSums, colMeans, colSums
+apply(jLifeExp, 2, median)
+jCountries[apply(jLifeExp, 1, which.max)]
+```
+
+Operating on each variable in a data.frame -- a bit awkward because the whole point of data.frames is to hold disparate variables, so the same functions don't always *make sense* to apply to every variable in a data.frame. But I press on.
+
+```{r}
+sapply(gDat, summary)# artificial because summary(gDat) achieves same
+sapply(gDat, is.numeric)
+sapply(gDat, function(x) sum(is.na(x)))
+```
+
+I can get a new data.frame holding only the numeric variables.
+
+```{r}
+gDatNum <- subset(gDat, select = sapply(gDat, is.numeric))
+str(gDatNum)
+```
+
+Gives a better stage for showing off `sapply()` and `lapply()`
+
+```{r}
+sapply(gDatNum, median)
+lapply(gDatNum, median)
+```
+Note that `sapply()` attempts to tidy up after itself, where as `lapply()` always returns a list. Notice how plays out when your computing more than one number
+```{r}
+sapply(gDatNum, range)
+lapply(gDatNum, range)
+```
+
+Let's say we want to get the maximum life expectancy for each continent.
+
+```{r}
+tapply(gDat$lifeExp, gDat$continent, max)# a drag to type
+with(gDat,
+     tapply(lifeExp, continent, max))
+```
+The function you want to apply to the life expectancies for each continent can be built-in, like `max()` above, a custom function you've written, or a custom function specified 'on the fly'. Here's how I would count the number of countries in this dataset for each continent.
+
+```{r}
+with(gDat,
+     tapply(country, continent, function(x) {
+       length(unique(x))
+     }))
+```
+Unfortunately the output of `tapply()` often requires tidying.
+```{r}
+(rangeLifeExp <- with(gDat, tapply(lifeExp, continent, range)))
+str(rangeLifeExp)
+```
+It would be nice to have a matrix (or data.frame) with one row (or column) per continent and one column (or row) for the min life exp and one for max. You can stack up rows and columns to make matrices and data.frames, assuming the type of data and dimensions are tractable.
+```{r}
+rbind(rangeLifeExp[[1]], rangeLifeExp[[2]],
+      rangeLifeExp[[3]], rangeLifeExp[[4]],
+      rangeLifeExp[[5]])
+```
+Problem is ...this approach does not scale well at all. Will soon drive you nuts. There is an obscure-sounding but extremely useful alternative.
+```{r}
+leByCont <- do.call(rbind, rangeLifeExp)
+colnames(leByCont) <- c("min", "max")
+leByCont
+```
+We might still need to give decent column (variable) names, like "min" and "max", but this is still progress. So `lapply()` had a tidied up version `sapply()` but the analogous function does not exist for `tapply()`. It's up to you and `do.call()` helps a lot.
+
+This issue of hard-to-predict, less-than-ideal stuff being returned from data aggregation functions is significant. The add-on package [`plyr`](http://plyr.had.co.nz) addresses this and more. I am just starting to use it now and I recommend you wise up faster than I did and do the same.
+
+Let's try it out. Also gives us a chance to install an add-on package. Here's how to do so at the command line. I save these commands in a script, like I do everything else, so that it's easy for me re-install all the add-on packages I like whenever I update R.
+
+```{r, eval=FALSE}
+install.packages(pkgs = "plyr")
+```
+There are also RStudio-y ways to install packages. Once a package is installed, it still has to be loaded (unless it's one of the automatically loaded base packages). You can make all sorts of persistent changes to your set-up, including which packages are loaded by default, via `.Rprofile`. For now, we'll just load 'by hand'.
+```{r}
+library(plyr)
+#library(help = "plyr")
+```
+Now we'll emulate what we did above using the `ddply()` function from `plyr`.
+```{r}
+ddply(gDat, .(continent), summarise, median = median(lifeExp))
+leByCont2 <- ddply(gDat, .(continent), summarise, min = min(lifeExp), max = max(lifeExp))
+leByCont2
+```
+
+I now return to using built-in data aggregation functions, because that's what I know best.
+
+`tapply()` could only compute an a single variable -- `lifeExp` in examples above. If you need to work with multiple variables consider `by()`. Here's how I would do simple linear regression of life expectancy on year for each country. I'm also storing just the estimated parameters, ie intercept and slope. We'll return to this towards the end of the day.
+
+
+```{r}
+(yearMin <- min(gDat$year))
+coefEst <- by(gDat, gDat$country, function(cty) {
+  coef(lm(lifeExp ~ I(year - yearMin), data = cty))
+})
+head(coefEst)
+```
+We need to clean up again.
+```{r}
+coefEst <- data.frame(do.call(rbind, coefEst))
+head(coefEst)
+```
+I'd rather have the country names as an actual variable (vs. as row names) and the variable names are awful.
+```{r}
+coefEst <-
+  data.frame(country = factor(rownames(coefEst),
+                              levels = levels(gDat$country)),
+             coefEst)
+names(coefEst) <- c("country", "intercept", "slope")
+rownames(coefEst) <- NULL
+head(coefEst)
+```
+To really polish this off, I wish I had the continent information. `match()` is very useful for table look-up tasks.
+```{r}
+foo <- match(coefEst$country, gDat$country)
+head(foo)
+```
+`foo` says that the first instance of "Afghanistan" as a country in `gDat` is in row 1. The first instance of "Albania" in row 13, etc etc. So with those row numbers in hand, I can index the continent variable from `gDat` to get a continent variable suitable for use in `coefEst`.
+```{r}
+head(gDat$country[foo])
+```
+I could add this to `coefEst` like so:
+```{r, eval=FALSE}
+coefEst$continent <- gDat$continent[foo]
+```
+`merge()` is another function that is useful for these operations.
+
+### Data reshaping
+
+Frequently data needs to be reshaped. General from short-and-fat to tall-and-skinny. In my life the most common reasons for this are for modelling and graphing. Consider the matrix we made earlier giving the min and max (variables or columns) life expectancy for each of the 5 continents (rows or observations). Imagine I want to make a figure with min = 0 , max = 1 on the x axis, life expectancy on the yaxis, and connect the two dots for each continent. It turns out this is much easier if the data is rearranged.
+
+```{r}
+leByContTall <- data.frame(lifeExp = as.vector(leByCont),
+                           what = factor(rep(c("min", "max"), each = nrow(leByCont)),
+                                          levels = c("min", "max")),
+                           continent = factor(rownames(leByCont)))
+leByContTall
+str(leByContTall)
+```
+Now we can make the plot
+```{r}
+library(lattice)
+stripplot(lifeExp ~ what, leByContTall)
+stripplot(lifeExp ~ what, leByContTall,
+          groups = continent, auto.key = TRUE,
+          grid = TRUE, type = "b")
+```
+What I did above was cumbersome but I took full control. I have dabbled with the built-in functions `stack()` and `reshape()` and found them more trouble than they were worth. If I abandon my primitive approach, it would be in favor of functions in the add-on package [`reshape`](http://had.co.nz/reshape/), which is hear good things about. This might be another case, like `plyr`, where you should so as I say, not as I do.
+
+### Exporting data
+
+Now let's say we want to export some data or numerical results. The pseudo-inverse of `read.table()` is `write.table()`.
+
+```{r, eval=FALSE}
+#need editing
+## writing the min and max life expectancies by continent to file
+write.table(leByCont, "minMaxLifeExpByContinent.txt")
+
+## all those quotes drive me nuts! use arguments to take more control
+
+## works best for first version of leByCont, where continents are rownames
+write.table(leByCont, "minMaxLifeExpByContinent.txt",
+            quote = FALSE, sep = "\t")
+
+## use sparingly: saving an R object
+save(leByCont, file = "leByCont.robj")
+rm(leByCont)
+ls()
+leByCont
+load("leByCont.robj")
+ls()
+leByCont
+
+## dput useful for creating small self-contained examples
+dput(leByCont, "leByCont_DPUT.R")
+rm(leByCont)
+leByCont
+(leByCont <- dget("leByCont_DPUT.R"))
+
+## sink useful for highly unstructured output
+sink("tTestResults.txt")
+t.test(lifeExp ~ year, gDat,
+       subset = year %in% c(1952, 2007))
+sink()
+```
+
+Question I got: why would one use `dput()` instead of `save()`. My answers:
+
+  * I prefer storing things as plain text.
+  * If you were trying to create an example to accompany a post on, say R-help, you must use `dput()` in order to create the exact R object you need (assuming your example can't be written in terms of the usual fake or built-in data people use). You would not be allowed to attach or upload a saved R object.
+
+
+Good reference: Chapter 8 (“Data Aggregation”) of Spector (2008). This whole book is extremely valuable.

@@ -1,0 +1,264 @@
+Data aggregation
+========================================================
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "data aggregation".
+
+### Load the Gapminder data
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+
+### Data aggregation
+
+If you feel the urge to store a little snippet of a data.frame:
+```{r}
+(snippet <- subset(gDat, country == "Canada"))
+```
+Stop and ask yourself ...
+
+> Do I want to create sub-data.frames for each level of some factor (or unique combination of several factors) ... in order to compute or graph something?  
+
+If NO, then maybe you really do need to store a copy of a subset of the data.frame. But seriously consider whether you can achieve your goals by simply using the `subset =` argument -- or perhaps `with()` coupled with `subset()` -- to a computation to a specific set of rows. If this still does not suit your needs, then maybe you really should use `subset()` as shown above and carry on.
+
+If YES, use data aggregation techniques or conditioning in `lattice` or facetting in `ggplot2` plots -- _don’t subset the data.frame_. Or, to be totally clear, only subset the data.frame as a temporary measure as you develop your elegant code for computing on or visualizing these sub-data.frames.
+
+#### Data aggregation landscape
+
+There are two main options for data aggregation:
+
+  * built-in functions, often referred to as the `apply` family of functions
+  * the [`plyr`](http://plyr.had.co.nz) add-on package
+
+I used the built-in functions for many years but am transitioning to `plyr`. I recommend simply starting with `plyr` if you are new to R. You can see older material about data aggregation with built-in functions [here](block93_oldDataAggregation.html). In this tutorial we will only use `plyr`.
+
+You'll notice I did not even mention another option that may occur to some: hand-coding `for` loops, perhaps, even (shudder) nested `for` loops! Don't do it. By the end of this tutorial you'll see things that are much faster and more fun. Yes, of course, tedious loops are required for data aggregation but when you can, let other developers write them for you, in super-efficient low level code. This is more about saving programmer time than compute time, BTW.
+
+#### Install and load `plyr`
+
+If you have not already done so, you'll need to install `plyr`. Here's one way to do that:
+```{r, eval = FALSE}
+install.packages("plyr", dependencies = TRUE)
+```
+
+You will also need to load the package before you can use the functions in an R session:
+```{r}
+library(plyr)
+```
+
+You can [make that apply to all your R sessions via your `.Rprofile`](http://stackoverflow.com/questions/10300769/how-to-load-packages-in-r-automatically). Note this is a controversial practice, because it means your code will not necessarily run "as is" on someone else's computer. For that reason, I auto-load packages *very sparingly*. `plyr` is not (yet) on my list.
+
+#### `plyr` Big Ideas
+
+The `plyr` functions will not make much sense viewed individually, e.g. simply reading the help for `ddply()` is not the fast track to competence. There is a very important over-arching logic for the package and it is well worth reading the article [The split-apply-combine strategy for data analysis](http://www.jstatsoft.org/v40/i01/paper), Hadley Wickham, Journal of Statistical Software, vol. 40, no. 1, pp. 1–29, 2011. Though it is no substitute for reading the above, here is the most critical information:
+
+ * __split-apply-combine__: A common analytical pattern is to split data into logical bits, apply some function to each bit, and stick the results back together again. Recognize when you're solving such a problem and exploit the right tools.
+ * The computations on these little bits must be truly independent, i.e. the problem must be [embarrassingly or pleasingly parallel](http://en.wikipedia.org/wiki/Embarrassingly_parallel), in order to use `plyr`.
+ * The heart of `plyr` is a set a functions with names like this:
+```
+XYply
+```
+   where `X` specifies what sort of input you're giving and `Y` specifies the sort of output you want.
+   - `a` = array, where matrices and vectors are important special cases
+   - `d` = data.frame
+   - `l` = list
+   - `_` = no output; only valid for `Y`, obviously; useful when you're operating on a list purely for the side effects, e.g., making a plot or sending output to screen/file
+  * The usage is very similar across these functions. Here are the main arguments:
+    - `.data` is the first argument = the input
+    - the next argument specifies how to split up the input into bits; it is does not exist when the input is a list, because the pieces are obviously the list components
+    - then comes the function and further arguments needed to describe the computation to be applied to the bits
+   
+Today we will emphasize `ddply()` which accepts a data.frame, splits it into pieces based on one or more factors, computes on them, then returns the results as a data.frame. For the record, the built-in functions most relevant to `ddply()` are `tapply()` and friends.
+
+#### `ddply()`
+
+Let's say we want to get the maximum life expectancy for each continent.
+```{r, tidy=FALSE}
+(maxLeByCont <- ddply(gDat, ~ continent, summarize, maxLifeExp = max(lifeExp)))
+```
+Let's study the return value.
+```{r}
+str(maxLeByCont)
+levels(maxLeByCont$continent)
+```
+So we got a data.frame back, with one observation per continent, and two variables: the maximum life expectancies and the continent, as a factor, with the same levels in the same order, as for the input data.frame `gDat`. If you have sweated to do such things with built-in functions, this minor miracle might make you cry tears of joy (or anguish over all the hours you have wasted.)
+
+`summarize()` or its synonym `summarise()` is a function provided by `plyr` that creates a new data.frame from an old one. It is related to the built-in function `transform()` that transforms variables in a data.frame or adds new ones.
+
+The two variables in `maxLeByCont` come from two sources. The `continent` factor is provided by `ddply()` and represents the labelling of the life expectancies with their associated continent. This is the book-keeping associated with dividing the input into little bits, computing on them, and gluing the results together again in an orderly, labelled fashion. We can take more credit for the other variable `maxLifeExp`, which has a name we chose ("maxLifeExp") and arises from applying a function we specified (`max()`) to a variable of our choice (`lifeExp`).
+
+**You try:** compute the minimum GDP per capita by continent. Here's what I get:
+```{r, eval=TRUE, echo=FALSE}
+ddply(gDat, ~ continent, summarize, minGdpPercap = min(gdpPercap))
+```
+You might have chosen a different name for the minimum GDP/capita's, but your numerical results should match.
+
+The function you want to apply to the continent-specific data.frames can be built-in, like `max()` above, or a custom function you've written. This custom function can be written in advance or specified 'on the fly'. Here's how I would count the number of countries in this dataset for each continent.
+
+```{r}
+ddply(gDat, ~ continent, summarize, nUniqCountries = length(unique(country)))
+```
+
+You don't have to compute just one thing for each sub-data.frame, nor are you limited to computing on just one variable. Check it out.
+```{r}
+ddply(gDat, ~ continent, summarize,
+      minLifeExp = min(lifeExp), maxLifeExp = max(lifeExp),
+      medGdpPercap = median(gdpPercap))
+```
+
+Now I want to do something more complicated. I want to fit a linear regression for each country, modelling life expectancy as a function of the year and then retain the estimated intercepts and slopes. I will walk before I run. Therefore, I will create a tiny sub-data.frame to prototype this, before I fold it into a `ddply()` call. If you're a newbie, watch how complicated tasks are slowly constructed.
+
+```{r}
+jCountry <- "France" # pick, but do not hard wire, an example
+(jDat <- subset(gDat, country == jCountry)) # temporary measure!
+xyplot(lifeExp ~ year, jDat, type = c("p", "r")) # always plot the data
+jFit <- lm(lifeExp ~ year, jDat)
+summary(jFit)
+```
+Wow, check out that crazy intercept! Apparently the life expectancy in France around year 0 A.D. was minus 400 years! This a great opportunity for some sanity checking of a model fit and thinking about how to reparametrize the model to make the parameters have natural interpretation. I think it makes more sense for the intercept to correspond to life expectancy in 1952, the earliest date in our dataset. Let's try that again.
+```{r}
+(yearMin <- min(gDat$year))
+jFit <- lm(lifeExp ~ I(year - yearMin), jDat)
+summary(jFit)
+```
+An intercept around 68 years makes much more common sense and is also supported by our plot. What is this `jFit` object and how can I get stuff out of it?
+
+```{r}
+class(jFit)
+mode(jFit)
+```
+
+It turns out `jFit` is of class "lm" and its mode is list. So that means I could use indexing to isolate specific components. But what's in there?
+```{r}
+## str(jFit) # too ugly to print here but you should look
+names(jFit)
+jFit$coefficients
+```
+Using `str()` and `names()` reveals a great deal about this "lm" object and reading the help file for `lm()` would explain a great deal more. In the See Also section we learn there's a generic function `coef()` which looks promising.
+```{r}
+coef(jFit)
+```
+As a rule, I use extractor functions like this when they are available.
+```{r, eval=FALSE, echo=FALSE}
+methods(class = "lm")
+```
+
+We have achieved our goal for this specific country -- we've gotten its intercept and slope. Now we need to package that as a function (we will talk about functions properly later, but this should be fairly self-explanatory).
+```{r}
+jFun <- function(x) coef(lm(lifeExp ~ I(year - yearMin), x))
+jFun(jDat) # trying out our new function ... yes still get same numbers
+```
+I hate the names of these return values. Good names pay off downstream, so I will enhance my function.
+```{r}
+jFun <- function(x) {
+  estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
+  names(estCoefs) <- c("intercept", "slope")
+  return(estCoefs)
+  }
+jFun(jDat) # trying out our improved function ... yes still get same numbers
+```
+It's always a good idea to try out a function on a few small examples.
+```{r}
+jFun(subset(gDat, country == "Canada"))
+jFun(subset(gDat, country == "Uruguay"))
+jFun(subset(gDat, country == "India"))
+```
+It seems like we are ready to scale up by placing this function inside a `ddply()` call.
+```{r}
+jCoefs <- ddply(gDat, ~ country, jFun)
+str(jCoefs)
+tail(jCoefs)
+```
+Finally, let's present this information attractively in a table. *I consider my advice about how to do this less definitive than the above. I'll be happy to see people explore other table-making tools.*
+
+I've experimented with the `xtable` package, which you will need to install
+```{r, eval = FALSE}
+install.packages("xtable", dependencies = TRUE)
+```
+and load.
+```{r}
+library(xtable)
+```
+Let's pick some countries at random and display their estimated coefficients.
+```{r results='asis', echo=FALSE}
+set.seed(916)
+foo <- jCoefs[sample(nrow(jCoefs), size = 15), ]
+foo <- xtable(foo)
+print(foo, type='html', include.rownames = FALSE)
+```
+Two easy improvments to make this table more useful are
+
+  * include the continent information
+  * sort it rationally
+
+The easiest way to get the continent information is to enhance our `ddply()` call. Here is what we used:
+```{r, eval=FALSE}
+jCoefs <- ddply(gDat, ~ country, jFun)
+```
+This divides `gDat` into country-specific pieces. But we can supply two factors in the second argument: country and continent. In theory, sub-data.frames will be made for all possible combinations of the levels of country and continent. Many of those will have zero rows because there is, for example, no Belgium in Asia. By default, `plyr` functions drop these empty combinations. But the labelling work done by `ddply()` will still help us, as we will get both country and continent as factors in our result. This is easier to see than explain!
+```{r}
+jCoefs <- ddply(gDat, ~ country + continent, jFun)
+str(jCoefs)
+tail(jCoefs)
+```
+Now we will remake the small table, starting with the country with the shortest life expectancy in 1952, going to the largest.
+```{r results='asis', echo=FALSE}
+set.seed(916)
+foo <- jCoefs[sample(nrow(jCoefs), size = 15), ]
+foo <- foo[order(foo$intercept), ]
+foo <- xtable(foo)
+print(foo, type='html', include.rownames = FALSE)
+```
+
+### Lessons
+
+`plyr` is a powerful package for data aggregation.
+
+`ddply()` is the most important function, since data.frame are great, and it takes data.frame as input and returns data.frame as output.
+
+Simple functions, built-in or user-defined, can be provided directly in a call to `ddply()`.
+
+It's better to handle more complicated data aggregation differently. Build them up slowly and don't hesitate to revisit earlier steps for improvement. Here is a gentle workflow:
+
+  * Create an indicative sub-data.frame
+  * Compute on it directly with top-level commands until you achieve your goal
+  * Package those commands inside a function
+  * Test the function with other sub-data.frames
+  * Refine your function, e.g. give the return values better names
+  * Construct a `ddply()` call using your function
+  * Identify more weakness in your function, refine, call `ddply()` again
+
+Results you present to the world generally need polishing to make the best impression and have the best impact. This too will be an iterative process. Here are some good things to think about:
+
+  * Is there an obvious piece of ancillary information that I should include? Example: continent above. It was not needed for the computation but it is helpful to retain/restore it for the final table.
+  * Is there some logical ordering for the data? Alphabetical is ususally the default and it is completely arbitrary and often confusing.
+  * Have I presented the data in the more aesthetically pleasing way I currently know how?
+  
+### Exporting data
+
+What it you wanted to write the table of slopes and intercepts to file? We'll talk about that more soon, but the main functions to consider are `write.table()`, `dput()`, and `saveRDS()`.
+
+### References
+
+`plyr` paper
+
+Good reference: Chapter 8 (“Data Aggregation”) of Spector (2008). This whole book is extremely valuable.

@@ -10,7 +10,7 @@ Perform a <to be specified> set of data aggregation tasks. Make some observation
 MORE DETAILS COMING SOON.
 
   * Import the Gapminder data as provided in [`gapminderDataFiveYear.txt`](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt). Perform a superficial check that import went OK.
-  * <Data aggregation tasks will go here.>
+  * *Data aggregation tasks will go here.*
   * Compile into an HTML report, using the "Knit HTML" feature of RStudio (easiest!) or by direct usage of the functions in the `knitr` and `markdown` packages. Follow the naming convention.
   * Check that the HTML report is no longer than a couple of printed pages. If longer, go back and make your script shorter.
   * Publish the HTML report on the web somewhere, such as on RPubs. Make the slug follow the naming convention.

@@ -52,18 +52,20 @@ Monday Sept 02 is a statutory holiday. No class.
   * Work through
     - [R objects (beyond data.frames) and indexing](block03_basicObjects.html). Note: you should be able to do the homework before completing this tutorial.
 
-### cm 04 | Monday Sept 16 | *Tentative: Univariate statistics and visual summaries. Data aggregation.*
+### cm 04 | Monday Sept 16 | Data aggregation and univariate statistics.
 
 Wednesday Sept 18 UBC's observance of [National Reconciliation Week](http://irsi.aboriginal.ubc.ca). No class.
 
 * Work through
-    - a tutorial on univariate statistics and visual summaries and/or data aggregation?
+    - a tutorial on [data aggregation](block04_dataAggregation.html)
 
   * Submit [homework 3](hw03_dataAggregation.html) before class starts @ 9:30am Monday Sept. 23.
   
-  * Post a serious proposal for a dataset and/or make a thoughtful contribution to the discussion of an existing proposal. We need to start fleshing these out. The time needed for data assembly and cleaning is going to break your heart.
+  * Post a serious proposal for a dataset and/or make a thoughtful contribution to the discussion of an existing proposal. We need to start fleshing these out. The time needed for data assembly and cleaning is going to break your heart. Here are two places for these discussions
+    - Start or contribution to threads on the [Google Group](https://groups.google.com/forum/#!forum/stat545a_2013)
+    - [Edit the "dataset ideas" page](dataset-ideas.html), now that you all know how to propose changes to the course web materials!
   
-  * Spend an hour (or more if you are new to the command line and scripting) reading these resources about how to ask for help. Don't be paranoid, this is not about you and that question you asked the other day! This material has been in the course for a couple of years. This is another aspect of the culture that one has to actually learn.
+  * Spend ~1 hr (or more if you are new to the command line and scripting) reading these resources about how to ask for help. Don't be paranoid, this is not specifically about you and that question you asked the other day! This material has been in the course for a couple of years. This is another aspect of the culture that one has to actually learn.
   
     - The 9th circle of R hell in [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/) by Patrick Burns.
     - [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) by Eric Raymond.
