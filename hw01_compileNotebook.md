@@ -40,7 +40,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6543524#file-stat545a-2013-hw01_gingerich-mat-r) | [report](http://rpubs.com/majugi/stat545a-2013-hw01_gingerich-mat)
   * hu-yum EDIT HERE
   * Sean Jewell: [source](https://gist.github.com/jewellsean/bbba6ca8791abb1d214b#file-stat545a-2013-hw01_jewell-sea-r) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw01_jewell-sea)
-  * johnston-reb [source] (https://gist.github.com/rebjoh/6558768#file-stat545a-2013-hw01_johnston-reb-r) | [report] (http://rpubs.com/rljohn/stat545a-2013-hw01_johnston-reb)
+  * johnston-reb [source](https://gist.github.com/rebjoh/6558768#file-stat545a-2013-hw01_johnston-reb-r) | [report](http://rpubs.com/rljohn/stat545a-2013-hw01_johnston-reb)
   * Mahdiar Khosravi [source] (https://gist.github.com/Mahdiark/6574243#file-stat545a-2013-hw01_khosravi-mah-r) | [report] (http://rpubs.com/mahdiar/stat545a-2013-hw01_khosravi-mah)
   * Wooyong Lee: [source](https://gist.github.com/folias/6558507#file-stat545a-2013-hw01_lee-woo) | [report](http://rpubs.com/folias/STAT545a-2013-hw01_lee-woo)
   * liao-wei: [source](https://gist.github.com/feiba/6545785#file-stat545a-2013-hw01_liao_wei-r) | [report](http://rpubs.com/winson/stat545a-2013-hw01_liao_wei)
