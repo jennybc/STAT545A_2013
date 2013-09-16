@@ -22,7 +22,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * GOOD EXAMPLE COPIED FROM BELOW Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * attali-dea [source](https://gist.github.com/daattali/6547430#file-stat545a-2013-hw02_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw02_attali-dea) 
   * baik-jon [source](https://gist.github.com/jonnybaik/6568554#file-stat545a-2013-hw02_baik-jon-rmd) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw02_baik-jon)
-  * bolandnazar-moh EDIT HERE
+  * bolandnazar-moh [source](https://gist.github.com/ArephB/6575923#file-stat545a-2013-hw02_bolandnazar-moh-rmd) | [report](http://rpubs.com/aref/8606)
   * brueckman-chr EDIT HERE
   * chu-jus EDIT HERE
   * Zachary Daly: [source](https://gist.github.com/ZDaly/6558864#file-tat545a-2013-hw02_daly-zac-rmd) | [report](http://rpubs.com/Zdaly/stat545a-2013-hw02_daly-zac)
