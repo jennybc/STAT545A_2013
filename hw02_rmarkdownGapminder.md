@@ -31,7 +31,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6544485#file-stat545a-2013-hw02_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw02_gingerich-mat)
   * hu-yum [source](https://gist.github.com/smilecat/6556150#file-stat545a-2013-hw02_hu-yum-rmd) | [report](http://rpubs.com/smilecat/stat545a-2013-hw02_hu-yum)
   * jewell-sea [source](https://gist.github.com/jewellsean/d5d9ae6cf9ff9da193db#file-stat545a-2013-hw02_jewell-sea-rmd) [report](http://rpubs.com/jewellsean/stat545a-2013-hw02_jewell-sea)
-  * johnston-reb EDIT HERE
+  * johnston-reb [source](https://gist.github.com/rebjoh/6575530#file-stat545a-2013-hw02_johnston-reb-rmd) | [report](http://rpubs.com/rljohn/stat545a-2013-hw02_johnston-reb)
   * khosravi-mah EDIT HERE
   * Wooyong Lee: [source](https://gist.github.com/folias/6558563#file-stat545a-2013-hw02_lee-woo) | [report](http://rpubs.com/folias/stat545a-2013-hw02_lee-woo)
   * liao-wei: [source](https://gist.github.com/feiba/6546717#file-stat545a-2013-hw02_liao_wei-rmd) | [report](http://rpubs.com/winson/stat545a-2013-hw02_liao_wei)
