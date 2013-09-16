@@ -40,6 +40,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * mohd abul basher-abd [source](https://gist.github.com/atante/6568521#file-stat545a-2013-hw02_mohd-abul-basher-abd-rmd) | [report](http://rpubs.com/meitantei/stat545a-2013-hw02_mohdabulbasher-abd)
   * ni-jac [source](https://gist.github.com/jacknii/6546326#file-stat545a-2013-hw02_ni-jac-rmd) | [report](http://rpubs.com/jackni/stat545a-2013-hw02_ni-jac)
   * Christian Okkels [source](https://gist.github.com/cbokkels/6568640#file-stat545a-2013-hw02_okkels-chr-rmd) | [report](http://rpubs.com/cbokkels/stat545a-2013-hw02_okkels-chr)
+  * Greg Owens: [source](https://gist.github.com/opsin/6577365#file-stat545a-2013-hw02_owens-greg-rmd) | [report](http://rpubs.com/opsin/stat545a-2013-hw02_owens-greg)
   * Mina Park: [source](https://gist.github.com/parkm87/6567386#file-stat545a-2013-hw02_park-min-rmd) | [report](http://rpubs.com/parkm87/stat545a-2013-hw02_park-min)
   * spencer-nei [source](https://gist.github.com/neilspencer/6558151#file-stat545a-2013-hw02_spencer-neil-rmd) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw02_spencer-nei)
   * wang-ton EDIT HERE
