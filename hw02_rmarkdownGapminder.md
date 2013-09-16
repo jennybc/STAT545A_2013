@@ -15,7 +15,7 @@ Perform intake of the Gapminder data in an R Markdown document, compile to HTML,
   * Publish the HTML report on the web somewhere, such as on RPubs. Make the slug follow the naming convention.
   * Publish the R Markdown file as a Gist. See instructions for help. Follow the naming convention.
   * Add or edit a line in the Markdown file that generates this page with links to your two published items. See instructions for help.
-  * DUE: Before class begins 9:30am Monday September 15.
+  * DUE: Before class begins 9:30am Monday September 16.
   
 Please add links to your Homework #2 in this bulleted list. __Find the placeholder created for you and edit that line only, if at all possible.__
 

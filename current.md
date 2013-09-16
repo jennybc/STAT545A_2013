@@ -59,6 +59,8 @@ Wednesday Sept 18 UBC's observance of [National Reconciliation Week](http://irsi
 * Work through
     - a tutorial on univariate statistics and visual summaries and/or data aggregation?
 
+  * Submit [homework 3](hw03_dataAggregation.html) before class starts @ 9:30am Monday Sept. 23.
+  
   * Post a serious proposal for a dataset and/or make a thoughtful contribution to the discussion of an existing proposal. We need to start fleshing these out. The time needed for data assembly and cleaning is going to break your heart.
   
   * Spend an hour (or more if you are new to the command line and scripting) reading these resources about how to ask for help. Don't be paranoid, this is not about you and that question you asked the other day! This material has been in the course for a couple of years. This is another aspect of the culture that one has to actually learn.
