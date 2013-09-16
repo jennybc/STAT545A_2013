@@ -52,11 +52,11 @@ Monday Sept 02 is a statutory holiday. No class.
   * Work through
     - [R objects (beyond data.frames) and indexing](block03_basicObjects.html). Note: you should be able to do the homework before completing this tutorial.
 
-### cm 04 | Monday Sept 16 | Data aggregation and univariate statistics.
+### cm 04 | Monday Sept 16 | Data aggregation ([slides as PDF](2013-lectures/cm04_dataAggregation.pdf))
 
-Wednesday Sept 18 UBC's observance of [National Reconciliation Week](http://irsi.aboriginal.ubc.ca). No class.
+  * Note that on Wednesday Sept 18 UBC will observe [National Reconciliation Week](http://irsi.aboriginal.ubc.ca). No class.
 
-* Work through
+  * Study
     - a tutorial on [data aggregation](block04_dataAggregation.html)
 
   * Submit [homework 3](hw03_dataAggregation.html) before class starts @ 9:30am Monday Sept. 23.
@@ -71,8 +71,7 @@ Wednesday Sept 18 UBC's observance of [National Reconciliation Week](http://irsi
     - [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) by Eric Raymond.
     - The [posting guide](http://www.r-project.org/posting-guide.html) for [the R-help mailing list](https://stat.ethz.ch/mailman/listinfo/r-help), which I recommend you NOT post to any time soon. (But by all means, search for answers to your questions there!) Turn to Jenny, Song, and the Google Group first for now.
     
-
-cm 05 | Monday Sept 23
+### cm 05 | Monday Sept 23 | Univariate statistics and visualizations
 
 cm 06 | Wednesday Sept 25
 
