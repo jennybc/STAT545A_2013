@@ -24,7 +24,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * baik-jon [source](https://gist.github.com/jonnybaik/6568554#file-stat545a-2013-hw02_baik-jon-rmd) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw02_baik-jon)
   * bolandnazar-moh [source](https://gist.github.com/ArephB/6575923#file-stat545a-2013-hw02_bolandnazar-moh-rmd) | [report](http://rpubs.com/aref/8606)
   * brueckman-chr EDIT HERE
-  * chu-jus EDIT HERE
+  * chu-jus [source](https://gist.github.com/JustinChu/6577348#file-stat545a-2013-hw02_chu-jus-rmd) | [report] (http://rpubs.com/cjustin/stat545a-2013-hw02_chu-jus)
   * Zachary Daly: [source](https://gist.github.com/ZDaly/6558864#file-tat545a-2013-hw02_daly-zac-rmd) | [report](http://rpubs.com/Zdaly/stat545a-2013-hw02_daly-zac)
   * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6554514#file-stat545a-2013-hw02_dinsdale-dan-rmd) | [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw02_dinsdale-dan)
   * gao-wen [source](https://gist.github.com/sibyl229/6575176#file-stat545a-2013-hw02_gao-wen-rmd) | [report](http://rpubs.com/less/stat545a-2013-hw02_gao-wen)
