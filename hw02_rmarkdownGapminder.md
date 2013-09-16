@@ -36,7 +36,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * Wooyong Lee: [source](https://gist.github.com/folias/6558563#file-stat545a-2013-hw02_lee-woo) | [report](http://rpubs.com/folias/stat545a-2013-hw02_lee-woo)
   * liao-wei: [source](https://gist.github.com/feiba/6546717#file-stat545a-2013-hw02_liao_wei-rmd) | [report](http://rpubs.com/winson/stat545a-2013-hw02_liao_wei)
   * ma-hui [source](https://gist.github.com/horsehuiting/6566267#file-stat545a-2013-hw02_ma-hui-rmd) | [report](http://rpubs.com/Huiting/stat545a-2013-hw02_ma-hui)
-  * meng-viv EDIT HERE
+  * meng-viv [source](https://gist.github.com/vmeng321/6576056#file-stat545a-2013-hw02_meng-viv-rmd) | [report](http://rpubs.com/vmeng321/stat545a-2013-hw02_meng-viv)
   * mohd abul basher-abd [source](https://gist.github.com/atante/6568521#file-stat545a-2013-hw02_mohd-abul-basher-abd-rmd) | [report](http://rpubs.com/meitantei/stat545a-2013-hw02_mohdabulbasher-abd)
   * ni-jac [source](https://gist.github.com/jacknii/6546326#file-stat545a-2013-hw02_ni-jac-rmd) | [report](http://rpubs.com/jackni/stat545a-2013-hw02_ni-jac)
   * Christian Okkels [source](https://gist.github.com/cbokkels/6568640#file-stat545a-2013-hw02_okkels-chr-rmd) | [report](http://rpubs.com/cbokkels/stat545a-2013-hw02_okkels-chr)
