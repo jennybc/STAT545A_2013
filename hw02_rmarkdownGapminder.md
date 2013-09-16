@@ -43,7 +43,7 @@ Please add links to your Homework #2 in this bulleted list. __Find the placehold
   * Greg Owens: [source](https://gist.github.com/opsin/6577365#file-stat545a-2013-hw02_owens-greg-rmd) | [report](http://rpubs.com/opsin/stat545a-2013-hw02_owens-greg)
   * Mina Park: [source](https://gist.github.com/parkm87/6567386#file-stat545a-2013-hw02_park-min-rmd) | [report](http://rpubs.com/parkm87/stat545a-2013-hw02_park-min)
   * spencer-nei [source](https://gist.github.com/neilspencer/6558151#file-stat545a-2013-hw02_spencer-neil-rmd) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw02_spencer-nei)
-  * wang-ton EDIT HERE
+  * wang-ton [source](https://gist.github.com/yzhxh/6577895#file-stat545a-2013-hw02_wang-ton-rmd) | [report](http://rpubs.com/yzhxh/stat545a-2013-hw02_wang-ton)
   * Leah Weber: [source] (https://gist.github.com/lweber21/6564433#file-stat545a-2013-hw02_weber-lea-rmd) | [report] (http://rpubs.com/lweber21/stat545a-2013-hw02_weber-lea)
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545701#file-stat545a-2013-hw02_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw02_woollard-geo)
   * xue-xinxin [source] (https://gist.github.com/xxue/6573439) | [report] (http://rpubs.com/xxue/stat545a-2013-hw02_xue-xinxin-rmd)
