@@ -298,4 +298,13 @@ What it you wanted to write the table of slopes and intercepts to file? We'll ta
 
 `plyr` paper: [The split-apply-combine strategy for data analysis](http://www.jstatsoft.org/v40/i01/paper), Hadley Wickham, Journal of Statistical Software, vol. 40, no. 1, pp. 1–29, 2011. 
 
-Good reference: Chapter 8 (“Data Aggregation”) of Spector (2008). This whole book is extremely valuable.
+[Data Manipulation with R](http://www.springerlink.com/content/t19776/?p=0ecea4f02a68458eb3d605ec3cdfc7ef%CF%80=0) by Phil Spector, Springer (2008) &#124; [author webpage](http://www.stat.berkeley.edu/%7Espector/) &#124; [GoogleBooks search](http://books.google.com/books?id=grfuq1twFe4C&lpg=PP1&dq=data%2520manipulation%2520spector&pg=PP1#v=onepage&q=&f=false)
+
+  * The main link above to SpringerLink will give full access to the book if you are on a UBC network (or any other network that confers accesss).
+
+  * See Chapter 8 (“Data Aggregation”)
+
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
