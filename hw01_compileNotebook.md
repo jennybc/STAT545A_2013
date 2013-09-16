@@ -58,7 +58,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * xue-xinxin [source] (https://gist.github.com/xxue/6567825#file-stat545a-2013-hw01_xue-xinxin.r) | [report] (http://rpubs.com/xxue/8559#file-stat545a-2013-hw01_xue-xinxin.r)
   * yuen-ama [source](https://gist.github.com/amandammor/6545795#file-stat545a-2013-hw01_yuen-ama-r) | [report](http://rpubs.com/amandammor/stat545a-2013-hw01_yuen-ama)
   * zhang-yim [source](https://gist.github.com/zym268/6543854#file-stat545a-2013-hw01_zhang-yim-r) | [report](http://rpubs.com/zym268/stat545a-2013-hw01_zhang-yim)
-  * zhang-jon [source] (https://gist.github.com/jzhang722/6574149#file-stat545a-2013-hw01_zhang-jon-r) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw01_zhang-jon)
+  * zhang-jon [source](https://gist.github.com/jzhang722/6574149#file-stat545a-2013-hw01_zhang-jon-r) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw01_zhang-jon)
   * zhang-yif [source](https://gist.github.com/anonymous/6564688#file-stat545a-2013-hw01_zhang-yif-r) | [report](http://rpubs.com/dora7870/stat545a-2013-hw01_zhang-yif)
   * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546688#file-stat545a-2013-hw01_zhang-jin-r) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw01_zhang-jin)
   * inskip-jes [source](https://gist.github.com/jinskip/6546533#file-stat545a-2013-hw01_inskip-jes-r) | [report](http://rpubs.com/jinskip/stat545a-2013-hw01_inskip-jes)
