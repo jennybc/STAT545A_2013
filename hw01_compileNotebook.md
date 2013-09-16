@@ -62,6 +62,6 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * zhang-yif [source](https://gist.github.com/anonymous/6564688#file-stat545a-2013-hw01_zhang-yif-r) | [report](http://rpubs.com/dora7870/stat545a-2013-hw01_zhang-yif)
   * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6546688#file-stat545a-2013-hw01_zhang-jin-r) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw01_zhang-jin)
   * inskip-jes [source](https://gist.github.com/jinskip/6546533#file-stat545a-2013-hw01_inskip-jes-r) | [report](http://rpubs.com/jinskip/stat545a-2013-hw01_inskip-jes)
-  * liu-yan EDIT HERE
+  * liu-yan [source](https://gist.github.com/swallow0001/6582881#file-stat545a-2013-hw1_liu) | [report] (http://rpubs.com/swallow0001/8632)
   * haraty-mon EDIT HERE
   * yuen-mac [source](https://gist.github.com/myuen/6546602#file-stat545a-2013-hw01_yuen-mac-r) | [report](http://rpubs.com/myuen/stat545a-2013-hw01_yuen-mac)
