@@ -125,7 +125,7 @@ ddply(gDat, ~ continent,
 ```
 
 In pseudo pseudo-code, here is what's happening in both of the above commands:
-```
+```{r, eval=FALSE, results='asis', tidy=FALSE}
 returnValue <- an empty receptacle with one "slot" per country
 for each possible country i {
     x  <- subset(gDat, subset = country == i)
