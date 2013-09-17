@@ -26,6 +26,8 @@ __US Childhood Morbidity and Mortality__. People, especially the older generatio
 
 Mother Jones article [Science Confirms: Politics Wrecks Your Ability to Do Math](http://www.motherjones.com/politics/2013/09/new-study-politics-makes-you-innumerate). Probably too small and narrow. But maybe not. Would be nice to give those figures a makeover.
 
+[This web page](http://www.tableausoftware.com/public/community/sample-data-sets) has a dataset similar to the Gapminder data, but with more columns. It also has a potentially interesting, though maybe not data-intensive enough, dataset about Olympic medals won by athletes. 
+
 JB should really list previous student projects, at the vey least for inspiration and maybe for actual links to datasets.
 
 <div class="footer">
