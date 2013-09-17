@@ -58,6 +58,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
   * Study
     - a tutorial on [data aggregation](block04_dataAggregation.html)
+    - a [short note on CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
 
   * Submit [homework 3](hw03_dataAggregation.html) before class starts @ 9:30am Monday Sept. 23.
   

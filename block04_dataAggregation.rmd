@@ -288,7 +288,7 @@ Results you present to the world generally need polishing to make the best impre
 
   * Is there an obvious piece of ancillary information that I should include? Example: continent above. It was not needed for the computation but it is helpful to retain/restore it for the final table.
   * Is there some logical ordering for the data? Alphabetical is ususally the default and it is completely arbitrary and often confusing.
-  * Have I presented the data in the more aesthetically pleasing way I currently know how?
+  * Have I presented the data in the most aesthetically pleasing way I currently know how?
   
 ### Exporting data
 

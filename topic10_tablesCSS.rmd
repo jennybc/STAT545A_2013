@@ -1,0 +1,48 @@
+My table looks better than yours
+========================================================
+
+> JB: I would like to link to examples that show the same R Markdown file compiled to HTML using different CSS ... but this is a good start.
+
+After the [data aggregation tutorial](http://www.stat.ubc.ca/~jenny/STAT545A/block04_dataAggregation.html) a student noticed that, when run on her machine, my examples did not produce such attractive tables. That's because I am not using [RStudio's default Markdown CSS](https://github.com/rstudio/markdown/blob/master/inst/resources/markdown.css) upon conversion from R Markdown to HTML.
+
+The default CSS produces wide webpages witht text running across the whole page and [soft wrapping](http://en.wikipedia.org/wiki/Word_wrap). I don't find that very readable.
+
+I took an entire collection of CSS from <https://github.com/jasonm23/markdown-css-themes>, which are released under a "do what you want with them" license.
+
+When I wrote this in September 2013, I was using `markdown7.css`. I can't promise I won't switch CSS, so there is no absolute guarantee that the HTML you are looking at now was created with `markdown7.css`.
+
+Once you have the CSS file, how do you make RStudio use it, e.g., when you use the "Knit HTML" button?
+
+I learned everything I know about this from RStudio's page on [Customizing Markdown Rendering](http://www.rstudio.com/ide/docs/authoring/markdown_custom_rendering).
+
+I have this in my `.Rprofile`, among many other things (I added comments for clarity here):
+```{r}
+options(rstudio.markdownToHTML =
+          function(inputFile, outputFile) {
+            require(markdown)
+            
+            ## make easy to toggle base64 encoding of images and perhaps other
+            ## things ...
+            htmlOptions <- markdownHTMLOptions(defaults=TRUE)
+            ## htmlOptions <- htmlOptions[htmlOptions != "base64_images"]
+            
+            ## you must customize for where YOU store CSS
+            pathToCSS <- "resources/css/jasonm23-markdown-css-themes"
+            pathToCSS <- file.path(path.expand("~/"), pathToCSS, "markdown7.css")
+            
+            markdownToHTML(inputFile, outputFile, options = htmlOptions,
+                           stylesheet = pathToCSS)
+            }
+        )
+```
+
+To better understand what one's `.Rprofile` does, look at the official R help for `Startup`. Google is also your friend.
+
+For completeness, let's create a small HTML table here. Note that the R chunk producing the table below includes a very important chunk option: `results = 'asis'`. You can see that I am using a function from the `xtable` package to convert a data.frame to an HTML table. Other packages you may want to look at for such conversions are `Hmisc`, `tables`, and `R2HTML`. Learn more in the [CRAN Task View: Reproducible Research](http://cran.r-project.org/web/views/ReproducibleResearch.html).
+
+```{r results='asis'}
+library(xtable)
+foo <- head(iris)
+foo <- xtable(foo)
+print(foo, type='html', include.rownames = TRUE)
+```
