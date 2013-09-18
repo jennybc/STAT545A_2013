@@ -6,7 +6,7 @@ Homework #3 Data aggregation
 > Follow the [existing homework submission instructions](hw00_instructions.html) UP TO THE LINK SUBMISSION PART. JB will decide soon how to get your links -- probably via email or a Gist. Just keep them to yourselves for now.
 
   * Start with the Gapminder data as provided in [`gapminderDataFiveYear.txt`](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt).
-  * Use the `plyr` package to tackle some tasks from the list below. You decide what to work on but spend ~2 hours on this. Of course you are welcome to do more if you wish.
+  * Use the `plyr` package to tackle __some, not all,__ tasks from the list below. __You decide what to work on__ but spend ~2 hours on this. Of course you are welcome to do more if you wish.
   * Write up with R Markdown.
     - Include a narrative, written in English prose, i.e. don't just show code and results
     - Expose your code, i.e. use `echo = FALSE` very sparingly
@@ -80,7 +80,7 @@ Get a data.frame with 3 variables: continent, year, and mean or median life expe
 
 #### How is life expectancy changing over time on different continents? "Wide" format. Hard (or possibly silly).
 
-Get a data.frame with 1 + 5 = 6 variables: year and then one variable per continent, giving mean or median life expectancy. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit.
+Get a data.frame with 1 + 5 = 6 variables: year and then one variable per continent, giving mean or median life expectancy. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit. *Hint: I've made some progress here and advise you look into `daply()`.*
 
 
 
@@ -101,11 +101,14 @@ The continents have very different numbers of countries. Maybe the proportion of
 
 #### Report the absolute and/or relative abundance of countries with low life expectancy over time by continent. "Wide" format. Extension of another task of unknown difficulty / value.
 
-Get a data.frame with 1 + 5 = 6 or 1 + (2 * 5) = 11 variables: year and then one or two variables per continent, giving the absolute and/or relative abundance of "low life expectancy" countries. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit.
+Create a table with one row per year and one column -- at least conceptually -- per continent. In that "column" report the absolute and/or relative abundance of "low life expectancy" countries. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit. *Hint: I've made some progress here and advise you look into `daply()`. I ended up skipping straight to character output versus an object appropriate for further computation or graphing. Sometimes it's better to approach these ill-defined tasks from a different angle.*
+ 
+
+
 
 #### Find countries with interesting stories. Open-ended and, therefore, hard. Realistic!
 
-It was easy (see above) to get the minimum life expectancy seen on each continent by year. Now try to report the year, the continent, the minimum (or max or whatever) life expectancy AND the country it pertains to. You could do something similar with GDP per capita or population (though result likely to be boring with population).
+It was easy (see above) to get the minimum life expectancy seen on each continent by year. Now try to report the year, the continent, the minimum (or max or whatever) life expectancy AND the country it pertains to. You could do something similar with GDP per capita or population (though result likely to be boring with population). *Hint: read up on `which.min()` and `which.max()`.*
 
 Consider the linear regression we fit in tutorial of life expectancy vs. time. Find the min (and/or max) of the slope (and/or the intercept) within each continent. Report these interesting countries and some info about them in a data.frame. This might work for other variables too.
 
