@@ -71,17 +71,13 @@ You can [make that apply to all your R sessions via your `.Rprofile`](http://sta
 
 The `plyr` functions will not make much sense viewed individually, e.g. simply reading the help for `ddply()` is not the fast track to competence. There is a very important over-arching logic for the package and it is well worth reading the article [The split-apply-combine strategy for data analysis](http://www.jstatsoft.org/v40/i01/paper), Hadley Wickham, Journal of Statistical Software, vol. 40, no. 1, pp. 1–29, 2011. Though it is no substitute for reading the above, here is the most critical information:
 
- * __split-apply-combine__: A common analytical pattern is to split data into logical bits, apply some function to each bit, and stick the results back together again. Recognize when you're solving such a problem and exploit the right tools.
- * The computations on these little bits must be truly independent, i.e. the problem must be [embarrassingly or pleasingly parallel](http://en.wikipedia.org/wiki/Embarrassingly_parallel), in order to use `plyr`.
- * The heart of `plyr` is a set a functions with names like this:
-```
-XYply
-```
-   where `X` specifies what sort of input you're giving and `Y` specifies the sort of output you want.
-   - `a` = array, where matrices and vectors are important special cases
-   - `d` = data.frame
-   - `l` = list
-   - `_` = no output; only valid for `Y`, obviously; useful when you're operating on a list purely for the side effects, e.g., making a plot or sending output to screen/file
+  * __split-apply-combine__: A common analytical pattern is to split data into logical bits, apply some function to each bit, and stick the results back together again. Recognize when you're solving such a problem and exploit the right tools.
+  * The computations on these little bits must be truly independent, i.e. the problem must be [embarrassingly or pleasingly parallel](http://en.wikipedia.org/wiki/Embarrassingly_parallel), in order to use `plyr`.
+  * The heart of `plyr` is a set a functions with names like this: `XYply` where `X` specifies what sort of input you're giving and `Y` specifies the sort of output you want.
+    - `a` = array, where matrices and vectors are important special cases
+    - `d` = data.frame
+    - `l` = list
+    - `_` = no output; only valid for `Y`, obviously; useful when you're operating on a list purely for the side effects, e.g., making a plot or sending output to screen/file
   * The usage is very similar across these functions. Here are the main arguments:
     - `.data` is the first argument = the input
     - the next argument specifies how to split up the input into bits; it is does not exist when the input is a list, because the pieces are obviously the list components
