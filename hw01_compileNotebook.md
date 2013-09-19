@@ -55,8 +55,7 @@ Please add links to your Homework #1 in this bulleted list.  __Find the placehol
   * wang-ton: [source](https://gist.github.com/yzhxh/6542473#file-stat545a-2013-hw01_wang-ton-r) | [report](http://rpubs.com/yzhxh/stat545a-2013-hw01_wang-ton)
   * weber-lea EDIT HERE
   * woollard-geo [source](https://gist.github.com/geoffwoollard/6545119#file-stat545a-2013-hw01_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw01_woollard-geo)
-  * xue-xinxin [source] (https://gist.github.com/xxue/6567825#file-stat545a-2013-hw01_xue-xinxin.r) | [report] (http://rpubs.com/xxue/8559#file-stat545a-2013-hw01_xue-xinxin.r)
-  * yuen-ama [source](https://gist.github.com/amandammor/6545795#file-stat545a-2013-hw01_yuen-ama-r) | [report](http://rpubs.com/amandammor/stat545a-2013-hw01_yuen-ama)
+  * xue-xinxin [source](https://gist.github.com/xxue/6567825#file-stat545a-2013-hw01_xue-xinxin-r) | [report](http://rpubs.com/xxue/8559) 
   * zhang-yim [source](https://gist.github.com/zym268/6543854#file-stat545a-2013-hw01_zhang-yim-r) | [report](http://rpubs.com/zym268/stat545a-2013-hw01_zhang-yim)
   * zhang-jon [source](https://gist.github.com/jzhang722/6574149#file-stat545a-2013-hw01_zhang-jon-r) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw01_zhang-jon)
   * zhang-yif [source](https://gist.github.com/anonymous/6564688#file-stat545a-2013-hw01_zhang-yif-r) | [report](http://rpubs.com/dora7870/stat545a-2013-hw01_zhang-yif)
