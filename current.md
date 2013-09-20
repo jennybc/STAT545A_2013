@@ -76,6 +76,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
 * Work through
     - [Getting data out of R](block05_getNumbersOut.html)
+    - An [external resource on writing your own functions](block06_functions.html). Pick one (or more) for yourself.
 
 cm 06 | Wednesday Sept 25
 

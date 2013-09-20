@@ -1,0 +1,33 @@
+Functions, especially user-written
+========================================================
+
+```{r eval = FALSE, echo = FALSE}
+## used during debugging
+search()
+```
+
+> JB: this is not a high priority for me to write up myself. So I include links to some perfectly good material that others have written. If you find more resources, feel free to suggest.
+
+[Section 10 Writing your own functions](http://cran.r-project.org/doc/manuals/R-intro.html#Writing-your-own-functions) from the official document, An Introduction to R
+
+[User-written functions](http://www.statmethods.net/management/userfunctions.html) on the Quick-R website. Very minimal. The slightly expanded version -- 2 whole pages! -- in the R in Action Book version is much nicer, but oh well.
+
+The [block on functions](http://vscarl1.stat.ubc.ca/SCARL/workshops/2013-09_biodiversity/block7.html), prepared by Davor Cubranic, from the September 2013 R Workshop run by [SCARL](http://www.stat.ubc.ca/SCARL/) for the [BRITE](http://www.biodiversity.ubc.ca/BRITE/) training program
+
+Nice R code guides (for better or worse, kind of wordy, like my stuff)
+
+  * Their "total beginner" guide to [Writing functions](http://nicercode.github.io/intro/writing-functions.html)
+
+  * Slightly more advanced: [Using functions to simplify your scripts](http://nicercode.github.io/guides/functions/)
+
+[Functions](http://adv-r.had.co.nz/Functions.html) from Advanced R Programming by Hadley Wickham
+
+```{r  eval = FALSE, echo = FALSE}
+## used during debugging
+search()
+#detach(pos = grep("gdata", search()))
+```
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
