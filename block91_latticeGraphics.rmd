@@ -1,7 +1,9 @@
 lattice graphics
 ========================================================
 
-See the module [R graphics: base vs. lattice vs. ggplot2][base_lattice_ggplot2] for an overview of the R graphics landscape and links to good reference material. Today's seminar will primarily draw on functions in the add-on package `lattice`, which is included in all binary distributions of R. If it is not already loaded, load it now:
+> Borrowed from 2012 instance of STAT 540 Statistics for High Dimensional Biology. Hence the use of gene expression data instead of Gapminder. There will be some broken links, I'm sure, but you'll get the main ideas.
+
+Go [here](block91_latticeGraphics.html) for an overview of the R graphics landscape and links to good reference material. This tutorial is an introduction to the add-on package `lattice`, which is included in all binary distributions of R. If it is not already loaded, load it now:
 
 ```{r}
 library(lattice)
@@ -9,7 +11,7 @@ library(lattice)
 
 > Remember you may need to edit the file paths below, to reflect your working directory and local file storage choices.
 
-We will work with a mouse dataset, containing "gene expression profiles of purified photoreceptors at distinct developmental stages and from different genetic backgrounds". The microarray platform was Affymetrix mouse genomic expression array 430 2.0. For more information on what we'll call the `photoRec` dataset, go [here](../data/photoRec), especially the [README.txt](../data/photoRec/README.txt).
+We will work with a mouse dataset, containing "gene expression profiles of purified photoreceptors at distinct developmental stages and from different genetic backgrounds". The microarray platform was Affymetrix mouse genomic expression array 430 2.0. For more information on what we'll call the `photoRec` dataset, go [here](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/photoRec/), especially the [README.txt](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/photoRec/README.txt).
 
 The full data matrix contains expression data for almost 30K genes/probesets! At first, we will work with a small friendly excerpt. In short, here's the pre-processing we've done for you:
 
@@ -18,15 +20,24 @@ The full data matrix contains expression data for almost 30K genes/probesets! At
   * Glue these together with information about genotype and developmental stage of the samples, i.e. add more columns or variables.
   * Replace the arcane Affymetrix probeset names with arbitrary Pokemon attacks to make it easier to talk about results and figures below. We will just talk about these as if they are genes.
 
-We load this mini dataset from a saved R object, in order to preserve factor levels that were set rationally (and non-alphabetically) during data cleaning and pre-processing. To get the gory details on the how and why of this sort of data handling, go [here][photoRecPreprocess]. FYI, the plain text version is available in the file [GSE4051_MINI.txt](../data/photoRec/GSE4051_MINI.txt). 
+We load this mini dataset from a saved R object, in order to preserve factor levels that were set rationally (and non-alphabetically) during data cleaning and pre-processing. To get the gory details on the how and why of this sort of data handling, go [here][photoRecPreprocess]. FYI, the plain text version is available in the file [GSE4051_MINI.txt](http://www.stat.ubc.ca/%7Ejenny/notOcto/STAT545A/examples/photoRec/GSE4051_MINI.txt). 
 
-```{r}
+> When this class actually ran, my web set-up was different. I've applied a quick fix to Just. Get. The. Data. In.
+
+```{r tidy = FALSE}
 #I don't want to load from plain text because I'd need to fiddle with factor
-#levels.
-
-#miniDat <- read.table("../data/photoRec/GSE4051_MINI.txt",header=TRUE,row.names=1) 
+#levels. Here's some code that would help you do that, though.
+#miniDat <- read.table("GSE4051_MINI.txt",header=TRUE,row.names=1) 
 #str(miniDat)
-load("../data/photoRec/GSE4051_MINI.robj")
+
+## data import from URL
+## kdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/photoRec/GSE4051_MINI.robj"
+## load(kdURL)
+## OK ... that did not work
+
+## let's try with the dput output
+kdURL <- "http://www.stat.ubc.ca/%7Ejenny/notOcto/STAT545A/examples/photoRec/GSE4051_MINI_DPUT.txt" 
+kDat <- dget(kdURL)
 str(kDat)
 table(kDat$devStage)
 table(kDat$gType)
@@ -299,13 +310,18 @@ specified to some non-default value. More on that can be found in Sarkar's book 
 
 Now we need a larger dataset. Let's load the real full data matrix and experimental design now.
 
-The experimental data, i.e. covariate information for the samples, is available in plain text form in the file [GSE4051_design.txt](../data/photoRec/GSE4051_design.txt) but you will notice below that we prefer to load it from a saved R object, which preserves factor levels. To get the gory details on the how and why of this sort of data cleaning, go [here][photoRecPreprocess].
+The experimental data, i.e. covariate information for the samples, is available in plain text form in the file [GSE4051_design.txt](http://www.stat.ubc.ca/%7Ejenny/notOcto/STAT545A/examples/photoRec/GSE4051_design.txt) but you will notice below that we prefer to load it from a saved R object, which preserves factor levels. To get the gory details on the how and why of this sort of data cleaning, go [here][photoRecPreprocess].
+
+> When this class actually ran, my web set-up was different. I've applied a quick fix to Just. Get. The. Data. In.
+
+<!--- this chunk is begging to be cached -->
 
 ```{r}
-prDat <- read.table("../data/photoRec/GSE4051_data.txt")
+dataURL <- "http://www.stat.ubc.ca/%7Ejenny/notOcto/STAT545A/examples/photoRec/GSE4051_data.txt"
+prDat <- read.table(dataURL)
 str(prDat)
-## loads an object named 'prDes'
-load("../data/photoRec/GSE4051_design.robj")
+designURL <- "http://www.stat.ubc.ca/%7Ejenny/notOcto/STAT545A/examples/photoRec/GSE4051_design_DPUT.txt"
+prDes <- dget(designURL)
 str(prDes)
 ```
 
