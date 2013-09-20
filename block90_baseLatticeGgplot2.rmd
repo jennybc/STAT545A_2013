@@ -96,9 +96,9 @@ Resources:
   * A [short tutorial][ggplot2_tutorial] by Ramon Saccilotto from the
   Basel Institute for Clinical Epidemiology and Biostatistics
   
-  * R Graphics [available via StatsNetbase][rGraphics_book_statsnetbase] by Paul Murrell, CRC Press  (not limited to `lattice`, obviously) | [author's webpage for the book][rGraphics_book_murrellPage] | [GoogleBooks search][rGraphics_book_GoogleBooks_search]
+  * R Graphics [available via StatsNetbase][rGraphics_book_statsnetbase] by Paul Murrell, CRC Press  (not limited to `ggplot2`, obviously) | [author's webpage for the book][rGraphics_book_murrellPage] | [GoogleBooks search][rGraphics_book_GoogleBooks_search]
 
-  * R Graphics, 2nd edition [available via StatsNetbase][rGraphics2e_book_statsnetbase] by Paul Murrell, Chapman & Hall/CRC Press (2011) (not limited to `lattice`, obviously) | [author's webpage for the book][rGraphics2e_book_murrellPage] | [GoogleBooks search][rGraphics2e_book_GoogleBooks_search] | [companion R package, RGraphics, on CRAN][rGraphics2e_book_CRANpkg]
+  * R Graphics, 2nd edition [available via StatsNetbase][rGraphics2e_book_statsnetbase] by Paul Murrell, Chapman & Hall/CRC Press (2011) (not limited to `ggplot2`, obviously) | [author's webpage for the book][rGraphics2e_book_murrellPage] | [GoogleBooks search][rGraphics2e_book_GoogleBooks_search] | [companion R package, RGraphics, on CRAN][rGraphics2e_book_CRANpkg]
   
 ### Cage match: which is better `lattice` or `ggplot2`?
 

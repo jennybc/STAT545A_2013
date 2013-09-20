@@ -288,7 +288,7 @@ Results you present to the world generally need polishing to make the best impre
   
 ### Exporting data
 
-What it you wanted to write the table of slopes and intercepts to file? We'll talk about that more soon, but if this is an emergency, the main functions to consider are `write.table()`, `dput()`, and `saveRDS()`.
+What it you wanted to write the table of slopes and intercepts to file? Go to the tutorial on [getting data out of R](block05_getNumbersOut.html), but if this is an emergency, the main functions to consider are `write.table()` and `saveRDS()`.
 
 ### References
 

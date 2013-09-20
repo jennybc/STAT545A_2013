@@ -1,10 +1,12 @@
 Getting data out of R
 ========================================================
 
-```{r  eval = FALSE, echo = FALSE}
-## used during debugging
-search()
-#detach(pos = grep("gdata", search()))
+```{r include = FALSE}
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
 ```
 
 ### Optional getting started advice
@@ -124,7 +126,7 @@ I have toyed with the idea of writing import helper functions for a specific pro
 
 The topic of factor level reordering will be covered elsewhere, but let's Just. Do. It. I reorder the country factor levels according to the intercept, i.e. the life expectancy in 1952.
 
-```{r}
+```{r tidy = FALSE}
 head(levels(jCoefs$country)) # alphabetical order
 jCoefs <- within(jCoefs, country <- reorder(country, intercept))
 head(levels(jCoefs$country)) # in increasing order of 1952 life expectancy
@@ -222,7 +224,7 @@ Note how the original, post-reordering country factor levels are restored using 
 
 But why on earth would you ever do this?
 
-The main application of this is [the creation of highly portable, self-contained minimal examples](http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example). For example, if you want to pose a question on a forum or directly to an expert, it might be required or just plain courteous to NOT attach any data files. You will need a monolithic, plain text blob that defines any necessary objects and has the necessary code. `dput()` can be helpful.
+The main application of this is [the creation of highly portable, self-contained minimal examples](http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example). For example, if you want to pose a question on a forum or directly to an expert, it might be required or just plain courteous to NOT attach any data files. You will need a monolithic, plain text blob that defines any necessary objects and has the necessary code. `dput()` can be helpful for producing the piece of code that defines the object. If you `dput()` without specifying a file, you can copy the return value from Console and paste into a script. Or you can write to file and copy from there or add R commands below.
 
 ### Clean up
 
@@ -233,10 +235,11 @@ file.remove(list.files(pattern = "^jCoef"))
 ```
 
 
-<a id="pitfalls"></a>
-### Pitfalls of delimited files
+### Pitfalls of delimited files <a id="pitfalls"></a>
 
 > Still under development. Really belongs in a data cleaning and import topic or tutorial, but such does not yet exist.
+
+> I could also add explicit demos of writing LaTeX or HTML tables to file versus having them appear "live" in a dynamic report.
 
 If a delimited file contains fields where a human being has typed, be crazy paranoid because people do really nutty things. Especially people who aren't in the business of programming and have never had to compute on text. Claim: a person's regular expression skill is inversely proportional to the skill required to handle the files they create. Implication: if someone has never heard of regular expressions, prepare for lots of pain working with their files.
 
@@ -259,12 +262,6 @@ Tidy data by Hadley Wickham. Submitted to The Journal of Statistical Software. P
 Data Manipulation with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-74731-6/page/1) by Phil Spector, Springer (2008) &#124; [author webpage](http://www.stat.berkeley.edu/%7Espector/) &#124; [GoogleBooks search](http://books.google.com/books?id=grfuq1twFe4C&lpg=PP1&dq=data%2520manipulation%2520spector&pg=PP1#v=onepage&q=&f=false)
 
   * See Chapter 2 (“Reading and Writing Data”)
-
-```{r eval = FALSE, echo = FALSE}
-## used during debugging
-search()
-#detach(pos = grep("gdata", search()))
-```
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
