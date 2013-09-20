@@ -74,6 +74,9 @@ Monday Sept 02 is a statutory holiday. No class.
     
 ### cm 05 | Monday Sept 23 | Univariate statistics and visualizations
 
+* Work through
+    - [Getting data out of R](block05_getNumbersOut.html)
+
 cm 06 | Wednesday Sept 25
 
 cm 07 | Monday Sept 30
