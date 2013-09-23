@@ -12,6 +12,7 @@ Fall 2013: I am (finally) marshalling my teaching materials in one place and exp
   * [Getting data out of R](block05_getNumbersOut.html)
   * [External resources on writing your own functions](block06_functions.html) PLACEHOLDER 
   * [Overview of the R graphics landscape](block90_baseLatticeGgplot2.html)
+  * [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html)
   
     
 Smaller topics

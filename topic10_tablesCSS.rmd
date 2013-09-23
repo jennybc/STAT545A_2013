@@ -3,20 +3,67 @@ My table looks better than yours
 
 > JB: I would like to link to examples that show the same R Markdown file compiled to HTML using different CSS ... but this is a good start.
 
-After the [data aggregation tutorial](http://www.stat.ubc.ca/~jenny/STAT545A/block04_dataAggregation.html) a student noticed that, when run on her machine, my examples did not produce such attractive tables. That's because I am not using [RStudio's default Markdown CSS](https://github.com/rstudio/markdown/blob/master/inst/resources/markdown.css) upon conversion from R Markdown to HTML.
+After the [data aggregation tutorial](http://www.stat.ubc.ca/~jenny/STAT545A/block04_dataAggregation.html) a student noticed that, when run on her machine, my examples did not produce such attractive tables. That's because I am NOT using [RStudio's default Markdown CSS](https://github.com/rstudio/markdown/blob/master/inst/resources/markdown.css) upon conversion from R Markdown to HTML.
 
-The default CSS produces wide webpages witht text running across the whole page and [soft wrapping](http://en.wikipedia.org/wiki/Word_wrap). I don't find that very readable.
+The default CSS produces wide webpages with small text, which I find hard to read.
 
-I took an entire collection of CSS from <https://github.com/jasonm23/markdown-css-themes>, which are released under a "do what you want with them" license.
+First, get a better CSS. I took an entire collection from <https://github.com/jasonm23/markdown-css-themes>, which are released under a "do what you want with them" license. When I wrote this in September 2013, I was using `markdown7.css`. I can't promise I won't switch CSS, so there is no absolute guarantee that the HTML you are looking at now was created with `markdown7.css`.
 
-When I wrote this in September 2013, I was using `markdown7.css`. I can't promise I won't switch CSS, so there is no absolute guarantee that the HTML you are looking at now was created with `markdown7.css`.
-
-Once you have the CSS file, how do you make RStudio use it, e.g., when you use the "Knit HTML" button?
+But how do you actually use a different CSS? Here's a suggested workflow if you're struggling but if you're feeling lucky, just skip to the bottom.
 
 I learned everything I know about this from RStudio's page on [Customizing Markdown Rendering](http://www.rstudio.com/ide/docs/authoring/markdown_custom_rendering).
 
-I have this in my `.Rprofile`, among many other things (I added comments for clarity here):
+#### Specifying a CSS when knitting "by hand"
+
+Put the CSS you want to use, e.g., the file `markdown7.css`, in the directory associated with your project, which I'll assume is your current working directory and also holds the file(s) you want to use "Knit HTML" or "Compile Notebook" on. BUT instead of using the buttons, compile to HTML yourself. For example:
+
+```{r eval = FALSE}
+library(knitr)
+knit2html("test.Rmd")
+```
+If you get an error, read it and fix it. Once you are error-free, look at, e.g., `test.html` in a web browser to make sure all is well. You can read more about compiling to HTML [here](http://www.rstudio.com/ide/docs/r_markdown).
+
+Now, request your new non-default CSS. This is controlled by the `stylesheet =` argument of the `markdownToHTML()` function, which is being called by `knit2html()`. We are exploiting the fact that `knit2html()` includes the very special function argument `...` and is passing my stylesheet down to `markdownToHTML()`.
+
+```{r eval = FALSE}
+knit2html("test.Rmd", stylesheet = "markdown7.css")
+```
+
+If you get an error, read it and fix it. Once you are error-free, look at, e.g., `test.html` in a web browser to make sure the overall style is different. For example, the font size is bigger, the page isn't so wide, the tables look different/better.
+
+Once you've proven you can control the CSS, move your stylesheet(s) to another location, probably somewhere higher up in your filesystem, so you can use them in many projects. Note the new absolute path to your CSS and compile your test again "by hand" specifying the new location. Maybe try a different stylesheet just for fun!
+
+```{r eval = FALSE}
+knit2html("test.Rmd", stylesheet = "/Users/jenny/resources/css/jasonm23-markdown-css-themes/markdown4.css")
+```
+
+Step 1 is complete.
+
+#### Using `.Rprofile` to influence start-up
+
+To better understand what one's `.Rprofile` does, look at the official R help for `Startup`. Google is also your friend.
+
+First, find out your home directory. That's where you should put `.Rprofile`.
 ```{r}
+path.expand("~/")
+```
+
+Initialize `.Rprofile` with something minimal like this:
+
+```{r eval = FALSE}
+cat("\n  Get some real work done, Jenny!\n\n")
+```
+
+Restart R and verify that your motivational text appears. Remember you can restart R within RStudio with Session > Restart R. If you don't see your text, your `.Rprofile` is not being processed. Troubleshoot until you know it's working.
+
+Step 2 is complete.
+
+#### Putting it all together: change the CSS used by RStudio's "Knit HTML" and "Compile Notebook" buttons
+
+Now that you have a working-but-silly `.Rprofile` and you have proven you can specify the CSS "by hand", you can change the behavior of RStudio's "Knit HTML" and "Compile Notebook" buttons.
+
+Include something like this in your `.Rprofile` (I added comments for clarity here):
+```{r eval = FALSE}
 options(rstudio.markdownToHTML =
           function(inputFile, outputFile) {
             require(markdown)
@@ -35,8 +82,9 @@ options(rstudio.markdownToHTML =
             }
         )
 ```
+If you are using Windows, you may need to think about the path separator, although [this thread](http://stackoverflow.com/questions/4459969/are-there-any-platforms-for-which-the-file-separator-isnt) seems to suggest not? I'D LOVE TO NAIL THIS DOWN!
 
-To better understand what one's `.Rprofile` does, look at the official R help for `Startup`. Google is also your friend.
+Now compile your test document to HTML again, using RStudio's buttons, and confirm your new CSS is being used. You may need to restart RStudio for this to come into effect.
 
 For completeness, let's create a small HTML table here. Note that the R chunk producing the table below includes a very important chunk option: `results = 'asis'`. You can see that I am using a function from the `xtable` package to convert a data.frame to an HTML table. Other packages you may want to look at for such conversions are `Hmisc`, `tables`, and `R2HTML`. Learn more in the [CRAN Task View: Reproducible Research](http://cran.r-project.org/web/views/ReproducibleResearch.html).
 
