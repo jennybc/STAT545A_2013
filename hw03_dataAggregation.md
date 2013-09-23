@@ -3,7 +3,7 @@ Go back to [STAT545A home](current.html)
 Homework #3 Data aggregation 
 ========================================================
 
-> Follow the [existing homework submission instructions](hw00_instructions.html) UP TO THE LINK SUBMISSION PART. JB will open a Gist late in the weekend for students to post their links. Just keep them to yourselves for now. Worst case, you can add your links during class Monday.
+> Follow the [existing homework submission instructions](hw00_instructions.html) UP TO THE LINK SUBMISSION PART. Submit your links by editing [this Google doc](https://docs.google.com/document/d/1QBzCNFujBgrzDRtfPR_VBlKnpFsO_E6WIl-xUMJIb68/edit?usp=sharing)
 
   * Start with the Gapminder data as provided in [`gapminderDataFiveYear.txt`](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt).
   * Use the `plyr` package to tackle __some, not all,__ tasks from the list below. __You decide what to work on__ but spend ~2 hours on this. Of course you are welcome to do more if you wish.
@@ -15,7 +15,7 @@ Homework #3 Data aggregation
   * DUE: Before class begins 9:30am Monday September 23.
     - Compile into an HTML report. Follow the naming convention. Publish the HTML report on the web somewhere, such as on RPubs. Make the slug follow the naming convention.
     - Publish the R Markdown file as a Gist. Follow the naming convention.
-    - Share your links. DETAILS TBD. Worst case, come to class ready to share links.
+    - Share your links by editing [this Google doc](https://docs.google.com/document/d/1QBzCNFujBgrzDRtfPR_VBlKnpFsO_E6WIl-xUMJIb68/edit?usp=sharing).
  
 Tips
 
@@ -27,12 +27,6 @@ Tips
 In due course, links to student work will appear on this page.
 
 ### Menu of data aggregation tasks.
-
-
-
-
-
-
 
 #### Create your own adventure.
 

@@ -1,9 +1,7 @@
 Go back to [STAT545A home](current.html)
 
-How to submit homework, Take 1
+How to submit homework, Take 2
 ========================================================
-
-> NOTE: new filename convention! Since Gist and RPubs mess with capitalization, let's go lowercase. Sorry to inconvenience the people who tried already.
 
 ### Filename convention
 
@@ -36,18 +34,7 @@ The 3 steps that involve the outside world:
     - Copy the entire file to the clipboard, paste into the Gist box, and click the "Create Public Gist" button.
     - Click on the "Permalink" button, in the upper right corner of the box containing your Gist (it looks like two links of a chain). 
     - Capture the URL. Example: a student published her homework #1 script as a Gist and got a permalink URL of <https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r>.
-  * Add or edit a line in the appropriate Markdown file to include links to your published items
-    - If you want to do this properly with git and github and you know how, carry on. But for everyone else ...
-    - Sign in to [github](https://github.com).
-    - Visit the appropriate Markdown file in the course repository. Example for homework #1: <https://github.com/jennybc/STAT545A/blob/master/hw01_compileNotebook.md>. Isn't it nice when filenames are informative?
-    - Click "Edit".
-    - Make your edit, using the placeholder built for you if at all possible. DO NOT GET CREATIVE OR SLOPPY. Look around at what everyone else is doing and make your entry follow the pattern, with only the minimal changes needed to customize for *your* homework.
-    - At the bottom of the page, fill in the description, e.g. "Homework #1 submission by Jenny Bryan" and click on "Propose file change" button. (Under the hood, this will fork the course repository and create a branch for your change, by default called "patch-1").
-    - A page will open that informs you whether there are any merge issues with the change. I'm not sure what you will see here -- all of these changes at once do cause merge issues for me, but that is my problem.
-    - Assuming you are allowed to, click on "Send pull request".
-    - Don't expect any immediate result in the repository or on the course webpage. JB has to do various things behind the scenes to accept the edit and push an update to the course webpage.
-    - That's it! We may discuss "tidying up" your github account later.
-    - Contact JB or post on the Google Group if you have problems.
+  * __NEW__ Share the links to your code. JB will usually create a share a Google doc for this purpose.
     
 Resources for developing the homework submission process:
 
@@ -67,3 +54,15 @@ Resources for developing the homework submission process:
   * <https://www.openshift.com/wiki/github-workflow-for-submitting-pull-requests>
   * <http://stackoverflow.com/questions/2014914/how-do-you-merge-changes-on-non-master-branches-from-a-forked-github-repository>
   * <http://www.eqqon.com/index.php/Collaborative_Github_Workflow>  
+  * __Here are the old instructions about sharing links by editing the course repo. This had a poor hassle:result ratio so we abandoned.__ Add or edit a line in the appropriate Markdown file to include links to your published items
+    - If you want to do this properly with git and github and you know how, carry on. But for everyone else ...
+    - Sign in to [github](https://github.com).
+    - Visit the appropriate Markdown file in the course repository. Example for homework #1: <https://github.com/jennybc/STAT545A/blob/master/hw01_compileNotebook.md>. Isn't it nice when filenames are informative?
+    - Click "Edit".
+    - Make your edit, using the placeholder built for you if at all possible. DO NOT GET CREATIVE OR SLOPPY. Look around at what everyone else is doing and make your entry follow the pattern, with only the minimal changes needed to customize for *your* homework.
+    - At the bottom of the page, fill in the description, e.g. "Homework #1 submission by Jenny Bryan" and click on "Propose file change" button. (Under the hood, this will fork the course repository and create a branch for your change, by default called "patch-1").
+    - A page will open that informs you whether there are any merge issues with the change. I'm not sure what you will see here -- all of these changes at once do cause merge issues for me, but that is my problem.
+    - Assuming you are allowed to, click on "Send pull request".
+    - Don't expect any immediate result in the repository or on the course webpage. JB has to do various things behind the scenes to accept the edit and push an update to the course webpage.
+    - That's it! We may discuss "tidying up" your github account later.
+    - Contact JB or post on the Google Group if you have problems.
