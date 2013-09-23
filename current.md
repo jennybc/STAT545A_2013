@@ -74,11 +74,22 @@ Monday Sept 02 is a statutory holiday. No class.
     
 ### cm 05 | Monday Sept 23 | Univariate statistics and visualizations
 
-* Work through
+  * Work through
     - [Getting data out of R](block05_getNumbersOut.html)
     - An [external resource on writing your own functions](block06_functions.html). Pick one (or more) for yourself.
+    - Exploring a quantitative variable
+    
+  * Google form re: datasets TO BE POSTED
+  
+  * Reading on the `lattice` package
+  
+    - Ch. 1 Introduction (short! totally worth it)
+    - Ch. 2 A Technical Overview of lattice (skimming is OK; at least you'll know where to come back to when you're confused)
+    - Ch. 3 Visualizing Univariate Distributions (great companion to our work in class this week)
 
-cm 06 | Wednesday Sept 25
+### cm 06 | Wednesday Sept 25 | Univariate statistics and visualizations cont'd; R graphics landscape
+
+* Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from HW 3.
 
 cm 07 | Monday Sept 30
 

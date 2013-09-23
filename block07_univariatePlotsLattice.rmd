@@ -1,0 +1,202 @@
+Exploring a quantitative variable with `lattice`
+========================================================
+
+```{r include = FALSE}
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+We are going to focus on studying a single quantitative variable -- either alone or in conjunction with one or more categorical variables. We are going to use functions from the `lattice` package in this tutorial and will revisit this ground using `ggplot2` shortly.
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "univariate plots" and "lattice".
+
+### Load the Gapminder data and `lattice` (and `plyr`)
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+
+Load the `lattice` and `plyr` packages.
+```{r}
+library(lattice)
+library(plyr)
+```
+
+### Show me the data with `stripplot()`
+
+Every time someone shows me a table of estimated regression coefficients or drops a naked p-value into their paper ... without ever showing me the raw data I want to scream: Show me the data! Convince me *you* have not taken the time to look at it yourself before you plunged into testing and modelling. The "show me the money" scene from the movie Jerry Maguire should really be edited to replace "money" with "data".
+
+<!--- Watch [this video](http://www.youtube.com/watch?v=OaiSHcHM0PA) and substitute "data" for "money". -->
+
+A stripplot is a univariate scatterplot.
+```{r}
+stripplot(~ lifeExp, gDat)
+```
+It's silly to apply to such a large dataset: overplotting causes the data to look like a line segment. Let's look at less data.
+```{r}
+hDat <- subset(gDat, year %in% c(1952, 2007)) # storing because we will re-use alot
+stripplot(~ lifeExp, hDat)
+```
+Still silly. But look what happens once we ask for stripplots for each continent.
+```{r}
+stripplot(continent ~ lifeExp, hDat)
+```
+I would prefer to have the y-axis correspond to life expectancy and the x-axis to continent. So I just swap the variables' positions in the formula.
+```{r}
+stripplot(lifeExp ~ continent, hDat)
+```
+Despite our focus on less data, we still have some overplotting. It can be nice to add jitter, which is just a small bit of meaningless noise, in the horizontal position, which corresponds to continent.
+```{r}
+stripplot(lifeExp ~ continent, hDat, jitter.data = TRUE)
+```
+A horizontal grid would be nice here. (Notice how the data wiggles every time we plot due to the random nature of the jitter.)
+```{r}
+stripplot(lifeExp ~ continent, hDat, jitter.data = TRUE, grid = "h")
+```
+I'm interested in the typical value for each continent, numerically and graphically. This is your first glimpse at how nicely all of these habits and tools play together: religious use of data.frames, keeping data "tidy", `plyr` and `lattice` and/or `ggplot2`.
+```{r}
+#ddply(gDat, ~continent, function(x) summary(x$lifeExp))
+ddply(hDat, ~ continent, summarize, meanLifeExp = mean(lifeExp))
+stripplot(lifeExp ~ continent, hDat, jitter.data = TRUE,
+          grid = "h", type = c("p", "a"))
+```
+Eyeball-o-metrically verify that the reported averages match what you see on the plot. This sort of paranoid consistency check is critical in early data exploration. The `a` in the `type =` argument requests connect-the-dots for the continent specific averages. Under the hood, there is a `fun = ` argument that merely *defaults* to `mean()`, thereby connecting the averages. If we want something else, we can specify `fun =` explicitly. Maybe I'm interested in the lowest life expectancies and want `fun = min`. And those low-outliers intrigue me ... which countries are they?
+```{r}
+ddply(hDat, ~ continent, function(x) {
+  theMin <- which.min(x$lifeExp)
+  x[theMin, c("country", "year", "continent", "lifeExp")]
+  })
+stripplot(lifeExp ~ continent, hDat, jitter.data = TRUE,
+          grid = "h", type = c("p", "a"), fun = min)
+```
+I'm tired of dragging Oceania around, with its two measly countries. Let's remove all associated observations. To truly drop "Oceania" as a factor level, I use the `droplevels()` function (for more on being the boss of factors go FUTURE FACTOR TUTORIAL).
+```{r}
+iDat <- subset(hDat, continent != "Oceania")
+table(iDat$continent) # Oceania is still there!
+iDat <- droplevels(subset(hDat, continent != "Oceania"))
+table(iDat$continent) # Oceania is gone now
+stripplot(lifeExp ~ continent, iDat, jitter.data = TRUE,
+          grid = "h", type = c("p", "a"))
+```
+I'd like the continents to be in order of life expectancy, low to high. And yes I realize that's an ill-defined thing. You will have to make lots of judgement calls to get anywhere in data analysis. Embrace being The Decider. (For more on reordering factors go FUTURE FACTOR TUTORIAL).
+```{r}
+ddply(iDat, ~ continent, summarize, avgLifeExp = mean(lifeExp))
+## Americas and Asia should be switched in the order of the levels
+levels(reorder(iDat$continent, iDat$lifeExp))
+iDat <- within(iDat, continent <- reorder(continent, lifeExp))
+ddply(iDat, ~ continent, summarize, avgLifeExp = mean(lifeExp)) # YES!
+stripplot(lifeExp ~ continent, iDat, jitter.data = TRUE,
+          grid = "h", type = c("p", "a"))
+```
+Much better! Now let's distinguish the two years of data with the very powerful `groups =` argument, which accepts a factor.
+```{r}
+stripplot(lifeExp ~ continent, iDat,
+          groups = year,
+          jitter.data = TRUE,
+          type = c("p", "a"), fun = median)
+```
+But how do the colors correspond to year? We need a key. `auto.key = TRUE` is often good enough for quick plots.
+```{r}
+stripplot(lifeExp ~ continent, iDat,
+          groups = year, auto.key = TRUE,
+          jitter.data = TRUE,
+          type = c("p", "a"), fun = median)
+```
+But I hate it when the key order has no relation to the data order or, especially, when they are *exactly reversed*, as they are here. The `auto.key =` argument can be logical (TRUE or FALSE) but it can be also be used for limited customization.
+```{r}
+stripplot(lifeExp ~ continent, iDat,
+          groups = year, auto.key = list(reverse.rows = TRUE),
+          jitter.data = TRUE,
+          type = c("p", "a"), fun = median)
+```
+> Direct labelling would be even better but requires more packages. Look into `directlabels` and `latticedl`, I think, for `ggplot2` and `lattice` respectively.
+
+### Show me the distribution with `densityplot()`
+
+Sometimes you have too much data to work with `stripplot()`. Or maybe you just want a better sense of where the data is truly concentrated. The next visualization you should try is `densityplot()`.
+
+```{r}
+densityplot(~lifeExp, iDat)
+```
+You can think of this as a smooth histogram. Under the hood, it is actually a kernel density estimate. By default, the data is portrayed down below as a "rug", but you may want to turn this off and request a simple reference line instead.
+```{r}
+densityplot(~lifeExp, iDat, plot.points = FALSE, ref = TRUE)
+```
+One advantage over histograms is that it is easier to portray multiple distributions on one plot, so you can make comparisons. The `group =` argument can be used here as well.
+```{r}
+densityplot(~ lifeExp, iDat, plot.points = FALSE, ref = TRUE,
+            group = continent,
+            auto.key = list(columns = nlevels(iDat$continent)))
+```
+You can also portray different sub-datasets in different *panels*, known as multi-panel conditioning. Specified on the far right of the formula following a vertical bar, as in `y ~ x | z`, the conditioning variable `z` must be a factor (or something that can be made into one) and you will get the requested type of plot of `y` against `x` for each level of `z`. Multi-panel conditioning is available in many high-level `lattice` functions.
+```{r}
+densityplot(~ lifeExp | year, iDat)
+```
+That's interesting! These distributions look very different than the overall distribution, underscoring the importance of incorporating important covariates into both your visualizations and your models.
+
+Two arguments you may wish to tune on your densityplots are `bw =`, `adjust =`, and `n =`, which specify the bandwidth of the underlying kernel smoother and how fine a grid is used when the kernel density estimate is evaluated. It is really easy to confuse yourself here: believe it or not, `n = ` has nothing to do with sample size or the number of observations in your dataset. To make the underlying kernel density estimate smoother, increase the bandwidth. To make the connect-the-dots portrayal of it on your plot better able to follow the curve, whatever it is, increase `n`. Let's demonstrate.
+
+```{r fig.width = 10}
+hardCorners <- densityplot(~lifeExp, iDat, n = 20, main = "n = 20")
+softCorners <- densityplot(~lifeExp, iDat, n = 200, main = "n = 200")
+print(hardCorners, position=c(0, 0, 0.55, 1), more=TRUE)
+print(softCorners, position=c(0.45, 0, 1, 1))
+```
+
+```{r fig.width = 10}
+wiggly <- densityplot(~lifeExp, iDat, adjust = 0.5, main = "default bw * 0.5")
+rolling <- densityplot(~lifeExp, iDat, adjust = 2, main = "default bw * 2")
+print(wiggly, position=c(0, 0, 0.55, 1), more=TRUE)
+print(rolling, position=c(0.45, 0, 1, 1))
+```
+
+### histograms, box plots, violin plots, ecdf plots
+
+```{r}
+histogram(~lifeExp, gDat)
+bwplot(lifeExp ~ continent, gDat)
+bwplot(lifeExp ~ continent, gDat, panel = panel.violin)
+bwplot(lifeExp ~ as.factor(year) | continent, gDat)
+
+```
+
+
+### References
+
+Nine simple ways to make it easier to (re)use your data by Ethan P White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, Sarah R. Supp.
+
+  * First appeared here: PeerJ PrePrints 1:e7v2 <http://dx.doi.org/10.7287/peerj.preprints.7v2>
+  * Published here: Ideas in Ecology and Evolution 6(2): 1–10, 2013. doi:10.4033/iee.2013.6b.6.f <http://library.queensu.ca/ojs/index.php/IEE/article/view/4608>
+  * Section 4 "Use Standard Data Formats" is especially good reading.
+  
+Tidy data by Hadley Wickham. Submitted to The Journal of Statistical Software. Preprint available <http://vita.had.co.nz/papers/tidy-data.pdf>.  
+
+Data Manipulation with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-74731-6/page/1) by Phil Spector, Springer (2008) &#124; [author webpage](http://www.stat.berkeley.edu/%7Espector/) &#124; [GoogleBooks search](http://books.google.com/books?id=grfuq1twFe4C&lpg=PP1&dq=data%2520manipulation%2520spector&pg=PP1#v=onepage&q=&f=false)
+
+  * See Chapter 2 (“Reading and Writing Data”)
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
