@@ -77,7 +77,7 @@ Monday Sept 02 is a statutory holiday. No class.
   * Work through
     - [Getting data out of R](block05_getNumbersOut.html)
     - An [external resource on writing your own functions](block06_functions.html). Pick one (or more) for yourself.
-    - [Exploring a quantitative variable with `lattice`](Block07_univariatePlotsLattice.html). We did the stripplot material. We'll do the rest in class on Wednesday.
+    - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We did the stripplot material. We'll do the rest in class on Wednesday.
     
   * Google form re: datasets TO BE POSTED
   
