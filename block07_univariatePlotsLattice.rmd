@@ -156,7 +156,7 @@ densityplot(~ lifeExp | year, iDat)
 ```
 That's interesting! These distributions look very different than the overall distribution, underscoring the importance of incorporating important covariates into both your visualizations and your models.
 
-Two arguments you may wish to tune on your densityplots are `bw =`, `adjust =`, and `n =`, which specify the bandwidth of the underlying kernel smoother and how fine a grid is used when the kernel density estimate is evaluated. It is really easy to confuse yourself here: believe it or not, `n = ` has nothing to do with sample size or the number of observations in your dataset. To make the underlying kernel density estimate smoother, increase the bandwidth. To make the connect-the-dots portrayal of it on your plot better able to follow the curve, whatever it is, increase `n`. Let's demonstrate.
+Some arguments you may wish to tune on your densityplots are `bw =`, `adjust =`, and `n =`, which specify the bandwidth of the underlying kernel smoother and how fine a grid is used when the kernel density estimate is evaluated. To make the underlying kernel density estimate smoother, increase the bandwidth. You can specify it directly with `bw =` but it's usually easier to use `adjust =`. Under the hood, `densityplot()` gets the kernel density estimate from the `density()` function, which uses good algorithms to pick a default bandwidth. With `adjust =`, you can tweak the bandwidth in multiples of the default. It is really easy to confuse yourself with the `n =` argument: believe it or not, `n = ` has nothing to do with sample size or the number of observations in your dataset. The kernel density estimate is evaluated at a grid of points spanning the observed data and then drawn in a connect-the-dots way. It will look better if the grid is fine, i.e. if there are lots of points. The argument `n =` controls the number of these points, so increase this if you see hard corners. Let's demonstrate.
 
 ```{r fig.width = 10}
 hardCorners <- densityplot(~lifeExp, iDat, n = 20, main = "n = 20")
@@ -197,6 +197,8 @@ stripplot(lifeExp ~ continent, iDat, jitter.data = TRUE,
 ### References
 
 Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+
+  * Ch. 3 Visualizing Univariate Distributions is most relevant to this tutorial
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
