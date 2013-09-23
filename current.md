@@ -81,7 +81,7 @@ Monday Sept 02 is a statutory holiday. No class.
     
   * Google form re: datasets TO BE POSTED
   
-  * Reading on the `lattice` package
+  * Reading on the `lattice` package in the book *Lattice: Multivariate Data Visualization with R* by Deepayan Sarkar (2008). Links to the eBook and other resources can be found [on my resources page](../resources.html).
   
     - Ch. 1 Introduction (short! totally worth it)
     - Ch. 2 A Technical Overview of lattice (skimming is OK; at least you'll know where to come back to when you're confused)
