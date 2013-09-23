@@ -46,7 +46,7 @@ library(plyr)
 
 ### Show me the data with `stripplot()`
 
-Every time someone shows me a table of estimated regression coefficients or drops a naked p-value into their paper ... without ever showing me the raw data I want to scream: Show me the data! Convince me *you* have not taken the time to look at it yourself before you plunged into testing and modelling. The "show me the money" scene from the movie Jerry Maguire should really be edited to replace "money" with "data".
+Every time someone shows me a table of estimated regression coefficients or drops a naked p-value into their paper ... without ever showing me the raw data I want to scream: Show me the data! Convince me *you* have taken the time to look at it yourself before you plunged into testing and modelling! The "show me the money" scene from the movie Jerry Maguire should really be edited to replace "money" with "data".
 
 <!--- Watch [this video](http://www.youtube.com/watch?v=OaiSHcHM0PA) and substitute "data" for "money". -->
 
@@ -67,7 +67,7 @@ I would prefer to have the y-axis correspond to life expectancy and the x-axis t
 ```{r}
 stripplot(lifeExp ~ continent, hDat)
 ```
-Despite our focus on less data, we still have some overplotting. It can be nice to add jitter, which is just a small bit of meaningless noise, in the horizontal position, which corresponds to continent.
+Despite our focus on less data, we still have overplotting. It can help to add jitter, a small bit of meaningless noise, in the horizontal position, which corresponds to continent.
 ```{r}
 stripplot(lifeExp ~ continent, hDat, jitter.data = TRUE)
 ```
