@@ -58,7 +58,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
   * Study
     - a tutorial on [data aggregation](block04_dataAggregation.html)
-    - a [short note on CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
+    - a [note on CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
 
   * Submit [homework 3](hw03_dataAggregation.html) before class starts @ 9:30am Monday Sept. 23.
   
@@ -89,7 +89,11 @@ Monday Sept 02 is a statutory holiday. No class.
 
 ### cm 06 | Wednesday Sept 25 | Univariate statistics and visualizations cont'd; R graphics landscape
 
-* Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from HW 3.
+  * Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from HW 3. Preferably using >=2 data aggregation tasks (+ code) developed by a fellow student, not yourself.
+  
+  * Work through
+    - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We did densityplots, boxplots, histograms, etc.
+    - UNDER DEVELOPMENT! Curious about managing factors? [Draft topic on factors](block08_bossYourFactors.html)
 
 cm 07 | Monday Sept 30
 

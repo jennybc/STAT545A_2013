@@ -1,0 +1,157 @@
+Be the boss of your factors
+========================================================
+
+> JB: Still under development. Cannot decide if this is a tutorial, with a story, and fitting into a larger sequence of tutorials or is a topic/reference sort of thing.
+
+```{r include = FALSE}
+## toggle to code tidying on/off
+opts_chunk$set(tidy = FALSE)
+```
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "factor hygiene".
+
+### Load the Gapminder data and `lattice` and `plyr`
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+
+Load the `lattice` and `plyr` packages.
+```{r}
+library(lattice)
+library(plyr)
+```
+### Factors are high maintenance variables
+
+Factors are used to hold categorical variables in R. In Gapminder, the examples are `continent` and `country`, with `year` being a numeric variable that can be gracefully converted to a factor depending on context. Under the hood, factors are stored as integer codes, e.g., 1, 2, ... These integer codes are associated with a vector of character strings, the *levels*, which is what you will see much more often in the Console and in figures. If you read the documentation on `factor()` you'll see confusing crazy talk about another thing, `labels =`, which I've never understood and completely ignore.
+
+```{r echo = FALSE}
+data.frame(levels = levels(gDat$continent))
+```
+But don't ever, ever forget that factors are fundamentally numeric. Apply the functions `class()`, `mode()`, and `typeof()` to a factor if you need convincing.
+```{r echo = FALSE}
+data.frame(factor = c(class = class(gDat$country),
+                      mode = mode(gDat$country),
+                      typeof = typeof(gDat$country)))
+```
+Jenny's Law says that some great huge factor misunderstanding will eat up hours of valuable time in any given analysis. When you're beating your head against the wall, look very closely at your factors. Are you using them in a character context? Do you have factors you did not know about, e.g., variables you perceived as character but that are actually factors? `str()` is a might weapon.
+
+### Factor avoidance: is this strategy for you?
+
+Many people have gotten so frustrated with factors that they refuse to use them. While I'm sympathetic, it's a counterproductive overreaction. Factors are sufficiently powerful in data aggregation, modelling, and visualization to merit their use. Furthermore, factor-abstainers are a fringe minority in the R world which makes it harder to share and remix code from others.
+
+<http://stackoverflow.com/questions/3445316/factors-in-r-more-than-an-annoyance>
+
+### Factor avoidance: how to achieve, selectively
+
+Most unwanted factors are created upon import with `read.table()`, which converts character variables to factors by default. The same default behavior also happens when you construct a data.frame explicitly with `data.frame()`.
+
+  * To turn off the behavior for the duration of an R session, submit this: `options(stringsAsFactors = FALSE)`
+  * To make that apply to all your R processes, put that in your `.Rprofile`. (I think this is going too far, though.)
+
+Here are options to take control in a more refined fashion:
+
+  * To turn off the conversion for all variables within a specific `read.table()` or `data.frame()` call, add `stringsAsFactors = FALSE` to the call.
+  * To turn off conversion for specific variables in `read.table()`, specify them via `as.is =`: "its value is either a vector of logicals (values are recycled if necessary), or a vector of numeric or character indices which specify which columns should not be converted to factors." (In theory, one can also use `colClasses =` but this is miserable, due to the need to be exhaustive. Consider that a last resort.)
+  * To turn off conversion for a specific variable in `data.frame()`, protect it with `I()`.
+  
+Convert an existing factor to a character variable with `as.character()`.
+
+### How to make, study, and unmake a factor
+
+If you want to create a factor explicitly, use `factor()`. If you already have a reason and the knowledge to override the default alphabetical ordering of the factor levels, seize this opportunity to set them via the `levels =` argument.
+
+To check the levels or count them, use `levels()` and `nlevels()`.
+
+To tabulate a factor, use `table()`. Sometimes it's nice to post-process this table with `as.data.frame`, `prop.table()`, or `addmargins()`.
+
+To get the underlying integer codes, use `unclass()`. Use this with great care.
+
+### Specialty functions for making factors
+
+`gl()`, `interaction()`
+
+### How to change factor levels: recoding
+
+`recode()` from `car` package
+
+<http://citizen-statistician.org/2012/10/20/recoding-variables-in-r-pedagogic-considerations/>
+
+### How to change factor levels: dropping a level
+
+### How to change factor levels: reordering
+
+It's common and desirable to reorder factor levels rationally, as opposed to alphabetically. In fact, it should be more common! Typical scenario: order the levels of a factor so that a summary statistic of an associated quantitative variable is placed in rank order in data aggregation results or in a figure. This is much easier to see in examples. I'll walk through two and, far below, discuss the `reorder()` function itself.
+
+Example from the [data aggregation tutorial](block04_dataAggregation.html). We fit a linear model of `lifeExp ~ year` for each country and packaged the estimated intercepts and slopes, along with `country` and `continent` factors, in a data.frame. It is sensible to reorder the `country` factor labels in this derived data.frame according to either the intercept or slope. I chose the intercept.
+
+```{r tidy = FALSE}
+yearMin <- min(gDat$year)
+jFun <- function(x) {
+  estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
+  names(estCoefs) <- c("intercept", "slope")
+  return(estCoefs)
+  }
+jCoefs <- ddply(gDat, ~ country + continent, jFun)
+head(levels(jCoefs$country)) # alphabetical order
+jCoefs <- within(jCoefs, country <- reorder(country, intercept))
+head(levels(jCoefs$country)) # in increasing order of 1952 life expectancy
+head(jCoefs)
+```
+Note that the __row order of `jCoefs` is not changed__ by reordering the factor levels. I could __choose__ to reorder the rows of the data.frame, based on the new, rational level order of `country`, using `arrange()` from `plyr`.
+```{r}
+# assign the arrange() result back to jCoefs to make the new row order "stick"
+head(arrange(jCoefs, country)) 
+tail(arrange(jCoefs, country))
+```
+
+Example that reorders a factor temporarily "on the fly". This happen most often within a plotting call. Remember: you don't have to alter the factor's level order in the underlying data.frame itself. Building on the first example, let's make a stripplot of the intercepts, split out by continent, and overlay a connect-the-dots representation of the continent-specific averages.
+
+```{r}
+stripplot(intercept ~ continent, jCoefs, type = c("p", "a"))
+```
+
+The erratic behavior of the overlay suggests that the continents are presented in a silly order, namely, alphabetical. It might make more sense to arrange the continents in increasing order of 1952 life expectancy.
+```{r}
+stripplot(intercept ~ reorder(continent, intercept), jCoefs, type = c("p", "a"))
+```
+__You try__: make a similar pair of plots for the slopes.
+```{r echo = FALSE, eval = FALSE}
+stripplot(slope ~ continent, jCoefs, type = c("p", "a"))
+stripplot(slope ~ reorder(continent, slope), jCoefs, type = c("p", "a"))
+```
+You will notice that the continents will be in a very different order, if you reorder by intercept vs. slope. There is no single definitive order for factor levels. It varies, depending on the quantitative variable and statistic driving the reordering. In a real data analysis, when you're producing a large number of related plots, I suggest you pick one factor level order and stick to it. In Gapminder, I would use this: Africa, Asia, America, Europe (and I'd drop Oceania). Sometimes a global commitment to constancy -- in factor level order and color usage especially -- must override optimization of any particular figure.
+
+### How to grow factor objects
+
+### References
+
+[Data Manipulation with R](http://www.springerlink.com/content/t19776/?p=0ecea4f02a68458eb3d605ec3cdfc7ef%CF%80=0) by Phil Spector, Springer (2008) &#124; [author webpage](http://www.stat.berkeley.edu/%7Espector/) &#124; [GoogleBooks search](http://books.google.com/books?id=grfuq1twFe4C&lpg=PP1&dq=data%2520manipulation%2520spector&pg=PP1#v=onepage&q=&f=false)
+
+  * The main link above to SpringerLink will give full access to the book if you are on a UBC network (or any other network that confers accesss).
+
+  * See Chapter 5 (“Factors”)
+
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
