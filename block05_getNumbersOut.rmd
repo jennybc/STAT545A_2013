@@ -124,7 +124,7 @@ I have toyed with the idea of writing import helper functions for a specific pro
 
 ### Reordering the levels of the country factor
 
-The topic of factor level reordering will be covered elsewhere, but let's Just. Do. It. I reorder the country factor levels according to the intercept, i.e. the life expectancy in 1952.
+The topic of [factor level reordering is covered elsewhere](block08_bossYourFactors.html), so let's Just. Do. It. I reorder the country factor levels according to the intercept, i.e. the life expectancy in 1952.
 
 ```{r tidy = FALSE}
 head(levels(jCoefs$country)) # alphabetical order
@@ -132,47 +132,17 @@ jCoefs <- within(jCoefs, country <- reorder(country, intercept))
 head(levels(jCoefs$country)) # in increasing order of 1952 life expectancy
 head(jCoefs)
 ```
-Note that the __row order of `gDat` has not changed__. I could choose to reorder the rows of the data.frame if I wanted, for example, if I was about to prepare a table to present to people. But I'm not, so I won't.
-
-```{r eval = FALSE, include = FALSE}
-# When I first attempted to reorder the levels of jCoefs$country, nothing
-# happened. Much head-scratching, leading to the self-contained example below. I
-# eventually determined that instead of calling reorder.default in stats I was
-# getting reorder.factor in gdata. I didn't even know gdata was installed and
-# loaded -- still not sure *why* gdata was loaded but whatever. Bottom line:
-# reorder.factor does not have a default value of FUN whereas reorder.default
-# does and it is mean(). I emailed the example below to the maintainer of gdata
-# wondering if maybe FUN could have mean() as default.
-
-# foo <- droplevels(subset(jCoefs,
-#                          country %in% c("Gambia", "Mali", "China", "Cuba", "Norway")))
-# head(levels(foo$country))
-# dput(foo)
-foo <- structure(list(country = structure(1:5, .Label = c("China", "Cuba", 
-"Gambia", "Mali", "Norway"), class = "factor"), continent = structure(c(3L, 
-2L, 1L, 1L, 4L), .Label = c("Africa", "Americas", "Asia", "Europe"
-), class = "factor"), intercept = c(47.1904815384616, 62.2134487179487, 
-28.4003717948718, 33.0512307692308, 72.2146153846154), slope = c(0.530714853146853, 
-0.321150349650349, 0.581825874125873, 0.37680979020979, 0.131941258741258
-)), .Names = c("country", "continent", "intercept", "slope"), row.names = c(25L, 
-33L, 47L, 80L, 96L), class = "data.frame")
-foo
-levels(foo$country) # alphabetical order
-library(gdata)
-levels(reorder(foo$country, foo$intercept)) ## WHAT??
-levels(reorder(foo$country, foo$intercept, mean))  ## yes!
-levels(reorder(foo$country, foo$intercept, max))  ## yes!
-levels(reorder(foo$country, foo$intercept, min))  ## yes!
-```
+Note that the __row order of `jCoefs` has not changed__. I could choose to reorder the rows of the data.frame if, for example, I was about to prepare a table to present to people. But I'm not, so I won't.
 
 ### `saveRDS()` and `readRDS()`
 
-If you have a data.frame AND you have exerted yourself to rationalize the factor levels, you have my blessing to save it to file in way that will preserve this hard work upon re-import. Use `saveRDS()`. Note that, unlike an approach based on `save()` and `load()`, you must make an object assignment upon import. This implies that you could give the object a totally different name, but in general, you will confuse yourself less if you keep using the same name. You will come across `save()` and `load()` which save and restore an entire workspace but I recommend you use them very sparingly, if at all. Source is real; workspaces are not.
-
+If you have a data.frame AND you have exerted yourself to rationalize the factor levels, you have my blessing to save it to file in a way that will preserve this hard work upon re-import. Use `saveRDS()`.
 ```{r}
 saveRDS(jCoefs, "jCoefs.rds")
 ```
-This function has more arguments, such one controlling compression, so read the help for more advanced usage.
+Note that, unlike an approach based on `save()` and `load()`, you must make an object assignment upon import (see below). This implies that you could give the object a totally different name, but why confuse yourself like that? Full disclosure: you will eventually get curious about `save()` or `save.image()` + `load()`, which save and restore multiple objects or even an entire workspace. Tempting though it may be, I recommend you just say no to these functions. Source is real; workspaces are not.
+
+`saveRDS()` has more arguments, such one controlling compression, so read the help for more advanced usage. It is also very handy for saving non-rectangular objects, like a fitted regression model, that took a nontrivial amount of time to compute.
 
 ### Retaining factor levels upon re-import
 
