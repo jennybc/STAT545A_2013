@@ -319,6 +319,40 @@ xyplot(lifeExp ~ year | country, gDat,
   * liu-yan [source](https://gist.github.com/swallow0001/6673645#file-stat545a-2013-hw3_liu) | [report](http://rpubs.com/swallow0001/STAT545a-2013-hw3_Liu)
   * haraty-mon EDIT HERE
   * yuen-mac [source](https://gist.github.com/myuen/6672095#file-stat545a-2013-hw03_yuen-mac-rmd) | [report](http://rpubs.com/myuen/stat545a-2013-hw03_yuen-mac)
+  
+### Q and A
+
+> Student: consider the exercises where we return info on the country that exhibits, e.g., the minimum life expectancy for a certain continent and/or year. What if there are ties and that minimum is achieved by more than 1 country?
+
+I consider this a special case or extension of something we did above: identifying "low life expectancy" countries. So I will mix that code with our min/max finding code. BTW I cannot find an instance where any countries tie for lowest or longest life expectancy, but my two stage solution reflects my attempt to look into that.
+
+```{r results = 'asis'}
+## for each life expectancy, compute its rank within all life expectancies
+## recorded that year
+ggDat <- ddply(gDat, ~ year, transform,
+             leRank = rank(lifeExp, ties.method = "average"))
+## look at the new leRank variable, if you wish
+## I did and can't find any instances of ties for the min or max???
+
+## but assuming we are worried about that possibility ....
+
+## pull out the countries with extreme ranks ... with min and max being the most
+## extreme of the extremes!
+foo <- ddply(ggDat, ~ year, function(x) {
+  minRank <- min(x$leRank) # you could change this to find the lowest, e.g. 2
+  maxRank <- max(x$leRank) # and the highest 2
+  whoMin <- which(x$leRank == minRank) # I allow this to have length > 1
+  whoMax <- which(x$leRank == maxRank)
+  c(year = x$year[whoMin[1]],
+    minLifeExp = x$lifeExp[whoMin[1]],
+    minCountries = paste(x$country[whoMin], collapse = " "),
+    minRank = x$leRank[whoMin[1]],
+    maxLifeExp = x$lifeExp[whoMax[1]],
+    maxCountries = paste(x$country[whoMax], collapse = " "),
+    maxRank = x$leRank[whoMax][1])
+  })
+htmlPrint(foo)
+```
 
 
 <div class="footer">

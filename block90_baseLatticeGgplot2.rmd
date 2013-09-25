@@ -71,7 +71,7 @@ A simple `library(ggplot2)` call will make it available in an R session and one 
 
   * Multi-panel conditioning or, in `ggplot2`-speak, _facetting_. As in `lattice`, it is easy to break data into subsets and display them as an array of related plots.
 
-  * Mapping variables into _aesthetics_. The encoding of a factor, such as Male vs. female, via shape or color, is just the tip of the iceberg here.
+  * Mapping variables into _aesthetics_. The encoding of a factor, such as male vs. female, via shape or color, is just the tip of the iceberg here.
   
   * Combination of different _layers_, such as raw data depicted via a scatterplot overlaid with a fitted smooth regression surrounded by a shaded prediction region.
   
