@@ -292,7 +292,7 @@ What it you wanted to write the table of slopes and intercepts to file? Go to th
 
 ### References
 
-`plyr` paper: [The split-apply-combine strategy for data analysis](http://www.jstatsoft.org/v40/i01/paper), Hadley Wickham, Journal of Statistical Software, vol. 40, no. 1, pp. 1–29, 2011. 
+`plyr` paper: [The split-apply-combine strategy for data analysis](http://www.jstatsoft.org/v40/i01/paper), Hadley Wickham, Journal of Statistical Software, vol. 40, no. 1, pp. 1–29, 2011. Go [here](http://www.jstatsoft.org/v40/i01/) for supplements, such as example code from the paper.
 
 [Data Manipulation with R](http://www.springerlink.com/content/t19776/?p=0ecea4f02a68458eb3d605ec3cdfc7ef%CF%80=0) by Phil Spector, Springer (2008) &#124; [author webpage](http://www.stat.berkeley.edu/%7Espector/) &#124; [GoogleBooks search](http://books.google.com/books?id=grfuq1twFe4C&lpg=PP1&dq=data%2520manipulation%2520spector&pg=PP1#v=onepage&q=&f=false)
 
