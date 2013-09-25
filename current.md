@@ -79,8 +79,6 @@ Monday Sept 02 is a statutory holiday. No class.
     - An [external resource on writing your own functions](block06_functions.html). Pick one (or more) for yourself.
     - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We did the stripplot material. We'll do the rest in class on Wednesday.
     
-  * Google form re: datasets TO BE POSTED
-  
   * Reading on the `lattice` package in the book *Lattice: Multivariate Data Visualization with R* by Deepayan Sarkar (2008). Links to the eBook and other resources can be found [on my resources page](../resources.html).
   
     - Ch. 1 Introduction (short! totally worth it)
@@ -89,23 +87,26 @@ Monday Sept 02 is a statutory holiday. No class.
 
 ### cm 06 | Wednesday Sept 25 | Univariate statistics and visualizations cont'd; R graphics landscape
 
+  * Work through
+    - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We finished with densityplots, boxplots, histograms, etc.
+    - UNDER DEVELOPMENT! Curious about managing factors? [Draft topic on factors](block08_bossYourFactors.html)
+    - Why are we using `lattice` and `ggplot2`? Read about the [R graphics landscape](block90_baseLatticeGgplot2.html)
+
+  * Google form re: datasets TO BE POSTED
+  
   * Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from HW 3. Preferably using >=2 data aggregation tasks (+ code) developed by a fellow student, not yourself.
   
-  * Work through
-    - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We did densityplots, boxplots, histograms, etc.
-    - UNDER DEVELOPMENT! Curious about managing factors? [Draft topic on factors](block08_bossYourFactors.html)
+### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file
 
-cm 07 | Monday Sept 30
+cm 08 | Wednesday Oct 02 | `ggplot2`
 
-cm 08 | Wednesday Oct 02
+cm 09 | Monday Oct 07 | `ggplot2`
 
-cm 09 | Monday Oct 07
-
-cm 10 | Wednesday Oct 09
+cm 10 | Wednesday Oct 09 | Colors, heatmaps (+ more plotting!)
 
 Monday Oct 14 is a statutory holiday. No class.
 
-cm 11 | Wednesday Oct 16
+cm 11 | Wednesday Oct 16 | Coding style, project organization, version control (+ more plotting!)
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
