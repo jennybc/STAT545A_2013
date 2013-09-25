@@ -27,14 +27,25 @@ Tips
 ### Menu of data aggregation tasks.
 
 ```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
 ## toggle to turn solution chunks on/off
 
-## to make student-facing assignment, uncomment the line below, knit this file,
-## and copy the resulting .md file up one level, i.e. get it out of private/;
-## fileherd will pick this up and compile to HTML
+## Assign HW: This file would live in private/ and not be in public repo and
+## would not compiled by fileherd. To make student-facing assignment, uncomment
+## the line below, knit this file, and copy the resulting .md file up one level,
+## where fileherd will pick it up and compile to HTML and we can push to web.
+## Only the data aggregation task prompts will appear.
+
+## Reveal solutions: Move this file up into main directory. Leave the line below
+## commented out. fileherd will compile questions AND solutions normally.
+
+## Reset course for future: Hmmmm.... now the solutions are "out there on the
+## web". I probably should have thought of that sooner. Worry about that later.
 
 #opts_chunk$set(eval = FALSE, echo = FALSE)
-opts_chunk$set(tidy = FALSE)
 ```
 
 
@@ -48,13 +59,14 @@ library(plyr)
 library(xtable)
 str(gDat)
 ## define a function for converting and printing to HTML table
-htmlPrint <- function(x, digits = NULL, include.rownames = FALSE, ...) {
-  if(is.null(digits)) digits <- rep(0, ncol(x) + 1)
-  print(xtable(x, digits = digits),
-        type = 'html', include.rownames = include.rownames, ...)
+htmlPrint <- function(x, ...,
+                      digits = 0, include.rownames = FALSE) {
+  #if(!hasArg("digits")) digits <- 0
+  print(xtable(x, digits = digits, ...), type = 'html',
+        include.rownames = include.rownames, ...)
   }
 ```
-> I wrote a function `htmlPrint()` to create an HTML table and print it. Inspired by Geoff's question about controlling the number of digits, I built in some control over that.
+> I wrote a function `htmlPrint()` to create an HTML table and print it. I am also trying blow your mind with the power of the `...` argument. That is why I can still pass arguments like `include.rownames = TRUE` whenever I feel like it. Here I also make the digits default to 0, which seemed best for the exercises below.
 
 #### Create your own adventure.
 
@@ -114,11 +126,13 @@ htmlPrint(arrange(foo, tMean))
 
 Hear ye, hear ye: the trim level for the trimmed means above is `r jTrim`. Let it be known that I did not type that number in; rather it was printed from the value assigned in the previous R chunk.
 
-> If you haven't used it yet, you should experiment with the backtick method of including inline R code. Look at the R Markdown file to see how I do this. If I change `jTrim` to a different value in the R code, my prose will automatically update.
+> If you haven't used it yet, you should experiment with the backtick method of including inline R code. Look at [the R Markdown file](https://github.com/jennybc/STAT545A/blob/master/hw03_dataAggregation.rmd) to see how I do this. If I change `jTrim` to a different value in the R code, my prose will automatically update.
+
+<!--- TO DO: make the variable name reflect trim level, i.e. tMean0.2 instead of tMean. --->
 
 #### How is life expectancy changing over time on different continents? "Tall" format. Easy/medium.
 
-Get a data.frame with 3 variables: continent, year, and mean or median life expectancy. What are the trends over time? Are they same or different across the continents? Is this easy to assess from this data.frame?
+Get a data.frame with 3 variables: continent, year, and mean or median life expectancy. What are the trends over time? Are they the same or different across the continents? Is this easy to assess from this data.frame?
 
 ```{r results = 'asis'}
 htmlPrint(ddply(gDat, ~ continent + year,
@@ -137,6 +151,13 @@ foo <- as.data.frame(foo)
 #str(foo) ## there's still some goofiness, ie the variables are lists .... hmmmm
 htmlPrint(foo, include.rownames = TRUE)
 ```
+> Arguably, this table is better transposed. So just switch the order of `continent` and `year` in the `plyr` call.
+
+```{r results = 'asis'}
+foo <- daply(gDat, ~ continent + year,
+             summarize, medLifeExp = median(lifeExp))
+htmlPrint(as.data.frame(foo), include.rownames = TRUE)
+```
 
 #### Count the number of countries with low life expectancy over time by continent. "Tall" format. Medium/hard.
 
@@ -153,7 +174,7 @@ htmlPrint(ddply(gDat, ~ continent + year,
 
 The continents have very different numbers of countries. Maybe the proportion of "low life expectancy" countries is more relevant than the raw count. Or maybe the final table should report both? Work on that.
 
-> JB: hey, checkout my use of the `digits =` argument I built into `htmlPrint()`!
+> JB: hey, I'm using `...` to carry forward a nontrivial specification of `digits =` here!
 
 ```{r results = 'asis'}
 ## note: bMark set in previous chunk
