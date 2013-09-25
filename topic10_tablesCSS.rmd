@@ -3,7 +3,7 @@ My table looks better than yours
 
 > JB: I would like to link to examples that show the same R Markdown file compiled to HTML using different CSS ... but this is a good start.
 
-After the [data aggregation tutorial](http://www.stat.ubc.ca/~jenny/STAT545A/block04_dataAggregation.html) a student noticed that, when run on her machine, my examples did not produce such attractive tables. That's because I am NOT using [RStudio's default Markdown CSS](https://github.com/rstudio/markdown/blob/master/inst/resources/markdown.css) upon conversion from R Markdown to HTML.
+After the [data aggregation tutorial](block04_dataAggregation.html), a student noticed that, when run on her machine, my examples did not produce such attractive tables. That's because I am NOT using [RStudio's default Markdown CSS](https://github.com/rstudio/markdown/blob/master/inst/resources/markdown.css) upon conversion from R Markdown to HTML.
 
 The default CSS produces wide webpages with small text, which I find hard to read.
 
@@ -94,3 +94,7 @@ foo <- head(iris)
 foo <- xtable(foo)
 print(foo, type='html', include.rownames = TRUE)
 ```
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
