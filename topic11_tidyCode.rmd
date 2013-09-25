@@ -1,0 +1,28 @@
+My code looks prettier than yours
+========================================================
+
+After going over the [data aggregation homework](hw03_dataAggregation.html) solutions, a student remarked that her code doesn't look as nice in her compiled HTML reports. That's because I am NOT allowing `knitr` to tidy my code.
+
+In R Markdown, each chunk can have "chunk options" which control how the code and its products appear in your compiled report. You can read about them on [the official `knitr` webpage for chunk options](http://yihui.name/knitr/options). Warning: the page feels more focused on LaTeX than R Markdown, but you'll survive.
+
+Look at the section on Code Decoration and the entry for `tidy`: "logical [indicating] whether R code should be tidied up using the function `tidy.source()` in the `formatR` package". Ironically I hate the mess `tidy` seems to make of my code.
+
+<!--- It's hard to write about R Markdown when writing in R Markdown! I figured out how to do this here: https://github.com/yihui/knitr/issues/443 --->
+
+Turn this `tidy`ing off for a chunk with a chunk option like this: `tidy = FALSE`.
+
+    `r ''````{r tidy = FALSE}
+    ## your beautifully formatted code goes here
+    ```
+
+Turn it off for an entire document by including an initial chunk like this:
+
+    `r ''````{r include = FALSE}
+    opts_chunk$set(tidy = FALSE)
+    ```
+
+That chunk itself has chunk option `include = FALSE`, which causes it to run invisibly during compilation. You can see an example of this near the top of the R Markdown file for the [data aggregation homework](https://github.com/jennybc/STAT545A/blob/master/hw03_dataAggregation.rmd)
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

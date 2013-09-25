@@ -91,7 +91,8 @@ Monday Sept 02 is a statutory holiday. No class.
     - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We finished with densityplots, boxplots, histograms, etc.
     - UNDER DEVELOPMENT! Curious about managing factors? [Draft topic on factors](block08_bossYourFactors.html)
     - Why are we using `lattice` and `ggplot2`? Read about the [R graphics landscape](block90_baseLatticeGgplot2.html)
-    * Revisit [homework 3](hw03_dataAggregation.html) to see Jenny's solutions and access links to work of fellow students.  
+    - Revisit [homework 3](hw03_dataAggregation.html) to see Jenny's solutions and access links to work of fellow students.
+    - [To tidy or not to tidy?](topic11_tidyCode.html) re: code tidying in `knitr`  
     
   * Reading on the `lattice` package in the book *Lattice: Multivariate Data Visualization with R* by Deepayan Sarkar (2008). Links to the eBook and other resources can be found [on my resources page](../resources.html).
   
