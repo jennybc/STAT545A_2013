@@ -91,10 +91,18 @@ Monday Sept 02 is a statutory holiday. No class.
     - [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html). We finished with densityplots, boxplots, histograms, etc.
     - UNDER DEVELOPMENT! Curious about managing factors? [Draft topic on factors](block08_bossYourFactors.html)
     - Why are we using `lattice` and `ggplot2`? Read about the [R graphics landscape](block90_baseLatticeGgplot2.html)
+    * Revisit [homework 3](hw03_dataAggregation.html) to see Jenny's solutions and access links to work of fellow students.  
+    
+  * Reading on the `lattice` package in the book *Lattice: Multivariate Data Visualization with R* by Deepayan Sarkar (2008). Links to the eBook and other resources can be found [on my resources page](../resources.html).
+  
+    - Ch. 5 Scatter Plots and Extensions. Most important sections (skim the rest?):
+      - 5.1 The standard scatter plot
+      - 5.3 Variants using the type argument
+      - 5.4 Scatter-plot variants for large data
 
   * Google form re: datasets TO BE POSTED
   
-  * Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from HW 3. Preferably using >=2 data aggregation tasks (+ code) developed by a fellow student, not yourself.
+  * Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from [homework 3](hw03_dataAggregation.html). Preferably using >=2 data aggregation tasks (+ code) developed by a fellow student or JB, not yourself.
   
 ### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file
 

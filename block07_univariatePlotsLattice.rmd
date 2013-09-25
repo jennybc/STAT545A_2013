@@ -189,7 +189,6 @@ bwplot(lifeExp ~ reorder(continent, lifeExp),
                       varwidth = FALSE, box.ratio = box.ratio)
          panel.bwplot(..., fill = NULL, box.ratio = .1)
        })
-
 ```
 
 ### Q and A
