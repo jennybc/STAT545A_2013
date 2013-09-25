@@ -33,18 +33,28 @@ Tips
 ## and copy the resulting .md file up one level, i.e. get it out of private/;
 ## fileherd will pick this up and compile to HTML
 
-opts_chunk$set(eval = FALSE, echo = FALSE)
+#opts_chunk$set(eval = FALSE, echo = FALSE)
+opts_chunk$set(tidy = FALSE)
 ```
 
-```{r}
+
 #### Load the Gapminder data and the `plyr` and `xtable` packages
+
+```{r}
 ## data import from URL
 gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
 gDat <- read.delim(file = gdURL)
 library(plyr)
 library(xtable)
 str(gDat)
+## define a function for converting and printing to HTML table
+htmlPrint <- function(x, digits = NULL, include.rownames = FALSE, ...) {
+  if(is.null(digits)) digits <- rep(0, ncol(x) + 1)
+  print(xtable(x, digits = digits),
+        type = 'html', include.rownames = include.rownames, ...)
+  }
 ```
+> I wrote a function `htmlPrint()` to create an HTML table and print it. Inspired by Geoff's question about controlling the number of digits, I built in some control over that.
 
 #### Create your own adventure.
 
@@ -54,21 +64,22 @@ You are welcome to create your own exercises by riffing on what you see below. I
 
 Produce a data.frame with 3 variables: a continent factor, the minimum GDP per capita, the maximum GDP per capita. There will be one row per continent. Sort on either the minimum or the maximum and assess whether the continents rank similarly w/r/t the other extreme. Discuss.
 
-```{r, tidy=FALSE}
+```{r results = 'asis'}
 foo <- ddply(gDat, ~ continent, summarize,
              minGdpPercap = min(gdpPercap), maxGdpPercap = max(gdpPercap))
-(foo <- arrange(foo, minGdpPercap))
+htmlPrint(arrange(foo, minGdpPercap))
 ```
 
 #### Get the maximum and minimum of GDP per capita for all continents in a "tall" format. Medium/hard.
 
 Produce a data.frame with 3 variables: a continent factor, a GDP per capita summary statistic, a factor that describes the statistic (i.e. "min" vs "max"). There will be one row per continent * statistic combination. *Don't use reshaping -- get this directly with data aggregation.*
 
-```{r, tidy=FALSE}
-ddply(gDat, ~ continent, function(x) {
+```{r results = 'asis'}
+foo <- ddply(gDat, ~ continent, function(x) {
   gdpPercap <- range(x$gdpPercap)
   return(data.frame(gdpPercap, stat = c("min", "max")))
   })
+htmlPrint(foo)
 ```
 #### Look at the spread of GDP per capita within the continents. Easy.
 
@@ -80,71 +91,84 @@ Measures of spread (we will discuss in class soon, just try them out!):
   
 Produce a data.frame with one row per continent and variables containing the different measures of spread for GDP/capita. Sort on one of those and assess whether the continents rank similarly w/r/t heterogeneity of GDP/capita by the other measures. Discuss.
  
-```{r, tidy=FALSE}
+```{r results = 'asis'}
 foo <- ddply(gDat, ~ continent, summarize,
              sdGdpPercap = sd(gdpPercap), madGdpPercap = mad(gdpPercap),
              iqrGdpPercap = IQR(gdpPercap))
-(foo <- arrange(foo, sdGdpPercap))
+htmlPrint(arrange(foo, sdGdpPercap))
+## spot checks!
+IQR(gDat$gdpPercap[gDat$continent == "Europe"])
+mad(gDat$gdpPercap[gDat$continent == "Asia"])
 ```
+> If you don't get an error but you are still worried you aren't doing the right computation, pick a few cases in the middle at random and check "by hand".
 
 #### Compute a trimmed mean of life expectancy for different years. Easy/medium.
 
 Compute the average life expectancy by year, as a warm-up exercise. Then consider an alternative: a [*trimmed mean*](http://en.wikipedia.org/wiki/Truncated_mean). There is a `trim` argument in the built-in function `mean()`. Pick a modest trim fraction that is greater than 0. Report your sorted results. Make sure your trim level is well-documented.
 
-```{r}
-foo <- ddply(gDat, ~ year, summarize, tMean = mean(lifeExp, trim = 0.2))
-(foo <- arrange(foo, tMean))
+```{r results = 'asis'}
+jTrim <- 0.2
+foo <- ddply(gDat, ~ year, summarize, tMean = mean(lifeExp, trim = jTrim))
+htmlPrint(arrange(foo, tMean))
 ```
+
+Hear ye, hear ye: the trim level for the trimmed means above is `r jTrim`. Let it be known that I did not type that number in; rather it was printed from the value assigned in the previous R chunk.
+
+> If you haven't used it yet, you should experiment with the backtick method of including inline R code. Look at the R Markdown file to see how I do this. If I change `jTrim` to a different value in the R code, my prose will automatically update.
 
 #### How is life expectancy changing over time on different continents? "Tall" format. Easy/medium.
 
 Get a data.frame with 3 variables: continent, year, and mean or median life expectancy. What are the trends over time? Are they same or different across the continents? Is this easy to assess from this data.frame?
 
-```{r}
-(foo <- ddply(gDat, ~ continent + year, summarize, medLifeExp = median(lifeExp)))
+```{r results = 'asis'}
+htmlPrint(ddply(gDat, ~ continent + year,
+                summarize, medLifeExp = median(lifeExp)))
 ```
 
 #### How is life expectancy changing over time on different continents? "Wide" format. Hard (or possibly silly).
 
 Get a data.frame with 1 + 5 = 6 variables: year and then one variable per continent, giving mean or median life expectancy. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit. *Hint: I've made some progress here and advise you look into `daply()`.*
 
-```{r results='asis'}
+```{r results = 'asis'}
 foo <- daply(gDat, ~ year + continent,
              summarize, medLifeExp = median(lifeExp))
-##str(foo)
+#str(foo)
 foo <- as.data.frame(foo)
-##str(foo) ## there's still some goofiness, ie the variables are lists .... hmmmm
-foo <- xtable(foo)
-print(foo, type='html')
+#str(foo) ## there's still some goofiness, ie the variables are lists .... hmmmm
+htmlPrint(foo, include.rownames = TRUE)
 ```
 
 #### Count the number of countries with low life expectancy over time by continent. "Tall" format. Medium/hard.
 
 Compute some measure of worldwide life expectancy -- you decide -- a mean or median or some other quantile or perhaps your current age. The determine how many countries on each continent have a life expectancy less than this benchmark, for each year. Produce a data.frame with 3 variables: continent, year, and a country count. What's the trend over time? Is that trend the same for all continents? How much fun is it to assess this from this tall table?
 
-```{r}
-(bMark <- quantile(gDat$lifeExp, 0.2))
-ddply(gDat, ~ continent + year, function(x) sum(x$lifeExp < bMark))
+```{r results = 'asis'}
+#(bMark <- quantile(gDat$lifeExp, 0.2))
+bMark <- 43 # JB wrote this on her 43rd b'day!
+htmlPrint(ddply(gDat, ~ continent + year,
+                function(x) c(lowLifeExp = sum(x$lifeExp <= bMark))))
 ```
 
 #### Compute the proportion of countries with low life expectancy over time by continent. Medium extension of another task.
 
 The continents have very different numbers of countries. Maybe the proportion of "low life expectancy" countries is more relevant than the raw count. Or maybe the final table should report both? Work on that.
 
-```{r}
-(bMark <- quantile(gDat$lifeExp, 0.2))
-ddply(gDat, ~ continent + year, function(x) {
-  jCount = sum(x$lifeExp < bMark)
+> JB: hey, checkout my use of the `digits =` argument I built into `htmlPrint()`!
+
+```{r results = 'asis'}
+## note: bMark set in previous chunk
+htmlPrint(ddply(gDat, ~ continent + year, function(x) {
+  jCount = sum(x$lifeExp <= bMark)
   c(count = jCount, prop = jCount / nrow(x))
-})
+}), digits = c(0, 0, 0, 0, 2))
 ```
 
 #### Report the absolute and/or relative abundance of countries with low life expectancy over time by continent. "Wide" format. Extension of another task of unknown difficulty / value.
 
 Create a table with one row per year and one column -- at least conceptually -- per continent. In that "column" report the absolute and/or relative abundance of "low life expectancy" countries. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit. *Hint: I've made some progress here and advise you look into `daply()`. I ended up skipping straight to character output versus an object appropriate for further computation or graphing. Sometimes it's better to approach these ill-defined tasks from a different angle.*
  
-```{r results='asis', tidy=FALSE}
-bMark <- quantile(gDat$lifeExp, 0.2)
+```{r results='asis'}
+## note: bMark set in a previous chunk
 
 ## my first success ... but was still a 3-dim array :(
 ## that would be useful for plotting, at least after some reshaping, but is not
@@ -155,20 +179,51 @@ bMark <- quantile(gDat$lifeExp, 0.2)
 # })
 
 foo <- daply(gDat, ~ year + continent, function(x) {
-  jCount <- sum(x$lifeExp < bMark)
+  jCount <- sum(x$lifeExp <= bMark)
   jTotal <- nrow(x)
   jProp <- jCount / jTotal
   return(sprintf("%1.2f (%d/%d)", jProp, jCount, jTotal))
   })
-foo <- xtable(foo)
-print(foo, type='html')
+htmlPrint(foo, include.rownames = TRUE)
 ```
 
 #### Find countries with interesting stories. Open-ended and, therefore, hard. Realistic!
 
 It was easy (see above) to get the minimum life expectancy seen on each continent by year. Now try to report the year, the continent, the minimum (or max or whatever) life expectancy AND the country it pertains to. You could do something similar with GDP per capita or population (though result likely to be boring with population). *Hint: read up on `which.min()` and `which.max()`.*
 
+```{r results = 'asis'}
+## this works but produces a frustrating long/tall result; not good for printing
+# ddply(gDat, ~ year + continent, function(x) {
+#   theMin <- which.min(x$lifeExp)
+#   x[theMin, c("country", "year", "continent", "lifeExp")]
+#   })
+
+foo <- daply(gDat, ~ year + continent, function(x) {
+  theMin <- which.min(x$lifeExp)
+  return(sprintf("%1.0f %s", x$lifeExp[theMin], x$country[theMin]))
+})
+htmlPrint(foo, include.rownames = TRUE)
+```
+<!--- normal rules for padding in sprintf() achieved nothing; I guess due to what happens in an HTML table? as in, spaces mean nothing? is there any way to protect them, I wonder; if I pursue, here's the type of sprint() call I wanted: sprintf("%-20s - %1.0f", "canada", 22) --->  
+
 Consider the linear regression we fit in tutorial of life expectancy vs. time. Find the min (and/or max) of the slope (and/or the intercept) within each continent. Report these interesting countries and some info about them in a data.frame. This might work for other variables too.
+
+```{r results = 'asis'}
+yearMin <- min(gDat$year)
+jFun <- function(x) {
+  estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
+  names(estCoefs) <- c("intercept", "slope")
+  return(estCoefs)
+  }
+jCoefs <- ddply(gDat, ~ country + continent, jFun)
+## giving out the Most Improved Award!
+## going after maximum slope within continent
+foo <- ddply(jCoefs, ~ continent, function(x) {
+  theMax <- which.max(x$slope)
+  x[theMax, c("continent", "country", "intercept", "slope")]
+  })
+htmlPrint(foo, digits = c(0, 0, 0, 0, 2))
+```
 
 Sudden, substantial departures from the temporal trend is interesting. This goes for life expectancy, GDP per capita, or population. How might one operationalize this notion of "interesting"?
 
@@ -177,20 +232,28 @@ Sudden, substantial departures from the temporal trend is interesting. This goes
 
 Make a data.frame of interesting countries, reporting their continent affiliation, and summary statistics on life expectancy (or GDP/capita or whatever you were looking at). Won't it be interesting to start to graphically explore them ... next week.
 
-```{r results='asis'}
+```{r results = 'asis'}
 yearMin <- min(gDat$year)
 jFun <- function(x) {
-  estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
-  names(estCoefs) <- c("intercept", "slope")
-  return(estCoefs)
+  jFit <- lm(lifeExp ~ I(year - yearMin), x)
+  jCoef <- coef(jFit)
+  names(jCoef) <- NULL
+  return(c(intercept = jCoef[1],
+           slope = jCoef[2],
+           maxResid = max(abs(resid(jFit)))/summary(jFit)$sigma))
   }
-jCoefs <- ddply(gDat, ~ country + continent, jFun)
-set.seed(916)
-foo <- jCoefs[sample(nrow(jCoefs), size = 15), ]
-foo <- arrange(foo, intercept)
-foo <- xtable(foo)
-print(foo, type='html', include.rownames = FALSE)
+maxResids <- ddply(gDat, ~ country + continent, jFun)
+foo <- ddply(maxResids, ~ continent, function(x) {
+  theMax <- which.max(x$maxResid)
+  x[theMax, ]
+  })
+htmlPrint(foo, digits = c(0, 0, 0, 2, 2, 2))
+## I can't resist, I must make a plot
+xyplot(lifeExp ~ year | country, gDat,
+       subset = country %in% foo$country, type = c("p", "r"))
 ```
+
+> Discuss: Is Ecuador really interesting? Do you think it's the most interesting country in the Americas? I doubt it. What could we do better? Making plots is ABSOLUTELY ESSENTIAL to sanity checking your claims and beliefs based on numerical computation.
 
 ### Student work
 
