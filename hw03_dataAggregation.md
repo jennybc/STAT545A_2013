@@ -3,7 +3,7 @@ Go back to [STAT545A home](current.html)
 Homework #3 Data aggregation 
 ========================================================
 
-> Follow the [existing homework submission instructions](hw00_instructions.html) UP TO THE LINK SUBMISSION PART. Submit your links by editing [this Google doc](https://docs.google.com/document/d/1QBzCNFujBgrzDRtfPR_VBlKnpFsO_E6WIl-xUMJIb68/edit?usp=sharing) -- WARNING: I turned off sharing ~3pm Mon Sept 23 because almost everyone had submitted their links. Contact JB if you need to submit or edit a link.
+> Follow the [existing homework submission instructions](hw00_instructions.html) UP TO THE LINK SUBMISSION PART. Submit your links by editing this Google doc -- WARNING: I turned off sharing ~3pm Mon Sept 23 because almost everyone had submitted their links. Contact JB if you need to submit or edit a link.
 
   * Start with the Gapminder data as provided in [`gapminderDataFiveYear.txt`](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt).
   * Use the `plyr` package to tackle __some, not all,__ tasks from the list below. __You decide what to work on__ but spend ~2 hours on this. Of course you are welcome to do more if you wish.
@@ -25,6 +25,12 @@ Tips
   * Don't be satisfied merely with correct results; examine your code and see if it can be simpler, more readable, more general.
   
 ### Menu of data aggregation tasks.
+
+
+
+
+
+
 
 #### Create your own adventure.
 
@@ -111,6 +117,9 @@ Sudden, substantial departures from the temporal trend is interesting. This goes
 
 Make a data.frame of interesting countries, reporting their continent affiliation, and summary statistics on life expectancy (or GDP/capita or whatever you were looking at). Won't it be interesting to start to graphically explore them ... next week.
 
+
+
+
 ### Student work
 
   * attali-dea [source](https://gist.github.com/daattali/6673361#file-stat545a-2013-hw03_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw03_attali-dea) 
@@ -154,7 +163,6 @@ Make a data.frame of interesting countries, reporting their continent affiliatio
   * liu-yan [source](https://gist.github.com/swallow0001/6673645#file-stat545a-2013-hw3_liu) | [report](http://rpubs.com/swallow0001/STAT545a-2013-hw3_Liu)
   * haraty-mon EDIT HERE
   * yuen-mac [source](https://gist.github.com/myuen/6672095#file-stat545a-2013-hw03_yuen-mac-rmd) | [report](http://rpubs.com/myuen/stat545a-2013-hw03_yuen-mac)
-
 
 
 <div class="footer">
