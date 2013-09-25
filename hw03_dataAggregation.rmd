@@ -324,17 +324,22 @@ xyplot(lifeExp ~ year | country, gDat,
 
 > Student: consider the exercises where we return info on the country that exhibits, e.g., the minimum life expectancy for a certain continent and/or year. What if there are ties and that minimum is achieved by more than 1 country?
 
-I consider this a special case or extension of something we did above: identifying "low life expectancy" countries. So I will mix that code with our min/max finding code. BTW I cannot find an instance where any countries tie for lowest or longest life expectancy, but my two stage solution reflects my attempt to look into that.
+I consider this a special case or extension of something we did above: identifying "low life expectancy" countries. So I will mix that code with our min/max finding code. BTW I cannot find an instance where any countries tie for lowest or longest life expectancy, but my two stage solution reflects my attempt to look into that. __I created a copy of `gDat` and altered two life expectancies to create a tie! No, people are usually living past 110 in Norway and Sweden!__
 
 ```{r results = 'asis'}
+## I couldn't find any examples of two or more countries sharing the min or max
+## life expectancy in a given year; so I tweaked the data!
+
+testDat <- gDat
+toReplace <- with(testDat, country %in% c("Norway", "Sweden") & year == 2007)
+testDat[toReplace, "lifeExp"] <- 110
+
 ## for each life expectancy, compute its rank within all life expectancies
 ## recorded that year
-ggDat <- ddply(gDat, ~ year, transform,
-             leRank = rank(lifeExp, ties.method = "average"))
+ggDat <- ddply(testDat, ~ year, transform,
+               leRank = rank(lifeExp, ties.method = "average"))
 ## look at the new leRank variable, if you wish
-## I did and can't find any instances of ties for the min or max???
-
-## but assuming we are worried about that possibility ....
+#table(ggDat$leRank)
 
 ## pull out the countries with extreme ranks ... with min and max being the most
 ## extreme of the extremes!
@@ -343,17 +348,17 @@ foo <- ddply(ggDat, ~ year, function(x) {
   maxRank <- max(x$leRank) # and the highest 2
   whoMin <- which(x$leRank == minRank) # I allow this to have length > 1
   whoMax <- which(x$leRank == maxRank)
-  c(year = x$year[whoMin[1]],
-    minLifeExp = x$lifeExp[whoMin[1]],
-    minCountries = paste(x$country[whoMin], collapse = " "),
-    minRank = x$leRank[whoMin[1]],
-    maxLifeExp = x$lifeExp[whoMax[1]],
-    maxCountries = paste(x$country[whoMax], collapse = " "),
-    maxRank = x$leRank[whoMax][1])
+  data.frame(year = x$year[whoMin[1]],
+             minLifeExp = x$lifeExp[whoMin[1]],
+             minCountries = paste(x$country[whoMin], collapse = " "),
+             minRank = minRank,
+             maxLifeExp = x$lifeExp[whoMax[1]],
+             maxCountries = paste(x$country[whoMax], collapse = " "),
+             maxRank =  maxRank)
   })
-htmlPrint(foo)
+htmlPrint(foo, digits = c(0, 0, 0, 0, 1, 0, 0, 1))
 ```
-
+Remember, the 2007 data for Norway and Sweden is fake; useful for testing this code.
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
