@@ -152,7 +152,8 @@ densityplot(~ lifeExp, iDat, plot.points = FALSE, ref = TRUE,
 ```
 You can also portray different sub-datasets in different *panels*, known as multi-panel conditioning. Specified on the far right of the formula following a vertical bar, as in `y ~ x | z`, the conditioning variable `z` must be a factor (or something that can be made into one) and you will get the requested type of plot of `y` against `x` for each level of `z`. Multi-panel conditioning is available in many high-level `lattice` functions.
 ```{r}
-densityplot(~ lifeExp | year, iDat)
+densityplot(~ lifeExp | factor(year), iDat)
+t.test(lifeExp ~ year, iDat)
 ```
 That's interesting! These distributions look very different than the overall distribution, underscoring the importance of incorporating important covariates into both your visualizations and your models.
 
@@ -176,9 +177,18 @@ print(rolling, position=c(0.45, 0, 1, 1))
 
 ```{r}
 histogram(~lifeExp, gDat)
-bwplot(lifeExp ~ continent, gDat)
-bwplot(lifeExp ~ continent, gDat, panel = panel.violin)
-bwplot(lifeExp ~ as.factor(year) | continent, gDat)
+histogram(~lifeExp, gDat, nint = 50)
+bwplot(lifeExp ~ continent, iDat)
+bwplot(lifeExp ~ continent, iDat, panel = panel.violin)
+bwplot(lifeExp ~ as.factor(year) | continent,
+       subset(gDat, continent != "Oceania"))
+bwplot(lifeExp ~ reorder(continent, lifeExp),
+       subset(gDat, continent != "Oceania"),
+       panel = function(..., box.ratio) {
+         panel.violin(..., col = "transparent", border = "grey60",
+                      varwidth = FALSE, box.ratio = box.ratio)
+         panel.bwplot(..., fill = NULL, box.ratio = .1)
+       })
 
 ```
 
