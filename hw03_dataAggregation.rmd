@@ -26,11 +26,25 @@ Tips
   
 ### Menu of data aggregation tasks.
 
+```{r include = FALSE}
+## toggle to turn solution chunks on/off
 
+## to make student-facing assignment, uncomment the line below, knit this file,
+## and copy the resulting .md file up one level, i.e. get it out of private/;
+## fileherd will pick this up and compile to HTML
 
+opts_chunk$set(eval = FALSE, echo = FALSE)
+```
 
-
-
+```{r}
+#### Load the Gapminder data and the `plyr` and `xtable` packages
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+library(plyr)
+library(xtable)
+str(gDat)
+```
 
 #### Create your own adventure.
 
@@ -40,15 +54,22 @@ You are welcome to create your own exercises by riffing on what you see below. I
 
 Produce a data.frame with 3 variables: a continent factor, the minimum GDP per capita, the maximum GDP per capita. There will be one row per continent. Sort on either the minimum or the maximum and assess whether the continents rank similarly w/r/t the other extreme. Discuss.
 
-
-
+```{r, tidy=FALSE}
+foo <- ddply(gDat, ~ continent, summarize,
+             minGdpPercap = min(gdpPercap), maxGdpPercap = max(gdpPercap))
+(foo <- arrange(foo, minGdpPercap))
+```
 
 #### Get the maximum and minimum of GDP per capita for all continents in a "tall" format. Medium/hard.
 
 Produce a data.frame with 3 variables: a continent factor, a GDP per capita summary statistic, a factor that describes the statistic (i.e. "min" vs "max"). There will be one row per continent * statistic combination. *Don't use reshaping -- get this directly with data aggregation.*
 
-
-
+```{r, tidy=FALSE}
+ddply(gDat, ~ continent, function(x) {
+  gdpPercap <- range(x$gdpPercap)
+  return(data.frame(gdpPercap, stat = c("min", "max")))
+  })
+```
 #### Look at the spread of GDP per capita within the continents. Easy.
 
 Measures of spread (we will discuss in class soon, just try them out!):
@@ -59,50 +80,89 @@ Measures of spread (we will discuss in class soon, just try them out!):
   
 Produce a data.frame with one row per continent and variables containing the different measures of spread for GDP/capita. Sort on one of those and assess whether the continents rank similarly w/r/t heterogeneity of GDP/capita by the other measures. Discuss.
  
-
-
+```{r, tidy=FALSE}
+foo <- ddply(gDat, ~ continent, summarize,
+             sdGdpPercap = sd(gdpPercap), madGdpPercap = mad(gdpPercap),
+             iqrGdpPercap = IQR(gdpPercap))
+(foo <- arrange(foo, sdGdpPercap))
+```
 
 #### Compute a trimmed mean of life expectancy for different years. Easy/medium.
 
 Compute the average life expectancy by year, as a warm-up exercise. Then consider an alternative: a [*trimmed mean*](http://en.wikipedia.org/wiki/Truncated_mean). There is a `trim` argument in the built-in function `mean()`. Pick a modest trim fraction that is greater than 0. Report your sorted results. Make sure your trim level is well-documented.
 
-
-
+```{r}
+foo <- ddply(gDat, ~ year, summarize, tMean = mean(lifeExp, trim = 0.2))
+(foo <- arrange(foo, tMean))
+```
 
 #### How is life expectancy changing over time on different continents? "Tall" format. Easy/medium.
 
 Get a data.frame with 3 variables: continent, year, and mean or median life expectancy. What are the trends over time? Are they same or different across the continents? Is this easy to assess from this data.frame?
 
-
-
+```{r}
+(foo <- ddply(gDat, ~ continent + year, summarize, medLifeExp = median(lifeExp)))
+```
 
 #### How is life expectancy changing over time on different continents? "Wide" format. Hard (or possibly silly).
 
 Get a data.frame with 1 + 5 = 6 variables: year and then one variable per continent, giving mean or median life expectancy. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit. *Hint: I've made some progress here and advise you look into `daply()`.*
 
-
-
+```{r results='asis'}
+foo <- daply(gDat, ~ year + continent,
+             summarize, medLifeExp = median(lifeExp))
+##str(foo)
+foo <- as.data.frame(foo)
+##str(foo) ## there's still some goofiness, ie the variables are lists .... hmmmm
+foo <- xtable(foo)
+print(foo, type='html')
+```
 
 #### Count the number of countries with low life expectancy over time by continent. "Tall" format. Medium/hard.
 
 Compute some measure of worldwide life expectancy -- you decide -- a mean or median or some other quantile or perhaps your current age. The determine how many countries on each continent have a life expectancy less than this benchmark, for each year. Produce a data.frame with 3 variables: continent, year, and a country count. What's the trend over time? Is that trend the same for all continents? How much fun is it to assess this from this tall table?
 
-
-
+```{r}
+(bMark <- quantile(gDat$lifeExp, 0.2))
+ddply(gDat, ~ continent + year, function(x) sum(x$lifeExp < bMark))
+```
 
 #### Compute the proportion of countries with low life expectancy over time by continent. Medium extension of another task.
 
 The continents have very different numbers of countries. Maybe the proportion of "low life expectancy" countries is more relevant than the raw count. Or maybe the final table should report both? Work on that.
 
-
-
+```{r}
+(bMark <- quantile(gDat$lifeExp, 0.2))
+ddply(gDat, ~ continent + year, function(x) {
+  jCount = sum(x$lifeExp < bMark)
+  c(count = jCount, prop = jCount / nrow(x))
+})
+```
 
 #### Report the absolute and/or relative abundance of countries with low life expectancy over time by continent. "Wide" format. Extension of another task of unknown difficulty / value.
 
 Create a table with one row per year and one column -- at least conceptually -- per continent. In that "column" report the absolute and/or relative abundance of "low life expectancy" countries. Is there a natural way to do this in `plyr` without hard-wiring the continent-specific variables and without reshaping an intermediate result? Since I am new-ish to `plyr`, I don't know yet if this is possible and/or a totally stupid way to go about this. So this one is for people who are happy to play around a bit. *Hint: I've made some progress here and advise you look into `daply()`. I ended up skipping straight to character output versus an object appropriate for further computation or graphing. Sometimes it's better to approach these ill-defined tasks from a different angle.*
  
+```{r results='asis', tidy=FALSE}
+bMark <- quantile(gDat$lifeExp, 0.2)
 
+## my first success ... but was still a 3-dim array :(
+## that would be useful for plotting, at least after some reshaping, but is not
+## so easy on the eyes
+# daply(gDat, ~ year + continent, function(x) {
+#   jCount <- sum(x$lifeExp < bMark)
+#   c(count = jCount, prop = jCount / nrow(x))
+# })
 
+foo <- daply(gDat, ~ year + continent, function(x) {
+  jCount <- sum(x$lifeExp < bMark)
+  jTotal <- nrow(x)
+  jProp <- jCount / jTotal
+  return(sprintf("%1.2f (%d/%d)", jProp, jCount, jTotal))
+  })
+foo <- xtable(foo)
+print(foo, type='html')
+```
 
 #### Find countries with interesting stories. Open-ended and, therefore, hard. Realistic!
 
@@ -117,8 +177,20 @@ Sudden, substantial departures from the temporal trend is interesting. This goes
 
 Make a data.frame of interesting countries, reporting their continent affiliation, and summary statistics on life expectancy (or GDP/capita or whatever you were looking at). Won't it be interesting to start to graphically explore them ... next week.
 
-
-
+```{r results='asis'}
+yearMin <- min(gDat$year)
+jFun <- function(x) {
+  estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
+  names(estCoefs) <- c("intercept", "slope")
+  return(estCoefs)
+  }
+jCoefs <- ddply(gDat, ~ country + continent, jFun)
+set.seed(916)
+foo <- jCoefs[sample(nrow(jCoefs), size = 15), ]
+foo <- arrange(foo, intercept)
+foo <- xtable(foo)
+print(foo, type='html', include.rownames = FALSE)
+```
 
 ### Student work
 
