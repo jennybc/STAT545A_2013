@@ -103,7 +103,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
   * Google form re: datasets TO BE POSTED
   
-  * Submit homework 4 before class starts @ 9:30am Monday Sept. 30. Will consist of making graphical companions to data aggregation work from [homework 3](hw03_dataAggregation.html). Preferably using >=2 data aggregation tasks (+ code) developed by a fellow student or JB, not yourself.
+  * Submit [homework 4](hw04_univariateLattice.html) before class starts @ 9:30am Monday Sept. 30. Make graphical companions to data aggregation output from [homework 3](hw03_dataAggregation.html).
   
 ### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file
 
