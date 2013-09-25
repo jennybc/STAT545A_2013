@@ -53,7 +53,7 @@ data.frame(factor = c(class = class(gDat$country),
                       mode = mode(gDat$country),
                       typeof = typeof(gDat$country)))
 ```
-Jenny's Law says that some great huge factor misunderstanding will eat up hours of valuable time in any given analysis. When you're beating your head against the wall, look very closely at your factors. Are you using them in a character context? Do you have factors you did not know about, e.g., variables you perceived as character but that are actually factors? `str()` is a might weapon.
+Jenny's Law says that some great huge factor misunderstanding will eat up hours of valuable time in any given analysis. When you're beating your head against the wall, look very closely at your factors. Are you using them in a character context? Do you have factors you did not know about, e.g., variables you perceived as character but that are actually factors? `str()` is a mighty weapon.
 
 ### Factor avoidance: is this strategy for you?
 
@@ -117,7 +117,8 @@ jCoefs <- within(jCoefs, country <- reorder(country, intercept))
 head(levels(jCoefs$country)) # in increasing order of 1952 life expectancy
 head(jCoefs)
 ```
-Note that the __row order of `jCoefs` is not changed__ by reordering the factor levels. I could __choose__ to reorder the rows of the data.frame, based on the new, rational level order of `country`, using `arrange()` from `plyr`.
+Note that the __row order of `jCoefs` is not changed__ by reordering the factor levels. I could __choose__ to reorder the rows of the data.frame, based on the new, rational level order of `country`. I do below using `arrange()` from `plyr`, which is a nice wrapper around the built-in function `order()`.
+
 ```{r}
 # assign the arrange() result back to jCoefs to make the new row order "stick"
 head(arrange(jCoefs, country)) 
