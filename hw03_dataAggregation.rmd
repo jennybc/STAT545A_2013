@@ -173,8 +173,6 @@ htmlPrint(ddply(gDat, ~ continent + year,
 
 The continents have very different numbers of countries. Maybe the proportion of "low life expectancy" countries is more relevant than the raw count. Or maybe the final table should report both? Work on that.
 
-> JB: hey, I'm using `...` to carry forward a nontrivial specification of `digits =` here!
-
 ```{r results = 'asis'}
 ## note: bMark set in previous chunk
 htmlPrint(ddply(gDat, ~ continent + year, function(x) {
