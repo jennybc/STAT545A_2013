@@ -61,7 +61,6 @@ str(gDat)
 ## define a function for converting and printing to HTML table
 htmlPrint <- function(x, ...,
                       digits = 0, include.rownames = FALSE) {
-  #if(!hasArg("digits")) digits <- 0
   print(xtable(x, digits = digits, ...), type = 'html',
         include.rownames = include.rownames, ...)
   }
@@ -324,7 +323,7 @@ xyplot(lifeExp ~ year | country, gDat,
 
 > Student: consider the exercises where we return info on the country that exhibits, e.g., the minimum life expectancy for a certain continent and/or year. What if there are ties and that minimum is achieved by more than 1 country?
 
-I consider this a special case or extension of something we did above: identifying "low life expectancy" countries. So I will mix that code with our min/max finding code. BTW I cannot find an instance where any countries tie for lowest or longest life expectancy, but my two stage solution reflects my attempt to look into that. __I created a copy of `gDat` and altered two life expectancies to create a tie! No, people are usually living past 110 in Norway and Sweden!__
+I consider this a special case or extension of something we did above: identifying "low life expectancy" countries. So I will mix that code with our min/max finding code. BTW I cannot find an instance where any countries tie for lowest or longest life expectancy, but my two stage solution reflects my attempt to look into that. __I created a copy of `gDat` and altered two life expectancies to create a tie! No, people are not usually living past 110 in Norway and Sweden!__
 
 ```{r results = 'asis'}
 ## I couldn't find any examples of two or more countries sharing the min or max
