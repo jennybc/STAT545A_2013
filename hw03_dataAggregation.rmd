@@ -65,7 +65,7 @@ htmlPrint <- function(x, ...,
         include.rownames = include.rownames, ...)
   }
 ```
-> I wrote a function `htmlPrint()` to create an HTML table and print it. I am also trying blow your mind with the power of the `...` argument. That is why I can still pass arguments like `include.rownames = TRUE` whenever I feel like it. Here I also make the digits default to 0, which seemed best for the exercises below.
+> I wrote a function `htmlPrint()` to create an HTML table and print it.
 
 #### Create your own adventure.
 
