@@ -91,7 +91,7 @@ ddply(hDat, ~ continent, function(x) {
 stripplot(lifeExp ~ continent, hDat, jitter.data = TRUE,
           grid = "h", type = c("p", "a"), fun = min)
 ```
-I'm tired of dragging Oceania around, with its two measly countries. Let's remove all associated observations. To truly drop "Oceania" as a factor level, I use the `droplevels()` function (for more on being the boss of factors go FUTURE FACTOR TUTORIAL).
+I'm tired of dragging Oceania around, with its two measly countries. Let's remove all associated observations. To truly drop "Oceania" as a factor level, I use the `droplevels()` function (for more on being the boss of factors read [this tutorial](http://www.stat.ubc.ca/~jenny/STAT545A/block08_bossYourFactors.html)).
 ```{r}
 iDat <- subset(hDat, continent != "Oceania")
 table(iDat$continent) # Oceania is still there!
@@ -100,7 +100,7 @@ table(iDat$continent) # Oceania is gone now
 stripplot(lifeExp ~ continent, iDat, jitter.data = TRUE,
           grid = "h", type = c("p", "a"))
 ```
-I'd like the continents to be in order of life expectancy, low to high. And yes I realize that's an ill-defined thing. You will have to make lots of judgement calls to get anywhere in data analysis. Embrace being The Decider. (For more on reordering factors go FUTURE FACTOR TUTORIAL).
+I'd like the continents to be in order of life expectancy, low to high. And yes I realize that's an ill-defined thing. You will have to make lots of judgement calls to get anywhere in data analysis. Embrace being The Decider. (For more on reordering factors read [this tutorial](http://www.stat.ubc.ca/~jenny/STAT545A/block08_bossYourFactors.html)).
 ```{r}
 ddply(iDat, ~ continent, summarize, avgLifeExp = mean(lifeExp))
 ## Americas and Asia should be switched in the order of the levels
