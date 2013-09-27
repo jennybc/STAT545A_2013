@@ -136,16 +136,13 @@ head(arrange(jCoefs, country))
 tail(arrange(jCoefs, country))
 ```
 
-Example that reorders a factor temporarily "on the fly". This happen most often within a plotting call. Remember: you don't have to alter the factor's level order in the underlying data.frame itself. Building on the first example, let's make a stripplot of the intercepts, split out by continent, and overlay a connect-the-dots representation of the continent-specific averages.
+Example that reorders a factor temporarily "on the fly". This happens most often within a plotting call. Remember: you don't have to alter the factor's level order in the underlying data.frame itself. Building on the first example, let's make a stripplot of the intercepts, split out by continent, and overlay a connect-the-dots representation of the continent-specific averages. See figure on the left below. The erratic behavior of the overlay suggests that the continents are presented in a silly order, namely, alphabetical. It might make more sense to arrange the continents in increasing order of 1952 life expectancy. See figure on the right below.
 
-```{r}
+```{r fig.show = 'hold', out.width = '50%'}
 stripplot(intercept ~ continent, jCoefs, type = c("p", "a"))
-```
-
-The erratic behavior of the overlay suggests that the continents are presented in a silly order, namely, alphabetical. It might make more sense to arrange the continents in increasing order of 1952 life expectancy.
-```{r}
 stripplot(intercept ~ reorder(continent, intercept), jCoefs, type = c("p", "a"))
 ```
+
 __You try__: make a similar pair of plots for the slopes.
 ```{r echo = FALSE, eval = FALSE}
 stripplot(slope ~ continent, jCoefs, type = c("p", "a"))
@@ -167,7 +164,7 @@ Footnote based on hard personal experience: The package `gdata` includes an expl
 
 Try not to. But `rbind()`ing data.frames shockingly works better / more often than `c()`ing vectors. But this is a very delicate operation. WRITE MORE.
 
-It's not crazy to do this: convert to character, grow, convert back to factor.
+This is not as crazy/stupid as you might fear: convert to character, grow, convert back to factor.
 
 > Obviously not written yet.
 
