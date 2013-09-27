@@ -138,10 +138,21 @@ tail(arrange(jCoefs, country))
 
 Example that reorders a factor temporarily "on the fly". This happens most often within a plotting call. Remember: you don't have to alter the factor's level order in the underlying data.frame itself. Building on the first example, let's make a stripplot of the intercepts, split out by continent, and overlay a connect-the-dots representation of the continent-specific averages. See figure on the left below. The erratic behavior of the overlay suggests that the continents are presented in a silly order, namely, alphabetical. It might make more sense to arrange the continents in increasing order of 1952 life expectancy. See figure on the right below.
 
-```{r fig.show = 'hold', out.width = '50%'}
+> Sorry folks, experimenting with figure placement! Please tolerate any lack of side-by-side-ness and duplication for the moment.
+
+```{r fig.show = 'hold', fig.width = 4.5, fig.height = 5}
 stripplot(intercept ~ continent, jCoefs, type = c("p", "a"))
 stripplot(intercept ~ reorder(continent, intercept), jCoefs, type = c("p", "a"))
 ```
+
+```{r fig.show = 'hold', out.width = '49%'}
+stripplot(intercept ~ continent, jCoefs, type = c("p", "a"))
+stripplot(intercept ~ reorder(continent, intercept), jCoefs, type = c("p", "a"))
+```
+
+<!--- http://stackoverflow.com/questions/13685992/multiple-figures-with-rhtml-and-knitr --->
+
+<!--- http://r.789695.n4.nabble.com/knitr-side-by-side-figures-in-R-markdown-td4669875.html --->
 
 __You try__: make a similar pair of plots for the slopes.
 ```{r echo = FALSE, eval = FALSE}
