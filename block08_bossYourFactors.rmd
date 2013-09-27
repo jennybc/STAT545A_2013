@@ -88,7 +88,9 @@ To get the underlying integer codes, use `unclass()`. Use this with great care.
 
 ### Specialty functions for making factors
 
-`gl()`, `interaction()`
+`gl()`, `interaction()`, `lattice::make.groups()`
+
+> Obviously not written yet.
 
 ### How to change factor levels: recoding
 
@@ -96,7 +98,16 @@ To get the underlying integer codes, use `unclass()`. Use this with great care.
 
 <http://citizen-statistician.org/2012/10/20/recoding-variables-in-r-pedagogic-considerations/>
 
+> Obviously not written yet.
+
 ### How to change factor levels: dropping a level
+
+```{r eval = FALSE}
+## drop Oceania
+jDat <- droplevels(subset(gDat, continent != "Oceania"))
+```
+
+> There's more to say here but `droplevels()` is a great start.
 
 ### How to change factor levels: reordering
 
@@ -142,7 +153,23 @@ stripplot(slope ~ reorder(continent, slope), jCoefs, type = c("p", "a"))
 ```
 You will notice that the continents will be in a very different order, if you reorder by intercept vs. slope. There is no single definitive order for factor levels. It varies, depending on the quantitative variable and statistic driving the reordering. In a real data analysis, when you're producing a large number of related plots, I suggest you pick one factor level order and stick to it. In Gapminder, I would use this: Africa, Asia, America, Europe (and I'd drop Oceania). Sometimes a global commitment to constancy -- in factor level order and color usage especially -- must override optimization of any particular figure.
 
+`reorder(x, X, FUN, ..., order)` is the main built-in function for reordering the levels of a factor `x` such that the summary statistics produced by applying `FUN` to the values of `X` -- when split out by the reordered factor `x` -- are in increasing order.`FUN` defaults to `mean()`, which is often just fine.
+
+Mildly interesting: post-reordering, the factor `x` will have a `scores` attribute containing those summary statistics.
+
+Footnote based on hard personal experience: The package `gdata` includes an explicit factor method for the `reorder()` generic, namely `reorder.factor()`. Unfortunately it is not "upwards compatible" with the built-in `reorder.default()` in `stats`. Specifically, `gdata`'s `reorder.factor()` has no default for `FUN` so, if called without an explicit value for `FUN`, *nothing happens*. No reordering. I have found it is rather easy for the package or at least this function to creep onto my search path without my knowledge, since quite a few packages require `gdata` or use functions from it. This underscores the importance of checking that reordering has indeed occured. If you're reordering 'on the fly' in a plot, check visually. Otherwise, explicitly inspect the new level order with `levels()` and/or inspect the `scores` attribute described above. To look for `gdata` on your search path, use `search()`. To force the use of the built-in `reorder()`, call `stats::reorder()`. Many have tripped up on this:
+
+  * <http://stackoverflow.com/questions/10939516/data-frame-transformation-gives-different-results-when-same-code-is-run-before-a>
+  * <http://stackoverflow.com/questions/13146567/transform-and-reorder>
+  * <http://stackoverflow.com/questions/11004018/how-can-a-non-imported-method-in-a-not-attached-package-be-found-by-calls-to-fun>
+
 ### How to grow factor objects
+
+Try not to. But `rbind()`ing data.frames shockingly works better / more often than `c()`ing vectors. But this is a very delicate operation. WRITE MORE.
+
+It's not crazy to do this: convert to character, grow, convert back to factor.
+
+> Obviously not written yet.
 
 ### References
 
