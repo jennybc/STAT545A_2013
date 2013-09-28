@@ -36,6 +36,7 @@ The 3 steps that involve the outside world:
     - Capture the URL. Example: a student published her homework #1 script as a Gist and got a permalink URL of <https://gist.github.com/parkm87/6541659#file-stat545a-2013-hw01_park-min-r>.
   * __NEW__ Share the links to your code. JB will usually create a share a Google doc for this purpose.
     
+<!---
 Resources for developing the homework submission process:
 
   * Notes for JB, but anyone's welcome to read.
@@ -66,3 +67,4 @@ Resources for developing the homework submission process:
     - Don't expect any immediate result in the repository or on the course webpage. JB has to do various things behind the scenes to accept the edit and push an update to the course webpage.
     - That's it! We may discuss "tidying up" your github account later.
     - Contact JB or post on the Google Group if you have problems.
+--->
