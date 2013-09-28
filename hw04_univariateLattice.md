@@ -3,7 +3,7 @@ Go back to [STAT545A home](current.html)
 Homework #4 Visualize a quantitative variable with `lattice` 
 ========================================================
 
-> Follow the [existing homework submission instructions](hw00_instructions.html) UP TO THE LINK SUBMISSION PART. By 9:30am Monday September 30, be prepared to share your links via a Google doc.
+> Follow the [existing homework submission instructions](hw00_instructions.html). By 9:30am Monday September 30, be prepared to share your links via a Google doc.
 
   * Start with the Gapminder data as provided in [`gapminderDataFiveYear.txt`](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt).
   * Pick at least two data aggregation tasks inspired by [homework 3](hw03_dataAggregation.html), recapped below. __You decide what to work on__ but spend ~2 hours on this. Of course you are welcome to do more if you wish.
@@ -32,7 +32,13 @@ Tips
   * Feel free to use `lattice` functions we haven't explicitly covered yet. In particular, `xyplot()` might be handy and basic use is pretty easy. 
   * You are __encouraged__ to drop Oceania right from the start.
   
-### Menu of data aggregation tasks.
+### Menu of data aggregation tasks to explore with a figure.
+
+<!---
+#### Disclaimer
+
+This homework and my solutions are about the *figures*. I include companion tables of numbers from performing data aggregation to model real world behavior. I mostly expose my figure-making code here and mostly hide the data aggregation code. Why? Because I did lots of fiddling with reshaping and changing factor level order and it's probably overkill for people new to R. I am probably not making the best use of, e.g., the `reshape2` package. If you want gory details, look at the [source](https://github.com/jennybc/STAT545A/blob/master/hw04_univariateLattice.rmd).
+--->
 
 #### Choose your own adventure.
 
@@ -54,6 +60,28 @@ You are welcome to improvise. Wherever I say "life expectancy", you could substi
 
 
 
+#### Examine "typical" life expectancy for different years.
+
+Report what your measure of typical life expectancy is. If you use something like a trimmed mean, report the trim level properly somewhere close by or in figure.
+
+
+
+
+<!---Life expectancy, trimmed mean, trim = ??:--->
+
+
+
+
+
+
+#### How is life expectancy changing over time on different continents?
+
+
+
+
+<!---Life expectancy, trimmed mean, trim = ??:---> 
+
+
 
 #### Depict the maximum and minimum of GDP per capita for all continents.
 
@@ -65,29 +93,41 @@ It is awkward to ignore the year here, since there are strong temporal trends in
 
 
 
+<!---Wow, what's up with extremely high GDP/capita in Asia prior to 1980? O.I.L.
+
+ Too bad it's not easy to display this in a transposed fashion without actually transposing the object. `xtable` does not support that. Wonder if another package does? The hard part is that data.frame variables -- so table columns -- can have different flavors but data.frame or matrix rows -- table rows -- cannot. Therein lies the fiddliness. --->
+
+
+
+
+
 
 
 
 
 #### Look at the spread of GDP per capita within the continents.
 
-Ditto above about the year. Try to include two or more definitions of spread.
+Ditto above re: using one year only or incorporating the year properly.
+
+<!---First I ignore year, which is a little sketchy....--->
 
 
 
 
-#### Examine "typical" life expectancy for different years.
-
-Report what your measure of typical life expectancy is. If you use something like a trimmed mean, report the trim level properly somewhere close by or in figure.
 
 
 
 
-#### How is life expectancy changing over time on different continents?
 
 
 
+<!---Then I account for year. This shows why robust statistics, like the median, MAD, and IQR, are more handy in real life than your intro stats course may have indicated. Watch the sd chase the oil-rich Arab GDP/per capita outliers, which do not really characterize the entire set of countries in Asia.--->
 
+
+
+<!---
+
+> Wish I knew how to make table shrink to fit the width available. Probably not possible with the technology I am using. --->
 
 
 
@@ -101,14 +141,56 @@ Make sure to give your definition of "low life expectancy".
 
 
 
+<!---
+> This table will be truly huge if I transpose, as I've done elsewhere. Leaving as is.--->
 
 
 
-#### Find countries with interesting stories.
 
-Find countries with extremely low or high life expectancy in 1952 or that exhibit extremely rapid or slow life expectancy gains. Then plot their data.
+#### Find countries with extremely low or high life expectancy in 1952 or that exhibit extremely rapid or slow life expectancy gains.
 
-Find countries with sudden, substantial departures from the temporal trend in one of the quantitative measures. Then plot their data.
+Find them and then plot their data.
+
+> Tip. The hard part here is finding the interesting countries in an elegant manner. If you don't / can't do that, you can hard-wire the interesting countries, just so you get to make the plots! (Nice demo of why it's EVIL to have commas in the country names.) Here you go:
+
+  * Africa, intercepts
+    - low: Gambia | Sierra Leone | Guinea
+    - high: Reunion | Zimbabwe | Mauritius
+  * Asia, intercepts
+    - low: Afghanistan | Yemen, Rep. | Nepal
+    - high: Hong Kong, China | Japan | Israel
+  * Americas, intercepts
+    - low: Bolivia | Haiti | Guatemala
+    - high: Puerto Rico | United States | Canada
+  * Europe, intercepts
+    - low: Turkey | Bosnia and Herzegovina | Albania
+    - high: Netherlands | Iceland | Norway
+  * Africa, slopes
+    - low: Zimbabwe | Zambia | Rwanda
+    - high: Gambia | Tunisia | Libya
+  * Asia, slopes
+    - low: Iraq | Sri Lanka | Lebanon
+    - high: Saudi Arabia | Vietnam | Oman
+  * Americas, slopes
+    - low: Paraguay | Trinidad and Tobago | Uruguay
+    - high: Guatemala | Honduras | Nicaragua
+  * Europe, slopes
+    - low: Denmark | Hungary | Norway
+    - high: Portugal | Bosnia and Herzegovina | Turkey
+
+
+
+
+
+
+
+#### Find countries with sudden, substantial departures from the temporal trend in one of the quantitative measures.
+
+Find them and then plot their data.
+
+
+
+
 
 
 
