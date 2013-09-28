@@ -13,11 +13,13 @@ Fall 2013: I am (finally) marshalling my teaching materials in one place and exp
   * [External resources on writing your own functions](block06_functions.html) PLACEHOLDER 
   * [Overview of the R graphics landscape](block90_baseLatticeGgplot2.html)
   * [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html)
+  * [Be the boss of your factors](block08_bossYourFactors.html) UNDER DEVELOPMENT
   
     
-Smaller topics
+Smaller topics, in the approximate order in which students ask about them
 
-  * [Short note on CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
+  * [Note on custom CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
+  * [To tidy or not to tidy?](topic11_tidyCode.html) re: code tidying in `knitr`
 
 Stuff that's deprecated or needs freshing but that's not totally embarrassing
 
