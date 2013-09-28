@@ -84,6 +84,8 @@ The disadvantages include:
   * Monolithic/unexpected calling style. MORE HERE. It is particularly surprising to newbies to encounter the `this + that` style of specifying a `ggplot2` plot.
 
   * Difficulty of extreme customization. _I think situation is similar to `lattice` but maybe the need to truly customize is reduced even futher, due to greater power of the built-in functions and grammar?_
+  
+  * Speed
 
 Resources:
 

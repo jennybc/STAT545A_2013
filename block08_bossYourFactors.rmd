@@ -186,6 +186,12 @@ This is not as crazy/stupid as you might fear: convert to character, grow, conve
   * The main link above to SpringerLink will give full access to the book if you are on a UBC network (or any other network that confers accesss).
 
   * See Chapter 5 (“Factors”)
+  
+Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+
+  * Section 9.2.5 Dropping unused levels from groups
+  * Section 10.4.1 Dropping of factor levels (in the context of using `subset =`)
+  * Section 10.6 Ordering levels of categorical variables
 
 
 <div class="footer">
