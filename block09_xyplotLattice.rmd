@@ -26,7 +26,7 @@ Open a new R script (in RStudio, File > New > R Script). Develop and run your co
 ### Load the Gapminder data, drop Oceania, load packages
 
 Assuming the data can be found in the current working directory, this works:
-```{r, eval=FALSE}
+```{r eval=FALSE}
 gDat <- read.delim("gapminderDataFiveYear.txt")
 ```
 
@@ -48,23 +48,23 @@ jDat <- droplevels(subset(gDat, continent != "Oceania"))
 str(jDat)
 ```
 
-Load the `lattice` and `plyr` packages.
+Load the `lattice` package.
 ```{r}
 library(lattice)
-library(plyr)
 ```
 
 ### Show me the data with `xyplot()`
 
 Get a scatterplot with `xyplot()`. Background grids are nice. `grid = "h"` and `grid = "v"` are other useful shortcuts.
-```{r fig.show='hold', out.width='50%'}
+
+```{r fig.show = 'hold', out.width = '49%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat)
 xyplot(lifeExp ~ gdpPercap, jDat,
        grid = TRUE)
 ```
 
-You can take the logarithm directly in the formula, but it's sub-optimal due to the axis tick labels, which are not so easy to read. It's better to request the log transform via the `scales =` argument.
-```{r fig.show='hold', out.width='50%'}
+Clearly we need to log transform the horizontal axis, i.e. the one for GDP per capita. You can take the logarithm directly in the formula, but it's sub-optimal due to the axis tick labels, which are not so easy to read. It's better to request the log transform via the `scales =` argument.
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 ## log, the sub-optimal way
 xyplot(lifeExp ~ log10(gdpPercap), jDat,
        grid = TRUE)
@@ -85,7 +85,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
 
 The `type =` argument can be used to enhance the figure with data-responsive elements. On the left, we specify the default value, which requests only points, and on the right, we request a simple linear regression.
 
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat,
        grid = TRUE,
        scales = list(x = list(log = 10, equispaced.log = FALSE)),
@@ -98,7 +98,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
 
 Let's make line that more obnoxious and more orange. And let's try a different overlay -- namely, a smooth regression. In this case the difference is pretty subtle.
 
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat,
        grid = TRUE,
        scales = list(x = list(log = 10, equispaced.log = FALSE)),
@@ -112,7 +112,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
 ### `group =`
 
 If you specify a grouping variable via `group =`, the data from the various groups will be superposed and visually distinguished. A simple key is obtained with `auto.key = TRUE`, but there are many alternative ways to customize the key. We won't fuss with that on this quick tour.
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat,
        grid = TRUE,
        scales = list(x = list(log = 10, equispaced.log = FALSE)),
@@ -126,7 +126,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
 ```
 
 The `group =` argument can be used together with the `type =` argument.
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 ## groups + type "smooth"
 xyplot(lifeExp ~ gdpPercap, jDat,
        grid = TRUE,
@@ -145,7 +145,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
 
 If you would rather see data for different groups in separate *panels*, instead of superposed, specify the grouping factor `z` like so: `y ~ x | z`. This is called multi-panel conditioning. Sometimes I specify the same factor as the conditioning and grouping variable, just because I like to keep the color scheme constant and visible.
 
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap | continent, jDat,
        grid = TRUE,
        scales = list(x = list(log = 10, equispaced.log = FALSE)))
@@ -158,7 +158,7 @@ xyplot(lifeExp ~ gdpPercap | continent, jDat,
 
 You can use conditioning, grouping, and `type =` in various combinations.
 
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 ## conditioning + type "r" or "smooth"
 xyplot(lifeExp ~ gdpPercap | continent, jDat,
        grid = TRUE,
@@ -174,7 +174,7 @@ xyplot(lifeExp ~ gdpPercap | continent, jDat,
 
 In a univariate setting, we fought overplotting with jitter, before we turned to entirely different strategies, such as the kernel density estimation that underpins `densityplot()`. In scatterplots, the entry level solution to overplotting is to use alpha transparency for the points. I do that on the left. (My `lattice` default specify `pch = 16`, in you want to specify that in your call. Warning: not all graphics devices support alpha transparency.)
 
-```{r fig.show='hold', out.width='50%'}
+```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap | continent, jDat,
        grid = TRUE, 
        scales = list(x = list(log = 10, equispaced.log = FALSE)),
