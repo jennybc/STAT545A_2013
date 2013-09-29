@@ -13,7 +13,7 @@ if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
 if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
 ```
 
-We focus on studying two quantitative variables -- possibly in conjunction with one or more categorical variables. We are going to use functions from the `lattice` package in this tutorial and will revisit this ground using `ggplot2` shortly.
+We focus on studying the relationship between two quantitative variables -- possibly in conjunction with one or more categorical variables. We are going to use the `xyplot()` from the `lattice` package in this tutorial and will revisit this ground using `ggplot2` shortly.
 
 ### Optional getting started advice
 
