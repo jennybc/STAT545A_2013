@@ -1,0 +1,210 @@
+Scatterplots with `lattice`
+========================================================
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+We focus on studying two quantitative variables -- possibly in conjunction with one or more categorical variables. We are going to use functions from the `lattice` package in this tutorial and will revisit this ground using `ggplot2` shortly.
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "scatter plots" and "lattice".
+
+### Load the Gapminder data, drop Oceania, load packages
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+Drop Oceania, which only has two continents
+```{r}
+## drop Oceania
+jDat <- droplevels(subset(gDat, continent != "Oceania"))
+str(jDat)
+```
+
+Load the `lattice` and `plyr` packages.
+```{r}
+library(lattice)
+library(plyr)
+```
+
+### Show me the data with `xyplot()`
+
+Get a scatterplot with `xyplot()`. Background grids are nice. `grid = "h"` and `grid = "v"` are other useful shortcuts.
+```{r fig.show='hold', out.width='50%'}
+xyplot(lifeExp ~ gdpPercap, jDat)
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE)
+```
+
+You can take the logarithm directly in the formula, but it's sub-optimal due to the axis tick labels, which are not so easy to read. It's better to request the log transform via the `scales =` argument.
+```{r fig.show='hold', out.width='50%'}
+## log, the sub-optimal way
+xyplot(lifeExp ~ log10(gdpPercap), jDat,
+       grid = TRUE)
+## logging, better way ... step 1
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10)))
+```
+
+There are many other log axis labelling strategies. Here's the next easiest thing but you can see more examples of what's possible with the `latticeExtra` package in these [slides](http://www.stat.ubc.ca/~jenny/STAT545A/2012-lectures/cm08.pdf). I wish the tick marks and grid lined up, but I'm trying not to let the perfect be the enemy of the good. Let's press on.
+```{r}
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)))
+```
+
+### `type =`
+
+The `type =` argument can be used to enhance the figure with data-responsive elements. On the left, we specify the default value, which requests only points, and on the right, we request a simple linear regression.
+
+```{r fig.show='hold', out.width='50%'}
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = "p")
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "r"))
+```
+
+Let's make line that more obnoxious and more orange. And let's try a different overlay -- namely, a smooth regression. In this case the difference is pretty subtle.
+
+```{r fig.show='hold', out.width='50%'}
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "r"), col.line = "darkorange", lwd = 3)
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "smooth"), col.line = "darkorange", lwd = 3)
+```
+
+### `group =`
+
+If you specify a grouping variable via `group =`, the data from the various groups will be superposed and visually distinguished. A simple key is obtained with `auto.key = TRUE`, but there are many alternative ways to customize the key. We won't fuss with that on this quick tour.
+```{r fig.show='hold', out.width='50%'}
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent)
+
+## auto.key
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent, auto.key = TRUE)
+```
+
+The `group =` argument can be used together with the `type =` argument.
+```{r fig.show='hold', out.width='50%'}
+## groups + type "smooth"
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent, auto.key = TRUE,
+       type = c("p", "smooth"), lwd = 4)
+## making key more compact
+xyplot(lifeExp ~ gdpPercap, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent, auto.key = list(columns = nlevels(jDat$continent)),
+       type = c("p", "smooth"), lwd = 4)
+```
+
+### Multi-panel conditioning
+
+If you would rather see data for different groups in separate *panels*, instead of superposed, specify the grouping factor `z` like so: `y ~ x | z`. This is called multi-panel conditioning. Sometimes I specify the same factor as the conditioning and grouping variable, just because I like to keep the color scheme constant and visible.
+
+```{r fig.show='hold', out.width='50%'}
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)))
+
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       group = continent,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)))
+```
+
+You can use conditioning, grouping, and `type =` in various combinations.
+
+```{r fig.show='hold', out.width='50%'}
+## conditioning + type "r" or "smooth"
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "smooth"), col.line = "darkorange", lwd = 4)
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       grid = TRUE, group = continent,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "smooth"), lwd = 4)
+```
+
+### Combat overplotting
+
+In a univariate setting, we fought overplotting with jitter, before we turned to entirely different strategies, such as the kernel density estimation that underpins `densityplot()`. In scatterplots, the entry level solution to overplotting is to use alpha transparency for the points. I do that on the left. (My `lattice` default specify `pch = 16`, in you want to specify that in your call. Warning: not all graphics devices support alpha transparency.)
+
+```{r fig.show='hold', out.width='50%'}
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       grid = TRUE, 
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "smooth"), lwd = 4, alpha = 1/2)
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       grid = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       panel = panel.smoothScatter)
+```
+
+On the right I actually request a non-default panel function, `panel.smoothScatter()` that is, in fact, based on 2D kernel density estimation. There's more about panel functions [here](block10_block10_latticeNittyGritty.html).
+
+Finally, hexagonal binning is an interesting way to handle overplotting. The plane is divided into a hexagonal lattice and the individual hexagons are shaded according to the number of point that fall within. This requires an add-on library `hexbin` which you will need to install.
+
+```{r}
+#install.packages("hexbin", dependencies = TRUE)
+library(hexbin)
+hexbinplot(lifeExp ~ gdpPercap, jDat,
+           scales = list(x = list(log = 10, equispaced.log = FALSE)),
+           aspect = 1, bins=50)
+```
+
+And thus endeth the quick tour of `xyplot().`
+
+### References
+
+Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+
+  * Ch. 5 Scatter Plots and Extensions is most relevant to this tutorial
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

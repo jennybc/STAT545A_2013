@@ -105,6 +105,10 @@ Monday Sept 02 is a statutory holiday. No class.
   
 ### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file
 
+  * Work through
+
+    - [A quick tour of `xyplot()](block09_xyplotLattice.html)
+
   * Google form re: datasets TO BE POSTED
   
   * Reading on the `ggplot2` package in the book *ggplot2: Elegant Graphics for Data Analysis*.  Links to the eBook and much more can be found [on my resources page](../resources.html).
