@@ -108,6 +108,7 @@ Monday Sept 02 is a statutory holiday. No class.
   * Work through
 
     - [A quick tour of `xyplot()](block09_xyplotLattice.html)
+    - [Gateway to more advanced `lattice` usage](block10_latticeNittyGritty.html)
 
   * Google form re: datasets TO BE POSTED
   
