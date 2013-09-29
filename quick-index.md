@@ -14,6 +14,7 @@ Fall 2013: I am (finally) marshalling my teaching materials in one place and exp
   * [Overview of the R graphics landscape](block90_baseLatticeGgplot2.html)
   * [Exploring a quantitative variable with `lattice`](block07_univariatePlotsLattice.html)
   * [Be the boss of your factors](block08_bossYourFactors.html) UNDER DEVELOPMENT
+  * [Exploring the relationship between two quantitative variables: A quick tour of `xyplot()](block09_xyplotLattice.html)
   
     
 Smaller topics, in the approximate order in which students ask about them
