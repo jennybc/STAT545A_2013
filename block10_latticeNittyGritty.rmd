@@ -264,8 +264,6 @@ The differences in the code are really not that huge, considering how different 
 
 Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
 
-  * Ch. 5 Scatter Plots and Extensions is most relevant to this tutorial
-
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
 </div>
