@@ -13,7 +13,7 @@ if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
 if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
 ```
 
-We focus on studying the relationship between two quantitative variables -- possibly in conjunction with one or more categorical variables. We are going to use the `xyplot()` from the `lattice` package in this tutorial and will revisit this ground using `ggplot2` shortly.
+We focus on studying the relationship between two quantitative variables -- possibly in conjunction with one or more categorical variables. We use the `xyplot()` function from the `lattice` package in this tutorial and will revisit this ground using `ggplot2` shortly.
 
 ### Optional getting started advice
 
@@ -41,7 +41,7 @@ Basic sanity check that the import has gone well:
 ```{r}
 str(gDat)
 ```
-Drop Oceania, which only has two continents
+Drop Oceania, which only has two countries
 ```{r}
 ## drop Oceania
 jDat <- droplevels(subset(gDat, continent != "Oceania"))
@@ -55,7 +55,7 @@ library(lattice)
 
 ### Show me the data with `xyplot()`
 
-Get a scatterplot with `xyplot()`. Background grids are nice. `grid = "h"` and `grid = "v"` are other useful shortcuts.
+Get a scatterplot with `xyplot()`. Background grids are nice. In addition to `grid = TRUE`, `grid = "h"` and `grid = "v"` are other useful shortcuts.
 
 ```{r fig.show = 'hold', out.width = '49%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat)
@@ -74,7 +74,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
        scales = list(x = list(log = 10)))
 ```
 
-There are many other log axis labelling strategies. Here's the next easiest thing but you can see more examples of what's possible with the `latticeExtra` package in these [slides](http://www.stat.ubc.ca/~jenny/STAT545A/2012-lectures/cm08.pdf). I wish the tick marks and grid lined up, but I'm trying not to let the perfect be the enemy of the good. Let's press on.
+There are many other log axis labelling strategies. The next easiest thing is to specify `equispaced.log = FALSE` Even more is possible with functions in the `latticeExtra` package; see some examples in these [slides](http://www.stat.ubc.ca/~jenny/STAT545A/2012-lectures/cm08.pdf). I wish the tick marks and grid lined up, but I'm trying not to let the perfect be the enemy of the good. Let's press on.
 ```{r}
 xyplot(lifeExp ~ gdpPercap, jDat,
        grid = TRUE,
@@ -83,7 +83,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
 
 ### `type =`
 
-The `type =` argument can be used to enhance the figure with data-responsive elements. On the left, we specify the default value, which requests only points, and on the right, we request a simple linear regression.
+The `type =` argument can be used to enhance the figure with data-responsive elements. On the left, we specify the default value `type = "p"`, which requests only points, and on the right, we request a simple linear regression with `type = c("p", "r")`.
 
 ```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat,
@@ -96,7 +96,7 @@ xyplot(lifeExp ~ gdpPercap, jDat,
        type = c("p", "r"))
 ```
 
-Let's make line that more obnoxious and more orange. And let's try a different overlay -- namely, a smooth regression. In this case the difference is pretty subtle.
+Let's make line that more obnoxious and more orange. And let's try a different overlay -- namely, a smooth regression via `type = c("p", "smooth")`. In this case the difference is pretty subtle.
 
 ```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap, jDat,
@@ -172,7 +172,7 @@ xyplot(lifeExp ~ gdpPercap | continent, jDat,
 
 ### Combat overplotting
 
-In a univariate setting, we fought overplotting with jitter, before we turned to entirely different strategies, such as the kernel density estimation that underpins `densityplot()`. In scatterplots, the entry level solution to overplotting is to use alpha transparency for the points. I do that on the left. (My `lattice` default specify `pch = 16`, in you want to specify that in your call. Warning: not all graphics devices support alpha transparency.)
+In a univariate setting, we fought overplotting with jitter, before we turned to entirely different strategies, such as the kernel density estimation that underpins `densityplot()`. In scatterplots, the entry level solution to overplotting is to use alpha transparency for the points. I do that on the left via `alpha = 1/2`. Here's how to think of this: if alpha transparency is set to $1/k$ then an area becomes opaque when $k$ points overlap. (My `lattice` default specifies `pch = 16`, if you want to specify that in your call. Warning: not all graphics devices support alpha transparency.)
 
 ```{r fig.show='hold', out.width='50%', out.extra='style=""'}
 xyplot(lifeExp ~ gdpPercap | continent, jDat,
@@ -185,9 +185,9 @@ xyplot(lifeExp ~ gdpPercap | continent, jDat,
        panel = panel.smoothScatter)
 ```
 
-On the right I actually request a non-default panel function, `panel.smoothScatter()` that is, in fact, based on 2D kernel density estimation. There's more about panel functions [here](block10_block10_latticeNittyGritty.html).
+On the right I actually request a non-default panel function, `panel.smoothScatter()` that is, in fact, based on 2D kernel density estimation. There's more about panel functions [here](block10_latticeNittyGritty.html).
 
-Finally, hexagonal binning is an interesting way to handle overplotting. The plane is divided into a hexagonal lattice and the individual hexagons are shaded according to the number of point that fall within. This requires an add-on library `hexbin` which you will need to install.
+Finally, hexagonal binning is an interesting way to handle overplotting. The plane is divided into a hexagonal lattice and the individual hexagons are shaded according to the number of point that fall within. This requires an add-on library `hexbin` which you will need to install. Then you can use `hexbinplo()` as almost a drop-in substitute for `xyplot()`.
 
 ```{r}
 #install.packages("hexbin", dependencies = TRUE)
