@@ -103,7 +103,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
   * Submit [homework 4](hw04_univariateLattice.html) before class starts @ 9:30am Monday Sept. 30. Make graphical companions to data aggregation output from [homework 3](hw03_dataAggregation.html).
   
-### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file
+### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file ([slides as PDF](2013-lectures/cm07_xyplot-formalLattice-figuresToFile.pdf))
 
   * Work through
 

@@ -120,7 +120,7 @@ stripplot(lifeExp ~ factor(year), jDat, jitter.data = TRUE,
 
 #### How is life expectancy changing over time on different continents?
 
-```{r fig.show = 'hold', out.width = '50%'}
+```{r fig.show = 'hold', out.width = '50%', out.extra='style=""'}
 stripplot(lifeExp ~ factor(year) | reorder(continent, lifeExp), jDat,
           jitter.data = TRUE,
           type = c("p", "a"), fun = myTrimMean, alpha = 0.6, grid = "h",
