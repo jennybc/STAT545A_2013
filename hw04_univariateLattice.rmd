@@ -1,0 +1,468 @@
+Go back to [STAT545A home](current.html)
+
+Homework #4 Visualize a quantitative variable with `lattice` 
+========================================================
+
+> Follow the [existing homework submission instructions](hw00_instructions.html). By 9:30am Monday September 30, be prepared to share your links via a [Google doc](https://docs.google.com/document/d/1QBzCNFujBgrzDRtfPR_VBlKnpFsO_E6WIl-xUMJIb68/edit?usp=sharing).
+
+  * Start with the Gapminder data as provided in [`gapminderDataFiveYear.txt`](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt).
+  * Pick at least two data aggregation tasks inspired by [homework 3](hw03_dataAggregation.html), recapped below. __You decide what to work on__ but spend ~2 hours on this. Of course you are welcome to do more if you wish.
+  * Try to pick tasks that you did not do and modify (or at least read) data aggregation code from a fellow student (best!) or JB.
+    - If applicable, state and link to the student's code and report.
+    - Comment on their HW 3 report and/or code if you wish. Be kind but constructive.
+    - Notice what makes code hard vs. easy to understand and re-use. This foretells what revisiting your own code will feel like 6 months from now.
+  * Use the `lattice` package to create "companion" graphics, at least one per data aggregation task. So make at least two good figures.
+    - Your figure does not have to depict every last number from the data aggregation result. Use your judgement.
+    - The figure can illustrate things that are hard/impossible to see in the data aggregation result.
+    - Goal: the table and the figure complement each other!
+    - Notice which data formats make better inputs for plotting functions vs. for human-friendly tables.
+  * Write up with R Markdown.
+    - Include a narrative, written in English prose. Don't *just* show code and results.
+    - Expose your code, i.e. use `echo = FALSE` very sparingly.
+  * DUE: Before class begins 9:30am Monday September 30.
+    - Compile into an HTML report. Follow the naming convention. Publish the HTML report on the web somewhere, such as on RPubs. Make the slug follow the naming convention.
+    - Publish the R Markdown file as a Gist. Follow the naming convention.
+    - Share your links by editing the Google doc mentioned above.
+ 
+Tips
+
+  * Perform a superficial check that data import went OK.
+  * Give informative, short variable names, so you don't need to fiddle with `xlab =` etc. Table headings and axis labels don't need to be "publication ready", just transparent.
+  * Attend to the order of your factor levels.
+  * Feel free to use `lattice` functions we haven't explicitly covered yet. In particular, `xyplot()` might be handy and basic use is pretty easy. 
+  * You are __encouraged__ to drop Oceania right from the start.
+  
+### Menu of data aggregation tasks to explore with a figure.
+
+#### Disclaimer
+
+This homework and my solutions are about the *figures*. I include companion tables of numbers from performing data aggregation to model real world behavior. I mostly expose my figure-making code here and mostly hide the data aggregation code. Why? Because I did lots of fiddling with reshaping and changing factor level order and it's probably overkill for people new to R. I am probably not making the best use of, e.g., the `reshape2` package. If you want gory details, look at the [source](https://github.com/jennybc/STAT545A/blob/master/hw04_univariateLattice.rmd).
+
+#### Choose your own adventure.
+
+You are welcome to improvise. Wherever I say "life expectancy", you could substitute "GDP per capita". When I say "max", feel free to look at the 0.9 quantile. You get the idea.
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
+## toggle to turn solution chunks on/off
+
+## Assign HW: This file would live in private/ and not be in public repo and
+## would not compiled by fileherd. To make student-facing assignment, uncomment
+## the line below, knit this file, and copy the resulting .md file up one level,
+## where fileherd will pick it up and compile to HTML and we can push to web.
+## Only the data aggregation task prompts will appear.
+
+## Reveal solutions: Move this file up into main directory. Leave the line below
+## commented out. fileherd will compile questions AND solutions normally.
+
+## Reset course for future: Hmmmm.... now the solutions are "out there on the
+## web". I probably should have thought of that sooner. Worry about that later.
+
+#opts_chunk$set(eval = FALSE, echo = FALSE)
+```
+
+#### Load the Gapminder data, necessary packages and drop Oceania
+
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+library(lattice)
+library(plyr)
+library(xtable)
+library(reshape2)
+str(gDat)
+```
+
+```{r}
+## drop Oceania
+jDat <- droplevels(subset(gDat, continent != "Oceania"))
+str(jDat)
+```
+
+```{r}
+##This function is handy for the repetitive task of making HTML tables.
+htmlPrint <- function(x, ...,
+                      digits = 0, include.rownames = FALSE) {
+  print(xtable(x, digits = digits, ...), type = 'html',
+        include.rownames = include.rownames)
+  }
+```
+
+#### Examine "typical" life expectancy for different years.
+
+Report what your measure of typical life expectancy is. If you use something like a trimmed mean, report the trim level properly somewhere close by or in figure.
+
+```{r echo = FALSE}
+jTrim <- 0.2
+myTrimMean <- function(x) mean(x, trim = jTrim)
+foo <- aggregate(lifeExp ~ year, jDat, myTrimMean)
+## this call to ddply() does same thing
+## foo <- ddply(jDat, ~ year, summarize, myTrimMean(lifeExp))
+foobar <- matrix(foo$lifeExp, byrow = TRUE, nrow = 1,
+                 dimnames = list(NULL, paste0("yr", foo$year)))
+## there's probably a clever-er way to do that ... oh well
+```
+
+Life expectancy, trimmed mean, trim = `r jTrim`:
+```{r results = 'asis', echo = FALSE}
+htmlPrint(foobar, include.rownames = FALSE)
+```
+
+```{r}
+stripplot(lifeExp ~ factor(year), jDat, jitter.data = TRUE,
+          type = c("p", "a"), fun = myTrimMean, alpha = 0.6, grid = "h",
+          main = paste("Life expectancy, trimmed mean, trim = ", jTrim))
+```
+
+#### How is life expectancy changing over time on different continents?
+
+```{r fig.show = 'hold', out.width = '50%'}
+stripplot(lifeExp ~ factor(year) | reorder(continent, lifeExp), jDat,
+          jitter.data = TRUE,
+          type = c("p", "a"), fun = myTrimMean, alpha = 0.6, grid = "h",
+          main = paste("Life expectancy, trimmed mean, trim = ", jTrim),
+          scales = list(x = list(rot = c(45, 0))))
+stripplot(lifeExp ~ factor(year), jDat, jitter.data = TRUE,
+          group = reorder(continent, lifeExp),
+          type = c("p", "a"), fun = myTrimMean, alpha = 0.6, grid = "h",
+          main = paste("Life expectancy, trimmed mean, trim = ", jTrim),
+          scales = list(x = list(rot = c(45, 0))),
+          auto.key = list(reverse.rows = TRUE,
+                          x = 0.07, y = 0.95, corner = c(0, 1)))
+```
+
+Life expectancy, trimmed mean, trim = `r jTrim`:
+```{r echo = FALSE, results = 'asis'}
+jTrim <- 0.2
+myTrimMean <- function(x) mean(x, trim = jTrim)
+foo <- daply(jDat, ~ continent + year,
+             summarize, typLifeExp = myTrimMean(lifeExp))
+htmlPrint(as.data.frame(foo[with(jDat, rev(levels(reorder(continent,
+                                                          lifeExp)))), ]),
+          include.rownames = TRUE)
+```
+
+#### Depict the maximum and minimum of GDP per capita for all continents.
+
+It is awkward to ignore the year here, since there are strong temporal trends in GDP per capita. You are encouraged to address that in some way. Easy: consider only one year. Harder but better: work the year variable into your visual display.
+
+```{r fig.show = 'hold', out.width = '50%'}
+## get continent*year-specific min and max in tall data.frame
+extGdppercapByContinent <- ddply(jDat, ~ continent + year, function(x) {
+  jLevels <- c("min", "max")
+  data.frame(gdpPercap = range(x$gdpPercap),
+             stat = factor(jLevels, levels = jLevels))
+  })
+rawPlot <- xyplot(gdpPercap ~ year | continent, extGdppercapByContinent,
+                  group = stat, type = "b", grid = "h", as.table = TRUE,
+                  auto.key = list(columns = 2))
+logPlot <- xyplot(gdpPercap ~ year | continent, extGdppercapByContinent,
+                  group = stat, type = "b", grid = "h", as.table = TRUE,
+                  auto.key = list(columns = 2),
+                  scales = list(y = list(log = TRUE, equispaced.log = FALSE)))
+                  #yscale.components = yscale.components.logpower)
+print(rawPlot)
+print(logPlot)
+```
+
+```{r echo = FALSE, results = 'asis'}
+## reshape and reorder the data to provide table w/ best compatibility with
+## figure
+foo <- ddply(extGdppercapByContinent, ~ continent, function(x) {
+  tmp <- dcast(x, stat ~ year, value.var = "gdpPercap")
+  arrange(tmp, desc(stat))
+})
+htmlPrint(foo)
+```
+
+Wow, what's up with extremely high GDP/capita in Asia prior to 1980? O.I.L.
+
+ Too bad it's not easy to display this in a transposed fashion without actually transposing the object. `xtable` does not support that. Wonder if another package does? The hard part is that data.frame variables -- so table columns -- can have different flavors but data.frame or matrix rows -- table rows -- cannot. Therein lies the fiddliness.
+
+```{r echo = FALSE, results = 'asis'}
+foo <- ddply(subset(jDat, continent == "Asia"), ~ year, function(x) {
+  tmp <- x[which.max(x$gdpPercap), c("year", "country", "gdpPercap")]
+  tmp <- rename(tmp, c("country" = "maxCountry"))
+  })
+foobar <- matrix(c(as.character(foo$maxCountry),
+                   sprintf("%0.f", foo$gdpPercap)),
+                 nrow = 2, byrow = 2,
+                 dimnames = list(NULL, paste0("yr", foo$year)))
+htmlPrint(foobar)
+```
+
+
+```{r eval = FALSE, echo = FALSE}
+## this is JB just playing around ....
+library(grid)
+library(gridExtra)
+grid.newpage()
+#grid.show.viewport(viewport(x=0, width= 0.4, just = "left"))
+pushViewport(viewport(x = 0, width = 0.7, just = "left"))
+#grid.rect(gp=gpar(col="blue"))
+print(xyplot(gdpPercap ~ stat, extGdppercapByContinent,
+             group = continent, type = "b", xlim = c(0.9, 2.1),
+             scales = list(y = list(log = TRUE)),
+             auto.key = list(reverse.rows = TRUE,
+                             x = 0.15, y = 0.85, corner = c(0, 1))),
+      newpage = FALSE)
+popViewport()
+pushViewport(viewport(x = 1, width = 0.3, just = "right"))
+grid.table(extGdppercapByContinent, theme=theme.white())
+popViewport()
+```
+
+
+#### Look at the spread of GDP per capita within the continents.
+
+Ditto above re: using one year only or incorporating the year properly.
+
+First I ignore year, which is a little sketchy....
+
+```{r echo = FALSE, eval = FALSE}
+## just code JB was playing with
+## can't figure out how/if to exploit this each() function from plyr
+j <- each(sd, IQR, mad)
+j(jDat$lifeExp)
+## the names don't seem to propagate inside ddply() so then what's the point?
+```
+
+```{r}
+foo <- ddply(jDat, ~ continent, summarize,
+             sdGdpPercap = sd(gdpPercap), iqrGdpPercap = IQR(gdpPercap),
+             madGdpPercap = mad(gdpPercap))
+xyplot(sdGdpPercap + iqrGdpPercap + madGdpPercap ~ continent, foo,
+       type = "b", ylab = "measure of spread",
+       auto.key = list(x = 0.15, y = 0.85, corner = c(0, 1)))
+```
+
+```{r results = 'asis', echo = FALSE}
+foobar <- t(subset(foo, select = -continent))
+colnames(foobar) <- foo$continent
+##rownames(foobar) <- gsub("([a-z]+)GdpPercap", "\\1", rownames(foobar))
+htmlPrint(foobar, include.rownames = TRUE)
+```
+
+
+Then I account for year. This shows why robust statistics, like the median, MAD, and IQR, are more handy in real life than your intro stats course may have indicated. Watch the sd chase the oil-rich Arab GDP/per capita outliers, which do not really characterize the entire set of countries in Asia.
+
+```{r fig.width = 10, fig.height = 5.5}
+foo <- ddply(jDat, ~ continent + year, summarize,
+             sdGdpPercap = sd(gdpPercap), iqrGdpPercap = IQR(gdpPercap),
+             madGdpPercap = mad(gdpPercap))
+## cheap trick using lattice's extended formula interface
+## avoiding reshaping
+xyplot(sdGdpPercap + iqrGdpPercap + madGdpPercap ~ year, foo,
+       group = reorder(continent, sdGdpPercap), layout = c(3, 1),
+       type = "b", ylab = "measure of spread",
+       auto.key = list(x = 0.35, y = 0.85, corner = c(0, 1),
+                       reverse.rows = TRUE))
+```
+
+> Wish I knew how to make table shrink to fit the width available. Probably not possible with the technology I am using. 
+
+```{r echo = FALSE, results = 'asis'}
+foobar <- melt(foo, id = c("continent", "year"))
+foobar$continent <-
+  factor(as.character(foobar$continent),
+         with(foo, rev(levels(reorder(continent, sdGdpPercap)))))
+yo <- ddply(foobar, ~ continent + variable, function(x) {
+  tmp <- x$value
+  names(tmp) <- x$year
+  tmp
+  })
+yo <- rename(yo, c("variable" = "measSpread"))
+levels(yo$measSpread) <- gsub("([a-z]+)GdpPercap", "\\1", levels(yo$measSpread))
+htmlPrint(yo)
+```
+
+
+
+#### Depict the number and/or proportion of countries with low life expectancy over time by continent.
+
+Make sure to give your definition of "low life expectancy".
+
+```{r}
+#(bMark <- quantile(jDat$lifeExp, 0.2))
+bMark <- 43 # JB wrote this on her 43rd b'day!
+stripplot(lifeExp ~ factor(year) | reorder(continent, lifeExp), jDat,
+          jitter.data = TRUE, alpha = 0.6, grid = "h",
+          group = lifeExp <= bMark,
+          main = paste("Life expectancy <= JB's current age =", bMark),
+          scales = list(x = list(rot = c(45, 0))))
+```
+
+> This table will be truly huge if I transpose, as I've done elsewhere. Leaving as is.
+
+```{r echo = FALSE, results='asis'}
+## note: bMark set in a previous chunk
+foo <- daply(jDat, ~ year + reorder(continent, lifeExp), function(x) {
+  jCount <- sum(x$lifeExp <= bMark)
+  jTotal <- nrow(x)
+  jProp <- jCount / jTotal
+  return(sprintf("%1.2f (%d/%d)", jProp, jCount, jTotal))
+  })
+htmlPrint(foo, include.rownames = TRUE)
+```
+
+#### Find countries with extremely low or high life expectancy in 1952 or that exhibit extremely rapid or slow life expectancy gains.
+
+Find them and then plot their data.
+
+> Tip. The hard part here is finding the interesting countries in an elegant manner. If you don't / can't do that, you can hard-wire the interesting countries, just so you get to make the plots! (Nice demo of why it's EVIL to have commas in the country names.) Here you go:
+
+  * Africa, intercepts
+    - low: Gambia | Sierra Leone | Guinea
+    - high: Reunion | Zimbabwe | Mauritius
+  * Asia, intercepts
+    - low: Afghanistan | Yemen, Rep. | Nepal
+    - high: Hong Kong, China | Japan | Israel
+  * Americas, intercepts
+    - low: Bolivia | Haiti | Guatemala
+    - high: Puerto Rico | United States | Canada
+  * Europe, intercepts
+    - low: Turkey | Bosnia and Herzegovina | Albania
+    - high: Netherlands | Iceland | Norway
+  * Africa, slopes
+    - low: Zimbabwe | Zambia | Rwanda
+    - high: Gambia | Tunisia | Libya
+  * Asia, slopes
+    - low: Iraq | Sri Lanka | Lebanon
+    - high: Saudi Arabia | Vietnam | Oman
+  * Americas, slopes
+    - low: Paraguay | Trinidad and Tobago | Uruguay
+    - high: Guatemala | Honduras | Nicaragua
+  * Europe, slopes
+    - low: Denmark | Hungary | Norway
+    - high: Portugal | Bosnia and Herzegovina | Turkey
+
+```{r echo = FALSE}
+yearMin <- min(jDat$year)
+jFun <- function(x) {
+  jFit <- lm(lifeExp ~ I(year - yearMin), x)
+  jCoef <- coef(jFit)
+  names(jCoef) <- NULL
+  return(c(intercept = jCoef[1],
+           slope = jCoef[2],
+           maxResid = max(abs(resid(jFit))),
+           resStdDevn = summary(jFit)$sigma))
+  }
+lmGoodies <- ddply(jDat, ~ country + continent, jFun)
+
+## do the within continent ranking of intercepts and slopes
+## fancy "folded" ranking so it's easier to find both extremes
+foldedRank <- function(x) {
+  rx <- rank(x)
+  frx <- length(x) - rx + 1
+  ifelse(rx < frx, rx, -1 * frx)
+  }
+lmGoodies <- ddply(lmGoodies, ~ continent, function(x) {
+  x$intRank <- foldedRank(x$intercept)
+  x$slopeRank <- foldedRank(x$slope)
+  x
+  })
+# peek(lmGoodies)
+```
+
+```{r fig.show = 'hold', out.width = '50%', echo = FALSE}
+intInteresting <-
+  subset(lmGoodies, abs(intRank) <= 3, select = country, drop = TRUE)
+jYlim <- c(25, 85) # want to hold these fixed across the continents
+d_ply(subset(jDat, country %in% intInteresting), ~ continent, function(x) {
+  x$country <- with(x, reorder(country, lifeExp, function(y) y[1]))
+  print(xyplot(lifeExp ~ year | country, x, grid = TRUE, type = c("p", "r"),
+               ylim = jYlim,
+               main = paste0(as.character(x$continent)[1],
+                            ", extreme intercepts")))
+  if(interactive()) Sys.sleep(2)
+})
+
+
+slopeInteresting <-
+  subset(lmGoodies, abs(slopeRank) <= 3, select = country, drop = TRUE)
+jYlim <- c(25, 85) # want to hold these fixed across the continents
+d_ply(subset(jDat, country %in% slopeInteresting), ~ continent, function(x) {
+  x$country <- with(x, reorder(country, lifeExp, function(y) diff(range(y))))
+  print(xyplot(lifeExp ~ year | country, x, grid = TRUE, type = c("p", "r"),
+               ylim = jYlim,
+               main = paste0(as.character(x$continent)[1],
+                            ", extreme slopes")))
+  if(interactive()) Sys.sleep(2)
+})
+```
+
+#### Find countries with sudden, substantial departures from the temporal trend in one of the quantitative measures.
+
+Find them and then plot their data.
+
+```{r echo = FALSE, fig.keep = 'none'}
+densityplot(~ resStdDevn, lmGoodies, group = continent, auto.key = TRUE)
+sigMark <- median(lmGoodies$resStdDevn)
+lmGoodies$scaledResid <- lmGoodies$maxResid/sigMark
+densityplot(~ scaledResid, lmGoodies, group = continent, auto.key = TRUE)
+```
+
+I think we are looking at the effect of HIV/AIDS in Africa and the effect of despots, genocide, political upheaval, and foreign invasions elsewhere. With respect to Africa, the 2007 data shows the beginning of the impact of antiretroviral medicines pumped into Africa through massive infusions of foreign aid. Here is an interesting NYT article on [how the coffin-making businesses of Africa are struggling now that AIDS deaths are declining](http://www.nytimes.com/2012/07/08/opinion/sunday/the-coffin-maker-benchmark.html).
+
+```{r}
+residInteresting <-
+  subset(lmGoodies, scaledResid > 4, select = country, drop = TRUE)
+xyplot(lifeExp ~ year | country, 
+       subset(jDat, country %in% residInteresting),
+       group = continent,
+       grid = TRUE, type = c("p", "r"))
+```
+
+
+### Student work on HW 3 for ease of access. We'll replace these links w/ HW 4 later.
+
+  * attali-dea [source](https://gist.github.com/daattali/6673361#file-stat545a-2013-hw03_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw03_attali-dea) 
+  * baik-jon [source](https://gist.github.com/jonnybaik/6667437#file-stat545a-2013-hw03_baik-jon-rmd) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw03_baik-jon)
+  * bolandnazar-moh [source](https://gist.github.com/ArephB/6667983#file-stat545a-2013-hw03_bolandnazar-moh-rmd) | [report](http://rpubs.com/aref/stat545a-2013-hw03_bolandnazar-moh)
+  * brueckman-chr EDIT HERE
+  * chu-jus [source](https://gist.github.com/JustinChu/6667252#file-stat545a-2013-hw03_chu-jus-rmd) | [report](http://rpubs.com/cjustin/stat545a-2013-hw03_chu-jus)
+  * Zachary Daly: 
+[source](https://gist.github.com/ZDaly/6666365#file-stat545a-2013-hw03_daly-zac-rmd)
+[report](http://rpubs.com/Zdaly/stat545a-2013-hw03_daly-zac)
+  * dinsdale-dan [source](https://gist.github.com/danieldinsdale/6665986#file-stat545a-2013-hw03_dinsdale-dan-rmd) | [report](http://rpubs.com/danieldinsdale/stat545a-2013-hw03_dinsdale-dan)
+  * gao-wen [source](https://gist.github.com/sibyl229/6668047#file-stat545a-2013-hw03_gao-wen-rmd) | [report](http://rpubs.com/less/stat545a-2013-hw03_gao-wen)
+  * Matthew Gingerich: [source](https://gist.github.com/MattGingerich/6667676#file-stat545a-2013-hw03_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw03_gingerich-mat)
+  * hu-yum [source](https://gist.github.com/smilecat/6666754#file-stat545a-2013-hw03_hu-yum-rmd) | [report](http://rpubs.com/smilecat/stat545a-2013-hw03_hu-yum)
+  * jewell-sea [source](https://gist.github.com/jewellsean/bf3c28b63e6f99953153#file-stat545a-2013-hw03_jewell-sea-rmd) | [report](http://rpubs.com/jewellsean/stat545a-2013-hw03_jewell-sea)
+  * johnston-reb [source](https://gist.github.com/rebjoh/6667299#file-stat545a-2013-hw03_johnston-reb-rmd) | [report](http://rpubs.com/rljohn/stat545a-2013-hw03_johnston-reb)
+  * mahdiar khosravi [source](https://gist.github.com/Mahdiark/6671508#file-stat545a-2013-hw03_khosravi-mah-rmd) | [report](http://rpubs.com/mahdiar/stat545a-2013-hw03_khosravi-mah)
+  * Wooyong Lee: 
+[source](https://gist.github.com/folias/6661622#file-stat545a-2013-hw03_lee-woo) | [report](http://rpubs.com/folias/stat545a-2013-hw03_lee-woo)
+  * liao-wei: [source](https://gist.github.com/feiba/6674299#file-stat545a-2013-hw03_liao_wei-rmd) | [report](http://rpubs.com/winson/stat545a-2013-hw03_liao_wei)
+  * ma-hui [source](https://gist.github.com/horsehuiting/6673172#file-stat545a-2013-hw03_ma-hui-rmd) | [report](http://rpubs.com/Huiting/stat545a-2013-hw03_ma-hui)
+  * meng-viv [source](https://gist.github.com/vmeng321/6667418#file-stat545a-2013-hw03_meng-viv-rmd) | [report](http://rpubs.com/vmeng321/stat545a-2013-hw03_meng-viv)
+  * mohd abul basher-abd [source](https://gist.github.com/atante/6666678#file-stat545a-2013-hw03_mohd-abul-basher-abd-rmd) | [report](http://rpubs.com/meitantei/stat545a-2013-hw03_mohdabulbasher-abd) 
+  * ni-jac [source](https://gist.github.com/jacknii/6663292#file-stat545a-2013-hw03_ni-jac-rmd) | [report](http://rpubs.com/jackni/stat545a-2013-hw03_ni-jac)
+  * Christian Okkels [source](https://gist.github.com/cbokkels/6654193#file-stat545a-2013-hw03_okkels-chr-rmd) | [report](http://rpubs.com/cbokkels/stat545a-2013-hw03_okkels-chr)
+  * Greg Owens: [source](https://gist.github.com/opsin/6666283#file-stat545a-2013-hw03_owens-greg-rmd) | [report](http://rpubs.com/opsin/stat545a-2013-hw03_owens-greg)
+  * Mina Park: [source](https://gist.github.com/parkm87/6665438#file-stat545a-2013-hw03_park-min-rmd) | [report](http://rpubs.com/parkm87/stat545a-2013-hw03_park-min)
+  * spencer-nei [source](https://gist.github.com/neilspencer/6558151#file-stat545a-2013-hw03_spencer-neil-rmd) | [report](http://rpubs.com/neil_spencer/stat545a-2013-hw03_spencer-nei)
+  * wang-ton [source](https://gist.github.com/yzhxh/6670081#file-stat545a-2013-hw03_wang-ton-rmd) | 
+[report](http://rpubs.com/yzhxh/stat545a-2013-hw03_wang-ton)
+  * Leah Weber: [source](https://gist.github.com/lweber21/6667096#file-stat545a-2013-hw03_weber-lea-rmd) | [report](http://rpubs.com/lweber21/stat545a-2013-hw03_weber-lea)
+  * woollard-geo [source](https://gist.github.com/geoffwoollard/6666457#file-stat545a-2013-hw03_woollard-geo-rmd) | [report](http://rpubs.com/gwoollard/stat545a-2013-hw03_woollard-geo)
+  * xue-xinxin [source](https://gist.github.com/xxue/6663673#file-stat545a-2013-hw03_xue-xinxin-rmd) | [report](http://rpubs.com/xxue/8829) 
+  * yuen-ama [source](https://gist.github.com/amandammor/6666007#file-stat545a-2013-hw03_yuen-ama-rmd) | [report](http://rpubs.com/amandammor/stat545a-2013-hw03_yuen-ama)
+  * zhang-yim [source](https://gist.github.com/zym268/6667601#file-stat545a-2013-hw03_zhang-yim-rmd)| [report](http://rpubs.com/zym268/STAT545A-2013-hw03_zhang-yim)
+  * zhang-jon [source](https://gist.github.com/jzhang722/6665486#file-stat545a-2013-hw03_zhang-jon-rmd) | [report](http://rpubs.com/jzhang722/stat545a-2013-hw03_zhang-jon)
+  * zhang-yif 
+[source](https://gist.github.com/dora7870/6630819#file-stat545a-2013-hw03_zhang-yif-rmd) | [report](http://rpubs.com/dora7870/stat545a-2013-hw03_zhang-yif)
+  * zhang-jin [source](https://gist.github.com/0527zhangjinyuan/6673340#file-stat545a-2013-hw03_zhang-jin-rmd) | [report](http://rpubs.com/zhangjinyuan/stat545a-2013-hw03_zhang-jin)
+  * inskip-jes [source](https://gist.github.com/jinskip/6665098#file-stat545a-2013-hw03_inskip-jes-rmd) | [report](http://rpubs.com/jinskip/stat545a-2013-hw03_inskip-jes)
+  * liu-yan [source](https://gist.github.com/swallow0001/6673645#file-stat545a-2013-hw3_liu) | [report](http://rpubs.com/swallow0001/STAT545a-2013-hw3_Liu)
+  * haraty-mon EDIT HERE
+  * yuen-mac [source](https://gist.github.com/myuen/6672095#file-stat545a-2013-hw03_yuen-mac-rmd) | [report](http://rpubs.com/myuen/stat545a-2013-hw03_yuen-mac)
+  
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
