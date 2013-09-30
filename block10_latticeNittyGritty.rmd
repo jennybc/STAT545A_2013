@@ -177,7 +177,7 @@ xyplot(lifeExp ~ gdpPercap, yDat,
        panel = panel.xyplot)
 ```
 
-Now I write a custom panel function 'on the fly' but the function body just consists of the defaul panel function.  I omit the plot because there is no visible change, which is exactly what I want right now.
+Now I write a custom panel function 'on the fly' but the function body just consists of the defaul panel function. Any arguments normally passed to the panel function are passed straight through to `panel.xyplot()`. I omit the plot because there is no visible change, which is exactly what I want right now.
 
 ```{r eval = FALSE}
 xyplot(lifeExp ~ gdpPercap, yDat,
@@ -187,7 +187,7 @@ xyplot(lifeExp ~ gdpPercap, yDat,
          })
 ```
 
-Now I modify the a custom panel function to have arguments `x`, `y`, and `...`. I omit the plot because there is no visible change, which is exactly what I want right now.
+Now I modify the a custom panel function to have arguments `x`, `y`, and `...`. If you read the help on `panel.xyplot()`, you will notice that `x` and `y` are the first two formal arguments and they do not have default values. This is why, if I want to specify any of the other arguments, I must explicitly specify `x` and `y`. Below, I take whatever would have normally been given to the panel function as `x` and `y` and am passing them straight through. I omit the plot because there is no visible change, which is exactly what I want right now.
 
 ```{r eval = FALSE}
 xyplot(lifeExp ~ gdpPercap, yDat,
@@ -197,12 +197,11 @@ xyplot(lifeExp ~ gdpPercap, yDat,
          })
 ```
 
-Now I take control of the plotting symbol: I make it an empty circle. I also scale the diameter of the circle to reflect the country's population. The logic and testing of this mapping of population into circle size was done elsewhere and required some thought and care, FYI. 
+Now I take control of the plotting symbol: I make it an empty circle, which happens to be symbol 21. I also scale the radius of the circle so that the area will reflect the country's population. The logic and testing of this mapping of population into circle size was done elsewhere and required some thought and care, FYI. 
 
 ```{r}
 jCexDivisor <- 1500                     # arbitrary scaling constant
 jPch <- 21
-jDarkGray <- 'grey20'
 xyplot(lifeExp ~ gdpPercap, yDat,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
        panel = function(x, y, ...) {
@@ -215,6 +214,7 @@ xyplot(lifeExp ~ gdpPercap, yDat,
 Now I fill the circles with the pre-chosen country colors and explicitly set the circle outlines to a nice tasteful grey.
 
 ```{r}
+jDarkGray <- 'grey20'
 xyplot(lifeExp ~ gdpPercap, yDat,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
        panel = function(x, y, ...) {
@@ -259,6 +259,15 @@ xyplot(lifeExp ~ gdpPercap, yDat,
 ```
 
 The differences in the code are really not that huge, considering how different the output is.
+
+```{r}
+xyplot(lifeExp ~ gdpPercap, yDat,
+       grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       key = continentKey,
+       pch = jPch, cex = sqrt(yDat$pop/pi)/jCexDivisor,
+       col = jDarkGray, fill = yDat$color)
+```
+
 
 ### References
 
