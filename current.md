@@ -109,6 +109,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
     - [A quick tour of `xyplot()](block09_xyplotLattice.html)
     - [Gateway to more advanced `lattice` usage](block10_latticeNittyGritty.html)
+    - Revisit [homework 4](hw04_univariateLattice.html) to see JB's solutions and access links to work of fellow students.
 
   * Google form re: datasets TO BE POSTED
   
@@ -117,7 +118,9 @@ Monday Sept 02 is a statutory holiday. No class.
     - Ch. 1 Introduction
     - Ch. 2 Getting started with `qplot()` (although I think we will not use `qplot()`)
   
-  cm 08 | Wednesday Oct 02 | `ggplot2`
+### cm 08 | Wednesday Oct 02 | `ggplot2`
+  
+  * Submit homework 5 before class starts @ 9:30am Monday Oct. 07. Make `ggplot` versions of 2 (or more) figures we've already made. Use of non Gapminder datasets OK/encouraged but not required. Details coming, but you know the drill by now.
 
 cm 09 | Monday Oct 07 | `ggplot2`
 
