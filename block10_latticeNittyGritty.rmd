@@ -152,27 +152,28 @@ Call up the help file on `xyplot()` and search it for arguments `col.line` and `
 
 Sometimes the customization you need will require you to modify the panel function. Relax! It's really not that hard and is very rewarding. We will walk through a typical process for writing a custom panel function 'on the fly'.
 
-I present a modified excerpt from my development process for creating a single year "still snapshot" of a typical Gapminder moving bubble chart. I load a souped-up version of the Gapminder data you know and love that [1] includes some stunning country colors and; [2] is sorted by country size so little countries aren't hidden by big ones. Furthermore, since the ultimate plan is to stitch the stills together into an animation, we work with a subset of the data for just one year.
+I present a modified excerpt from my development process for creating a single year "still snapshot" of a typical Gapminder moving bubble chart. I load a souped-up version of the Gapminder data you know and love that [1] includes some stunning country colors and; [2] is sorted by country size so little countries aren't hidden by big ones. Furthermore, we work with a subset of the data for just two years.
 
 ```{r}
 gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderWithColorsAndSorted.txt"
 kDat <- read.delim(file = gdURL, as.is = 7) # protect color
 str(kDat)
-jYear <- 2007
-yDat <- subset(kDat, year == jYear)
+jYear <- c(1952, 2007)
+yDat <- subset(kDat, year %in% jYear)
+str(yDat)
 ```
 
 First start with a high level function call that works, but is missing some of the cool features you want. Crawl before you walk. Walk before you run.
 
 ```{r}
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)))
 ```
 
 My first step is to specify the panel function explicitly but, of course, to specify the default. Do you think pilots switch off auto-pilot in the middle of a delicate maneuver? No, they prefer to take manual control when the plane is flying smoothly at 30,000 feet in clear skies. You will see no change in the figure, which is exactly what we want at this point.
 
 ```{r}
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
        panel = panel.xyplot)
 ```
@@ -180,7 +181,7 @@ xyplot(lifeExp ~ gdpPercap, yDat,
 Now I write a custom panel function 'on the fly' but the function body just consists of the defaul panel function. Any arguments normally passed to the panel function are passed straight through to `panel.xyplot()`. I omit the plot because there is no visible change, which is exactly what I want right now.
 
 ```{r eval = FALSE}
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
        panel = function(...) {
          panel.xyplot(...)
@@ -190,24 +191,23 @@ xyplot(lifeExp ~ gdpPercap, yDat,
 Now I modify the a custom panel function to have arguments `x`, `y`, and `...`. If you read the help on `panel.xyplot()`, you will notice that `x` and `y` are the first two formal arguments and they do not have default values. This is why, if I want to specify any of the other arguments, I must explicitly specify `x` and `y`. Below, I take whatever would have normally been given to the panel function as `x` and `y` and am passing them straight through. I omit the plot because there is no visible change, which is exactly what I want right now.
 
 ```{r eval = FALSE}
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
        panel = function(x, y, ...) {
          panel.xyplot(x, y, ...)
          })
 ```
 
-Now I take control of the plotting symbol: I make it an empty circle, which happens to be symbol 21. I also scale the radius of the circle so that the area will reflect the country's population. The logic and testing of this mapping of population into circle size was done elsewhere and required some thought and care, FYI. 
+Now I take control of the plotting symbol: I make it an empty circle, which happens to be symbol 21. Conceptually, I scale the radius of the circle so that the area will reflect the country's population. The logic and testing of this mapping of population into circle size was done elsewhere and required some thought and care, FYI. The mechanics are a bit tricky: I set the `cex =` argument of the high level `xyplot()` call to a vector corresponding to the rows of the input data `yDat`. Since `xyplot()` doesn't have a `cex =` argument, it passes that down to the panel function. Then, inside the panel function, I consult the `subscripts` argument to learn which rows of the input data are in the current packet. I can then index `cex` by these subscripts to get the corect radii and draw the circles. Phew.
 
 ```{r}
 jCexDivisor <- 1500                     # arbitrary scaling constant
 jPch <- 21
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
-       panel = function(x, y, ...) {
-         panel.xyplot(x, y, pch = jPch, ...,
-                      # make circle area scale with pop
-                      cex = sqrt(yDat$pop/pi)/jCexDivisor)
+       cex = sqrt(yDat$pop/pi)/jCexDivisor, 
+       panel = function(x, y, ..., cex, subscripts) {
+         panel.xyplot(x, y, cex = cex[subscripts], pch = jPch, ...)
          })
 ```
 
@@ -215,12 +215,13 @@ Now I fill the circles with the pre-chosen country colors and explicitly set the
 
 ```{r}
 jDarkGray <- 'grey20'
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
-       panel = function(x, y, ...) {
-         panel.xyplot(x, y, pch = jPch, ...,
-                      cex = sqrt(yDat$pop/pi)/jCexDivisor,
-                      col = jDarkGray, fill = yDat$color)
+       cex = sqrt(yDat$pop/pi)/jCexDivisor, fill.color = yDat$color,
+       col = jDarkGray,
+       panel = function(x, y, ..., cex, fill.color, subscripts) {
+         panel.xyplot(x, y, cex = cex[subscripts],
+                      pch = jPch, fill = fill.color[subscripts], ...)
          })
 ```
 
@@ -233,40 +234,33 @@ continentKey <-
        list(x = 0.95, y = 0.05, corner = c(1, 0),
             text = list(as.character(continent)),
             points = list(pch = jPch, col = jDarkGray, fill = color)))
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
-       key = continentKey,
-       panel = function(x, y, ...) {
-         panel.xyplot(x, y, pch = jPch, ...,
-                      cex = sqrt(yDat$pop/pi)/jCexDivisor,
-                      col = jDarkGray, fill = yDat$color)
+       cex = sqrt(yDat$pop/pi)/jCexDivisor, fill.color = yDat$color,
+       col = jDarkGray, key = continentKey,
+       panel = function(x, y, ..., cex, fill.color, subscripts) {
+         panel.xyplot(x, y, cex = cex[subscripts],
+                      pch = jPch, fill = fill.color[subscripts], ...)
          })
 ```
 
 To conclude, we present our starting and ending plots side by side.
 
 ```{r fig.show='hold', out.width='50%', out.extra='style=""'}
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10)))
-xyplot(lifeExp ~ gdpPercap, yDat,
+xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
-       key = continentKey,
-       panel = function(x, y, ...) {
-         panel.xyplot(x, y, pch = jPch, ...,
-                      cex = sqrt(yDat$pop/pi)/jCexDivisor,
-                      col = jDarkGray, fill = yDat$color)
+       cex = sqrt(yDat$pop/pi)/jCexDivisor, fill.color = yDat$color,
+       col = jDarkGray, key = continentKey,
+       panel = function(x, y, ..., cex, fill.color, subscripts) {
+         panel.xyplot(x, y, cex = cex[subscripts],
+                      pch = jPch, fill = fill.color[subscripts], ...)
          })
 ```
 
 The differences in the code are really not that huge, considering how different the output is.
 
-```{r}
-xyplot(lifeExp ~ gdpPercap, yDat,
-       grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
-       key = continentKey,
-       pch = jPch, cex = sqrt(yDat$pop/pi)/jCexDivisor,
-       col = jDarkGray, fill = yDat$color)
-```
 
 
 ### References
