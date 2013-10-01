@@ -53,7 +53,7 @@ You will see there's now another new file in the working directory:
 list.files(pattern = "^testFigure*")
 ```
 
-Again, you can view the file, see the silly figure, but appreciate this process will work for real figures in the future. The appeal of this method is that you will literally copy the file in front of your eyeballs to file, which is pleasingly immediate. There's also less code to repeatedly (de-)comment as you run and re-run the script during development.
+Again, you can view the file, see the silly figure, but appreciate this process will work for real figures in the future. The appeal of this method is that you will literally copy the figure in front of your eyeballs to file, which is pleasingly immediate. There's also less code to repeatedly (de-)comment as you run and re-run the script during development.
 
 Why is this method improper? Various aspects of a figure -- such as font size -- are determined by the target graphics device and its physical size. Therefore, it is best practice to open your desired graphics device explicitly, using any necessary arguments to control height, width, fonts, etc. Make your plot. And close the device. But for lots of everyday plots the `dev.print()` method works just fine.
 

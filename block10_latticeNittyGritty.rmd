@@ -188,7 +188,7 @@ xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
          })
 ```
 
-Now I modify the a custom panel function to have arguments `x`, `y`, and `...`. If you read the help on `panel.xyplot()`, you will notice that `x` and `y` are the first two formal arguments and they do not have default values. This is why, if I want to specify any of the other arguments, I must explicitly specify `x` and `y`. Below, I take whatever would have normally been given to the panel function as `x` and `y` and am passing them straight through. I omit the plot because there is no visible change, which is exactly what I want right now.
+Now I modify the custom panel function to have arguments `x`, `y`, and `...`. If you read the help on `panel.xyplot()`, you will notice that `x` and `y` are the first two formal arguments and they do not have default values. This is why, if I want to specify any of the other arguments, I must explicitly specify `x` and `y`. Below, I take whatever would have normally been given to the panel function as `x` and `y` and am passing them straight through. I omit the plot because there is no visible change, which is exactly what I want right now.
 
 ```{r eval = FALSE}
 xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
@@ -198,7 +198,7 @@ xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
          })
 ```
 
-Now I take control of the plotting symbol: I make it an empty circle, which happens to be symbol 21. Conceptually, I scale the radius of the circle so that the area will reflect the country's population. The logic and testing of this mapping of population into circle size was done elsewhere and required some thought and care, FYI. The mechanics are a bit tricky: I set the `cex =` argument of the high level `xyplot()` call to a vector corresponding to the rows of the input data `yDat`. Since `xyplot()` doesn't have a `cex =` argument, it passes that down to the panel function. Then, inside the panel function, I consult the `subscripts` argument to learn which rows of the input data are in the current packet. I can then index `cex` by these subscripts to get the corect radii and draw the circles. Phew.
+Now I take control of the plotting symbol: I make it an empty circle, which happens to be symbol 21. Conceptually, I scale the radius of the circle so that the area will reflect the country's population. The logic and testing of this mapping of population into circle size was done elsewhere and required some thought and care, FYI. The mechanics are a bit tricky: The term `cex` (think "character expansion) is conventionally used in R as an argument controlling font or symbol size. That's the dial I need to turn to change circle size. I set the `cex =` argument of the high level `xyplot()` call to a vector corresponding to the rows of the input data `yDat`. Since `xyplot()` doesn't have a `cex =` argument, it passes that down to the panel function, which is `panel.xyplot()` in this case, which does have a `cex =` argument. Then, inside the panel function, I consult the `subscripts` argument to learn which rows of the original input data are in the current packet. I can then index `cex` by these subscripts to get the corect radii and draw the circles. Phew.
 
 ```{r}
 jCexDivisor <- 1500                     # arbitrary scaling constant
@@ -211,7 +211,7 @@ xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
          })
 ```
 
-Now I fill the circles with the pre-chosen country colors and explicitly set the circle outlines to a nice tasteful grey.
+Now I fill the circles with the pre-chosen country colors and explicitly set the circle outlines to a nice tasteful grey. The fill color mechanics mirror those used for setting the circle size.
 
 ```{r}
 jDarkGray <- 'grey20'
@@ -276,6 +276,8 @@ See section 5.3.1 (p. 79 - 82) and section 8.4.2 (p. 148 - 150).
 ### References
 
 Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+
+My step-by-step development of a custom panel function was heavily inspired by ["Lattice Tricks for the Power UseR"](http://www.r-project.org/conferences/useR-2007/program/presentations/sarkar.pdf), a talk by Deepayan Sarkar at the 2007 UseR! conference.
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
