@@ -109,6 +109,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
     - [A quick tour of `xyplot()](block09_xyplotLattice.html)
     - [Gateway to more advanced `lattice` usage](block10_latticeNittyGritty.html)
+    - [Writing a figure to file](topic12_writeFigureToFile.html)
     - Revisit [homework 4](hw04_univariateLattice.html) to see JB's solutions and access links to work of fellow students.
 
   * Google form re: datasets TO BE POSTED

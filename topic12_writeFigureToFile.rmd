@@ -1,0 +1,85 @@
+Writing figures to file
+========================================================
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+```
+
+It is not always appropriate or sufficient to make figures inside a dynamic report, such as an R Markdown document. In a real world analysis, you will want to write key figures to file for downstream use in a variety of settings.
+
+During developement, you will want the immediate feedback from seeing your figures appear in a screen device, such as the RStudio Plots pane. Once you're satisfied, make sure you have saved in an R script all of the commands to produce the figure. You want *everything*, nachos to cheesecake: data import, any manipulation that necessary, then plotting.
+
+Now what? How to preserve the figure in a file?
+
+### Step away from the mouse
+
+<img src="http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/figs/evilMouse.jpg" alt="evil mouse" style="width: 300px;"/>
+
+_Do not_ succumb to the temptation of a mouse-based process. If might feel great at the time, but you will regret it. This establishes no link between the source code and the figure product. So when -- not if -- you need to remake the figure with a different color scheme or aspect ratio or graphics device, you will struggle to dig up the proper source code. Use one of the methods below to avoid this predicament.
+
+### The proper way
+
+Edit your source code in the following way: Precede the figure-making code by opening a graphics device and follow it with a command that closes the device. Here's an example:
+
+```{r fig.keep = 'none'}
+pdf("testFigure_method1.pdf") # starts writing a PDF to file
+plot(1:10)                    # makes the actual plot
+dev.off()                     # closes the PDF file
+```
+
+You will see there's now a new file in the working directory:
+
+```{r}
+list.files(pattern = "^testFigure*")
+```
+
+You can view the file whatever way is appropriate to your OS. It's a silly figure but we've shown the process. Don't be surprised when you don't see any figure appear in your screen device. While you're sending graphics output to, e.g., the `pdf()` device, you'll be "flying blind", which is why it's important to work out the graphics commands in advance.
+
+### The shortcut
+
+Here's a handy short cut for writing a figure to file:
+
+```{r}
+plot(1:10)            # makes the actual plot
+dev.print(pdf,        # copies the plot to a the PDF file
+          "testFigure_method2.pdf")             
+```
+
+You will see there's now another new file in the working directory:
+
+```{r}
+list.files(pattern = "^testFigure*")
+```
+
+Again, you can view the file, see the silly figure, but appreciate this process will work for real figures in the future. The appeal of this method is that you will literally copy the file in front of your eyeballs to file, which is pleasingly immediate. There's also less code to repeatedly (de-)comment as you run and re-run the script during development.
+
+Why is this method improper? Various aspects of a figure -- such as font size -- are determined by the target graphics device and its physical size. Therefore, it is best practice to open your desired graphics device explicitly, using any necessary arguments to control height, width, fonts, etc. Make your plot. And close the device. But for lots of everyday plots the `dev.print()` method works just fine.
+
+### Finding the code that makes a figure
+
+If you follow the practice of always saving R scripts (not your workspace) and saving figures to file with code (not mouse clicks), you'll be glad. Let's say you need to remake `testFigure_method2.pdf` or you want to modify the code for another project. If your figure has a descriptive name it will presumably be at least somewhat unique. Search your computer for files containing the text string "testFigure_method2.pdf". You may be able to narrow the search to files ending in `.R` or `.Rmd`. You should quickly zero in on the R script containing the code that created the figure in question and you are ready to rerun or reuse.
+
+### Graphics devices
+
+Read the help for `Devices` to learn which graphics devices are available on your system. `pdf()` is a good default: the files are easy to view and it's a vector format, so they resize gracefully. For insertion into Microsoft Word or PowerPoint, you may want to consider `png()`. For embedding into a web page, consider `png()` or `svg()`. Here are two good posts from the Revolutions Analytics blog with tips for saving figures to file:
+
+  * [10 tips for making your R graphics look their best](http://blog.revolutionanalytics.com/2009/01/10-tips-for-making-your-r-graphics-look-their-best.html) 
+  * [High-quality R graphics on the Web with SVG](http://blog.revolutionanalytics.com/2011/07/r-svg-graphics.html)
+  
+It is very important to understand the difference between [vector graphics](http://en.wikipedia.org/wiki/Vector_graphics) and raster. PDF, postscript, and SVG are vector; PNG, JPEG, BMP, and GIF are raster. Vector graphics resize much more gracefully but raster graphics are easier to insert in Microsoft Office documents and web pages.
+
+If you call up the help file for `dev.off()` and/or `dev.print()`, you can learn about many other functions for controlling graphics devices.
+
+### Clean up
+
+Let's delete the files we've created.
+
+```{r}
+file.remove(list.files(pattern = "^testFigure*"))
+```
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

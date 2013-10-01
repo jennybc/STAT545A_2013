@@ -22,6 +22,7 @@ Smaller topics, in the approximate order in which students ask about them
 
   * [Note on custom CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
   * [To tidy or not to tidy?](topic11_tidyCode.html) re: code tidying in `knitr`
+  * [Writing a figure to file](topic12_writeFigureToFile.html)
 
 Stuff that's deprecated or needs freshing but that's not totally embarrassing
 
