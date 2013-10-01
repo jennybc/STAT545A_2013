@@ -261,7 +261,17 @@ xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
 
 The differences in the code are really not that huge, considering how different the output is.
 
+### Student Q & A
 
+Q: What if you want to plot 2 quantitative variables against another BUT they are on completely different scales? We got kind of lucky above with the different measures of spread -- there was considerable overlap in their observed values and therefore the extended formula interface and a single y-axis "just worked".
+
+A: How to do this is demonstrated in a few places in Sarkar's `lattice` book. This requires these manipulations:
+
+  - rescaling at least one variable, to get it on the same scale as the other MANDATORY
+  - adding an axis for the rescaled variable STRONGLY ENCOURAGED
+  - distributing `type =` across the multiple primary variables via `distribute.type = TRUE` DO IF NEEDED
+  
+See section 5.3.1 (p. 79 - 82) and section 8.4.2 (p. 148 - 150).
 
 ### References
 
