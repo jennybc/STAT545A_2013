@@ -1,0 +1,14 @@
+Title
+========================================================
+
+```{r}
+opts_knit$set(upload.fun = imgur_upload)
+opts_chunk$set(fig.width=5, fig.height=5, cache=TRUE)
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
