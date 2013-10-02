@@ -24,7 +24,7 @@ Smaller topics, in the approximate order in which students ask about them
   * [To tidy or not to tidy?](topic11_tidyCode.html) re: code tidying in `knitr`
   * [Writing a figure to file](topic12_writeFigureToFile.html)
 
-Stuff that's deprecated or needs freshing but that's not totally embarrassing
+Stuff that's deprecated or needs freshening but that's not totally embarrassing
 
   * [Data aggregation](block93_oldDataAggregation.html) with built-in functions
   * [Intro to `lattice` graphics](block91_latticeGraphics.html)
