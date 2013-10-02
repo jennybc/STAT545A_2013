@@ -1,0 +1,114 @@
+`ggplot2` part 01
+========================================================
+
+```{r include = FALSE}
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+SO UNDER DEVELOPMENT IT BARELY EXISTS!
+
+> The blind leading the blind? As I've warned you, I'm *much* newer to `ggplot2` than I am to `lattice` or even `plyr`. I am showing you what it looks like to stay current: periodically you have to learn new tools. It's also par for the course that I've waited a ridiculous amount of time to take this plunge. Better late than never.
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "ggplot2" and "lattice".
+
+### Load the Gapminder data and `ggplot2` (and `plyr`)
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+
+If you have not already done so, now is the time to install `ggplot2`.
+
+```{r eval = FALSE}
+install.packages("ggplot2", dependencies = TRUE)
+```
+
+Load the `ggplot2` and `plyr` packages.
+```{r}
+library(ggplot2)
+library(plyr)
+```
+
+### JB's early notes to self
+
+[Karthik and others say to NOT use `qplot()`](http://inundata.org/2013/04/10/a-quick-introduction-to-ggplot2/). It just makes for more re-learning when you graduate to `ggplot()`. No training wheels for us then.
+
+Pass your data to `ggplot()` as a data.frame, duh. But wait, it gets better: it's the *only* way to provide data to `ggplot()`. Love that.
+
+"aesthetic attributes, visual properties that affect the way observations are displayed" p. 12
+
+The word "aesthetic" makes me think of colors, line types, and symbol shapes. But remember the mapping of a variable into the horizontal location of a plot element -- so saying `x = thisVar` -- is also considered part of specifying the "aesthetic". Strange but true.
+
+"For every aesthetic attribute, there is a function, called a *scale*, which maps data values to valid values for that aesthetic." p. 12-3.
+
+"... `geom`. Geom, short for geometric object, describes the type of object that is used to display the data." p. 13-4
+
+The storage and use of returned graphical objects is much more comfortable for me in `ggplot2` than it's ever been with `lattice`. The `this + that` syntax makes this a total win.
+
+You set something to a constant. You map something to a variable. If you're setting something, it is likely you'll need to protect it with `I()`.
+
+When things from the book don't work, remember `ggplot2` has evolved since it was written.
+
+  * <http://cloud.github.com/downloads/hadley/ggplot2/guide-col.pdf>
+  
+"The grammar is also useful because it suggests the high-level aspects of a plot that *can* be changed, giving you a framework to think about graphics, and hopefully __shortening the distance from mind to paper__." p. 27 I like that last phrase
+
+
+
+### Prompts for in class work and homework
+
+Scatterplot + smooth curve (yes, a straight line is just a special case).
+
+  * 2.5.1 Adding a smoother to a plot. Confidence band on/off. loess vs GAM vs polynomial vs spline. Wiggly vs smooth. Robust?
+
+Line plot
+
+  * Plot connect-the-dots lines of lifeExp over year for different countries
+  
+Stripplot + level-specific means or median of the quantitative variable
+  
+  * Add jitter. Control how wide the jitter it. Play with transparency. How to emulate `lattice`'s `type = "a", fun =`?
+  
+Densityplot
+
+  * Play with smoothness. Emulate `groups =`, i.e. superpose different densityplots.
+  
+Histogram
+
+  * Play with bidwidth or break points. (Try to) emulate `groups =`, i.e. superpose different densityplots
+  
+Bar chart
+
+  * Make a bar chart of the number of countries within each continent.
+  * Juxtapose with same from `lattice` which we really have not explored explicitly in this course.
+
+### References
+
+ggplot2: Elegant Graphics for Data Analysis [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-98141-3/page/1) by Hadley Wickham, Springer (2009) | [online docs (nice!)](http://docs.ggplot2.org/current/) | [author's website for the book](http://ggplot2.org/book/), including all the code | [author's landing page for the package](http://ggplot2.org)
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

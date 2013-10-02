@@ -122,6 +122,10 @@ Monday Sept 02 is a statutory holiday. No class.
 ### cm 08 | Wednesday Oct 02 | `ggplot2`
   
   * Submit homework 5 before class starts @ 9:30am Monday Oct. 07. Make `ggplot` versions of 2 (or more) figures we've already made. Use of non Gapminder datasets OK/encouraged but not required. Details coming, but you know the drill by now.
+  
+  * Reading on the `ggplot2` package in the book *ggplot2: Elegant Graphics for Data Analysis*.  Links to the eBook and much more can be found [on my resources page](../resources.html).
+  
+    - Ch. 3 Mastering the grammar
 
 cm 09 | Monday Oct 07 | `ggplot2`
 
