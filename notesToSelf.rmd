@@ -1,0 +1,11 @@
+Notes to self
+========================================================
+
+Why emphasize IDE (e.g., RStudio), working directory (use an RStudio project!), etc. so early? Why not use a built-in dataset and do something cool right away? Because, like learning to ride a bike, it's the starting and the stopping that is particularly hard for newbies. If you can make that easier, they can log more hours pedalling. (Of course we could still do something cool and THEN come back down to earth.)
+
+Things I'm undercovering:
+
+  * reshaping
+  * data cleaning
+  * `ggplot2` (i.e. bringing to same level of polish as `lattice` stuff; yikes!)
+
