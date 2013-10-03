@@ -26,9 +26,23 @@ __US Childhood Morbidity and Mortality__. People, especially the older generatio
 
 Mother Jones article [Science Confirms: Politics Wrecks Your Ability to Do Math](http://www.motherjones.com/politics/2013/09/new-study-politics-makes-you-innumerate). Probably too small and narrow. But maybe not. Would be nice to give those figures a makeover.
 
-[This web page](http://www.tableausoftware.com/public/community/sample-data-sets) has a dataset similar to the Gapminder data, but with more columns. It also has a potentially interesting, though maybe not data-intensive enough, dataset about Olympic medals won by athletes. 
+Reading the NYT story [Why Are There Still So Few Women in Science?](http://www.nytimes.com/2013/10/06/magazine/why-are-there-still-so-few-women-in-science.html) on 2013-10-03 led me to these leads. Get data used in these papers. Reanalyze, regraph.
+
+  * "Cross-Cultural Analysis of Students with Exceptional Talent in Mathematical Problem Solving" by Titu Andreescu, Joseph A. Gallian, Jonathan M. Kane, and Janet E. Mertz in AMS Notices. <http://www.ams.org/notices/200810/tx081001248p.pdf>
+
+  * "Debunking Myths about Gender and Mathematics Performance" by Jonathan M. Kane and Janet E. Mertz in AMS Notices. <http://www.ams.org/notices/201201/rtx120100010p.pdf>
+
+ * Ellison, Glenn, and Ashley Swanson. “The Gender Gap in Secondary School Mathematics at High Achievement Levels: Evidence from the American Mathematics Competitions.” Journal of Economic Perspectives 24.2 (2010): 109–128. Web. 1 June 2012. <http://hdl.handle.net/1721.1/71007>
 
 JB should really list previous student projects, at the vey least for inspiration and maybe for actual links to datasets.
+
+
+Submissions by 2013 STAT 545A students
+========================================================
+
+[This web page](http://www.tableausoftware.com/public/community/sample-data-sets) has a dataset similar to the Gapminder data, but with more columns. It also has a potentially interesting, though maybe not data-intensive enough, dataset about Olympic medals won by athletes. -- STAT 545A student
+
+
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.

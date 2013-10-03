@@ -112,8 +112,6 @@ Monday Sept 02 is a statutory holiday. No class.
     - [Writing a figure to file](topic12_writeFigureToFile.html)
     - Revisit [homework 4](hw04_univariateLattice.html) to see JB's solutions and access links to work of fellow students.
 
-  * Google form re: datasets TO BE POSTED
-  
   * Reading on the `ggplot2` package in the book *ggplot2: Elegant Graphics for Data Analysis*.  Links to the eBook and much more can be found [on my resources page](../resources.html).
   
     - Ch. 1 Introduction
