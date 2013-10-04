@@ -210,7 +210,7 @@ mode(jDat)
 class(jDat)
 ```
 
-> Sidebar: What is `I()`, used when creating the variable $y$ in the above data.frame? Short version: it tells R to do something _quite literally_. Here we are protecting the letters from being coerced to factor. We are ensuring we get a character vector. Note we let character-to-factor conversion happen in creating the $v$ variable above. More about (foiling) R's determination to convert character data to factor can be found elsewhere.
+> Sidebar: What is `I()`, used when creating the variable $y$ in the above data.frame? Short version: it tells R to do something _quite literally_. Here we are protecting the letters from being coerced to factor. We are ensuring we get a character vector. Note we let character-to-factor conversion happen in creating the $v$ variable above. More about (foiling) R's determination to convert character data to factor can be found [here](block08_bossYourFactors.html).
 
 data.frames really are lists! Double square brackets can be used to get individual variables. Single square brackets can be used to get one or more variables, returned as a data.frame (though `subset(..., select = ...))` is how I would more likely do in a data analysis).
 
@@ -223,9 +223,7 @@ str(jDat[c("x", "z")]) # returns a data.frame
 identical(subset(jDat, select = c(x, z)), jDat[c("x", "z")])
 ```
 
-> Question: How do I make a data.frame from a list?
-
-Answer: It is an absolute requirement that the constituent vectors have the same length, although they can be of different flavors. Assuming you meet that requirement, use `as.data.frame()` to convert.
+> Question: How do I make a data.frame from a list? It is an absolute requirement that the constituent vectors have the same length, although they can be of different flavors. Assuming you meet that requirement, use `as.data.frame()` to convert.
 
 ```{r, tidy = FALSE}
 ## note difference in the printing of a list vs. a data.frame

@@ -8,4 +8,6 @@ Things I'm undercovering:
   * reshaping
   * data cleaning
   * `ggplot2` (i.e. bringing to same level of polish as `lattice` stuff; yikes!)
+  
+In the tutorial for data aggregation with plyr, the example I trot out to contrast with built-in function pain should probably involve the return of something more complicated than a single number. So that `aggregate()` is not a viable alternative.
 
