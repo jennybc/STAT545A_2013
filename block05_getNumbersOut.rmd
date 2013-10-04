@@ -142,7 +142,7 @@ saveRDS(jCoefs, "jCoefs.rds")
 ```
 Note that, unlike an approach based on `save()` and `load()`, you must make an object assignment upon import (see below). This implies that you could give the object a totally different name, but why confuse yourself like that? Full disclosure: you will eventually get curious about `save()` or `save.image()` + `load()`, which save and restore multiple objects or even an entire workspace. Tempting though it may be, I recommend you just say no to these functions. Source is real; workspaces are not.
 
-`saveRDS()` has more arguments, such one controlling compression, so read the help for more advanced usage. It is also very handy for saving non-rectangular objects, like a fitted regression model, that took a nontrivial amount of time to compute.
+`saveRDS()` has more arguments, such as one controlling compression, so read the help for more advanced usage. It is also very handy for saving non-rectangular objects, like a fitted regression model, that took a nontrivial amount of time to compute.
 
 ### Retaining factor levels upon re-import
 
