@@ -120,7 +120,7 @@ stripplot(lifeExp ~ factor(year), jDat, jitter.data = TRUE,
 
 #### How is life expectancy changing over time on different continents?
 
-```{r fig.show = 'hold', out.width = '50%', out.extra='style=""'}
+```{r fig.show = 'hold', out.width = '50%'}
 stripplot(lifeExp ~ factor(year) | reorder(continent, lifeExp), jDat,
           jitter.data = TRUE,
           type = c("p", "a"), fun = myTrimMean, alpha = 0.6, grid = "h",
@@ -150,7 +150,7 @@ htmlPrint(as.data.frame(foo[with(jDat, rev(levels(reorder(continent,
 
 It is awkward to ignore the year here, since there are strong temporal trends in GDP per capita. You are encouraged to address that in some way. Easy: consider only one year. Harder but better: work the year variable into your visual display.
 
-```{r fig.show = 'hold', out.width = '50%', out.extra='style=""'}
+```{r fig.show = 'hold', out.width = '50%'}
 ## get continent*year-specific min and max in tall data.frame
 extGdppercapByContinent <- ddply(jDat, ~ continent + year, function(x) {
   jLevels <- c("min", "max")
@@ -368,7 +368,7 @@ lmGoodies <- ddply(lmGoodies, ~ continent, function(x) {
 # peek(lmGoodies)
 ```
 
-```{r fig.show = 'hold', out.width = '50%', echo = FALSE, out.extra='style=""'}
+```{r fig.show = 'hold', out.width = '50%', echo = FALSE}
 intInteresting <-
   subset(lmGoodies, abs(intRank) <= 3, select = country, drop = TRUE)
 jYlim <- c(25, 85) # want to hold these fixed across the continents

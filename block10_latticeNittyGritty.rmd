@@ -101,7 +101,7 @@ head(lifeExpSpread)
 
 In our aggregated result `lifeExpSpread`, each measure of spread exists as its own variable. Let's say we want to plot those over time, distinguishing the different measures via color and superposition or by multi-panel conditioning, possibly depicting continent as well. To use the native `lattice` functionality for superposition or conditioning, we would need to reshape the data. The variables `sdGdpPercap`, `iqrGdpPercap`, and `madGdpPercap` would need to be catenated and a parallel factor created to indicate `sd` vs `iqr` vs `mad`. If you have no other need for such reshaped data, you can bypass its creation by using the extended formula interface.
 
-```{r fig.show='hold', out.width='50%', out.extra='style=""'}
+```{r fig.show='hold', out.width='50%'}
 ## cheap trick? using lattice's extended formula interface to avoiding reshaping
 xyplot(sdGdpPercap + iqrGdpPercap + madGdpPercap ~ year, lifeExpSpread,
        subset = continent == "Africa", type = "b", ylab = "measure of spread",
@@ -246,7 +246,7 @@ xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
 
 To conclude, we present our starting and ending plots side by side.
 
-```{r fig.show='hold', out.width='50%', out.extra='style=""'}
+```{r fig.show='hold', out.width='50%'}
 xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
        grid = TRUE, scales = list(x = list(log = 10)))
 xyplot(lifeExp ~ gdpPercap | factor(year), yDat, aspect = 2/3,
