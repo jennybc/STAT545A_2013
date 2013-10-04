@@ -23,11 +23,14 @@ ggplot(gDat, aes(x = gdpPercap, y = lifeExp), log = "x") + geom_point()
 
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp, color = continent)) + geom_point() +
   scale_x_log10()
-## is there a way to phrase that where I can still reuse p?
+## and now, same result but by reusing p
+p + geom_point() + scale_x_log10() + aes(color = continent)
 
-ggplot(gDat, aes(x = gdpPercap, y = lifeExp), alpha = I(1/8)) + geom_point() +
-  scale_x_log10()
-## this is not working
+#ggplot(gDat, aes(x = gdpPercap, y = lifeExp), alpha = I(1/8)) + geom_point() + scale_x_log10()
+## the above will not work
+ggplot(gDat, aes(x = gdpPercap, y = lifeExp)) + geom_point(alpha = (1/8)) + scale_x_log10()
+# this works (realistic theory: alpha is applied to the points, no to the whole plot, so alpha needs
+# to be specified only for the points?)
 
 p + geom_point() + scale_x_log10() + geom_smooth()
 
