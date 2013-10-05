@@ -209,6 +209,7 @@ We did it! By the time we've packaged the computation in a function, the call it
 gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
 gDat <- read.delim(file = gdURL)
 ## str(gDat) here when working interactively
+yearMin <- min(gDat$year)
 jFun <- function(x) {
   estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
   names(estCoefs) <- c("intercept", "slope")
@@ -301,6 +302,53 @@ What it you wanted to write the table of slopes and intercepts to file? Go to th
 
   * See Chapter 8 (“Data Aggregation”)
 
+### Q & A
+
+Student: How do you pass more than one argument for a function into `ddply()`. The main example that we used in class was this:
+
+```{r}
+(yearMin <- min(gDat$year))
+jFun <- function(x) {
+    estCoefs <- coef(lm(lifeExp ~ I(year - yearMin), x))
+    names(estCoefs) <- c("intercept", "slope")
+    return(estCoefs)
+}
+jCoefs <- ddply(gDat, ~country, jFun)
+head(jCoefs)
+```
+
+and `jFun` only requires one argument, `x`. What if it had more than one argument?
+
+Answer: Let's imagine that the shift for the year covariate is an argument instead of a previously-assigned variable `yearMin`. Here's how it would work.
+
+```{r}
+jFunTwoArgs <- function(x, cvShift = 0) {
+  estCoefs <- coef(lm(lifeExp ~ I(year - cvShift), x))
+  names(estCoefs) <- c("intercept", "slope")
+  return(estCoefs)
+  }
+```
+
+Since I've assigned `cvShift =` a default value of zero, we can get coefficients where the intercept corresponds to the year A.D. 0 with this simple call:
+
+```{r}
+jCoefsSilly <- ddply(gDat, ~ country, jFunTwoArgs)
+head(jCoefsSilly)
+```
+
+We are getting the same estimated slopes but the silly year 0 intercepts we've seen before. Let's use the `cvShift =` argument to resolve this.
+
+```{r}
+jCoefsSane <- ddply(gDat, ~ country, jFunTwoArgs, cvShift = 1952)
+head(jCoefsSane)
+```
+
+We're back to our usual estimated intercepts, which reflect life expectancy in 1952. Of course hard-wiring 1952 is not a great idea, so here's probably our best code yet:
+
+```{r}
+jCoefsBest <- ddply(gDat, ~ country, jFunTwoArgs, cvShift = min(gDat$year))
+head(jCoefsBest)
+```
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
