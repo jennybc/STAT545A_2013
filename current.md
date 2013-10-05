@@ -119,19 +119,19 @@ Monday Sept 02 is a statutory holiday. No class.
   
 ### cm 08 | Wednesday Oct 02 | `ggplot2`
   
-  * Submit homework 5 before class starts @ 9:30am Monday Oct. 07. Make `ggplot` versions of 2 (or more) figures we've already made. Use of non Gapminder datasets OK/encouraged but not required. Details coming, but you know the drill by now.
+  * Submit [homework 5](hw05_anythingGgplot2.html) before class starts @ 9:30am Monday Oct. 07.
   
   * Reading on the `ggplot2` package in the book *ggplot2: Elegant Graphics for Data Analysis*.  Links to the eBook and much more can be found [on my resources page](../resources.html).
   
     - Ch. 3 Mastering the grammar
 
-cm 09 | Monday Oct 07 | `ggplot2`
+cm 09 | Monday Oct 07 | Colors, heatmaps
 
-cm 10 | Wednesday Oct 09 | Colors, heatmaps (+ more plotting!)
+cm 10 | Wednesday Oct 09 | More `ggplot2`
 
 Monday Oct 14 is a statutory holiday. No class.
 
-cm 11 | Wednesday Oct 16 | Coding style, project organization, version control (+ more plotting!)
+cm 11 | Wednesday Oct 16 | Coding style, project organization, version control
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
