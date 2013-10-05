@@ -19,26 +19,24 @@ p + geom_point() + scale_x_log10()
 ## a bit better
 
 ## trying something from qplot ... does not work
-ggplot(gDat, aes(x = gdpPercap, y = lifeExp), log = "x") + geom_point()
+## ggplot(gDat, aes(x = gdpPercap, y = lifeExp), log = "x") + geom_point()
 
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp, color = continent)) + geom_point() +
   scale_x_log10()
 ## and now, same result but by reusing p
 p + geom_point() + scale_x_log10() + aes(color = continent)
+p + geom_point(aes(color = continent)) + scale_x_log10()
 
-#ggplot(gDat, aes(x = gdpPercap, y = lifeExp), alpha = I(1/8)) + geom_point() + scale_x_log10()
-## the above will not work
+
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp)) + geom_point(alpha = (1/8)) + scale_x_log10()
-# this works (realistic theory: alpha is applied to the points, no to the whole plot, so alpha needs
-# to be specified only for the points?)
 
 p + geom_point() + scale_x_log10() + geom_smooth()
 
 p + geom_point() + scale_x_log10() + geom_smooth(method = "lm")
 
 ## connect the dots scatterplot of lifeExp over year for one country
-ggplot(subset(gDat, country == "Zimbabwe"), aes(x = year, y = lifeExp)) +
-  geom_line()
+ggplot(subset(gDat, country == "Zimbabwe"),
+       aes(x = year, y = lifeExp)) + geom_line() + geom_point()
 ## geom_path() works here to because our data already sorted on year
 
 ## stripplots of lifeExp by continent
@@ -61,17 +59,25 @@ ggplot(gDat, aes(x = lifeExp, color = continent)) + geom_density()
 
 ## bar chart
 
+ggplot(gDat, aes(x = continent)) + geom_bar()
 ggplot(gDat, aes(x = continent), stat="bin") + geom_bar()
+ggplot(gDat, aes(x = continent)) + layer(stat="bin")
+ggplot(gDat, aes(x = continent, y = country)) + layer(stat="sum")
+ggplot(gDat, aes(x = continent, y = country)) + stat_sum()
 ## still not exactly what I want; how to count countries within continent?
+
+ggplot(gDat, aes(x = reorder(continent, lifeExp), y = country)) + stat_sum()
 
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10() + geom_bin2d()
-ggplot(gDat, aes(x = gdpPercap, y = lifeExp, color = continent)) + geom_point() +
-  scale_x_log10()
+
+ggplot(gDat, aes(x = gdpPercap, y = lifeExp, color = continent)) + geom_point() +   scale_x_log10()
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp, color = continent)) + geom_point() +
   scale_x_log10() + geom_smooth()
+
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp)) + geom_point() +
   scale_x_log10() + facet_wrap(~ continent)
+
 ggplot(gDat, aes(x = gdpPercap, y = lifeExp)) + geom_point() +
   scale_x_log10() + facet_wrap(~ continent) + geom_smooth()
 
@@ -90,13 +96,19 @@ ggplot(subset(gDat, subset = year == 2007),
 ## below here very experimental ....
 
 ggplot(subset(gDat, subset = year %% 10 == 2 & continent != "Oceania"),
-       aes(x = gdpPercap, y = lifeExp), color = country) + geom_point() +
+       aes(x = gdpPercap, y = lifeExp, color = country)) + geom_point() +
   scale_x_log10() + facet_grid(continent ~ year)
-
 
 ggplot(subset(gDat, year == 2007),
        aes(x = gdpPercap, y = lifeExp,
-           colour=continent, size = sqrt(pop/pi))) + geom_point() +
+           colour=continent, size = 1500 *sqrt(pop/pi))) + geom_point() +
   scale_x_log10()
 
 ggplot(gDat, aes(x = lifeExp)) + geom_histogram()
+
+
+iDat <- subset(gDat, year == c(1952, 2002))
+str(iDat)
+
+jDat <- subset(gDat, year %in% c(1952, 2002))
+str(jDat)
