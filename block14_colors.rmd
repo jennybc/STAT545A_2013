@@ -87,7 +87,7 @@ jDat
 ```
 
 The most basic plot possible, using `plot()` from the base package `graphics`.
-```{r setPch = TRUE}
+```{r}
 jXlim <- c(460, 60000)
 jYlim <- c(47, 82)
 plot(lifeExp ~ gdpPercap, jDat, log = 'x', xlim = jXlim, ylim = jYlim,
