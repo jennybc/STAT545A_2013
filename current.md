@@ -103,7 +103,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
   * Submit [homework 4](hw04_univariateLattice.html) before class starts @ 9:30am Monday Sept. 30. Make graphical companions to data aggregation output from [homework 3](hw03_dataAggregation.html).
   
-### cm 07 | Monday Sept 30 | Two quantitative variables + more formal coverage of `lattice` + writing figures to file ([slides as PDF](2013-lectures/cm07_xyplot-formalLattice-figuresToFile.pdf))
+### cm 07 | Monday Sept 30 | Two quantitative variables + `lattice` details + writing figures to file ([slides as PDF](2013-lectures/cm07_xyplot-formalLattice-figuresToFile.pdf))
 
   * Work through
 
@@ -125,13 +125,17 @@ Monday Sept 02 is a statutory holiday. No class.
   
     - Ch. 3 Mastering the grammar
 
-cm 09 | Monday Oct 07 | Colors, heatmaps
+### cm 09 | Monday Oct 07 | Colors
 
-cm 10 | Wednesday Oct 09 | More `ggplot2`
+* Work through
+
+    - [Using colors in R](block14_colors.html)
+
+### cm 10 | Wednesday Oct 09 | More `ggplot2`
 
 Monday Oct 14 is a statutory holiday. No class.
 
-cm 11 | Wednesday Oct 16 | Coding style, project organization, version control
+### cm 11 | Wednesday Oct 16 | Coding style, project organization, version control
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
