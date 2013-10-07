@@ -147,9 +147,9 @@ display.brewer.all()
 ```
 They fall into three classes. From top to bottom, they are
 
-  * sequential: great for low-to-high things where one extreme is exciting and the other is boring, like p-values and correlations
+  * sequential: great for low-to-high things where one extreme is exciting and the other is boring, like (transformations of) p-values and correlations (caveat: here I'm assuming the only exciting correlations you're likely to see are positive, i.e. near 1)
   * qualitative: great for non-ordered categorical things -- such as your typical factor, like country or continent. Note the special case "Paired" palette; example where that's useful: a non-experimental factor (e.g. type of wheat) and a binary experimental factor (e.g. untreated vs. treated).
-  * diverging: great for things that range from "extreme and negative" to "extreme and positive", going through "non extreme and boring" along the way, such as t statistics and z scores
+  * diverging: great for things that range from "extreme and negative" to "extreme and positive", going through "non extreme and boring" along the way, such as t statistics and z scores and signed correlations
   
 You can view a single RColorBrewer palette by specifying its name:
 ```{r fig.height = 3}
@@ -190,7 +190,7 @@ $$
 $$
 Note that the lowest possible channel intensity is `00` = 0 and the highest is `FF` = 255.
 
-Important special cases that help you stay oriented. Here are the saturated primary colors, red, blue, and green:
+Important special cases that help you stay oriented. Here are the saturated RBG colors, red, blue, and green:
 ```{r include = FALSE}
 foo <- data.frame(colorName = c("blue", "green", "red"),
                   hex = c("#0000FF", "#00FF00", "#FF0000"),
