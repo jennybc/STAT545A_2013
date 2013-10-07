@@ -238,6 +238,12 @@ Here's what I can tell you about the HCL model's three dimensions:
   
 > Full disclosure: I have a hard time really grasping and distinguishing chroma and luminance. As we point out above, they are not entirely independent, which speaks to the weird shape of the 3 dimensional HCL space.
   
+Figure 6.6 in Wickham's `ggplot2` book is helpful for understanding the HCL color space.
+
+![Figure 6.6 of Wickham's ggplot2 book](ggplot2book-fig6.6.png)
+
+> JB re-phrasing and combining Wickham's description and caption for this figure: Each facet or panel depicts a slice through HCL space for a specific luminance, going from low to high. The extreme luminance values of 0 and 100 are omitted because they would, respectively, be a single black point and a single white point. Within a slice, the centre has chroma 0, which corresponds to grey. As you move toward the slice's edge, chroma increases and the color gets more pure and intense. Hue is mapped to angle.
+  
 A valuable contribution of the `colorspace` package is that it provides functions to create color palettes traversing color space in a rational way. In contrast, the palettes offered by `RColorBrewer`, though well-crafted, are unfortunately fixed.
 
 > Here I plan to insert/recreate some visuals from the Zeileis et al paper or from the `colorspace` vignette. For the moment, that stuff is sitting in the PDF slides. So go there!
@@ -245,6 +251,8 @@ A valuable contribution of the `colorspace` package is that it provides function
 ### Accomodating color blindness
 
 the `dichromat` package ([on CRAN](http://cran.r-project.org/web/packages/dichromat/))
+
+> obviously need to do some writing here!
 
 ### Clean up
 
@@ -265,8 +273,8 @@ Achim Zeileis, Kurt Hornik, Paul Murrell (2009). Escaping RGBland: Selecting Col
 
 Earl F. Glynn (Stowers Institute for Medical Research)
 
-  * [excellent color resources](http://research.stowers-institute.org/efg/R/Color/Chart/)
-  * [talk "Using Color in R"](http://research.stowers-institute.org/efg/Report/UsingColorInR.pdf)
+  * [excellent resources](http://research.stowers-institute.org/efg/R/Color/Chart/) for named colors, i.e. the ones available via `colors()`
+  * informative talk ["Using Color in R"](http://research.stowers-institute.org/efg/Report/UsingColorInR.pdf), though features some questionable *use* of color itself
 
 ggplot2: Elegant Graphics for Data Analysis [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-98141-3/page/1) by Hadley Wickham, Springer (2009) | [online docs (nice!)](http://docs.ggplot2.org/current/) | [author's website for the book](http://ggplot2.org/book/), including all the code | [author's landing page for the package](http://ggplot2.org)
 
