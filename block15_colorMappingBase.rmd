@@ -1,0 +1,177 @@
+Putting colors to work for you in base graphics
+========================================================
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodically copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "colors" and "base graphics".
+
+### Load the Gapminder data, get an excerpt, and load `RColorBrewer`
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+
+I need a small well-behaved excerpt from the Gapminder data for demonstration purposes. I randomly draw 8 countries, keep their data from 2007, and sort the rows based on GDP per capita. Meet `jDat`.
+
+```{r echo = FALSE}
+## take a random sample of countries
+nC <- 8
+jYear <- 2007
+set.seed(1903)
+countriesToKeep <- as.character(sample(levels(gDat$country), size = nC))
+jDat <-
+  droplevels(subset(gDat, country %in% countriesToKeep & year == jYear))
+jDat <- jDat[order(jDat$gdpPercap), ]
+#str(jDat)
+```
+
+```{r}
+jDat
+```
+
+We will use palettes from the `RColorBrewer` package so load it now:
+```{r}
+library(RColorBrewer)
+```
+
+### Change the default plotting symbol to a big solid circle
+
+Remind yourself how and why we do this in [the first block on colors](block14_colors.html#change-the-default-plotting-symbol-to-a-solid-circle).
+
+```{r eval = FALSE}
+## how to change the plot symbol in a simple, non-knitr setting
+opar <- par(pch = 19)
+```
+```{r include = FALSE}
+## see ch. 10 Hooks of Xie's knitr book
+knit_hooks$set(setPch = function(before, options, envir) {
+  if(before) par(pch = 19)
+})
+opts_chunk$set(setPch = TRUE)
+```
+
+### Encode a factor via color
+
+The plots we made in [the first block on colors](block14_colors.html#change-the-default-plotting-symbol-to-a-solid-circle) were unrealistic (who really wants each point to have its own color?) and elementary (it’s not that hard to get that far by yourself).
+
+In the real world, you'll want to encode a factor via color. This is, of course, one of the most compelling reasons to switch to `ggplot2` or `lattice`, but it's informative to do this "by hand" a few times in your life.
+
+First, remake the basic scatterplot without color.
+```{r}
+jXlim <- c(460, 60000)
+jYlim <- c(47, 82)
+plot(lifeExp ~ gdpPercap, jDat, log = 'x', xlim = jXlim, ylim = jYlim)
+```
+Let's color the points according to the `continent` factor. Using base graphics, there is no escape from hand-crafting an appropriate vector of colors. The only question is: how will you do it?
+
+Before we get bogged down in details, we do some set-up, modelling some general best practices. I create a small data.frame to hold my color scheme. This facilitates all the solutions below and leaves me in a good position for using the scheme in other base graphics plots, for making a color key, for changing the scheme, etc. I also resist the temptation to pick my own colors and, instead, use a qualitative palette from `RColorBrewer`.
+```{r}
+(jColors <-
+   with(jDat,
+        data.frame(continent = levels(continent),
+                   color = I(brewer.pal(nlevels(continent), name = 'Dark2')))))      
+```
+*With intention*, this data.frame has a factor `continent` with the same name as the continent factor in `jDat` and with the same levels, in the same order. I am also using `I()` to protect the color-specifying hex strings from being converted to factor.
+
+Now we must create a vector specifying colors from our scheme in the proper order, i.e. reflecting the continent of each country.
+
+### Create color vector via `match()`
+
+If you are a recovering Excel user, think of `match()` as one of your table look-up functions. It looks up the values in the first argument `x` in the second argument, `table`, and returns positive integers that reflect the index of where an individual `x` value is first found in `table`.
+
+We're going to look up the continents listed in `jDat` in the corresponding continent factor in the color scheme data.frame `jColors`.
+
+```{r}
+jColors
+data.frame(subset(jDat, select = c(country, continent)),
+           matchRetVal = match(jDat$continent, jColors$continent))
+```
+Stare hard at the `match()` results in the last column and check a couple of values "by hand" to cement your understanding.
+
+> In this case, I could duplicate the `match()` result with `unclass(jDat$continent)` but it's not very safe and extensible.
+
+Now I can use the `match()` results to index into the color variable of my color scheme. That creates the vector of colors I need for the `col =` argument of `plot()`.
+```{r}
+plot(lifeExp ~ gdpPercap, jDat, log = 'x', xlim = jXlim, ylim = jYlim,
+     col = jColors$color[match(jDat$continent, jColors$continent)],
+     main = 'custom color scheme based on Dark2', cex = 2)
+legend(x = 'bottomright', 
+       legend = as.character(jColors$continent),
+       col = jColors$color, pch = par("pch"), bty = 'n', xjust = 1)
+```
+I added a legend "by hand" too. That sort of tedium is greatly reduced in `ggplot2` and `lattice`, both of which can do that fairly automagically.
+
+### Create color vector via `merge()`
+
+If you are a recovering Excel user, add `merge()` to your list of functions related to table look-up. If you have some experience with databases, `merge()` implements *join* operations.
+
+`merge()` is much more powerful than `match()` and, accordingly, a bit harder to master. It takes two data.frames and combines them in a systematic way to make a new data.frame. I will not describe `merge()` in its full generality but will focus on our current use case, which is fairly typical and down-to-earth.
+
+First, `merge()` will look for variable names that are shared between the two inputs. In our case, there is exactly one: `continent`. This is our matching variable.
+
+Second, `merge()` will find rows in each of the input data.frames that match on `continent` and join their data. Since each continent occurs exactly once in the color scheme data.frame `jColors`, life is very good. We don't have to worry about what happens when these matches involve multiple rows in the two sources. In our case, it's easy to accept that the merged result will have one row per row in `jDat`, the larger of the two data.frames in terms of rows. The only novel information `jColors` offers is the color information, so the merged result will also have exactly one new variable: `color`.
+```{r}
+(jDatColor <- merge(jDat, jColors))
+```
+And now we can provide this new color variable as the value of the `col =` argument.
+```{r}
+plot(lifeExp ~ gdpPercap, jDatColor, log = 'x', xlim = jXlim, ylim = jYlim,
+     col = color,
+     main = 'custom color scheme based on Dark2', cex = 2)
+legend(x = 'bottomright', 
+       legend = as.character(jColors$continent),
+       col = jColors$color, pch = par("pch"), bty = 'n', xjust = 1)
+```
+
+### Comments on the `match()` and `merge()` approaches
+
+I am drawn more to the `merge()` approach. The code is easier to read and write.
+
+The `merge()` approach "contaminates" your data with color information, which feels slightly inelegant. But I'm OK with that.
+
+The `merge()` approach leaves behind a nice self-contained object that bundles the data with a color scheme. If the creation and application of the color scheme is painful, it can be nice to have this clean result for sharing and downstream reuse.
+
+The `merge()` function is extremely useful and I urge you to use it in more complicated settings. For the record, it is not necessary for the "matching variables" to have exactly the same names, as our did here, and you have control over what happens when there are multiple matches or no matches.
+
+### Clean up
+
+```{r  eval = FALSE}
+## NOT RUN
+## execute this if you followed my code for
+## changing the default plot symbol in a simple, non-knitr setting
+## reversing the effects of this: opar <- par(pch = 19)
+par(opar)
+```
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

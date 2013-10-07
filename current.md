@@ -130,6 +130,7 @@ Monday Sept 02 is a statutory holiday. No class.
 * Work through
 
     - [Using colors in R](block14_colors.html)
+    - [Mapping a factor into a color in base graphics](block15_colorMappingBase.html) (this is also nice demonstration of `match()` and `merge()`)
 
 ### cm 10 | Wednesday Oct 09 | More `ggplot2`
 

@@ -17,6 +17,7 @@ Fall 2013: I am (finally) marshalling my teaching materials in one place and exp
   * [Exploring the relationship between two quantitative variables: A quick tour of `xyplot()](block09_xyplotLattice.html)
   - [Gateway to more advanced `lattice` usage](block10_latticeNittyGritty.html)
   - [Overview of using colors in R](block14_colors.html)
+  - [Mapping a factor into a color in base graphics](block15_colorMappingBase.html) (doubles as a nice introduction to `match()` and `merge()`)
   
     
 Smaller topics, in the approximate order in which students ask about them
