@@ -1,0 +1,181 @@
+Taking control of colors in `lattice`
+========================================================
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "lattice" and "colors".
+
+### Load the Gapminder data and `lattice`
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+Drop Oceania, which only has two continents
+```{r}
+## drop Oceania
+jDat <- droplevels(subset(gDat, continent != "Oceania"))
+str(jDat)
+```
+
+Load the `lattice` package:
+```{r}
+library(lattice)
+```
+
+### Make a scatterplot
+
+Here's a basic scatterplot of life expectancy against year for 2007. How do we change the colors associated with the different continents?
+```{r}
+xyplot(lifeExp ~ gdpPercap, jDat,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent, auto.key = TRUE)
+```
+
+### Get to know your current theme
+
+Many aspects of a `lattice` graphic are determined by the current *theme*. To get a visual overview of yours, submit this:
+```{r}
+show.settings()
+```
+To get the gory details of your current theme, use the `trellis.par.get()` function (I won't print the output here, but you should inspect on your machine):
+```{r eval = FALSE}
+trellis.par.get()
+```
+What was all that ?!? Let's get an overview.
+```{r}
+str(trellis.par.get(), max.level = 1)
+```
+The theme is a large list of graphical parameters that provide fine control of `lattice` graphics. Many of the names are fairly self-explanatory, especially when viewed alongside the output of `show.settings()`.
+
+### Temporary 'on the fly' changes to the theme
+
+Consider, for example, the list component `superpose.symbol`. Let's inspect it.
+```{r}
+str(trellis.par.get("superpose.symbol"))
+```
+It is itself a list with components controlling various properties of points when we use `lattice`'s functionality for superposition via the `group =` argument. If we want to change the color of the points, this is where it needs to happen.
+
+First, let's simply establish that `superpose.symbol` is in fact the set of graphical parameters that we need to modify. Graphical parameters can be set in an extremely limited way -- applying only to a single call -- by using the `par.settings =` argument to any high-level `lattice` call.
+```{r}
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       group = country, subset = year == 2007,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       par.settings = list(superpose.symbol = list(pch = 19, cex = 1.5,
+                                                   col = c("orange", "blue"))))
+```
+Yes! We successfully modified the plot symbol, it's size, and the colors. Granted, we used nonsensical colors, but that's often a good move at the very start. Before I go to the trouble of inserting a finely crafted color palette, I want to make sure I know where to put it.
+
+Now we need that fancy color palette. The details of how to construct our country color palette are given elsewhere (future link), so we simply import and inspect it here.
+```{r}
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderCountryColors.txt"
+countryColors <- read.delim(file = gdURL, as.is = 3) # protect color
+str(countryColors)
+head(countryColors)
+```
+`countryColors` is a data.frame, with one row per country, and with factors for country and continent. The crown jewel is the vector of country colors and that is what we need to insert into the `superpose.symbol` list.
+
+From viewing the first few lines of `countryColors` we can see that the rows are not arranged in alphabetical order by country, which is the default level order for the country factor. So, before we can invoke our custom colors, we must make sure they are in the correct order, i.e. are harmonized to the levels of `jDat$country`. Note that the way I do this smoothly handles the additional wrinkle that we have dropped Oceania from `jDat`. By using `match()`, instead of merely sorting alphabetically and hoping for the best, we gain an extra level of protection from ourselves. We are now ready to use the colors, on the left in a scatterplot and on the right in a line plot. I use grouping and multi-panel conditioning redundantly, because I like the way it looks *and* I like the visual sanity check that I've applied my color scheme correctly.
+```{r fig.show='hold', out.width='50%'}
+countryColors <-
+  countryColors[match(levels(jDat$country), countryColors$country), ]
+str(countryColors) # see ... there are only 140 now, not the original 142
+xyplot(lifeExp ~ gdpPercap | continent, jDat,
+       group = country, subset = year == 2007,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       par.settings = list(superpose.symbol = list(pch = 19, cex = 1,
+                                                   col = countryColors$color)))
+xyplot(lifeExp ~ year | continent, jDat,
+       group = country, type = "l",
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       par.settings = list(superpose.line = list(col = countryColors$color,
+                                                 lwd = 2)))
+```
+
+### Limited but reusable changes to a theme
+
+If you want to change several graphical parameters or if you want to apply your changes to multiple plots, the above method gets a bit cumbersome. You can assign your changes to an object and then use that to set `par.settings =`. This has all the usual benefits of isolating the changes to one piece of code, such as ease of modification and reuse.
+
+We demonstrate with a new example, where we draw on the custom continent color scheme that underpins the larger country color scheme above. These colors were chosen to anchor the selection of country colors, not to really stand alone, so apologies that they are rather dark. In the second plot, we verify that the custom color scheme works perfectly well when we use multi-panel conditioning on a completely different variable, `year`.
+```{r fig.show='hold', out.width='50%'}
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderContinentColors.txt"
+(continentColors <- read.delim(file = gdURL, as.is = 3)) # protect color
+(continentColors <-
+  continentColors[match(levels(jDat$continent), continentColors$continent), ])
+coolNewPars <- 
+  list(superpose.symbol = list(pch = 21, cex = 2, col = "gray20",
+                               fill = continentColors$color))
+xyplot(lifeExp ~ gdpPercap, jDat,
+       subset = year == 2007,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent, auto.key = list(columns = 4),
+       par.settings = coolNewPars)
+xyplot(lifeExp ~ gdpPercap | factor(year), jDat,
+       subset = year %in% c(1952, 2007),
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       group = continent, auto.key = list(columns = 4),
+       par.settings = coolNewPars)
+```
+
+### Changes to the actual theme
+
+Here we show how to change the theme itself via `trellis.par.set()` and verify its effect. As we did [in base graphics](block15_colorMappingBase.html), we also model best practice for modifying such "hidden" parameters: we store the original state and restore it when we're done. We're taking advantage of the fact that high-level `lattice` calls return actual objects. We make the figure once and store is as `myPlot`. We then print it three times, in a changing theme context: original theme, our custom theme, original theme.
+
+```{r fig.show='hold', out.width='33%'}
+tp <- trellis.par.get() # store the original theme
+myPlot <- xyplot(lifeExp ~ gdpPercap | continent, jDat,
+                 group = country, subset = year == 2007,
+                 scales = list(x = list(log = 10, equispaced.log = FALSE)))
+myPlot
+trellis.par.set(superpose.symbol = list(pch = 19, cex = 1,
+                                        col = countryColors$color))
+myPlot
+trellis.par.set(tp)
+myPlot
+```
+
+### Theme changes need not be exhaustive
+
+It's worth pointing out a very nice feature of the theme modifications above. Whether our theme changes are temporary and limited to a single call or are more persistent and global, notice that we never had to specify the entire set of graphical parameters. You can specify only the things you want to change and everything else will remain at its current value.
+
+### Asserting control via the panel function
+
+Go to the [tutorial on technical details of `lattice`](block10_latticeNittyGritty.html#customizing-the-panel-function) to review an alternative method for exerting graphical control, including over the colors, by modifying the panel function.
+
+### References
+
+  * Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+
+  * Chapter 7 Graphical Parameters and Other Settings
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
