@@ -226,7 +226,7 @@ Here are some functions to read up on if you want to learn more -- don't forget 
 
 The RGB color space or model is by no means the only or best one. It's natural for describing colors for display on a computer screen but there are some really important tasks that are hard to execute in this model. For example, it's not obvious how to construct a qualitative palette where the colors are easy for humans to distinguish but are also perceptually comparable to one other. Appreciate this: we can use RGB to describe colors to the computer but we don't have to use it as the space where we construct color systems.
 
-Color models generally have three dimensions, as RGB does, due to the physiological reality that humans have three different receptors in the retina. The closer a color model's dimensions correspond to distinct qualities people can perceive, the more useful it is. This correspondence facilitates the deliberate construction of palettes and paths through color space with specific properties. RGB lacks this concordance with human perception and is therefore not regarded as useful for color picking. An alternative you may have encountered is the Hue-Saturation-Value (HSV) model. Unfortunately, it is also highly problematic, due to its dimensions being confounded with each other.
+Color models generally have three dimensions, as RGB does, due to the physiological reality that humans have three different receptors in the retina. ([Here is an informative blog post](http://manyworldstheory.com/2013/01/15/my-favorite-rgb-color/) on RGB and the human visual system.) The closer a color model's dimensions correspond to distinct qualities people can perceive, the more useful it is. This correspondence facilitates the deliberate construction of palettes and paths through color space with specific properties. RGB lacks this concordance with human perception and is therefore not regarded as useful for color picking. An alternative you may have encountered is the Hue-Saturation-Value (HSV) model. Unfortunately, it is also highly problematic, due to its dimensions being confounded with each other.
 
 So let's consider perceptually-based color models. CIELUV and CIELAB are two well-known examples. We will focus on another, related to CIELUV, namely the Hue-Chroma-Luminance (HCL) model. It is written up nicely for an R audience in Zeileis, et al (see References for citation and link). There is a companion R package `colorspace`, which will help you to explore and exploit the HCL color model. Finally, this color model is fully embraced in `ggplot2`.
 
@@ -275,6 +275,8 @@ Earl F. Glynn (Stowers Institute for Medical Research)
 
   * [excellent resources](http://research.stowers-institute.org/efg/R/Color/Chart/) for named colors, i.e. the ones available via `colors()`
   * informative talk ["Using Color in R"](http://research.stowers-institute.org/efg/Report/UsingColorInR.pdf), though features some questionable *use* of color itself
+
+Blog post [My favorite RGB color](http://manyworldstheory.com/2013/01/15/my-favorite-rgb-color/) on the Many World Theory blog
 
 ggplot2: Elegant Graphics for Data Analysis [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-98141-3/page/1) by Hadley Wickham, Springer (2009) | [online docs (nice!)](http://docs.ggplot2.org/current/) | [author's website for the book](http://ggplot2.org/book/), including all the code | [author's landing page for the package](http://ggplot2.org)
 
