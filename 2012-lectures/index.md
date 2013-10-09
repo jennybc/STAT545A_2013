@@ -7,7 +7,7 @@ Lecture slides from STAT545A Exploratory Data Analysis, as delivered Sept - Dec 
 
 Examples referred to in the lectures, neatly packaged with code, data, and figures, can be found here:
 
-http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/
+<http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/>
 
 [cm01.pdf](cm01.pdf) | Course introduction. Course goals, requirements, marks, good (e-)books, instructor bio and contact info, student depts & degrees.
 
