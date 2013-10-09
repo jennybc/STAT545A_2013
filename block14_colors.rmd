@@ -56,7 +56,7 @@ When you change a graphical parameter via `par()`, the original values are retur
 
 Big picture, it is best practice to restore the original, default state of hidden things that affect an R session. This is polite if you plan to inflict your code on others. Even if you live on an R desert island, this practice will prevent you from creating maddening little puzzles for yourself to solve in the middle of the night before a deadline.
 
-Because of the way figures are handled by `knitr`, it is more complicated to change the defaul plotting symbol throughout, e.g., an R Markdown document. To see how I've done it, check out a hidden chunk around here in the [source of this page](https://github.com/jennybc/STAT545A/blob/master/block14_colors.rmd).
+Because of the way figures are handled by `knitr`, it is more complicated to change the default plotting symbol throughout, e.g., an R Markdown document. To see how I've done it, check out a hidden chunk around here in the [source of this page](https://github.com/jennybc/STAT545A/blob/master/block14_colors.rmd).
 
 ```{r include = FALSE}
 ## see ch. 10 Hooks of Xie's knitr book
@@ -86,7 +86,7 @@ jDat <- jDat[order(jDat$gdpPercap), ]
 jDat
 ```
 
-The most basic plot possible, using `plot()` from the base package `graphics`.
+A simple scatterplot, using `plot()` from the base package `graphics`.
 ```{r}
 jXlim <- c(460, 60000)
 jYlim <- c(47, 82)
@@ -100,7 +100,7 @@ plot(lifeExp ~ gdpPercap, jDat, log = 'x', xlim = jXlim, ylim = jYlim,
 plot(lifeExp ~ gdpPercap, jDat, log = 'x', xlim = jXlim, ylim = jYlim,
      col = c("blue", "orange"), main = 'col = c("blue", "orange")')
 ```
-You can specify color explicitly with a small positive integer, which is interpreted as indexing into the current palette, which can be inspected via `palette()`. I've added these integers and the color names as labels to the figures below. The default palette contains 8 colors, which is why we're looking at data from eight countries.
+You can specify color explicitly with a small positive integer, which is interpreted as indexing into the current palette, which can be inspected via `palette()`. I've added these integers and the color names as labels to the figures below. The default palette contains 8 colors, which is why we're looking at data from eight countries. The default palette is ugly.
 ```{r fig.show='hold', out.width='50%'}
 plot(lifeExp ~ gdpPercap, jDat, log = 'x', xlim = jXlim, ylim = jYlim,
      col = 1:nC, main = paste0('col = 1:', nC))
@@ -130,8 +130,8 @@ tail(colors())
 But it's much more exciting to see the colors displayed! Lots of people have tackled this -- for colors, plotting symbols, line types -- and put their work on the internet. Some examples:
 
   * JB printed color names [on a white background](r.col.white.bkgd.pdf) and [on black](r.col.black.bkgd.pdf)
-  * Paul Murrell did this in [Chapter 3 of R Graphics 1st edition](https://www.stat.auckland.ac.nz/~paul/RGraphics/chapter3.html). Figure 3.6 shows predefined and custom line types. Figure 3.10 shows plotting symbols.
-  * Earl F. Glynn (Stowers Institute for Medical Research) offers [an excellent resource](http://research.stowers-institute.org/efg/R/Color/Chart/) on R's built-in named colors.
+  * In [Chapter 3 of R Graphics 1st edition](https://www.stat.auckland.ac.nz/~paul/RGraphics/chapter3.html), Paul Murrell shows predefined and custom line types in Figure 3.6 and plotting symbols in Figure 3.10.
+  * Earl F. Glynn offers [an excellent resource](http://research.stowers-institute.org/efg/R/Color/Chart/) on R's built-in named colors.
   
 ### RColorBrewer
 
@@ -173,8 +173,7 @@ Instead of small positive integers and Crayola-style names, a more general and m
 ```{r}
 brewer.pal(n = 8, name = "Dark2")
 ```
-The leading `#` is just there by convention. Parse the hexadecimal string like so:
-`#rrggbb`, where `rr`, `gg`, and `bb` refer to color intensity in the red, green, and blue channels, respectively. Each is specified as a two-digit base 16 number, which is the meaning of "hexadecimal" (or "hex" for short). Here's a table relating base 16 numbers to the beloved base 10 system.
+The leading `#` is just there by convention. Parse the hexadecimal string like so: `#rrggbb`, where `rr`, `gg`, and `bb` refer to color intensity in the red, green, and blue channels, respectively. Each is specified as a two-digit base 16 number, which is the meaning of "hexadecimal" (or "hex" for short). Here's a table relating base 16 numbers to the beloved base 10 system.
 ```{r include = FALSE}
 library(xtable)
 foo <- t(cbind(hex = I(c(as.character(0:9), LETTERS[1:6])),
@@ -224,11 +223,11 @@ Here are some functions to read up on if you want to learn more -- don't forget 
 
 ### Alternatives to the RGB color model, especially HCL
 
-The RGB color space or model is by no means the only or best one. It's natural for describing colors for display on a computer screen but there are some really important tasks that are hard to execute in this model. For example, it's not obvious how to construct a qualitative palette where the colors are easy for humans to distinguish but are also perceptually comparable to one other. Appreciate this: we can use RGB to describe colors to the computer but we don't have to use it as the space where we construct color systems.
+The RGB color space or model is by no means the only or best one. It's natural for describing colors for display on a computer screen but some really important color picking tasks are hard to execute in this model. For example, it's not obvious how to construct a qualitative palette where the colors are easy for humans to distinguish, but are also perceptually comparable to one other. Appreciate this: we can use RGB to describe colors to the computer __but we don't have to use it as the space where we construct color systems__.
 
-Color models generally have three dimensions, as RGB does, due to the physiological reality that humans have three different receptors in the retina. ([Here is an informative blog post](http://manyworldstheory.com/2013/01/15/my-favorite-rgb-color/) on RGB and the human visual system.) The closer a color model's dimensions correspond to distinct qualities people can perceive, the more useful it is. This correspondence facilitates the deliberate construction of palettes and paths through color space with specific properties. RGB lacks this concordance with human perception and is therefore not regarded as useful for color picking. An alternative you may have encountered is the Hue-Saturation-Value (HSV) model. Unfortunately, it is also highly problematic, due to its dimensions being confounded with each other.
+Color models generally have three dimensions, as RGB does, due to the physiological reality that humans have three different receptors in the retina. ([Here is an informative blog post](http://manyworldstheory.com/2013/01/15/my-favorite-rgb-color/) on RGB and the human visual system.) The closer a color model's dimensions correspond to distinct qualities people can perceive, the more useful it is. This correspondence facilitates the deliberate construction of palettes and paths through color space with specific properties. RGB lacks this concordance with human perception. Just because you have photoreceptors that detect red, green, and blue light, it doesn't mean that your *perceptual experience* of color breaks down that way. Do experience the color yellow as a mix of red and green light? No, of course not, but that's the physiological reality. An RGB alternative you may have encountered is the Hue-Saturation-Value (HSV) model. Unfortunately, it is also quite problematic for color picking, due to its dimensions being confounded with each other.
 
-So let's consider perceptually-based color models. CIELUV and CIELAB are two well-known examples. We will focus on another, related to CIELUV, namely the Hue-Chroma-Luminance (HCL) model. It is written up nicely for an R audience in Zeileis, et al (see References for citation and link). There is a companion R package `colorspace`, which will help you to explore and exploit the HCL color model. Finally, this color model is fully embraced in `ggplot2`.
+What are the good perceptually-based color models? CIELUV and CIELAB are two well-known examples. We will focus on a variant of CIELUV, namely the Hue-Chroma-Luminance (HCL) model. It is written up nicely for an R audience in Zeileis, et al (see References for citation and link). There is a companion R package `colorspace`, which will help you to explore and exploit the HCL color model. Finally, this color model is fully embraced in `ggplot2` (as are the `RColorBrewer` palettes).
 
 Here's what I can tell you about the HCL model's three dimensions:
 
@@ -242,7 +241,7 @@ Figure 6.6 in Wickham's `ggplot2` book is helpful for understanding the HCL colo
 
 ![Figure 6.6 of Wickham's ggplot2 book](ggplot2book-fig6.6.png)
 
-> JB re-phrasing and combining Wickham's description and caption for this figure: Each facet or panel depicts a slice through HCL space for a specific luminance, going from low to high. The extreme luminance values of 0 and 100 are omitted because they would, respectively, be a single black point and a single white point. Within a slice, the centre has chroma 0, which corresponds to grey. As you move toward the slice's edge, chroma increases and the color gets more pure and intense. Hue is mapped to angle.
+> JB re-phrasing and combining Wickham's description and caption for this figure: Each facet or panel depicts a slice through HCL space for a specific luminance, going from low to high. The extreme luminance values of 0 and 100 are omitted because they would, respectively, be a single black point and a single white point. Within a slice, the centre has chroma 0, which corresponds to a shade of grey. As you move toward the slice's edge, chroma increases and the color gets more pure and intense. Hue is mapped to angle.
   
 A valuable contribution of the `colorspace` package is that it provides functions to create color palettes traversing color space in a rational way. In contrast, the palettes offered by `RColorBrewer`, though well-crafted, are unfortunately fixed.
 
