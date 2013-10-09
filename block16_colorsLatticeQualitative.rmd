@@ -1,4 +1,4 @@
-Taking control of colors in `lattice`
+Taking control of qualitative colors in `lattice`
 ========================================================
 
 ```{r include = FALSE}
