@@ -43,6 +43,12 @@ This homework and my solutions are about the *figures*. I include companion tabl
 You are welcome to improvise. Wherever I say "life expectancy", you could substitute "GDP per capita". When I say "max", feel free to look at the 0.9 quantile. You get the idea.
 
 ```{r include = FALSE}
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+
 ## I format my code intentionally!
 ## do not re-format it for me!
 opts_chunk$set(tidy = FALSE)
