@@ -239,6 +239,18 @@ Here's what I can tell you about the HCL model's three dimensions:
   
 Figure 6.6 in Wickham's `ggplot2` book is helpful for understanding the HCL color space.
 
+```{r include = FALSE}
+## WARNING: here lies a total hack!
+
+## when I compile to HTML with my personal package fileherd, the intermediate
+## Markdown files go into a scratch directory. The use of local static files,
+## like this PNG, isn't handled (yet), so this workaround symlinks the PNG to
+## the appropriate place. Another workaround, used elsewhere, is to place the
+## PNG on the web somewhere.
+file.symlink("ggplot2book-fig6.6.png", "_fileherd/herding/ggplot2book-fig6.6.png")
+```
+
+
 ![Figure 6.6 of Wickham's ggplot2 book](ggplot2book-fig6.6.png)
 
 > JB re-phrasing and combining Wickham's description and caption for this figure: Each facet or panel depicts a slice through HCL space for a specific luminance, going from low to high. The extreme luminance values of 0 and 100 are omitted because they would, respectively, be a single black point and a single white point. Within a slice, the centre has chroma 0, which corresponds to a shade of grey. As you move toward the slice's edge, chroma increases and the color gets more pure and intense. Hue is mapped to angle.
