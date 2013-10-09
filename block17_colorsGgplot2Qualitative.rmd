@@ -1,0 +1,148 @@
+Taking control of qualitative colors in `ggplot2`
+========================================================
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "ggplot2" and "colors".
+
+### Load the Gapminder data and graphics packages
+
+Assuming the data can be found in the current working directory, this works:
+```{r, eval=FALSE}
+gDat <- read.delim("gapminderDataFiveYear.txt")
+```
+
+Plan B (I use here, because of where the source of this tutorial lives):
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+```
+
+Basic sanity check that the import has gone well:
+```{r}
+str(gDat)
+```
+Drop Oceania, which only has two continents
+```{r}
+## drop Oceania
+jDat <- droplevels(subset(gDat, continent != "Oceania"))
+str(jDat)
+```
+
+Load the graphics packages:
+```{r}
+library(ggplot2)
+library(lattice)
+```
+
+### Emulating the Gapminder bubble chart: size and color
+
+```{r}
+jYear <- 2007
+q <- ggplot(subset(jDat, year == jYear),
+            aes(x = gdpPercap, y = lifeExp)) + scale_x_log10()
+q + geom_point()
+q + geom_point(pch = 21)
+
+## do I have control of size and fill color?
+q + geom_point(pch = 21, size = 4, fill = I("pink"))
+
+## making size reflect population
+(r <- q + geom_point(aes(size = sqrt(pop/pi)), pch = 21, show_guide = FALSE))
+(r <- r + scale_size_continuous(range=c(1,40)))
+
+## first just color by continent, auto colors
+r + aes(color = continent)
+
+## now facet by continent
+(r <- r + facet_wrap(~ continent))
+
+## again, color by continent; has nice immediate sanity check of my colors
+r + aes(fill = continent) 
+
+## get the country color scheme
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderCountryColors.txt"
+countryColors <- read.delim(file = gdURL, as.is = 3) # protect color
+str(countryColors)
+head(countryColors)
+
+## I need a named vector of colors for ggplot2's manual fill scale
+jColors <- countryColors$color
+names(jColors) <- countryColors$country
+head(jColors)
+
+## deceptively simple at the point!
+r + aes(fill = country) + scale_fill_manual(values = jColors)
+
+
+
+```
+### Head to head comparison of some `lattice` and `ggplot2` figures
+
+```{r fig.show='hold', out.width='50%'}
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderWithColorsAndSorted.txt"
+kDat <- read.delim(file = gdURL, as.is = 7) # protect color
+str(kDat <- droplevels(subset(kDat, continent != "Oceania")))
+jCexDivisor <- 1500                     # arbitrary scaling constant
+jPch <- 21
+jDarkGray <- 'grey20'
+yDat <- subset(kDat, year == jYear)
+xyplot(lifeExp ~ gdpPercap | continent, yDat, aspect = 2/3,
+       grid = TRUE, scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       cex = sqrt(yDat$pop/pi)/jCexDivisor, fill.color = yDat$color,
+       col = jDarkGray, as.table = TRUE,
+       panel = function(x, y, ..., cex, fill.color, subscripts) {
+         panel.xyplot(x, y, cex = cex[subscripts],
+                      pch = jPch, fill = fill.color[subscripts], ...)
+         })
+     
+ggplot(subset(jDat, year == jYear),
+            aes(x = gdpPercap, y = lifeExp)) + scale_x_log10() +
+  geom_point(aes(size = sqrt(pop/pi)), pch = 21, show_guide = FALSE) +
+  scale_size_continuous(range=c(1,40)) +
+  facet_wrap(~ continent) +
+  aes(fill = country) + scale_fill_manual(values = jColors)
+```
+
+
+```{r fig.show='hold', out.width='50%'}
+countryColors <-
+  countryColors[match(levels(jDat$country), countryColors$country), ]
+xyplot(lifeExp ~ year | continent, jDat,
+       group = country, type = "l", as.table = TRUE,
+       scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       par.settings = list(superpose.line = list(col = countryColors$color,
+                                                 lwd = 2)))
+ggplot(jDat, aes(x = year, y = lifeExp, group = country)) +
+  geom_line(lwd = 1, show_guide = FALSE) + facet_wrap(~ continent) +
+  aes(color = country) + scale_color_manual(values = jColors)
+```
+
+
+
+### References
+
+  * Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+
+  * Chapter 7 Graphical Parameters and Other Settings
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
