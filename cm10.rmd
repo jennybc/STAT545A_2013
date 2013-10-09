@@ -1,0 +1,79 @@
+Class meeting 10, Wednesday Oct 08
+========================================================
+
+I've read and commented on ~1/2 the HW05 work. Do you get notified when I comment on RPubs?
+
+Using your own qualitative color scheme in `lattice`: [block16_colorsLatticeQualitative.html](block16_colorsLatticeQualitative.html)
+
+Using your own qualitative color scheme in `ggplot2`: [block17_colorsGgplot2Qualitative.html](block17_colorsGgplot2Qualitative.html)
+
+  * I learned useful stuff from Yumian's work: [source](https://gist.github.com/smilecat/6870853#file-stat545a-2013-hw05_hu-yum-rmd) | [report](http://rpubs.com/smilecat/stat545a-2013-hw05_hu-yum)
+  * Note my use of `as.table = TRUE` in `lattice` to get default panel order to match that of `ggplot2`
+  
+Reordering factors rationally. Example of the benefit: cause the data and the color guide to be in same order
+
+  * good example: Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6866827#file-stat545a-2013-hw05_bolandnazar-moh-rmd) | [report](http://rpubs.com/aref/stat545a-2013-hw05_bolandnazar-moh)
+    - earnings over time by province and gender
+    - kudos for reordering the provinces based on earnings in the stripplot
+    - go look at Matt Gingerich's work to see how to rotate the x axis tick labels: [source](https://gist.github.com/MattGingerich/6866066#file-stat545a-2013-hw05_gingerich-mat-rmd) | [report](http://rpubs.com/majugi/stat545a-2013-hw05_gingerich-mat) 
+  * good example: Rebecca Johnston [source](https://gist.github.com/rebjoh/6870958#file-stat545a-2013-hw05_johnston-reb-rmd) | [report](http://rpubs.com/rljohn/stat545a-2013-hw05_johnston-reb)
+    - max # killed barchart by region: rotate? nice reordering
+  * example of what we're trying to fix: gao-wen [source](https://gist.github.com/sibyl229/6864753#file-stat545a-2013-hw05_gao-wen-rmd) | [report](http://rpubs.com/less/stat545a-2013-hw05_gao-wen)
+    - nice `ggplot2` stripplot of lifeExp ~ year w/ continent-specific loess overlaid; can you get the legend order to better match data order?
+
+```{r include = FALSE}
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderDataFiveYear.txt"
+gDat <- read.delim(file = gdURL)
+gDat <- droplevels(subset(gDat, continent != "Oceania"))
+library(ggplot2)
+```
+```{r fig.width = 8, fig.height = 4}
+pExp <- ggplot(gDat, aes(x = year, y = lifeExp,
+                         color = reorder(continent, -1 * lifeExp)))
+pExp + geom_point(alpha=0.3) + geom_smooth(method='loess')
+## I obviously need to rename the legend
+```
+
+Dean Attali: [source](https://gist.github.com/daattali/6847430#file-stat545a-2013-hw05_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw05_attali-dea)
+
+  - terrorist incidents in Israel
+  - [How pie charts fail](http://blog.revolutionanalytics.com/2009/08/how-pie-charts-fail.html) from the Revolution Analytics blog
+  - pie chart partially redeemed by reordering the factor first
+  - `scale_fill_brewer()` gives direct access to `RColorBrewer` palettes
+  - reading his code is like reading English, it's just a smooth experience
+    
+Rebecca Johnston [source](https://gist.github.com/rebjoh/6870958#file-stat545a-2013-hw05_johnston-reb-rmd) | [report](http://rpubs.com/rljohn/stat545a-2013-hw05_johnston-reb)
+
+  - Global Terrorism Database; 105K observations ... maybe same source as attali used?
+  - ah, yes! how could I not have mentioned `na.rm` yet?
+  - talk about empty facets, NAs, blanks, etc.
+  - talk about long factor levels
+
+`ggplot2` legends and their (seeming?) inflexibility
+
+  * has anyone experimented with changing location and shape of the legend? i.e. at the top, spread out wide, etc.?
+  * Yumian asked good question: howto put the continent color key on a `ggplot2`-generated graphic? see [this](block10_latticeNittyGritty.html#student-q-a) for example of what we mean
+
+Let's plan the homework. Here's a possibility
+
+  * bring data in
+  * close inspection of variables
+    - are there factors that need work? consider bringing in as character, working, then converting to factor
+    - are there dates and times that need special handling?
+  * data aggregation
+  * write results to file and/or to many files
+  * write a figure to file and/or many files
+  * quit
+  * bring data aggregation results in
+  * do more computation or figure-making ... leaving stuff in files
+  * quit
+  * R markdown report with overview
+  * people could easily experiment with git, github, make, sharing multiple files on the internet
+  * people can think about coding style and project organization
+
+
+Or we could talk about:
+
+  * heatmaps
+  * robust regression (and maybe the bootstrap)
+  * smoothing and, in that context, cross validation
