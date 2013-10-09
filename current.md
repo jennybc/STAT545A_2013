@@ -135,6 +135,10 @@ Monday Sept 02 is a statutory holiday. No class.
 
 ### cm 10 | Wednesday Oct 09 | More `ggplot2`
 
+* Work through
+
+  - [Taking control of qualitative colors in `ggplot2`](block17_colorsGgplot2Qualitative.html)
+
 Monday Oct 14 is a statutory holiday. No class.
 
 ### cm 11 | Wednesday Oct 16 | Coding style, project organization, version control

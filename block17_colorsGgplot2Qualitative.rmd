@@ -121,7 +121,7 @@ head(jColors)
 
 ### Make the `ggplot2` bubble chart
 
-This is deceptively simple at this point. Like many things, it looks really easy, once someone figures everything out! On the left you see the simple endpoint of this tutorial. The right-hand figure is produced with exactly the same `ggplot2` code but applied to a reordered input dataset (code to create `finalPlot` not shown here by available in the [source](https://github.com/jennybc/STAT545A/blob/master/block17_colorsGgplot2Qualitative.rmd)).
+This is deceptively simple at this point. Like many things, it looks really easy, once someone figures everything out! On the left you see the simple endpoint of this tutorial. The right-hand figure is produced with exactly the same `ggplot2` code but applied to a reordered input dataset (code to create `finalPlot` not shown here but available in the [source](https://github.com/jennybc/STAT545A/blob/master/block17_colorsGgplot2Qualitative.rmd)).
 
 ```{r include = FALSE}
 library(plyr)
@@ -145,7 +145,7 @@ Why did we need to reorder the source data? We know from earlier work with `latt
 
   * Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
 
-  * especially Chapter 6 Scales, axes, and legends
+    - especially Chapter 6 Scales, axes, and legends
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
