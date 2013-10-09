@@ -22,7 +22,7 @@ Homework #5 Visualize anything with `ggplot2`
     - Publish the R Markdown file as a Gist. Follow the naming convention.
     - Share your links by editing the Google doc mentioned above.
  
-### Student work on HW 5. *I'm leaving these links here in case you want to look around and as placeholders for HW 5.*
+### Student work on HW 5.
 
   * attali-dea [source](https://gist.github.com/daattali/6847430#file-stat545a-2013-hw05_attali-dea-rmd) | [report](http://rpubs.com/daattali/stat545a-2013-hw05_attali-dea) **uses ggplot’s colour brewer**
   * baik-jon [source](https://gist.github.com/jonnybaik/6863975#file-stat545a-2013-hw05_baik-jon-rmd) | [report](http://rpubs.com/jonnybaik/stat545a-2013-hw05_baik-jon)
