@@ -21,7 +21,7 @@ This is one in a series of tutorials in which we explore basic data import, expl
 
 Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "ggplot2" and "colors".
 
-### Load the Gapminder data and graphics packages
+### Load the Gapminder data and `ggplot2`
 
 Assuming the data can be found in the current working directory, this works:
 ```{r, eval=FALSE}
@@ -46,10 +46,9 @@ jDat <- droplevels(subset(gDat, continent != "Oceania"))
 str(jDat)
 ```
 
-Load the graphics packages:
+Load `ggplot2`:
 ```{r}
 library(ggplot2)
-library(lattice)
 ```
 
 ### Take control of the size and color of points
@@ -121,25 +120,24 @@ head(jColors)
 
 ### Make the `ggplot2` bubble chart
 
-This is deceptively simple at this point. Like many things, it looks really easy, once someone figures everything out! On the left you see the simple endpoint of this tutorial. The right-hand figure is produced with exactly the same `ggplot2` code but applied to a reordered input dataset (code to create `finalPlot` not shown here but available in the [source](https://github.com/jennybc/STAT545A/blob/master/block17_colorsGgplot2Qualitative.rmd)).
+This is deceptively simple at this point. Like many things, it looks really easy, once we figure everything out! The last two bits we add are to use `aes()` to specify that the country should be mapped to color and to use `scale_fill_manual()` to specify our custom color scheme.
+```{r}
+r + aes(fill = country) + scale_fill_manual(values = jColors)
+```
 
-```{r include = FALSE}
-library(plyr)
-jDat <- arrange(jDat, year, desc(pop))
-finalPlot <- ggplot(subset(jDat, year == jYear),
-                    aes(x = gdpPercap, y = lifeExp)) + scale_x_log10() +
+### Epilogue: re-make the plot to reveal small countries
+
+We know from earlier work with `lattice` that large countries can effectively hide the data from small countries, by covering them up. This is a case where, sadly, the row order of the data truly affects the visual output. `ggplot2` is no less vulnerable to this than `lattice` or base graphics here. So, to get closure, we sort the data on year and then on population and remake the plot, revealing all the code.
+
+```{r}
+jDat <- jDat[with(jDat, order(year, -1 * pop)), ]
+ggplot(subset(jDat, year == jYear),
+       aes(x = gdpPercap, y = lifeExp)) + scale_x_log10() +
   geom_point(aes(size = sqrt(pop/pi)), pch = 21, show_guide = FALSE) +
   scale_size_continuous(range=c(1,40)) +
   facet_wrap(~ continent) +
   aes(fill = country) + scale_fill_manual(values = jColors)
 ```
-
-```{r fig.show='hold', out.width='50%'}
-r + aes(fill = country) + scale_fill_manual(values = jColors)
-finalPlot
-```
-
-Why did we need to reorder the source data? We know from earlier work with `lattice` that large countries can effectively hide the data from small countries, by covering them up. This is a case where, sadly, the row order of the data truly affects the visual output. `ggplot2` is no less vulnerable to this than `lattice` or base graphics here. So, finally, we had to sort the data on year and then on population and remake the plot.
 
 ### References
 
