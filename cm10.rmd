@@ -1,15 +1,6 @@
 Class meeting 10, Wednesday Oct 08
 ========================================================
 
-I've read and commented on ~1/2 the HW05 work. Do you get notified when I comment on RPubs?
-
-Using your own qualitative color scheme in `lattice`: [block16_colorsLatticeQualitative.html](block16_colorsLatticeQualitative.html)
-
-Using your own qualitative color scheme in `ggplot2`: [block17_colorsGgplot2Qualitative.html](block17_colorsGgplot2Qualitative.html)
-
-  * I learned useful stuff from Yumian's work: [source](https://gist.github.com/smilecat/6870853#file-stat545a-2013-hw05_hu-yum-rmd) | [report](http://rpubs.com/smilecat/stat545a-2013-hw05_hu-yum)
-  * Note my use of `as.table = TRUE` in `lattice` to get default panel order to match that of `ggplot2`
-  
 Reordering factors rationally. Example of the benefit: cause the data and the color guide to be in same order
 
   * good example: Mohammadreza Bolandnazar: [source](https://gist.github.com/ArephB/6866827#file-stat545a-2013-hw05_bolandnazar-moh-rmd) | [report](http://rpubs.com/aref/stat545a-2013-hw05_bolandnazar-moh)
@@ -70,10 +61,3 @@ Let's plan the homework. Here's a possibility
   * R markdown report with overview
   * people could easily experiment with git, github, make, sharing multiple files on the internet
   * people can think about coding style and project organization
-
-
-Or we could talk about:
-
-  * heatmaps
-  * robust regression (and maybe the bootstrap)
-  * smoothing and, in that context, cross validation
