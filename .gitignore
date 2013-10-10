@@ -5,3 +5,4 @@ publish/*
 _fileherd/*
 *.Rproj
 private/*
+.rsync/
