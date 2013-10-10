@@ -89,6 +89,7 @@ Use `Make` to run your pipeline. See below for help.
   * [Additional software installation instructions](https://github.com/swcarpentry/2013-10-09-canberra/blob/master/additional_software.md) from above SWC Bootcamp
   * [An introduction to Git/Github](http://kbroman.github.io/github_tutorial/) by Karl Broman, aimed at stats / data science types
   * JB __highly recommends__ the free [SourceTree](http://www.sourcetreeapp.com) Git client. Available for Windows or Mac.
+  * Ram, K 2013. Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine 2013 8:7. Go to the [associated github repo](https://github.com/karthikram/smb_git) to get the PDF (link at bottom of README) and to see a great example of how someone managed the process of writing a manuscript with git(hub).
   * Blog post [Getting Started With a GitHub Repository](http://chronicle.com/blogs/profhacker/getting-started-with-a-github-repository) from ProfHacker on chronicle.com looks helpful
   * [An introduction to `Make`](http://kbroman.github.io/minimal_make/) by Karl Broman, aimed at stats / data science types  
   * Blog post [Using Make for reproducible scientific analyses](http://www.bendmorris.com/2013/09/using-make-for-reproducible-scientific.html) by Ben Morris
