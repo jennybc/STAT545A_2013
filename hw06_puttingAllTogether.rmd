@@ -93,6 +93,7 @@ Use `Make` to run your pipeline. See below for help.
   * [An introduction to `Make`](http://kbroman.github.io/minimal_make/) by Karl Broman, aimed at stats / data science types  
   * Blog post [Using Make for reproducible scientific analyses](http://www.bendmorris.com/2013/09/using-make-for-reproducible-scientific.html) by Ben Morris
   * [Slides on `Make`](http://software-carpentry.org/v4/make/index.html) from Software Carpentry
+  * Mike Bostock on [Why Use Make](http://bost.ocks.org/mike/make/)
   
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
