@@ -1,0 +1,130 @@
+Head-to-head comparisons of `ggplot2` and `lattice`
+========================================================
+
+```{r include = FALSE}
+## I format my code intentionally!
+## do not re-format it for me!
+opts_chunk$set(tidy = FALSE)
+
+## sometimes necessary until I can figure out why loaded packages are leaking
+## from one file to another, e.g. from block91_latticeGraphics.rmd to this file
+if(length(yo <- grep("gplots", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gdata", search())) > 0) detach(pos = yo)
+if(length(yo <- grep("gtools", search())) > 0) detach(pos = yo)
+```
+
+### Optional getting started advice
+
+*Ignore if you don't need this bit of support.*
+
+This is one in a series of tutorials in which we explore basic data import, exploration and much more using data from the [Gapminder project](http://www.gapminder.org). Now is the time to make sure you are working in the appropriate directory on your computer, perhaps through the use of an [RStudio project](block01_basicsWorkspaceWorkingDirProject.html). To ensure a clean slate, you may wish to clean out your workspace and restart R (both available from the RStudio Session menu, among other methods). Confirm that the new R process has the desired working directory, for example, with the `getwd()` command or by glancing at the top of RStudio's Console pane.
+
+Open a new R script (in RStudio, File > New > R Script). Develop and run your code from there (recommended) or periodicially copy "good" commands from the history. In due course, save this script with a name ending in .r or .R, containing no spaces or other funny stuff, and evoking "ggplot2", "lattice" and "comparison".
+
+### Load the Gapminder data and graphics packages
+
+We use a lightly modified version of the usual Gapminder data. The rows have been reordered: sorted first on year, then on population. This ensures that big countries don't cover up little ones in our single year bubble charts. Also, the country colors are present as a character variable, because that is useful in `lattice` workflows involving custom panel functions. You are encouraged to save the data file locally (vs. reading solely from the web), in case these webpages change. We drop Oceania here, as usual.
+```{r}
+## data import from URL
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderWithColorsAndSorted.txt"
+kDat <- read.delim(file = gdURL, as.is = 7) # protect color
+## alternative command is you save data file locally
+#gDat <- read.delim("gapminderWithColorsAndSorted.txt")
+str(kDat <- droplevels(subset(kDat, continent != "Oceania")))
+```
+
+We load the custom country color scheme. Remind yourself of what it looks like at [this PDF](http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/figs/bryan-a01-colorScheme.pdf). Again, you are encouraged to save a copy of this file locally, if you want to revisit this in future.
+```{r}
+## get the country color scheme
+gdURL <- "http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/examples/gapminder/data/gapminderCountryColors.txt"
+countryColors <- read.delim(file = gdURL, as.is = 3) # protect color
+str(countryColors)
+head(countryColors)
+```
+
+Load the graphics packages:
+```{r}
+library(ggplot2)
+library(lattice)
+```
+
+### Preparation for the bubble plots
+
+```{r}
+## needed for both
+jYear <- 2007 # this can obviously be changed
+jPch <- 21
+jDarkGray <- 'grey20'
+jXlim <- c(150, 115000)
+jYlim <- c(16, 96)
+
+## needed for ggplot2 scale_fill_manual()
+jColors <- countryColors$color
+names(jColors) <- countryColors$country
+
+## needed for lattice cex
+jCexDivisor <- 1500                     # arbitrary scaling constant
+```
+
+
+### Head to head comparison: `lattice` vs `ggplot2`
+
+Bubble plot. `lattice` on the left, `ggplot2` on the right.
+
+```{r echo = FALSE, fig.show='hold', out.width='50%'}
+yDat <- subset(kDat, year == jYear)
+xyplot(lifeExp ~ gdpPercap | continent, yDat, aspect = 2/3,
+       scales = list(x = list(log = 10, equispaced.log = FALSE),
+                     alternating = FALSE, tck = c(1, 0)),
+       xlim = jXlim, ylim = jYlim,
+       cex = sqrt(yDat$pop/pi)/jCexDivisor, fill.color = yDat$color,
+       col = jDarkGray, as.table = TRUE, grid = TRUE,
+       strip = strip.custom(bg = "grey80"),
+       panel = function(x, y, ..., cex, fill.color, subscripts) {
+         panel.xyplot(x, y, cex = cex[subscripts],
+                      pch = jPch, fill = fill.color[subscripts], ...)
+         })
+     
+ggplot(subset(kDat, year == jYear),
+            aes(x = gdpPercap, y = lifeExp)) +
+  scale_x_log10(limits = jXlim) + ylim(jYlim) +
+  geom_point(aes(size = sqrt(pop/pi)), pch = jPch, color = jDarkGray,
+             show_guide = FALSE) + 
+  scale_size_continuous(range=c(1,40)) +
+  facet_wrap(~ continent) + coord_fixed(ratio = 1/43) +
+  aes(fill = country) + scale_fill_manual(values = jColors) +
+  theme_bw() + theme(strip.text = element_text(size = rel(1.1)))
+## working on changing font size of strip text
+```
+
+Spaghetti plot. `lattice` on the left, `ggplot2` on the right.
+
+```{r echo = FALSE, fig.show='hold', out.width='50%'}
+countryColors <-
+  countryColors[match(levels(kDat$country), countryColors$country), ]
+xyplot(lifeExp ~ year | continent, kDat,
+       group = country, type = "l", as.table = TRUE, grid = TRUE,
+       strip = strip.custom(bg = "grey80"),
+       scales = list(x = list(log = 10, equispaced.log = FALSE),
+                     alternating = FALSE, tck = c(1, 0)),
+       par.settings = list(superpose.line = list(col = countryColors$color,
+                                                 lwd = 2)))
+ggplot(kDat, aes(x = year, y = lifeExp, group = country)) +
+  geom_line(lwd = 1, show_guide = FALSE) + facet_wrap(~ continent) +
+  aes(color = country) + scale_color_manual(values = jColors) +
+  theme_bw() + theme(strip.text = element_text(size = rel(1.1)))
+```
+
+> Do more side-by-side comparisons?
+
+### References
+
+Learning R blog: [recreating all the figures](http://learnr.wordpress.com/2009/08/26/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-final-part/) in Sarkar's `lattice` book with both `lattice` and `ggplot2`
+
+  * Lattice: Multivariate Data Visualization with R [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-75969-2/page/1) by Deepayan Sarkar, Springer (2008) | [all code from the book](http://lmdvr.r-forge.r-project.org/) | [GoogleBooks search](http://books.google.com/books?id=gXxKFWkE9h0C&lpg=PR2&dq=lattice%20sarkar%23v%3Donepage&pg=PR2#v=onepage&q=&f=false)
+  
+  * ggplot2: Elegant Graphics for Data Analysis [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-98141-3/page/1) by Hadley Wickham, Springer (2009) | [online docs (nice!)](http://docs.ggplot2.org/current/) | [author's website for the book](http://ggplot2.org/book/), including all the code | [author's landing page for the package](http://ggplot2.org)  
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

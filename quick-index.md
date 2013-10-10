@@ -20,6 +20,7 @@ Fall 2013: I am (finally) marshalling my teaching materials in one place and exp
   - [Mapping a factor into a color in base graphics](block15_colorMappingBase.html) (doubles as a nice introduction to `match()` and `merge()`)
   - [Taking control of qualitative colors in `lattice`](block16_colorsLatticeQualitative.html)
   - [Taking control of qualitative colors in `ggplot2`](block17_colorsGgplot2Qualitative.html)
+  - [Side-by-side comparisons of `lattice` and `ggplot2` plots](block18_gapminderGgplot2VsLattice.html)
     
     
 Smaller topics, in the approximate order in which students ask about them

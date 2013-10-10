@@ -137,7 +137,8 @@ Monday Sept 02 is a statutory holiday. No class.
 
 * Work through
 
-  - [Taking control of qualitative colors in `ggplot2`](block17_colorsGgplot2Qualitative.html)
+    - [Taking control of qualitative colors in `ggplot2`](block17_colorsGgplot2Qualitative.html)
+    - [Side-by-side comparisons of `lattice` and `ggplot2` plots](block18_gapminderGgplot2VsLattice.html)
 
 Monday Oct 14 is a statutory holiday. No class.
 
