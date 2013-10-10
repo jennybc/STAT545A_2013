@@ -3,46 +3,94 @@ Go back to [STAT545A home](current.html)
 Homework #6 The End: Putting it all together 
 ========================================================
 
-> Follow the [existing homework submission instructions](hw00_instructions.html) __as much as possible__. By 12pm Monday Octber 21, be prepared to share your links via a Google doc. I will announce sharing on the Google Group as usual.
+> Follow the [existing homework submission instructions](hw00_instructions.html) __as much as possible__, e.g. use systematic, informative filenames. By 12pm Monday October 21, be prepared to share a link via a Google doc. I will announce sharing on the Google Group as usual.
 
-> Will be written up more nicely!
+### Big picture
 
-Outline
+  * Write at least two R scripts to enact an analysis
+  * Output of the first script must be (an) input of the second (and so on ...)
+  * Write numerical data to file; file must be readable by a human and by someone who doesn't use R
+  * Write figure(s) to file
+  * Provide evidence of the following:
+    - Initial state of directory, containing data and R scripts
+    - How you run your 2 (or more) scripts *non-interactively*
+    - End state of the directory, containing newly written numerical and graphical output
+  * Provide the files themselves and a description of what to do with them
 
-  * work in plain R scripts
-  * bring data in
-  * close inspection of variables, if non-Gapminder data
-    - are there factors that need work? consider bringing in as character, working, then converting to factor
-    - are there dates and times that need special handling?
-  * eliminate problematic observations, e.g. Oceania
-  * write cleaner data to file
-  * END OF CLEANING SCRIPT
-  * bring clean data in
-  * do some data aggregation?
-  * write results or data subsets to file and/or to many files
-  * write a figure to file and/or many files
-  * END OF DESCRIPTIVE STATS SCRIPT
-  * write R markdown report with overview and/or an R markdown script that pulls in tables figures you created with scripts above
-  * write a master R script that runs your other scripts in serial
+### Please just tell me what to do
+
+If you don't feel like dreaming up your own thing, here's a Gapminder example that is a minimal but respectable way to complete the assignment. You are welcome to remix R code already written by someone, student or JB, in this class, but credit/link appropriately, e.g. in comments. 
+
+  * Write a suitably named R script:  
   
-I'll write up a super-specific example for Gapminder. That will be a minimal but respectable way to complete the assignment.
-
-For people looking to take this further:
- 
-  * use non-Gapminder data
-  * make a small website exposing the files involved above
-  * manage the files involved above as a Git repository
-  * put that repository on Github (that could serve as the website)
-  * instead of writing a master R script, use `make` to build your analytical pipeline
+    - Import the data.  
+    - Save a couple descriptive plots to file with highly informative names.  
+    - Reorder the continents based on life expectancy. You decide the details.  
+    - Sort the actual data in a deliberate fashion. You decide the details, but this should *at least* implement your new continent ordering.  
+    - Write the Gapminder data to file(s), for immediate and future reuse.  
+    
+  * Write a second suitably named R script:
   
-Here some help on installing and using some of these new tools:
+    - Import the data created in the first script.  
+    - Make sure your new continent order is still in force. You decide the details.  
+    - Fit a linear regression of life expectancy on year within each country. Write the estimated intercepts, slopes, and residual error variance (or sd) to file.  
+    - Find the 3 or 4 "worst" and "best" countries for each continent. You decide the details.  
+    - Write the linear regression info for just these countries to file.  
+    - Create a single-page figure for each continent, including data only for the 6-8 "extreme" countries, and write to file. One file per continent, with an informative name. The figure should give scatterplots of life expectancy vs. year, panelling/facetting on country, fitted line overlaid.  
+    
+  * Identify and test a method of running your pipeline non-interactively.
+  
+    - You could write a master R script that simply `source()`s the two scripts, one after the other. Tip: you will probably want a second "clean up / reset" script that deletes all the output your scripts leave behind, so you can easily test and refine your strategy, i.e. without repeatedly  deletng stuff "by hand". You can run the master script or the cleaning script from a shell with `R CMD BATCH` or `Rscript`.
 
-  * [Setup instructions for Software Carpentry R Bootcamp, Canberra, October 9 - 10 2013](http://swcarpentry.github.io/2013-10-09-canberra/lessons/setup.html)
+    > Question for Windows people: does any usable shell come with your OS "for free"? I will not __force__ you to install a shell -- although I really think you should. If you have no shell and don't want to install one, you are allowed to source the master script from RStudio in a completely fresh R/RStudio session. See below for help on getting a shell.
+    
+  * Provide a link to a page that explains how your pipeline works and links to the remaining files. Jenny and Song should be able to go to this landing page and re-run your analysis quickly and easily.
+  
+    - Minimum: I think you can accomplish this with RPubs and Gist, with a carefully constructed README-type file that links to the other files.
+    - Alternatively, you could put this all in a directory on the web somewhere and submit a link to file that serves as landing page. In that case, it is a very nice touch to offer the files in a browsable form AND as an easily downloaded archive.
+
+### I want to aim higher!
+
+Follow the basic Gapminder script above, but find a different data aggregation task, different panelling/facetting emphasis, focus on different variables, etc.
+
+Use non-Gapminder data.
+
+  * This means you'll need to spend more time on data cleaning and sanity checking. You will probably have an entire script (or more!) devoted to data prep. Examples:
+    - Are there wonky factors? Consider bringing in as character, addressing their deficiencies, then converting to factor.
+    - Are there variables you're just willing to drop at this point? Do it!
+    - Are there dates and times that need special handling? Do it!
+    - Are there annoying observations that require very special handling or crap up your figures (e.g. Oceania)? Drop them!
+    
+Include some dynamic report generation in your pipeline. That is, create HTML from one or more plain R or R markdown files.
+
+  * Example of how to emulate RStudio's "Compile Notebook" button from a shell:
+  
+    - `Rscript -e "knitr::stitch('myAwesomeScript.R', template = system.file('misc', 'knitr-template.Rmd', package = 'knitr'))"`
+    
+  * To emulate "Knit HTML", do something like the above but with `knitr::knit2html()`.
+
+Experiment with running R code saved in a script from within R Markdown. Here's some official documentation on [code externalization](http://yihui.name/knitr/demo/externalization/).
+
+Embed pre-existing figures in and R Markdown docuement, i.e. an R script creates the figures, then the report incorporates them. General advice on writing figures to file is [here](topic12_writeFigureToFile.html) and `ggplot2` has a purpose-built function `ggsave()` you should try.
+
+Import pre-existing data in an R Markdown document, then format nicely as a table.
+
+Use Pandoc and/or LaTeX to explore new territory in document compilation. You could use Pandoc as an alternative to `knitr` for Markdown to HTML conversion; you'd still use `knitr` for conversion of R Markdown to Markdown. You would use LaTeX to get PDF output from R Markdown.
+
+Start using Git! Create a new Git repository for all the files for this assignment. See below for help.
+
+Start using Github! Share your repo with us on the web! See below for help.
+
+Use `Make` to run your pipeline. See below for help.
+
+### How to install and use recommended tools
+
+  * [Setup instructions for Software Carpentry R Bootcamp, Canberra, October 9 - 10 2013](http://swcarpentry.github.io/2013-10-09-canberra/lessons/setup.html) <-- has good info on shells for Windows!
   * [Additional software installation instructions](https://github.com/swcarpentry/2013-10-09-canberra/blob/master/additional_software.md) from above SWC Bootcamp
-  * JB __highly recommends__ the [SourceTree](http://www.sourcetreeapp.com) Git client. Available for Windows or Mac.
   * [An introduction to Git/Github](http://kbroman.github.io/github_tutorial/) by Karl Broman, aimed at stats / data science types
-  * [An introduction to `Make`](http://kbroman.github.io/minimal_make/) by Karl Broman, aimed at stats / data science types  
+  * JB __highly recommends__ the free [SourceTree](http://www.sourcetreeapp.com) Git client. Available for Windows or Mac.
   * Blog post [Getting Started With a GitHub Repository](http://chronicle.com/blogs/profhacker/getting-started-with-a-github-repository) from ProfHacker on chronicle.com looks helpful
+  * [An introduction to `Make`](http://kbroman.github.io/minimal_make/) by Karl Broman, aimed at stats / data science types  
   * Blog post [Using Make for reproducible scientific analyses](http://www.bendmorris.com/2013/09/using-make-for-reproducible-scientific.html) by Ben Morris
   * [Slides on `Make`](http://software-carpentry.org/v4/make/index.html) from Software Carpentry
   
