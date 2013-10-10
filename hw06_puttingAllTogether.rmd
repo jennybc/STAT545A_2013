@@ -1,0 +1,51 @@
+Go back to [STAT545A home](current.html)
+
+Homework #6 The End: Putting it all together 
+========================================================
+
+> Follow the [existing homework submission instructions](hw00_instructions.html) __as much as possible__. By 12pm Monday Octber 21, be prepared to share your links via a Google doc. I will announce sharing on the Google Group as usual.
+
+> Will be written up more nicely!
+
+Outline
+
+  * work in plain R scripts
+  * bring data in
+  * close inspection of variables, if non-Gapminder data
+    - are there factors that need work? consider bringing in as character, working, then converting to factor
+    - are there dates and times that need special handling?
+  * eliminate problematic observations, e.g. Oceania
+  * write cleaner data to file
+  * END OF CLEANING SCRIPT
+  * bring clean data in
+  * do some data aggregation?
+  * write results or data subsets to file and/or to many files
+  * write a figure to file and/or many files
+  * END OF DESCRIPTIVE STATS SCRIPT
+  * write R markdown report with overview and/or an R markdown script that pulls in tables figures you created with scripts above
+  * write a master R script that runs your other scripts in serial
+  
+I'll write up a super-specific example for Gapminder. That will be a minimal but respectable way to complete the assignment.
+
+For people looking to take this further:
+ 
+  * use non-Gapminder data
+  * make a small website exposing the files involved above
+  * manage the files involved above as a Git repository
+  * put that repository on Github (that could serve as the website)
+  * instead of writing a master R script, use `make` to build your analytical pipeline
+  
+Here some help on installing and using some of these new tools:
+
+  * [Setup instructions for Software Carpentry R Bootcamp, Canberra, October 9 - 10 2013](http://swcarpentry.github.io/2013-10-09-canberra/lessons/setup.html)
+  * [Additional software installation instructions](https://github.com/swcarpentry/2013-10-09-canberra/blob/master/additional_software.md) from above SWC Bootcamp
+  * JB __highly recommends__ the [SourceTree](http://www.sourcetreeapp.com) Git client. Available for Windows or Mac.
+  * [An introduction to Git/Github](http://kbroman.github.io/github_tutorial/) by Karl Broman, aimed at stats / data science types
+  * [An introduction to `Make`](http://kbroman.github.io/minimal_make/) by Karl Broman, aimed at stats / data science types  
+  * Blog post [Getting Started With a GitHub Repository](http://chronicle.com/blogs/profhacker/getting-started-with-a-github-repository) from ProfHacker on chronicle.com looks helpful
+  * Blog post [Using Make for reproducible scientific analyses](http://www.bendmorris.com/2013/09/using-make-for-reproducible-scientific.html) by Ben Morris
+  * [Slides on `Make`](http://software-carpentry.org/v4/make/index.html) from Software Carpentry
+  
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>

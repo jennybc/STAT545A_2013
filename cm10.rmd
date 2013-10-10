@@ -45,19 +45,3 @@ Rebecca Johnston [source](https://gist.github.com/rebjoh/6870958#file-stat545a-2
   * has anyone experimented with changing location and shape of the legend? i.e. at the top, spread out wide, etc.?
   * Yumian asked good question: howto put the continent color key on a `ggplot2`-generated graphic? see [this](block10_latticeNittyGritty.html#student-q-a) for example of what we mean
 
-Let's plan the homework. Here's a possibility
-
-  * bring data in
-  * close inspection of variables
-    - are there factors that need work? consider bringing in as character, working, then converting to factor
-    - are there dates and times that need special handling?
-  * data aggregation
-  * write results to file and/or to many files
-  * write a figure to file and/or many files
-  * quit
-  * bring data aggregation results in
-  * do more computation or figure-making ... leaving stuff in files
-  * quit
-  * R markdown report with overview
-  * people could easily experiment with git, github, make, sharing multiple files on the internet
-  * people can think about coding style and project organization
