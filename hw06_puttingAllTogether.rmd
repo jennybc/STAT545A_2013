@@ -85,8 +85,9 @@ Use `Make` to run your pipeline. See below for help.
 
 ### How to install and use recommended tools
 
-  * [Setup instructions for Software Carpentry R Bootcamp, Canberra, October 9 - 10 2013](http://swcarpentry.github.io/2013-10-09-canberra/lessons/setup.html) <-- has good info on shells for Windows!
+  * [Setup instructions for Software Carpentry R Bootcamp, Canberra, October 9 - 10 2013](http://swcarpentry.github.io/2013-10-09-canberra/lessons/setup.html) <-- has good info on GitBash, a combined Bash shell + git install for Windows
   * [Additional software installation instructions](https://github.com/swcarpentry/2013-10-09-canberra/blob/master/additional_software.md) from above SWC Bootcamp
+  * [Microsoft info on PowerShell](http://technet.microsoft.com/en-us/library/hh848793)
   * [An introduction to Git/Github](http://kbroman.github.io/github_tutorial/) by Karl Broman, aimed at stats / data science types
   * JB __highly recommends__ the free [SourceTree](http://www.sourcetreeapp.com) Git client. Available for Windows or Mac.
   * Ram, K 2013. Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine 2013 8:7. Go to the [associated github repo](https://github.com/karthikram/smb_git) to get the PDF (link at bottom of README) and to see a great example of how someone managed the process of writing a manuscript with git(hub).
