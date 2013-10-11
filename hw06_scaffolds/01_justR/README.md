@@ -16,6 +16,6 @@ How to replicate my analysis
   * When you run the pipeline the first time, you will get warnings about `file.remove()` trying to remove files that don't exist. That's OK. They will exist and will be removed and remade on subsequent runs.
   * New files you should see after running the pipeline:
     - [`stripplot_wordsSpoken.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsSpoken.png)
-    - [`lotr_clean.tsv`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/lotr_clean.tsv)
+    - [`lotr_clean.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/lotr_clean.tsv)
     - `stripplot_wordsSpoken_FILM.pdf`, where FILM is one of the 3 movies. Example: [`stripplot_wordsSpoken_The_Fellowship_Of_The_Ring.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsSpoken_The_Fellowship_Of_The_Ring.png`)
     - [`totalWordsByFilmRace.tsv`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/totalWordsByFilmRace.tsv)
