@@ -5,6 +5,8 @@ Overview of the STAT545A lecture slides
 
 Lecture slides from STAT545A Exploratory Data Analysis, as delivered Sept - Dec 2012.
 
+__Go [here](../current.html) for the current 2013 run of the course.__ Messier but more current. A [cleaner index](../quick-index.html) is also taking shape.
+
 Examples referred to in the lectures, neatly packaged with code, data, and figures, can be found here:
 
 <http://www.stat.ubc.ca/~jenny/notOcto/STAT545A/>
