@@ -1,0 +1,11 @@
+## one script to rule them all
+
+## clean out any previous work
+outputs <- c("lotr_clean.tsv",            # 01_filterReorder.R
+             "totalWordsByFilmRace.tsv",  # 02_aggregatePlot.R
+             list.files(pattern = "*.pdf$"))
+file.remove(outputs)
+
+## run my scripts
+source("01_filterReorder.R")
+source("02_aggregatePlot.R")
