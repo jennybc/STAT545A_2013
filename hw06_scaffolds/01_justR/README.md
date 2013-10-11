@@ -18,4 +18,4 @@ How to replicate my analysis
     - [`stripplot_wordsSpoken.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsSpoken.png)
     - [`lotr_clean.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/lotr_clean.tsv)
     - `stripplot_wordsSpoken_FILM.pdf`, where FILM is one of the 3 movies. Example: [`stripplot_wordsSpoken_The_Fellowship_Of_The_Ring.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsSpoken_The_Fellowship_Of_The_Ring.png)
-    - [`totalWordsByFilmRace.tsv`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/totalWordsByFilmRace.tsv)
+    - [`totalWordsByFilmRace.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/totalWordsByFilmRace.tsv)
