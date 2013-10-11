@@ -24,7 +24,7 @@ d_ply(lotrDat, ~ Film, function(z) {
                  geom = "point", size = 6)
   print(p)
   theFilm <- gsub(" ", "_", theFilm)
-  ggsave(paste0("stripplot_wordsSpoken_", theFilm, ".pdf"))
+  ggsave(paste0("stripplot_wordsSpoken_", theFilm, ".png"))
 })
 
 ## write the total words by Race for each Film to file

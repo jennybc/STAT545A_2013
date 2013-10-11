@@ -24,7 +24,7 @@ p <- ggplot(lotrDat, aes(x = Race, y = Words)) + scale_y_log10() +
   geom_jitter(alpha = 1/2, position = position_jitter(width = 0.1))
 p + stat_summary(fun.y = median, pch = 21, fill = "orange",
                  geom = "point", size = 6)
-ggsave("stripplot_wordsSpoken.pdf")
+ggsave("stripplot_wordsSpoken.png")
 
 ## reorder data itself
 lotrDat <- arrange(lotrDat, Race, Film, Words)
