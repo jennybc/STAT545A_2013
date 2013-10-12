@@ -2,7 +2,7 @@ Toy example for [STAT 545A Homework 6](http://www.stat.ubc.ca/~jenny/STAT545A/hw
 
 Shows how to create a small-but-automated analytical pipline using R alone or R plus the shell.
 
-Demonstration data: the number of words spoken by various characters in the Lord of the Rings trilogy. JB will document general cleaning, analyses, etc. of that data [here](https://github.com/jennybc/lotr).
+Demonstration data: the number of words spoken by various characters in the Lord of the Rings trilogy. Each observation give total word count for a character in a specific scene of a single movie. JB will document general cleaning, analyses, etc. of that data [here](https://github.com/jennybc/lotr).
 
 How to replicate my analysis
 
@@ -15,7 +15,8 @@ How to replicate my analysis
   * Alternatively, in a shell: `Rscript Makefile.R`.
   * When you run the pipeline the first time, you will get warnings about `file.remove()` trying to remove files that don't exist. That's OK. They will exist and will be removed and remade on subsequent runs.
   * New files you should see after running the pipeline:
-    - [`stripplot_wordsSpoken.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsSpoken.png)
+    - [`barchart_totalWords.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/barchart_totalWords.png)
+    - [`barchart_totalWordsFilmDodge.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/barchart_totalWordsFilmDodge.png)
     - [`lotr_clean.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/lotr_clean.tsv)
-    - `stripplot_wordsSpoken_FILM.pdf`, where FILM is one of the 3 movies. Example: [`stripplot_wordsSpoken_The_Fellowship_Of_The_Ring.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsSpoken_The_Fellowship_Of_The_Ring.png)
+    - `stripplot_wordsByRace_FILM.pdf`, where FILM is one of the 3 movies. Example: [`stripplot_wordsByRace_The_Fellowship_Of_The_Ring.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsByRace_The_Fellowship_Of_The_Ring.png)
     - [`totalWordsByFilmRace.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/totalWordsByFilmRace.tsv)
