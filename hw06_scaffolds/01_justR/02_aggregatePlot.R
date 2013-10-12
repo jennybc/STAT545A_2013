@@ -19,12 +19,10 @@ d_ply(lotrDat, ~ Film, function(z) {
   theFilm <- z$Film[1]
   p <- ggplot(z, aes(x = Race, y = Words)) + scale_y_log10() +
     ggtitle(theFilm) + 
-    geom_jitter(alpha = 1/2, position = position_jitter(width = 0.1)) +
-    stat_summary(fun.y = median, pch = 21, fill = "orange",
-                 geom = "point", size = 6)
+    geom_jitter(alpha = 1/2, position = position_jitter(width = 0.1))
   print(p)
   theFilm <- gsub(" ", "_", theFilm)
-  ggsave(paste0("stripplot_wordsSpoken_", theFilm, ".png"))
+  ggsave(paste0("stripplot_wordsByRace_", theFilm, ".png"))
 })
 
 ## write the total words by Race for each Film to file
