@@ -19,7 +19,9 @@ Homework #6 The End: Putting it all together
 
 ### Please just tell me what to do
 
-If you don't feel like dreaming up your own thing, here's a Gapminder example that is a minimal but respectable way to complete the assignment. You are welcome to remix R code already written by someone, student or JB, in this class, but credit/link appropriately, e.g. in comments. 
+If you don't feel like dreaming up your own thing, here's a Gapminder blueprint that is a minimal but respectable way to complete the assignment. You are welcome to remix R code already written by someone, student or JB, in this class, but credit/link appropriately, e.g. in comments. 
+
+JB has provided an template, using a different dataset, [here](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/01_justR), that should help make this concrete.
 
   * Write a suitably named R script:  
   
@@ -42,7 +44,7 @@ If you don't feel like dreaming up your own thing, here's a Gapminder example th
   
     - You could write a master R script that simply `source()`s the two scripts, one after the other. Tip: you will probably want a second "clean up / reset" script that deletes all the output your scripts leave behind, so you can easily test and refine your strategy, i.e. without repeatedly  deletng stuff "by hand". You can run the master script or the cleaning script from a shell with `R CMD BATCH` or `Rscript`.
 
-    > Question for Windows people: does any usable shell come with your OS "for free"? I will not __force__ you to install a shell -- although I really think you should. If you have no shell and don't want to install one, you are allowed to source the master script from RStudio in a completely fresh R/RStudio session. See below for help on getting a shell.
+    > Dear Windows people: Recent versions of Windws have PowerShell, whose syntax resembles the Unix-type shells the Mac/Linux folks will have automatically. Try using that. See below for links to documentation on PowerShell and for help getting other software.
     
   * Provide a link to a page that explains how your pipeline works and links to the remaining files. Jenny and Song should be able to go to this landing page and re-run your analysis quickly and easily.
   
@@ -51,7 +53,7 @@ If you don't feel like dreaming up your own thing, here's a Gapminder example th
 
 ### I want to aim higher!
 
-Follow the basic Gapminder script above, but find a different data aggregation task, different panelling/facetting emphasis, focus on different variables, etc.
+Follow the basic Gapminder blueprint above, but find a different data aggregation task, different panelling/facetting emphasis, focus on different variables, etc.
 
 Use non-Gapminder data.
 
