@@ -2,6 +2,7 @@ Using colors in R
 ========================================================
 
 ```{r include = FALSE}
+library(knitr)
 ## I format my code intentionally!
 ## do not re-format it for me!
 opts_chunk$set(tidy = FALSE)
@@ -49,7 +50,7 @@ opar <- par(pch = 19)
 ```
 Technically, you don't need to make the assignment, but it's a good practice. We're killing two birds with one stone:
 
-  1. Changing the default plotting symbol to a filled circle, which has code 19 in R
+  1. Changing the default plotting symbol to a filled circle, which has code 19 in R. (Below I link to some samplers showing all the plotting symbols, FYI.)
   2. Storing the pre-existing and, in this case, default graphical parameters in `opar`.
   
 When you change a graphical parameter via `par()`, the original values are returned and we're capturing them via assignment to `opar`. At the very bottom of this tutorial, we use `opar` to restore the original state. 
@@ -130,6 +131,7 @@ tail(colors())
 But it's much more exciting to see the colors displayed! Lots of people have tackled this -- for colors, plotting symbols, line types -- and put their work on the internet. Some examples:
 
   * JB printed color names [on a white background](r.col.white.bkgd.pdf) and [on black](r.col.black.bkgd.pdf)
+  * JB printed [the first 30 plotting symbols](r.pch.pdf) (presumably using code found elsewhere or in documentation? can't remember whom to credit).
   * In [Chapter 3 of R Graphics 1st edition](https://www.stat.auckland.ac.nz/~paul/RGraphics/chapter3.html), Paul Murrell shows predefined and custom line types in Figure 3.6 and plotting symbols in Figure 3.10.
   * Earl F. Glynn offers [an excellent resource](http://research.stowers-institute.org/efg/R/Color/Chart/) on R's built-in named colors.
   
