@@ -1,0 +1,29 @@
+Class meeting 11, Wednesday Oct 16
+========================================================
+
+Speak w/ [block19_codeFormattingOrganization.html](block19_codeFormattingOrganization.html) as prompt
+
+  * Style and workflow matters
+  * Source is real
+  * Coding style
+    - screenshots in Keynote are worth visiting
+  * General principles, i.e. the rules from "Good Programming Practices"
+  * Naming things
+  * Avoid Magic Numbers
+  * Repeatably random
+  * Example of using names and exploiting functionality for subsetting, transformation, labelling (side by side figures and code)
+  * How I organize my work
+    - screenshots in Keynote are worth visiting
+    - visit Peterson project in the Finder?
+    - show two low-tech documentations of an analysis in Keynote
+  * git(hub), knitr, make
+    - use Keynote slides to walk through
+    - go to [hw06](hw06_puttingAllTogether.html) to mention git stuff: SourceTree (show?), git tab in RStudio
+    - make sure they see the scaffold(s)
+    - show Makefile for this webapge? for bonsai wiki?
+  * if time allows, could use Keynote to talk about .Rprofile, loading personal functions, managing an R installation
+  * return to course themes in Keynote
+  
+    
+    
+  
