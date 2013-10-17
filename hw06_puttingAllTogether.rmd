@@ -72,7 +72,7 @@ Include some dynamic report generation in your pipeline. That is, create HTML fr
 
   * Example of how to emulate RStudio's "Compile Notebook" button from a shell:
   
-    - `Rscript -e "knitr::stitch('myAwesomeScript.R', template = system.file('misc', 'knitr-template.Rmd', package = 'knitr'))"`
+    - `Rscript -e "knitr::stitch_rmd('myAwesomeScript.R')"`
     
   * To emulate "Knit HTML", do something like the above but with `knitr::knit2html()`.
 
