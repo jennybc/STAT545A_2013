@@ -77,7 +77,7 @@ In theory, we would stop here: only input data and source code are real. After a
 Here in the real world, you will also want to save and protect a few other things:
 
   * Clean, ready-to-analyze data. This is probably the starting point for many other analyses and scripts. You may also need to share this with collaborators -- often the data generators! -- who aren't R/scripting/reproducible research zealots like we are. Meet them where they live, with a clean tab- or comma-delimited file, ready for import into Excel.
-  * Figures. Yes I save the scripts that made them and I often turn really important figures into functions, for ease of regeneration with various tweaks. But still save a decent PDF of every figure that seems like it might be useful for drafting a talk and you'll sleep better.
+  * Figures. Yes I save the scripts that made them and I often turn really important figures into functions, for ease of regeneration with various tweaks. But still save a decent PDF of every figure that seems like it might be useful for drafting a talk and you'll sleep better. If you use Windows and/or Microsoft Office products, perhaps save a very high resolution PNG as well.
   * Statistical results with one or more of these special features:
     - Result took a long time and/or a lot of RAM to compute. You might not always have the luxury of recomputing upon demand.
     - Result required an add-on package to compute. There is no guarantee that this package will not change dramatically in the next release. There is no guarantee that this package will be maintained and continue to work with future versions of R.
@@ -215,7 +215,7 @@ xyplot(lifeExp ~ gdpPercap, gDat,
 
 ### Organization
 
-Big picture: devote a directory on your computer to a conceptual project. Make it literally an [RStudio Project](http://www.rstudio.com/ide/docs/using/projects), so it's easy to stop and start analyses, with sane handling of the R process's working directory. Give that directory a good name!
+Big picture: devote a directory on your computer to a conceptual project. Make it literally an [RStudio Project](http://www.rstudio.com/ide/docs/using/projects), so it's easy to stop and start analyses, with sane handling of the R process's working directory. Give that directory a good name! Eventually, you will probably also want to make this directory a repository under version control, e.g. a Git repository.
 
 Within the project, once you have more than ~10 files, create subdirectories. JB generally has (in rough order of creation and file population):
 
@@ -234,11 +234,11 @@ Note: once you adopt a subdirectory organization, you'll need to visit any files
 
 Let's delve a little deeper into the `code` directory and talk about breaking the analysis into steps and, therefore, different scripts. At a minimum, I have these phases, each of which will be embodied in one -- or often many more -- files:
 
-  * explore/diagnose
-  * clean/fix
-  * analyze
+  * explore/diagnose (+ visualize)
+  * clean/fix (+ visualize)
+  * analyze (+ visualize)
   
-In a real-world analysis, I'll have much more.
+You notice that I am creating figures *all the time*, although eventually in a project I might have a few scripts that are solely devoted to figure-making. In a real-world analysis, each of the phases above will have several associated scripts. For example, I enacted the data cleaning and preparation for the Gapminder data over the course of five separate scripts.
 
 > For now, use my Keynote slides or the live Finder to tour a few projects.
 
@@ -247,6 +247,7 @@ Good reads on other people's idea about how to organize an analytical project:
   * stackoverflow thread [ESS workflow for R project/package development](http://stackoverflow.com/questions/3027476/ess-workflow-for-r-project-package-development). The advice is NOT specific to using Emacs Speaks Statistics (ESS), so don't be turned off by the title.
   * stackoverflow thread [Workflow for statistical analysis and report writing](http://stackoverflow.com/questions/1429907/workflow-for-statistical-analysis-and-report-writing). Thread is closed as not being a great fit for the stackoverflow Q and A format, but luckily not before some great answers got posted!
   * stackoverflow thread [How does software development compare with statistical programming/analysis?](http://stackoverflow.com/questions/2295389/how-does-software-development-compare-with-statistical-programming-analysis).
+  * Noble WS (2009) A Quick Guide to Organizing Computational Biology Projects. PLoS Comput Biol 5(7): e1000424. doi:10.1371/journal.pcbi.1000424. [open access at PLoS](http://dx.plos.org/10.1371/journal.pcbi.1000424)
 
 
 ### References
