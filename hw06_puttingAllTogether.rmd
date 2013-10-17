@@ -16,6 +16,11 @@ Homework #6 The End: Putting it all together
     - How you run your 2 (or more) scripts *non-interactively*
     - End state of the directory, containing newly written numerical and graphical output
   * Provide the files themselves and a description of what to do with them
+  
+### Templates
+
+  * Bare bones example using only R: [hw06_scaffolds/01_justR](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/01_justR)
+  * Example upgraded to include using Make to run the pipeline: [hw06_scaffolds/02_rAndMake](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/02_rAndMake)
 
 ### Please just tell me what to do
 

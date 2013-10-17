@@ -10,8 +10,8 @@ How to replicate my analysis
   * Download into an empty directory:
     - Input data: [`lotr_raw.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/lotr_raw.tsv)
     - Scripts: [`01_filterReorder.R`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/01_filterReorder.R) and [`02_aggregatePlot.R`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/02_aggregatePlot.R)
-    - Makefile: [`Makefile.R`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/02_rAndMake/Makefile)
-  * In a shell: `make all`.
+    - Makefile: [`Makefile`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/02_rAndMake/Makefile)
+  * In a shell: `make all`. Or just: `make`. Or: `make stripplot_wordsByRace_The_Two_Towers.png`
   * New files you should see after running the pipeline:
     - [`barchart_totalWords.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/barchart_totalWords.png)
     - [`barchart_totalWordsFilmDodge.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/barchart_totalWordsFilmDodge.png)
