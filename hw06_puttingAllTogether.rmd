@@ -21,6 +21,7 @@ Homework #6 The End: Putting it all together
 
   * Bare bones example using only R: [hw06_scaffolds/01_justR](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/01_justR)
   * Example upgraded to include using Make to run the pipeline: [hw06_scaffolds/02_rAndMake](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/02_rAndMake)
+  * Example compiling an R script and an R Markdown file to HTML via the makefile: [hw06_scaffolds/03_knitWithoutRStudio](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/03_knitWithoutRStudio)
 
 ### Please just tell me what to do
 
@@ -75,10 +76,12 @@ Include some dynamic report generation in your pipeline. That is, create HTML fr
     - `Rscript -e "knitr::stitch_rmd('myAwesomeScript.R')"`
     
   * To emulate "Knit HTML", do something like the above but with `knitr::knit2html()`.
+  
+  * See [the Makefile in this example](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/03_knitWithoutRStudio/Makefile) to see these commands in action
 
 Experiment with running R code saved in a script from within R Markdown. Here's some official documentation on [code externalization](http://yihui.name/knitr/demo/externalization/).
 
-Embed pre-existing figures in and R Markdown docuement, i.e. an R script creates the figures, then the report incorporates them. General advice on writing figures to file is [here](topic12_writeFigureToFile.html) and `ggplot2` has a purpose-built function `ggsave()` you should try.
+Embed pre-existing figures in and R Markdown docuement, i.e. an R script creates the figures, then the report incorporates them. General advice on writing figures to file is [here](topic12_writeFigureToFile.html) and `ggplot2` has a purpose-built function `ggsave()` you should try. See an example of this in [an R Markdown file in one of the examples](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/03_knitWithoutRStudio/03_doStuff.Rmd).
 
 Import pre-existing data in an R Markdown document, then format nicely as a table.
 
@@ -88,7 +91,7 @@ Start using Git! Create a new Git repository for all the files for this assignme
 
 Start using Github! Share your repo with us on the web! See below for help.
 
-Use `Make` to run your pipeline. See below for help.
+Use `Make` to run your pipeline. See below for help. Also demonstrated in the example [hw06_scaffolds/02_rAndMake](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/02_rAndMake) and in the example [hw06_scaffolds/03_knitWithoutRStudio](https://github.com/jennybc/STAT545A/tree/master/hw06_scaffolds/03_knitWithoutRStudio)
 
 ### How to install and use recommended tools
 
