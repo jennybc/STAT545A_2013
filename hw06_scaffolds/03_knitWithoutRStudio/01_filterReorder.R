@@ -36,8 +36,7 @@ levels(lotrDat$Race)
 ## make a plot
 p <- ggplot(lotrDat, aes(x = Race, weight = Words))
 p + geom_bar()
-dev.print(png, "barchart_totalWords.png", width = 7, height = 6, units = "in",
-          res = 300)
+dev.print(png, "barchart_totalWords.png", width = 7 * 72, height = 7 * 72)
 
 ## using ggsave() led to the undesirable automatic writing of my figures to
 ## Rplots.pdf
