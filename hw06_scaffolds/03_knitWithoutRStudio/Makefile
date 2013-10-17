@@ -9,4 +9,4 @@ stripplot_wordsByRace_*.png totalWordsByFilmRace.tsv: lotr_clean.tsv 02_aggregat
 	Rscript 02_aggregatePlot.R
 
 clean:
-	rm -rf lotr_clean.tsv totalWordsByFilmRace.tsv *.png *.md *.html figure
+	rm -rf lotr_clean.tsv totalWordsByFilmRace.tsv *.png 0*.md *.html figure
