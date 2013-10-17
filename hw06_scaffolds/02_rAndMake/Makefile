@@ -2,7 +2,7 @@
 
 all: totalWordsByFilmRace.tsv
 
-lotr_clean.tsv: lotr_raw.tsv 01_filterReorder.R
+lotr_clean.tsv barchart*.png: lotr_raw.tsv 01_filterReorder.R
 	Rscript 01_filterReorder.R
 
 stripplot_wordsByRace_*.png totalWordsByFilmRace.tsv: lotr_clean.tsv 02_aggregatePlot.R

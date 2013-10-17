@@ -21,7 +21,7 @@ d_ply(lotrDat, ~ Film, function(z) {
     ggtitle(theFilm) + 
     geom_jitter(alpha = 1/2, position = position_jitter(width = 0.1))
   theFilm <- gsub(" ", "_", theFilm)
-  pdf(paste0("stripplot_wordsByRace_", theFilm, ".png"))
+  png(paste0("stripplot_wordsByRace_", theFilm, ".png"))
   print(p)
   dev.off()
 })

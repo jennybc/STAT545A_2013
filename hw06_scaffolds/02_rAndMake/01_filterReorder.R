@@ -26,7 +26,7 @@ lotrDat <- within(lotrDat, Race <- reorder(Race, Words, sum))
 
 ## make a plot
 p <- ggplot(lotrDat, aes(x = Race, weight = Words))
-pdf("barchart_totalWords.png")
+png("barchart_totalWords.png")
 p + geom_bar()
 dev.off()
 ## using ggsave() led to the undesirable automatic writing of my figures to
@@ -34,7 +34,7 @@ dev.off()
 ## this thread seemed helpful ... but did not work for me
 ##http://stackoverflow.com/questions/17348359/how-to-stop-r-from-creating-empty-rplots-pdf-file-when-using-ggsave-and-rscript
 
-pdf("barchart_totalWordsFilmDodge.png")
+png("barchart_totalWordsFilmDodge.png")
 p + geom_bar(aes(fill = Film), position = position_dodge(width = 0.7))
 dev.off()
 
