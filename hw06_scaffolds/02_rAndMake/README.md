@@ -19,3 +19,5 @@ How to replicate my analysis
     - `stripplot_wordsByRace_FILM.pdf`, where FILM is one of the 3 movies. Example: [`stripplot_wordsByRace_The_Fellowship_Of_The_Ring.png`](https://raw.github.com/jennybc/STAT545A/master/hw06_scaffolds/01_justR/stripplot_wordsByRace_The_Fellowship_Of_The_Ring.png)
     - [`totalWordsByFilmRace.tsv`](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/totalWordsByFilmRace.tsv)
   * To remove the output and get a clean slate, in a shell: `make clean`
+
+> Tip to learn from above: experiment with deleting various output files. Then run `make` or `make all` to note which scripts are rerun.
