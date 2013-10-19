@@ -144,7 +144,9 @@ Monday Oct 14 is a statutory holiday. No class. Happy Thanksgiving!
 
 ### cm 11 | Wednesday Oct 16 | Coding style, project organization, version control
 
-* Submit [homework 6](hw06_puttingAllTogether.html) by 12pm noon Monday Oct. 21.
+  * [Draft summary](hw09_markingNotes.html) of the marking on all the homeworks
+
+  * Submit [homework 6](hw06_puttingAllTogether.html) by 12pm noon Monday Oct. 21.
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
