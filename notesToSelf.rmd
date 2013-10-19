@@ -11,3 +11,9 @@ Things I'm undercovering:
   
 In the tutorial for data aggregation with plyr, the example I trot out to contrast with built-in function pain should probably involve the return of something more complicated than a single number. So that `aggregate()` is not a viable alternative.
 
+The last class meeting -- where I talked about coding style and project organization and did an "end of course" reflection -- felt rushed and disorganized, esp. nearing the end. In future, this may self-resolve because it was highly unusual to only have 11 class meetings. In past 12 is more typical and there have even been 13. It all depends on when holidays happen and whether UBC continues to suspect classes for the Truth and Reconciliation event.
+
+But here are some notes for how to fix in future: I need a proper short introduction to `make` at least. And probably to Git, although they have absorbed some info about Git and Github by osmosis at this point. They also did want to hear about .Rprofile files and how I manage an R installaion (those would be good small topics, in terms of web content). I have decent links on how/why to install `make` at the bottom of homework 6 assignment. At this point, my own examples (offered as help for that assignment) are a very good source of simple but working examples of using `make` in the context of a small R analytical project.
+
+
+
