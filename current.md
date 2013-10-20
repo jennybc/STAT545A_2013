@@ -144,6 +144,9 @@ Monday Oct 14 is a statutory holiday. No class. Happy Thanksgiving!
 
 ### cm 11 | Wednesday Oct 16 | Coding style, project organization, version control ([slides as PDF](2013-lectures/cm11_codingStyleProjectOrganization.pdf))
 
+  * Work through
+    - [R coding style and organizing analytical projects](block19_codeFormattingOrganization.html)
+
   * [Draft summary](hw09_markingNotes.html) of the marking on all the homeworks
 
   * Submit [homework 6](hw06_puttingAllTogether.html) by 12pm noon Monday Oct. 21.

@@ -21,6 +21,7 @@ Fall 2013: I am (finally) marshalling my teaching materials in one place and exp
   - [Taking control of qualitative colors in `lattice`](block16_colorsLatticeQualitative.html)
   - [Taking control of qualitative colors in `ggplot2`](block17_colorsGgplot2Qualitative.html)
   - [Side-by-side comparisons of `lattice` and `ggplot2` plots](block18_gapminderGgplot2VsLattice.html)
+  - [R coding style and organizing analytical projects](block19_codeFormattingOrganization.html)
     
     
 Smaller topics, in the approximate order in which students ask about them
