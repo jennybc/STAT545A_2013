@@ -142,7 +142,7 @@ Monday Sept 02 is a statutory holiday. No class.
 
 Monday Oct 14 is a statutory holiday. No class. Happy Thanksgiving!
 
-### cm 11 | Wednesday Oct 16 | Coding style, project organization, version control
+### cm 11 | Wednesday Oct 16 | Coding style, project organization, version control ([slides as PDF](2013-lectures/cm11_codingStyleProjectOrganization.pdf))
 
   * [Draft summary](hw09_markingNotes.html) of the marking on all the homeworks
 
