@@ -4,6 +4,7 @@ Be the boss of your factors
 > JB: Still under development. Cannot decide if this is a tutorial, with a story, and fitting into a larger sequence of tutorials or is a topic/reference sort of thing.
 
 ```{r include = FALSE}
+require(knitr)
 ## toggle to code tidying on/off
 opts_chunk$set(tidy = FALSE)
 ```

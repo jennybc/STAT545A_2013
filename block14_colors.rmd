@@ -282,6 +282,12 @@ Blog post [My favorite RGB color](http://manyworldstheory.com/2013/01/15/my-favo
 ggplot2: Elegant Graphics for Data Analysis [available via SpringerLink](http://ezproxy.library.ubc.ca/login?url=http://link.springer.com.ezproxy.library.ubc.ca/book/10.1007/978-0-387-98141-3/page/1) by Hadley Wickham, Springer (2009) | [online docs (nice!)](http://docs.ggplot2.org/current/) | [author's website for the book](http://ggplot2.org/book/), including all the code | [author's landing page for the package](http://ggplot2.org)
 
   * Section 6.4.3 Colour
+  
+### Notes from the future
+
+Consider incorporating in future version of this material:
+
+  * Example-laden article by Bernice E. Rogowitz and Lloyd A. Treinish of IBM Research ["Why Should Engineers and Scientists Be Worried About Color?"](http://www.research.ibm.com/people/l/lloydt/color/color.HTM), h/t [@EdwardTufte](https://twitter.com/EdwardTufte). Importance of signalling where zero is in colorspace, perceptually based color systems (they talk about hue, saturation, and luminance), when the heck was this written?
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
