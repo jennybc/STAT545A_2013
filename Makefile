@@ -7,7 +7,7 @@ kp:
 	Rscript -e "fileherd::findPreview(remove = TRUE, verbose = TRUE)"
 
 sync:
-	rsync -rlv --checksum --chmod=ugo=rwX --exclude-from=./.rsync/exclude /Users/jenny/web/fhWeb/publish/STAT545A/ stat.ubc.ca:public_html/STAT545A/
+	rsync -rlv --checksum --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r --exclude-from=./.rsync/exclude /Users/jenny/web/fhWeb/publish/STAT545A/ stat.ubc.ca:public_html/STAT545A/
 
 # WARNING! WARNING!
 
