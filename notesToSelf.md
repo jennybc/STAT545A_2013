@@ -38,3 +38,11 @@ Let's try initiating from RStudio.
 
 
 Study the difference between `R CMD BATCH` and `Rscript`. A student said this: 
+?? oops I never pasted??
+
+Nice example of a simple ("simple"?) data exploration on year-to-year changes in a name's popularity:
+
+  * Blog post [Hilary: the most poisoned baby name in US history](http://hilaryparker.com/2013/01/30/hilary-the-most-poisoned-baby-name-in-us-history/)
+  * on [GitHub](https://github.com/hilaryparker/names)
+
+Nice morale boost: Cecily Carver [Things I Wish Someone Had Told Me When I Was Learning How to Code](https://medium.com/learning-to-code/565fc9dcb329)
