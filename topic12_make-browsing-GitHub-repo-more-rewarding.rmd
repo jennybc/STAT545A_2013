@@ -1,0 +1,75 @@
+Make browsing a GitHub repository more rewarding
+========================================================
+
+__The unreasonable effectiveness of browsability__. One of my favorite aspects of GitHub is the ability to inspect a repository's files in a browser. Certain practices make browsing more rewarding and can postpone the day when you must create a proper website for a project.
+
+Keep files in the plainest, web-friendliest form that is compatible with your main goals. Plain text is the very best. But many plain text files have special structure and it's nice to accomodate this when viewing the file. GitHub offers special handling for certain types of files:
+
+  * Markdown files, which are destined for conversion (usually) into HTML
+  * Markdown files named README, e.g. `README.md`
+  * HTML files, often the result of compiling Markdown files
+  * Source code, such as `.R` files
+  * Delimited files, containing data one might bring into R via `read.table()`
+  * PNG files
+  
+Sidebar: let's acknowledge the discomfort some people feel about putting processed products under version control. For example, if you have an R Markdown document `foo.rmd`, it can be `knit()` to produce the intermediate product `foo.md`, which can be further processed to yield the ultimate output `foo.html`. Which of those files are you "allowed" to put under version control? Source-is-real hardliners will say only `foo.rmd` but pragmatists know this can be a serious bummer in real life. I do not  attempt to settle this here. This is a note about cool things GitHub can do with various file types, if they happen to end up in your repo. I won't ask you how they got there.
+  
+#### Markdown
+
+You will quickly discover that GitHub renders Markdown files very nicely. By clicking on `foo.md`, you'll get a decent preview of `foo.html`. Yay!
+
+Aggressively exploit this handy feature. Make Markdown your default format for narrative text files and use them liberally to embed notes to yourself and others in a repository hosted on Github. It's an easy way to get pseudo-webpages inside a project "for free". You may never even compile these files to HTML explicitly; in many cases, the HTML preview offered by GitHub is all you ever need.
+
+Since GitHub does not provide automatic previewing of *R Markdown* files, it can be handy to include the intermediate Markdown files produced by `knitr` in your repo, even if you choose to `.gititnore` the final HTML. Also, don't use the `.rmd` extension unless you really have R chunks in your Markdown; if a file is plain Markdown, say that clearly with the `.md` extension and enjoy the automatic preview.
+
+For a stand-alone document that doesn't fit neatly into a repository or project (yet), make it a [Gist](https://gist.github.com). Example: Hadley Wickham's ["first stab at a basic R programming curriculum"](https://gist.github.com/hadley/6734639).
+
+To see the source of a Markdown file you're viewing in a GitHub repo, click on "Raw" in the bar containing file information, like name and size. If the file is a Gist, click the `<>` symbol instead.
+
+#### `README.md`
+
+You probably already know that GitHub renders `README.md` at the top-level of your repo as the *de facto* landing page. This is analogous to what happens when you point a web browser at a directory instead of a specific web page: if there is a file named `index.html`, that's what the server will show you by default. On GitHub, files named `README.md` play exactly this role for directories in your repo. 
+
+Implication: for any logical group of files or mini project-within-your-project, create a sub-directory in your repository. And then create a `README.md` file to annotate these files, collect relevant links, etc. Now when you navigate to the sub-directory on GitHub the nicely rendered `README.md` will simply appear.
+
+Some repositories consist solely of `README.md`. Examples: Jeff Leek's write-ups on [How to share data with a statistician](How to share data with a statistician) or [Developing R packages](https://github.com/jtleek/rpackages).
+
+#### HTML
+
+This tip seems to be less well-known. If you have an HTML file in a GitHub repository, simply visiting the file shows the raw HTML. Boo. But if you preface the link with `http://htmlpreview.github.com/?`, you will see properly rendered HTML. Illustration:
+
+  * Here is an HTML file I created as part of a class homework assignment. Visiting in this way forces you to read raw HTML:
+    - <https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/03_knitWithoutRStudio/01_filterReorder.html>
+  * But if we visit the file in a different way -- if we preface the URL as described above -- we see it like a normal webpage:
+    - <http://htmlpreview.github.com/?https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/03_knitWithoutRStudio/01_filterReorder.html>
+    
+This sort of enhanced link might be one of the useful things to put in a `README.md` or other Markdown file in the repo.
+
+#### Source code
+
+You will notice that GitHub does automatic syntax highlighting for source code. For example, notice the coloring of this [R script](https://github.com/jennybc/swcR_duke/blob/master/code/01_countrySpecificInterceptSlope.R). The file's extension is the primary determinant for if/how syntax highlighting will be applied. You can see information on recognized languages, the default extensions and more [here](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml). You should be doing it anyway, but let this be another reason to follow convention in your use of file extensions.
+
+Note you can click on "Raw" in this context as well, to get just the plain text and nothing but the plain text.
+    
+#### Delimited files
+
+GitHub will nicely render "tabular data in the form of `.csv` (comma-separated) and `.tsv` (tab-separated) files." You can read more in the [blog post](https://github.com/blog/1601-see-your-csvs) announcing this feature in August 2013.
+
+Advice: take advantage of this! If something in your repo can be naturally stored as delimited data, by all means, do so. Make the comma or tab your default delimiter and use the file suffixes GitHub is expecting. I have noticed that GitHub is more easily confused than, say, R about things like quoting, so always inspect the GitHub-rendered `.csv` or `.tsv` file in the browser. You may need to do light tidying to get the automagic rendering to work properly.
+
+Here's an example of a tab delimited file on GitHub: [lotr_clean.tsv](https://github.com/jennybc/lotr/blob/master/lotr_clean.tsv), originally found [here](http://www-958.ibm.com/software/data/cognos/manyeyes/datasets/words-spoken-by-character-race-scene/versions/1.txt).
+
+Note you can click on "Raw" in this context as well, to get just the plain text and nothing but the plain text.
+
+#### PNGs
+
+PNG is the "no brainer" format in which to store figures for the web. But many of us like a vector-based format, such as PDF, for general purpose figures. Bottom line: PNGs will drive you less crazy than PDFs on GitHub. To reduce the aggravation around viewing figures in the browser, make sure to have a PNG version in the repo.
+
+Examples:
+
+  * [This PNG figure](https://github.com/jennybc/STAT545A/blob/master/hw06_scaffolds/01_justR/stripplot_wordsByRace_The_Fellowship_Of_The_Ring.png) just shows up in the browser
+  * The same figure [stored as PDF](https://github.com/jennybc/STAT545A/blob/master/r.pch.pdf) produces the dreaded, annoying "View Raw" speed bump. You'll have to click through and, on my OS + browser, wait for the PDF to appear in an external PDF viewer.
+
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
