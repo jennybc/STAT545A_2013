@@ -29,7 +29,7 @@ Smaller topics, in the approximate order in which students ask about them
   * [Note on custom CSS](topic10_tablesCSS.html), triggered by making attractive HTML tables in the data aggregation tutorial
   * [To tidy or not to tidy?](topic11_tidyCode.html) re: code tidying in `knitr`
   * [Writing a figure to file](topic12_writeFigureToFile.html)
-  * [Make browsing a GitHub repository more rewarding](topic12_make-browsing-GitHub-repo-more-rewarding.html )
+  * [Make browsing a GitHub repository more rewarding](topic13_make-browsing-GitHub-repo-more-rewarding.html )
 
 Stuff that's deprecated or needs freshening but that's not totally embarrassing
 
