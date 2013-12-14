@@ -147,9 +147,13 @@ Monday Oct 14 is a statutory holiday. No class. Happy Thanksgiving!
   * Work through
     - [R coding style and organizing analytical projects](block19_codeFormattingOrganization.html)
 
-  * [Draft summary](hw09_markingNotes.html) of the marking on all the homeworks
-
   * Submit [homework 6](hw06_puttingAllTogether.html) by 12pm noon Monday Oct. 21.
+
+### cm 99 | December | Course wrap-up
+
+  * [Descriptive statistics](hw99_markingNotes.html) on HW and course marks
+
+
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
