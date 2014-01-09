@@ -37,8 +37,6 @@ list.files(pattern = "^testFigure*")
 
 You can view the file whatever way is appropriate to your OS. It's a silly figure but we've shown the process. Don't be surprised when you don't see any figure appear in your screen device. While you're sending graphics output to, e.g., the `pdf()` device, you'll be "flying blind", which is why it's important to work out the graphics commands in advance.
 
-Read the [R help on Devices](http://stat.ethz.ch/R-manual/R-patched/library/grDevices/html/Devices.html) for information on other graphics devices.
-
 ### Quick-and-dirty shortcut
 
 Here's a handy short cut for writing a figure to file:
@@ -71,7 +69,7 @@ If you follow the practice of always saving R scripts (not your workspace) and s
 
 ### Graphics devices
 
-Read the help for `Devices` to learn which graphics devices are available on your system. `pdf()` is a good default: the files are easy to view and it's a vector format, so they resize gracefully. For insertion into Microsoft Word or PowerPoint, you may want to consider `png()`. For embedding into a web page, consider `png()` or `svg()`. Here are two good posts from the Revolutions Analytics blog with tips for saving figures to file:
+Read the [R help for `Devices`](http://stat.ethz.ch/R-manual/R-patched/library/grDevices/html/Devices.html) to learn about more graphics devices and which are available on your system (*obviously requires you read your local help*). `pdf()` is a good default: the files are easy to view and it's a vector format, so they resize gracefully. For insertion into Microsoft Word or PowerPoint, you may want to consider `png()`. For embedding into a web page, consider `png()` or `svg()`. Here are two good posts from the Revolutions Analytics blog with tips for saving figures to file:
 
   * [10 tips for making your R graphics look their best](http://blog.revolutionanalytics.com/2009/01/10-tips-for-making-your-r-graphics-look-their-best.html) 
   * [High-quality R graphics on the Web with SVG](http://blog.revolutionanalytics.com/2011/07/r-svg-graphics.html)
