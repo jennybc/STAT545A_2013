@@ -19,7 +19,7 @@ Now what? How to preserve the figure in a file?
 
 _Do not_ succumb to the temptation of a mouse-based process. If might feel great at the time, but you will regret it. This establishes no link between the source code and the figure product. So when -- not if -- you need to remake the figure with a different color scheme or aspect ratio or graphics device, you will struggle to dig up the proper source code. Use one of the methods below to avoid this predicament.
 
-### The proper way
+### Write to file with R code and graphics devices
 
 Edit your source code in the following way: Precede the figure-making code by opening a graphics device and follow it with a command that closes the device. Here's an example:
 
@@ -37,7 +37,9 @@ list.files(pattern = "^testFigure*")
 
 You can view the file whatever way is appropriate to your OS. It's a silly figure but we've shown the process. Don't be surprised when you don't see any figure appear in your screen device. While you're sending graphics output to, e.g., the `pdf()` device, you'll be "flying blind", which is why it's important to work out the graphics commands in advance.
 
-### The shortcut
+Read the [R help on Devices](http://stat.ethz.ch/R-manual/R-patched/library/grDevices/html/Devices.html) for information on other graphics devices.
+
+### Quick-and-dirty shortcut
 
 Here's a handy short cut for writing a figure to file:
 
@@ -56,6 +58,12 @@ list.files(pattern = "^testFigure*")
 Again, you can view the file, see the silly figure, but appreciate this process will work for real figures in the future. The appeal of this method is that you will literally copy the figure in front of your eyeballs to file, which is pleasingly immediate. There's also less code to repeatedly (de-)comment as you run and re-run the script during development.
 
 Why is this method improper? Various aspects of a figure -- such as font size -- are determined by the target graphics device and its physical size. Therefore, it is best practice to open your desired graphics device explicitly, using any necessary arguments to control height, width, fonts, etc. Make your plot. And close the device. But for lots of everyday plots the `dev.print()` method works just fine.
+
+### `ggplot2` offers `ggsave()`
+
+> To be written.
+
+If you are using `ggplot2`, you should look into [the `ggsave()` function](http://docs.ggplot2.org/current/ggsave.html).
 
 ### Finding the code that makes a figure
 

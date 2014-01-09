@@ -198,12 +198,9 @@ can remake a figure with different aspect ratio or save is as TIFF
 instead of PDF. Etc etc.
 
 First, let's imagine that you regard your workspace as "real". You save it and reload it over and over again (consciously or unconsciously). It's probably heartbreaking when R or your whole machine crashes and you need to start over. You're going to either redo a lot of typing (making mistakes all the way) or will have to mine your R history for the commands you used. Rather than
-[becoming an expert on managing the R history](http://www.rstudio.com/ide/docs/using/history),
-a better use of your time and psychic energy is to keep your "good"
-R code in a script for future reuse.
+[becoming an expert on managing the R history](http://www.rstudio.com/ide/docs/using/history), a better use of your time and psychic energy is to keep your "good" R code in a script for future reuse.
 
-But, because it can be useful sometimes, go ahead and note that the commands you've recently
-executed appear in the History tab of the upper right pane.
+But, because it can be useful sometimes, go ahead and note that the commands you've recently executed appear in the History tab of the upper right pane.
 
 You don't have to choose right now and the two strategies are not
 incompatible. First, let's demo the save / reload the workspace approach.
@@ -233,7 +230,7 @@ indicating that your workspace has been restored. Look in the Workspace pane and
 
 #### Working directory
 
-Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It also where, by default, any files you write to disk will go. Chances are your current working directory is the directory we inspected above, i.e. the one where RStudio wanted to save the workspace, which is probably also your home directory.
+Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It is also where, by default, any files you write to disk will go. Chances are your current working directory is the directory we inspected above, i.e. the one where RStudio wanted to save the workspace, which is probably also your home directory.
 
 You can explicitly check your working directory with:
 ```{r, eval = FALSE}
@@ -306,6 +303,7 @@ Quit RStudio. Inspect the folder associated with your project if you wish. Under
 Restart RStudio. Notice that things, by default, restore to where we were earlier, e.g. objects in the workspace, the command history, which files are open for editing, where we are in the file system browser, the working directory for the R process, etc. __These are all Good Things.__
 
 Change some things about your code. Top priority would be to set a sample size `n` at the top, e.g. `n <- 40`, and then replace all the hard-wired 40's with `n`. Change some other minor-but-detectable stuff, i.e. alter the sample size `n`, the slope of the line `b`,the color of the line ... whatever. Clean out your workspace and then practice the different ways to re-run the code:
+
   * Walk through line by line by keyboard shortcut (command + enter) or mouse (click Run in the upper right corner of editor pane).
   * Source the entire document -- equivalent to entering `source('toyline.R')` in the Console -- by keyboard shortcut (shift command S) or mouse (click Source in the upper right corner of editor pane or select from the mini-menu accessible from the associated down triangle).
   * Source with echo from the Source mini-menu.
