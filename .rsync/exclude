@@ -1,0 +1,7 @@
+_fileherd/*
+*.Rproj
+courseAdmin
+private
+Makefile
+bake.R
+.DS_Store
