@@ -39,7 +39,7 @@ Basic sanity check that the import has gone well:
 ```{r}
 str(gDat)
 ```
-Drop Oceania, which only has two continents
+Drop Oceania, which only has two countries:
 ```{r}
 ## drop Oceania
 jDat <- droplevels(subset(gDat, continent != "Oceania"))

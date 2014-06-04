@@ -110,6 +110,7 @@ Use `Make` to run your pipeline. See below for help. Also demonstrated in the ex
   * Mike Bostock on [Why Use Make](http://bost.ocks.org/mike/make/)
   * Zachary M. Jones on [GNU Make for Reproducible Data Analysis](http://zmjones.com/make.html)
   * Ben Bolker RPub [Literate programming, version control, reproducible research, collaboration, and all that](http://rpubs.com/bbolker/3153)
+  * A set-up free way to play with Git: [Code School - Try Git](http://try.github.io/levels/1/challenges/1)
   
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.

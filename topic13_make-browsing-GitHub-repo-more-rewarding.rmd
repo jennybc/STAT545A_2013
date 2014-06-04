@@ -20,7 +20,7 @@ You will quickly discover that GitHub renders Markdown files very nicely. By cli
 
 Aggressively exploit this handy feature. Make Markdown your default format for narrative text files and use them liberally to embed notes to yourself and others in a repository hosted on Github. It's an easy way to get pseudo-webpages inside a project "for free". You may never even compile these files to HTML explicitly; in many cases, the HTML preview offered by GitHub is all you ever need.
 
-Since GitHub does not provide automatic previewing of *R Markdown* files, it can be handy to include the intermediate Markdown files produced by `knitr` in your repo, even if you choose to `.gititnore` the final HTML. Also, don't use the `.rmd` extension unless you really have R chunks in your Markdown; if a file is plain Markdown, say that clearly with the `.md` extension and enjoy the automatic preview.
+Since GitHub does not provide automatic previewing of *R Markdown* files, it can be handy to include the intermediate Markdown files produced by `knitr` in your repo, even if you choose to `.gitignore` the final HTML. Also, don't use the `.rmd` extension unless you really have R chunks in your Markdown; if a file is plain Markdown, say that clearly with the `.md` extension and enjoy the automatic preview.
 
 For a stand-alone document that doesn't fit neatly into a repository or project (yet), make it a [Gist](https://gist.github.com). Example: Hadley Wickham's ["first stab at a basic R programming curriculum"](https://gist.github.com/hadley/6734639).
 
@@ -53,7 +53,7 @@ Note you can click on "Raw" in this context as well, to get just the plain text 
     
 #### Delimited files
 
-GitHub will nicely render "tabular data in the form of `.csv` (comma-separated) and `.tsv` (tab-separated) files." You can read more in the [blog post](https://github.com/blog/1601-see-your-csvs) announcing this feature in August 2013.
+GitHub will nicely render "tabular data in the form of `.csv` (comma-separated) and `.tsv` (tab-separated) files." You can read more in the [blog post](https://github.com/blog/1601-see-your-csvs) announcing this feature in August 2013 or in [this GitHub help page](https://help.github.com/articles/rendering-csv-and-tsv-data).
 
 Advice: take advantage of this! If something in your repo can be naturally stored as delimited data, by all means, do so. Make the comma or tab your default delimiter and use the file suffixes GitHub is expecting. I have noticed that GitHub is more easily confused than, say, R about things like quoting, so always inspect the GitHub-rendered `.csv` or `.tsv` file in the browser. You may need to do light tidying to get the automagic rendering to work properly.
 
@@ -81,6 +81,16 @@ But what if such a person needs all the files? Yes, there is a clickable "Downlo
 <https://github.com/jennybc/lotr/archive/master.zip>
 
 Go look in your downloads folder!
+
+#### More stuff to add?
+
+Internal links, e.g. from a `.md` file in the repo to another file in the repo. Example: in the top-level `README.md` you can link to the directory called `courseAdmin` (and therefore it's `README.md`) via `../master/courseAdmin`.
+
+  * read this https://help.github.com/articles/relative-links-in-readmes
+
+whether/how that works from issues
+
+embedding a PNG from the repo in a `.md` file; ditto for an issue
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
