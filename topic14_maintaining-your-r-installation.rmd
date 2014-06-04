@@ -1,0 +1,102 @@
+Maintaining your R installation
+========================================================
+
+I consider having multiple versions of R rather advanced. Therefore, I address the more common scenario: you are installing R for the first time or you simply want to upgrade. Upgraders will find that both R and RStudio will, by default, overwrite your previous version of R or RStudio, which is what you want IMO. This will not damage your saved R scripts, your precious RStudio projects, etc.
+
+Download and install a precompiled binary for your system from here: [http://cran.r-project.org/](http://cran.r-project.org/). *FWIW, I am on a Mac and I choose to install R for all users of the computer (which happens to just be me), which requires me to enter the admin password.*
+
+Download and install RStudio for your system from here: [http://www.rstudio.com/ide/download/desktop](http://www.rstudio.com/ide/download/desktop). *FWIW, RStudio's clever website auto-detects my platform and recommends what to install.*
+
+Now you need to deal with any add-on packages you are accustomed to using. These are stored in *libraries*, which are essentially directories on your computer. To inspect the libraries R currently knows about, submit the command `.libPaths()`:
+
+```{r}
+.libPaths()
+```
+
+If you are following along, you probably get a different result -- namely, just the single default library which can be listed via `.Library`:
+
+```{r}
+.Library
+```
+
+You can live happily for a long time only using this default library. I did.
+
+But at some point I wanted more control and knowledge of my add-on packages and I also needed to erect some barriers between CRAN packages and packages I was developing myself. If you are interested in taking more control of your packages, read on.
+
+I actually have 4 libraries:
+
+  * the default library (see above)
+  * the "stuff I have installed from CRAN" library
+  * a library for personal packages
+  * a sandbox for package development (you have seen no evidence of this, nor do I in normal daily R usage; we shall not speak of it again)
+  
+We can narrow our focus to the "stuff I have installed from CRAN" library, which is the first element of the libraries returned by `.libPaths()`:
+
+```{r}
+.libPaths()[1]
+```
+
+If you are interested in setting up a similar library, how do you do it?
+
+Step 1: create the necessary directory, making a deliberate choice about location and name.
+
+Step 2: tell R about this. Do this in a file called `.Renviron` in your home directory.
+
+If you're not sure what your home directory is, this command will probably tell you:
+
+```{r}
+normalizePath("~/")
+```
+
+Here is the content of my `.Renviron`
+
+```{r comment = NA}
+readLines(file.path("~/", ".Renviron"))
+```
+
+*Note: the `[1]` prefix and surrounding double quotes are a by-product of R's printing of character information. They are not present in the actual file.* This is a typical, Unix-y [dotfile](http://en.wikipedia.org/wiki/Dotfile) and I am essentially defining an [environment variable](http://en.wikipedia.org/wiki/Environment_variable) `R_LIBS`. The first element is the path to my "stuff I have installed from CRAN" library and, after the `:` separator, the second elemtn is my personal package library, which we will just ignore. If I only wanted to alert R to a single non-default library, this would be the contents of my `.Renviron` file:
+
+```
+R_LIBS=~/resources/R/libraryCRAN
+```
+
+Now we can deconstruct the libraries R knows about. Recall they are displayed by `.libPaths()`:
+
+```{r}
+.libPaths()
+```
+
+In my case, this is a character vector of length 3, each element of which is the path to a library, which is really just a directory on my computer. This vector has been constructed by catenating the value of my personal `R_LIBS` environment variable with the global default library. Recall this can be inspected via `.Library` and is also just the `library` subdirectory of R's home directory:
+
+```{r}
+.Library
+R.home()
+identical(.Library, file.path(R.home(), "library"))
+```
+
+Now we are ready to start installing packages! By default, they will be installed to the first element of `.libPaths()`, which I have already set to my "stuff I have installed from CRAN" library.
+
+If this is a fresh R installation, life is simple. Just install packages as the need arises. As a beginner, it's probably not that importatn *how* you install R packages. It's more important that you just get your work done and accumulate more R experience. At some point, I suggest that you revisit and upgrade your approach to package management.
+
+In the same way that I believe only "source is real" for analytical pipelines, I believe packages should be installed by executing code (as opposed to mouse clicks). Every time I upgrade R, I create a new file with a name like this: `2013-06-setup.R`. And the contents of this file are calls to `install.packages()`.
+
+I am in an upgrade situation, so first let's explore what is already on my system. There are two sets of packages that are installed when you freshly install or upgrade R: the base and Recommended packages. These are, by definition, up-to-date, but let's just remind ourselves what they are:
+```{r}
+
+subset(data.frame(installed.packages()),
+       Priority %in% c("base", "recommended"),
+       select = c(Package, LibPath, Priority))
+head(subset(installed.packages(),
+            select = c(Package, LibPath, Priority)))
+tail(subset(installed.packages(),
+            select = c(Package, LibPath, Priority)))
+```
+
+
+
+To read more about the initialization of R sessions, read your local R help on the topic `Startup` or [read it on the web](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Startup.html).
+
+To read more about search paths for packages, read your local R help on `.libPaths` or [read it on the web](http://stat.ethz.ch/R-manual/R-devel/library/base/html/libPaths.html).
+<div class="footer">
+This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
+</div>
