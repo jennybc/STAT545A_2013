@@ -1,0 +1,110 @@
+---
+title: "Changing factor levels is a tricky business"
+author: "Jenny Bryan"
+date: "7 July, 2014"
+output:
+  html_document:
+    toc: yes
+---
+
+In the Factors subsection of the [material about Attributes](http://adv-r.had.co.nz/Data-structures.html#attributes) in [Advanced R](http://adv-r.had.co.nz), Wickham poses some exercises that examine what happens when you assign new levels to an existing factor. While these exercises showcase some crazy, there is some natural follow up that is constructive for data analytical work.
+
+## Revisit the original exercise
+
+I decreased the number of levels, but the key ideas remain. First, we create a factor `f1` from the first 5 letters of the alphabet. Let's look at `f1` (and its levels) via `print`ing and at the underlying integer codes via `unclass()`.
+
+```{r}
+f1 <- factor(letters[1:5])
+f1
+unclass(f1)
+```
+
+Now we create copy `f2` and change the levels. The new levels are the original levels, just in reverse order.
+```{r}
+f2 <- f1
+levels(f2) <- rev(levels(f2))
+f2
+unclass(f2)
+```
+
+It's mildly surprising that the factor prints differently now; it too looks reversed. You might think that changing the levels actually changed the underlying data, i.e. that `rev()`ersing the levels somehow reversed the data __but you would be wrong__. Notice that *the underlying integer codes have not changed*; they are still `1, 2, 3, 4, 5`. The assignment `levels(f2) <- rev(levels(f2))` just created new associations between the integer codes and the strings `a`, `b`, `c`, `d`, `e`.
+
+This example ends in a rather uncomfortable place, so let's delve more deeply into how to change factor levels.
+
+## Modify the original exercise
+
+First, I create a variant on the exercise that's got more built in reporting. I repeat the letters so that, by tabulation, we can track what's going on.
+
+```{r}
+f1 <- factor(rep(letters[1:5], 1:5))
+f1
+unclass(f1)
+table(f1)
+```
+
+Now we again create `f2`, a variation on `f1`, by a simple copy, followed by re-assigning the levels.
+```{r}
+f2 <- f1
+levels(f2) <- rev(levels(f2))
+f2
+unclass(f2)
+table(f2)
+merge(as.data.frame(table(f1)), as.data.frame(table(f2)))
+```
+
+The tabulation makes these subsitutions very clear: `a <--> e`, `b <--> d`. To repeat, the underlying integer data did not change or re-sort. The level order and the associations between the integer codes and the level strings changed. We started with 1 `a` and 5 `e`'s, but we ended with 5 `a`'s and 1 `e`.
+
+__In real life, this is rarely what you want__. You usually want the frequencies to stay the same. You probably want to mess with the factor levels in order to achieve something desirable in a plot or in the parametrization of a model. This example might scare you off of changing your factor levels, which can be a very good idea. But take heart! There's more than one way to do this.
+
+## Re-create and re-level the factor at the same time
+
+Now create `f3`, a variation on `f1`, by copying into a new factor object and setting new factor levels, __all at once__.
+```{r}
+f3 <- factor(f1, levels = rev(levels(f1)))
+f3
+unclass(f3)
+table(f3)
+merge(merge(as.data.frame(table(f1)), as.data.frame(table(f2))),
+      as.data.frame(table(f3)))
+```
+
+Notice that this second approach creates a new factor `f3` with the same levels as `f1`, each appearing with the same frequency, but with the levels simply in a different order. This can be very handy in real life.
+
+Let's make this totally clear:
+
+```
+## copy, then change levels
+f2 <- f1
+levels(f2) <- rev(levels(f2))
+```
+__IS VERY DIFFERENT FROM__
+```
+## copy AND change levels
+f3 <- factor(f1, levels = rev(levels(f1)))
+```
+
+In real data analyses, you probably want the latter!
+
+I cannot think of any good reason to ever do `levels(foo) <- ...` on an existing factor.
+
+## Related but distinct tasks
+
+Above, I'm only talking about reordering levels when the analyst "just knows" what the order should be, i.e. she can express it explicitly or can perform a simple manipulation on the existing levels.
+
+Often you want to change the level order in a programmatic and principled way. For example, instead of listing the US states alphabetically, you might want them to be ordered based a summary statistic for another variable in the dataset, such as the average income or life expectancy. This is what `reorder()` is for. Use it.
+
+If you want to change the levels themselves, e.g. change every `a` to `g` and every `c` to `y`, then you should probably look into these functions:
+
+  * `plyr::revalue()` is my first choice for "find and replace" with factors
+  * `plyr::mapvalues()` is more powerful and can be used if, for example, one of your factor levels if the empty string, which will break `plyr::revalue()`
+  * `car::recode()` was my favorite in the past. It is still nice when you want to map several old levels to a single new level, which is sort of awkward with the `plyr` functions.
+
+If you read too much on factors, you might be tempted to get into the `levels` versus the `labels`. Nothing good has ever come of that for me. I just think about `levels` and manipulate them as needed.
+
+## Links that cover some of the same ground
+
+http://www.cookbook-r.com/Manipulating_data/Renaming_levels_of_a_factor/
+
+http://quantitative-ecology.blogspot.ca/2007/10/reorder-factor-levels.html
+
+http://stackoverflow.com/questions/2375587/reorder-levels-of-a-data-frame-without-changing-order-of-values
