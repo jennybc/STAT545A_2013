@@ -251,9 +251,14 @@ Good reads on other people's idea about how to organize an analytical project:
   * Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules for Reproducible Computational Research. PLoS Comput Biol 9(10): e1003285. doi:10.1371/journal.pcbi.1003285 [open access at PLoS](http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003285)
 
 
-### References
+### TO INCORPORATE IN FUTURE
 
-  
+The ProjectTemplate package: <http://www.johnmyleswhite.com/notebook/2010/08/26/projecttemplate/>
+
+An rOpenSci "Short Workflow for R Reports": <http://ropensci.github.io/reproducibility-guide/sections/workflows/workflow1/>
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/johnmyleswhite">@johnmyleswhite</a> <a href="https://twitter.com/rvidal">@rvidal</a> <a href="https://twitter.com/adamlaiacano">@adamlaiacano</a> <a href="https://twitter.com/hadleywickham">@hadleywickham</a> <a href="https://twitter.com/rmflight">@rmflight</a> I made this in grad school, A,B,C diff starting points <a href="http://t.co/VVkZOO9WyH">pic.twitter.com/VVkZOO9WyH</a></p>&mdash; Hilary Parker (@hspter) <a href="https://twitter.com/hspter/statuses/493927863687450624">July 29, 2014</a></blockquote>
+
 
 <div class="footer">
 This work is licensed under the  <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0 Creative Commons License</a>.
