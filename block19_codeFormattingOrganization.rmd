@@ -152,6 +152,8 @@ I basically present principles verbatim from a conference report ["Good Programm
   * Rule of Optimization: Prototype before polishing. Get it working before you optimize it.
   * Rule of Diversity: Distrust all claims for “one true way”.
   * Rule of Extensibility: Design for the future, because it will be here sooner than you think.
+
+*Note from the future: thanks to a link tweeted by Hadley Wickahm, I now think these principles were taken from [http://www.faqs.org/docs/artu/ch01s06.html](http://www.faqs.org/docs/artu/ch01s06.html). In 2014, I should determine if the conference paper really adds anything here and, if not, cite the original.*
   
 ### Naming things
 
