@@ -1,7 +1,9 @@
 # STAT 545A 2013 Exploratory Data Analysis
 ========
 
-**An expanded version of this course starts September 2014. Here's where that will develop: <https://github.com/jennybc/STAT545>.**
+**The current GitHub home for this course is here <https://github.com/STAT545-UBC/STAT545-UBC.github.io>. You may prefer to visit at the [main course webpage](http://stat545-ubc.github.io).**
+
+*Everything below here and in this repo is just as I left it back in 2013. You have been warned.*
 
 Course content. And/or everything I've got on how to use R :)
 
